@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <!-- in-lite text -->
+  <text x="10" y="44" font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="38" fill="#2B2B2B" letter-spacing="-1">in-l<tspan fill="#2B2B2B">i</tspan>te</text>
+  <!-- Orange dot/square accent over the i in lite -->
+  <rect x="157" y="10" width="8" height="9" rx="1.5" fill="#F97316"/>
+</svg>

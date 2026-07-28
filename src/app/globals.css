@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep-navy: #0F2942;
+  --color-navy: #15426B;
+  --color-engineering-blue: #0E6BA8;
+  --color-cyan-accent: #00A8CC;
+  --color-orange-accent: #F97316;
+  --color-light-blue: #F0F7FD;
+  --color-light-gray: #F8FAFC;
+  --color-border-gray: #E2E8F0;
+  --color-main-text: #0F172A;
+  --color-secondary-text: #475569;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    color: var(--color-main-text);
+    background-color: #ffffff;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: var(--color-main-text);
+    background-color: #ffffff;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Accessibility Focus Rings */
+  *:focus-visible {
+    outline: 2px solid #0E6BA8;
+    outline-offset: 2px;
+  }
+}
+
+/* Accent gradient bar for cards & section headings */
+.accent-line-gradient {
+  background: linear-gradient(90deg, #0E6BA8 0%, #00A8CC 50%, #F97316 100%);
+}
+
+/* Card hover animation */
+.card-hover-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px -10px rgba(15, 41, 66, 0.12);
+}
+
+/* Skip link styling */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background-color: #0F2942;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* CSS Continuous Running Marquee Animation */
+@keyframes marquee-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
+  animation: marquee-scroll 55s linear infinite !important;
+  will-change: transform;
+}
+
+.animate-marquee-track:hover,
+.animate-marquee-track:focus-within {
+  animation-play-state: paused !important;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}

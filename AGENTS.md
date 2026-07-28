@@ -1,0 +1,60 @@
+<!-- BEGIN:nextjs-agent-rules -->
+# Next.js & AI Agent Guidelines for CV Cakrawala Buana Lestari (CBL)
+
+This file contains critical documentation, architectural patterns, and guidelines for AI agents working on this repository (`web-cakrawala-3`).
+
+---
+
+## 🏢 Corporate Brand & Design System
+
+- **Company Name**: **CV Cakrawala Buana Lestari (CBL)** - Jasa Teknik Terpadu & Otomasi Fasilitas Industri.
+- **Primary Brand Color**: **CBL Orange (`#F97316`)**
+  - Used for: All primary WhatsApp buttons, CTA buttons, status indicator pulses, and corporate highlights.
+- **Secondary Brand Colors**:
+  - **CBL Navy (`#0F2942`)**: Main headings, dark containers, footer background.
+  - **Engineering Blue (`#0E6BA8` / `#15426B`)**: Secondary links, outlines, badge backgrounds (`#F0F7FD`).
+- **Official Logo**: `/logo/cbl-logo.png` & `/logo/cbl-logo.webp` (Transparent high-res orange circle CBL logo).
+
+---
+
+## 📞 Official Corporate Contact Details
+
+Centralized in `src/data/company.ts`:
+- **WhatsApp Fast Response**: `0851-8454-9522` / `+62 851-8454-9522` (URL: `https://wa.me/6285184549522`).
+- **Office Telephone**: `(021) 2606-3396` (URL: `tel:02126063396`).
+- **Office Address**: Jl Papanggo 2C No. 38, Kel. Papanggo, Kec. Tanjung Priok, Jakarta Utara 14340.
+- **Service Hours**: `24 jam / 7 hari`.
+
+---
+
+## 🛠️ Key Components & Implementation Patterns
+
+1. **Header & Navigation (`src/components/layout/Header.tsx` & `MobileMenu.tsx`)**:
+   - Uses **ScrollSpy** (`activeSection`) to dynamically highlight active nav tabs (`bg-[#F0F7FD] text-[#0E6BA8]`) as the user scrolls through homepage sections (`#layanan`, `#keahlian`, `#cara-kerja`, `#mengapa-cbl`, `#kontak`).
+   - Uses `window.history.pushState` on hash clicks to prevent double-hash URL bugs.
+
+2. **Hero Background Video (`src/components/sections/HeroSection.tsx`)**:
+   - Video file: `/video/hero-bg.mp4` (Optimized 720p 9.92MB video of industrial robot machinery).
+   - Overlay: `bg-white/40` light glassmorphism overlay ensuring video motion is clearly visible while text is 100% readable.
+   - Auto-pauses video via `IntersectionObserver` when scrolled out of viewport.
+
+3. **Running Marquee Logo Section (`src/components/sections/BrandMarquee.tsx`)**:
+   - Renders 13 authentic industry brand logos (`public/logo/brands/`):
+     - `Allen-Bradley`, `Schneider Electric`, `SEW Eurodrive`, `Rexnord`, `SKF`, `Timken`, `Fenner`, `Renold`, `Grundfos`, `Sta-Rite`, `in-Lite`, `Orphek`, `Philips`.
+   - Scroll speed: `animation: marquee-scroll 55s linear infinite` (slow, steady, technical motion with pause-on-hover).
+
+4. **Floating Action Controls**:
+   - `FloatingWhatsapp.tsx`: Positioned at `fixed bottom-6 right-6 z-40` (`#F97316` orange).
+   - `BackToTop.tsx`: Positioned at `fixed bottom-20 right-6 z-40` (Stacked vertically 80px above WhatsApp button to prevent overlap).
+
+---
+
+## 📋 Verification & Build Checklist for AI Agents
+
+Before declaring any task complete or committing code:
+1. **Typecheck**: `npx tsc --noEmit` must pass cleanly with 0 errors.
+2. **Linting**: `npm run lint` must pass cleanly with 0 errors.
+3. **Build**: `npm run build` must complete successfully.
+4. **Git**: Commit with descriptive conventional commit messages (`feat`, `fix`, `perf`, `chore`, `style`).
+
+<!-- END:nextjs-agent-rules -->

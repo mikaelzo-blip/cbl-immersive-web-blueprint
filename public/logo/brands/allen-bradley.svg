@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" fill="none">
+  <!-- AB Octagon -->
+  <polygon points="12,18 28,12 44,18 50,34 44,50 28,54 12,50 6,34" fill="#111111"/>
+  <text x="16" y="40" font-family="'Arial Black', sans-serif" font-weight="900" font-size="19" fill="#FFFFFF">AB</text>
+  <text x="17" y="48" font-family="Arial, sans-serif" font-weight="700" font-size="6" fill="#FFFFFF">QUALITY</text>
+  <!-- Text Allen-Bradley -->
+  <text x="62" y="42" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="28" fill="#111111" font-style="italic">Allen-Bradley</text>
+</svg>
