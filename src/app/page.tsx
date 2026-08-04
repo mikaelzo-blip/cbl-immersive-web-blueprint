@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { AboutSection } from '@/components/sections/AboutSection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
@@ -8,6 +9,13 @@ import { PortfolioSection } from '@/components/sections/PortfolioSection';
 import { WhyUsSection } from '@/components/sections/WhyUsSection';
 import { ClosingCtaSection } from '@/components/sections/ClosingCtaSection';
 import { ContactSection } from '@/components/sections/ContactSection';
+import { companyInfo } from '@/data/company';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: companyInfo.seo.siteUrl,
+  },
+};
 
 export default function HomePage() {
   return (

@@ -1,17 +1,11 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { FloatingWhatsapp } from '@/components/ui/FloatingWhatsapp';
 import { BackToTop } from '@/components/ui/BackToTop';
 import { companyInfo } from '@/data/company';
-
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-sans',
-});
+import { serializeJsonLd } from '@/lib/json-ld';
 
 export const metadata: Metadata = {
   metadataBase: new URL(companyInfo.seo.siteUrl),
@@ -20,18 +14,6 @@ export const metadata: Metadata = {
     template: `%s | ${companyInfo.shortName}`,
   },
   description: companyInfo.seo.defaultDescription,
-  keywords: [
-    'CV Cakrawala Buana Lestari',
-    'CBL',
-    'jasa teknik industri',
-    'panel listrik Jakarta',
-    'otomasi PLC HMI',
-    'mekanikal presisi',
-    'HVAC VRF chiller',
-    'sistem pompa booster',
-    'pencahayaan wahana air',
-    'teknisi kelistrikan 24 jam',
-  ],
   authors: [{ name: companyInfo.legalName }],
   creator: companyInfo.legalName,
   publisher: companyInfo.legalName,
@@ -47,11 +29,13 @@ export const metadata: Metadata = {
     title: companyInfo.seo.defaultTitle,
     description: companyInfo.seo.defaultDescription,
     siteName: companyInfo.legalName,
+    images: [{ url: companyInfo.seo.ogImage, width: 1200, height: 630, alt: companyInfo.legalName }],
   },
   twitter: {
     card: 'summary_large_image',
     title: companyInfo.seo.defaultTitle,
     description: companyInfo.seo.defaultDescription,
+    images: [companyInfo.seo.ogImage],
   },
   robots: {
     index: true,
@@ -70,48 +54,26 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Organization',
-        '@id': `${companyInfo.seo.siteUrl}/#organization`,
-        name: companyInfo.legalName,
-        alternateName: companyInfo.shortName,
-        url: companyInfo.seo.siteUrl,
-        email: companyInfo.email,
-        telephone: companyInfo.phoneRaw,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Jl Papanggo 2C No. 38, Kel. Papanggo, Kec. Tanjung Priok',
-          addressLocality: 'Jakarta Utara',
-          postalCode: '14340',
-          addressCountry: 'ID',
-        },
-      },
-      {
-        '@type': 'LocalBusiness',
-        '@id': `${companyInfo.seo.siteUrl}/#localbusiness`,
-        name: companyInfo.legalName,
-        telephone: companyInfo.phoneRaw,
-        email: companyInfo.email,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Jl Papanggo 2C No. 38, Kel. Papanggo, Kec. Tanjung Priok',
-          addressLocality: 'Jakarta Utara',
-          postalCode: '14340',
-          addressCountry: 'ID',
-        },
-        openingHours: 'Mo-Su 00:00-24:00',
-        priceRange: '$$',
-      },
-    ],
+    '@type': 'Organization',
+    '@id': `${companyInfo.seo.siteUrl}/#organization`,
+    name: companyInfo.legalName,
+    alternateName: companyInfo.shortName,
+    url: companyInfo.seo.siteUrl,
+    logo: `${companyInfo.seo.siteUrl}/logo/cbl-logo.png`,
+    email: companyInfo.email,
+    telephone: companyInfo.phoneRaw,
+    address: {
+      '@type': 'PostalAddress',
+      ...companyInfo.addressParts,
+    },
   };
 
   return (
-    <html lang="id" className={`${inter.variable} font-sans`}>
+    <html lang="id" className="font-sans">
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
         />
       </head>
       <body className="flex flex-col min-h-screen antialiased selection:bg-[#0E6BA8] selection:text-white">
