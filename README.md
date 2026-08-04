@@ -27,19 +27,19 @@ Situs company profile B2B resmi untuk **CV Cakrawala Buana Lestari (CBL)**, peny
 
 - **Framework**: Next.js (App Router, TypeScript mode `strict`)
 - **UI & Styling**: React 19, Tailwind CSS v4 (`@theme` directive), `lucide-react`, `clsx` + `tailwind-merge`
-- **Deployment Target**: Static Site Generation (SSG / Static Export target)
+- **Deployment Target**: Native Next.js di Vercel. Route saat ini diprerender sebagai static/SSG, tetapi deployment tidak memakai `output: "export"` agar Image Optimization, headers, preview, dan kemampuan Next.js tetap tersedia.
 
 ---
 
 ## Panduan Memulai (Quick Start)
 
 ### 1. Prasyarat Sistem
-- Node.js versi 18+ atau 20+
-- npm v9+
+- Node.js 24.x (lihat `.nvmrc` dan `engines`)
+- npm yang disertakan bersama Node.js 24.x
 
 ### 2. Memasang Dependensi
 ```bash
-npm install
+npm ci
 ```
 
 ### 3. Membuka Mode Pengkodingan / Dev Server
@@ -50,14 +50,8 @@ Buka browser pada alamat [http://localhost:3000](http://localhost:3000).
 
 ### 4. Melakukan Uji Tipe & Build Produksi
 ```bash
-# Typecheck
-npx tsc --noEmit
-
-# Linting
-npm run lint
-
-# Build Static Export / SSG
-npm run build
+# Menjalankan typecheck, lint, dan production build
+npm run check
 ```
 
 ---
@@ -67,7 +61,7 @@ npm run build
 ```
 src/
   app/
-    layout.tsx            # Root layout: Header, Footer, font Inter, Metadata API, JSON-LD, Skip link
+    layout.tsx            # Root layout: Header, Footer, Metadata API, JSON-LD, Skip link
     page.tsx              # Beranda (Hero, Tentang, Layanan, Keahlian, Cara Kerja, Merek, Portofolio, WhyUs, CTA, Kontak)
     globals.css           # Design tokens via @theme, styling dasar & aksen gradient
     sitemap.ts            # Dynamic XML sitemap generator
@@ -93,7 +87,7 @@ src/
     ui/                   # Container, Button, SectionHeading, DynamicIcon, Badge, FloatingWhatsapp, BackToTop
   data/
     company.ts            # Seluruh konten naratif legal & kontak perusahaan
-    projects.ts           # Dataset 9 entri studi kasus portofolio (dengan header draf wajib)
+    projects.ts           # Dataset studi kasus publik; tidak memuat nomor dokumen atau nilai transaksi
     legal.ts              # Data legalitas, prosedur K3, dokumen vendor, kualifikasi teknisi
   types/
     company.ts            # Interfaces data perusahaan & komponen UI
@@ -149,8 +143,35 @@ Seluruh data portofolio tersimpan di `src/data/projects.ts`. Untuk menambah proy
 
 ---
 
-## Daftar TODO Sebelum Go-Live Publik
+## Keputusan Deployment Vercel
 
-- [ ] **Konfirmasi Domain Resmi**: Update variabel `seo.siteUrl` di `src/data/company.ts` jika domain publik resmi sudah dibeli.
+Dokumen handoff:
+
+- [`docs/VERCEL_READINESS_AUDIT.md`](docs/VERCEL_READINESS_AUDIT.md)
+- [`docs/CONTENT_VERIFICATION.md`](docs/CONTENT_VERIFICATION.md)
+- [`docs/DEPLOYMENT_GUIDE.md`](docs/DEPLOYMENT_GUIDE.md)
+- [`docs/DRAFT_PR.md`](docs/DRAFT_PR.md)
+
+- Framework Preset: `Next.js`
+- Root Directory: repository root (`./`)
+- Install Command: `npm ci`
+- Build Command: `npm run build`
+- Output Directory: kosong / default Next.js
+- Node.js: `24.x`
+- Production Branch: `main`
+- Preview: branch/PR selain `main`
+- Environment variable wajib sebelum production: `NEXT_PUBLIC_SITE_URL=https://<domain-yang-sudah-dikonfirmasi>`
+
+Jangan mengaktifkan `output: "export"` atau mengisi Output Directory `out` pada project Vercel ini. Static export tetap merupakan alternatif bila website harus dipindahkan ke hosting file statis; konsekuensinya adalah custom image loader dan mekanisme headers terpisah.
+
+## Privasi Sumber
+
+DOCX, XLSX, ZIP, PO, SPK, BAST, surat jalan, nilai transaksi, tanda tangan, QR, dan nomor legal tidak boleh disalin ke `public/` atau repository. Company profile hanya boleh diaktifkan untuk unduhan setelah versi publik disanitasi, metadata dibersihkan, dan persetujuan pemilik diperoleh.
+
+## Daftar Konfirmasi Sebelum Go-Live Publik
+
+- [ ] **Konfirmasi Domain Resmi**: Set `NEXT_PUBLIC_SITE_URL` untuk environment Production dan Preview yang sesuai.
 - [ ] **Konfirmasi Email Domain Resmi**: Update variabel `companyInfo.email` dari Gmail ke email domain (mis. `marketing@<domain>`).
-- [ ] **Company Profile PDF**: Masukkan file `company-profile.pdf` resmi ke folder `public/documents/` dan aktifkan flag `available: true` di `src/data/legal.ts`.
+- [ ] **Jam layanan**: Tentukan jadwal publik; jangan gunakan klaim 24/7 tanpa persetujuan operasional.
+- [ ] **Company Profile PDF**: Buat versi publik yang disanitasi sebelum memasukkannya ke `public/documents/` dan mengaktifkan flag unduhan.
+- [ ] **SBU/SKK/sertifikasi**: Publikasikan hanya setelah dokumen aktif diverifikasi.

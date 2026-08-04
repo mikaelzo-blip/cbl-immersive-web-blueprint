@@ -1,4 +1,6 @@
-# Analisis dan Rekomendasi Website PT Cakrawala Buana Lestari
+# Analisis Historis Website CV Cakrawala Buana Lestari
+
+> **Status: digantikan.** Dokumen ini adalah analisis awal sebelum verifikasi sumber dan browser QA. Jangan gunakan contoh klaim, skor, atau rekomendasinya sebagai fakta publik. Acuan terkini adalah [`VERCEL_READINESS_AUDIT.md`](VERCEL_READINESS_AUDIT.md) dan [`CONTENT_VERIFICATION.md`](CONTENT_VERIFICATION.md).
 
 Repository: `https://github.com/mikaelzo-blip/cakrawala-web-3`
 

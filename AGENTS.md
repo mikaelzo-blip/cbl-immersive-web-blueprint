@@ -22,8 +22,8 @@ This file contains critical documentation, architectural patterns, and guideline
 Centralized in `src/data/company.ts`:
 - **WhatsApp Fast Response**: `0851-8454-9522` / `+62 851-8454-9522` (URL: `https://wa.me/6285184549522`).
 - **Office Telephone**: `(021) 2606-3396` (URL: `tel:02126063396`).
-- **Office Address**: Jl Papanggo 2C No. 38, Kel. Papanggo, Kec. Tanjung Priok, Jakarta Utara 14340.
-- **Service Hours**: `24 jam / 7 hari`.
+- **Office Address**: Jl. Papanggo II C No. 27, Papanggo, Tanjung Priok, Jakarta Utara, DKI Jakarta 14340.
+- **Service Hours**: Belum dikonfirmasi; gunakan frasa netral `Jadwal layanan dikonfirmasi saat konsultasi`.
 
 ---
 
@@ -33,10 +33,9 @@ Centralized in `src/data/company.ts`:
    - Uses **ScrollSpy** (`activeSection`) to dynamically highlight active nav tabs (`bg-[#F0F7FD] text-[#0E6BA8]`) as the user scrolls through homepage sections (`#layanan`, `#keahlian`, `#cara-kerja`, `#mengapa-cbl`, `#kontak`).
    - Uses `window.history.pushState` on hash clicks to prevent double-hash URL bugs.
 
-2. **Hero Background Video (`src/components/sections/HeroSection.tsx`)**:
-   - Video file: `/video/hero-bg.mp4` (Optimized 720p 9.92MB video of industrial robot machinery).
-   - Overlay: `bg-white/40` light glassmorphism overlay ensuring video motion is clearly visible while text is 100% readable.
-   - Auto-pauses video via `IntersectionObserver` when scrolled out of viewport.
+2. **Hero Background (`src/components/sections/HeroSection.tsx`)**:
+   - Menggunakan dokumentasi proyek lokal melalui `next/image`, bukan video stok autoplay.
+   - Overlay menjaga kontras teks dan aset ditandai sebagai dekoratif.
 
 3. **Running Marquee Logo Section (`src/components/sections/BrandMarquee.tsx`)**:
    - Renders 13 authentic industry brand logos (`public/logo/brands/`):
