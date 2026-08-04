@@ -11,9 +11,9 @@ export function WorkProcessSection() {
       <Container>
         <Reveal>
           <SectionHeading
-            badge="Alur Pengerjaan Sistematis"
-            title="Empat tahap dari pemeriksaan hingga serah terima."
-            description="Setiap tahap disesuaikan dengan ruang lingkup, kondisi fasilitas, dan persyaratan lokasi kerja."
+            badge="Alur Kerja"
+            title="Proses yang jelas, dari pemeriksaan awal hingga serah terima."
+            description="Tahapan kerja disesuaikan dengan kondisi fasilitas, batas pekerjaan, risiko, dan persyaratan di lokasi proyek."
             align="left"
           />
         </Reveal>

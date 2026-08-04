@@ -68,7 +68,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     },
   };
 
-  const whatsappMessage = `Halo CBL, saya mau konsultasi spesifik layanan: *${service.title}*. Mohon informasi ketersediaan peninjauan teknis lokasi.`;
+  const whatsappMessage = `Halo CBL, saya ingin berkonsultasi mengenai layanan *${service.title}*. Mohon informasi mengenai proses peninjauan awal di lokasi.`;
 
   return (
     <>
@@ -114,7 +114,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             </p>
 
             <p className="text-sm text-[#475569] bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 mb-8 max-w-3xl">
-              Kapabilitas yang ditampilkan menggabungkan pengalaman terdokumentasi dan layanan yang dapat ditawarkan setelah survei. Pekerjaan khusus dapat melibatkan tenaga profesional atau mitra spesialis berbasis proyek.
+              Informasi pada halaman ini merangkum pengalaman yang telah terdokumentasi dan layanan yang dapat ditawarkan setelah survei. Pekerjaan khusus dapat melibatkan tenaga profesional atau mitra spesialis sesuai kebutuhan proyek.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -126,7 +126,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 className="w-full sm:w-auto"
               >
                 <DynamicIcon name="MessageSquare" size={20} />
-                <span>Konsultasi Divisi {service.title}</span>
+                <span>Konsultasikan layanan ini</span>
               </Button>
 
               <Button
@@ -136,7 +136,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 className="w-full sm:w-auto"
               >
                 <DynamicIcon name="FileText" size={20} />
-                <span>Isi Form Konsultasi</span>
+                <span>Isi formulir konsultasi</span>
               </Button>
             </div>
 
@@ -147,9 +147,9 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Section 2: Rincian Lingkup Pekerjaan */}
           <div className="mb-12">
             <SectionHeading
-              badge="Ditawarkan Setelah Verifikasi Lingkup"
-              title="Lingkup Penanganan &amp; Pekerjaan"
-              description="Uraian rinci spesialisasi pekerjaan yang ditangani oleh tim teknisi divisi ini."
+              badge="Ditentukan Setelah Pemeriksaan Awal"
+              title="Cakupan layanan dan pekerjaan"
+              description="Rincian pekerjaan berikut disesuaikan kembali dengan kondisi peralatan, akses lokasi, dan kebutuhan proyek."
               align="left"
             />
 
@@ -207,9 +207,9 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Section 4: Tahapan Alur Kerja Divisi */}
           <div className="mb-12">
             <SectionHeading
-              badge="Standar Operasional"
-              title="Alur Metodologi Penanganan"
-              description="Empat tahap pengerjaan teratur untuk memastikan keamanan isolasi daya dan keandalan uji coba."
+              badge="Tahapan Pekerjaan"
+              title="Alur penanganan yang terstruktur"
+              description="Empat tahap kerja untuk menjaga kejelasan kebutuhan, keselamatan pelaksanaan, pemeriksaan hasil, dan dokumentasi serah terima."
               align="left"
             />
 
@@ -239,9 +239,9 @@ export default async function ServiceDetailPage({ params }: Props) {
           {relatedProjects.length > 0 && (
             <div className="mb-12 pt-8 border-t border-[#E2E8F0]">
               <SectionHeading
-                badge="Rekam Jejak Lapangan"
-                title={`Studi Kasus Penanganan ${service.title}`}
-                description="Dokumentasi teknis pengerjaan riil yang pernah diselesaikan oleh tim CBL pada kategori ini."
+                badge="Pengalaman Lapangan"
+                title={`Studi kasus ${service.title}`}
+                description="Contoh pekerjaan dalam bidang ini yang dirangkum dari arsip dan dokumentasi proyek CBL."
                 align="left"
               />
 
@@ -259,7 +259,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               Butuh Penanganan Teknis untuk {service.title}?
             </h2>
             <p className="text-sm sm:text-base text-[#E2E8F0] max-w-2xl mx-auto mb-8 leading-relaxed">
-              Tim proyek CBL siap membantu pemeriksaan awal dan penyusunan lingkup penanganan teknis sesuai kondisi fasilitas Anda.
+              Tim CBL siap membantu memahami kondisi awal dan menyusun cakupan penanganan yang sesuai dengan kebutuhan fasilitas Anda.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -269,7 +269,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 size="lg"
               >
                 <DynamicIcon name="MessageSquare" size={20} />
-                <span>Hubungi via WhatsApp</span>
+                <span>Hubungi melalui WhatsApp</span>
               </Button>
               <Button
                 href="/#kontak"
@@ -277,7 +277,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 size="lg"
                 className="border-white text-white hover:bg-white/10"
               >
-                <span>Isi Form Konsultasi Lapangan</span>
+                <span>Isi formulir konsultasi</span>
               </Button>
             </div>
           </div>

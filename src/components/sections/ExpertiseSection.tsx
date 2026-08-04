@@ -12,8 +12,8 @@ export function ExpertiseSection() {
         <Reveal>
           <SectionHeading
             badge="Kompetensi Teknis"
-            title="Kompetensi yang dibentuk dari kebutuhan lapangan."
-            description="Bidang pengalaman berikut tercatat dalam dokumen proyek; metode dan personel ditentukan menurut lingkup setiap pekerjaan."
+            title="Kompetensi yang berkembang dari pekerjaan nyata di lapangan."
+            description="Pengalaman berikut tercatat dalam dokumen proyek. Metode kerja dan kebutuhan personel ditentukan sesuai karakter setiap pekerjaan."
             align="left"
           />
         </Reveal>

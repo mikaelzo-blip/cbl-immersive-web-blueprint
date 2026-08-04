@@ -12,8 +12,8 @@ export function BrandSection() {
         <Reveal>
           <SectionHeading
             badge="Cakupan Komponen &amp; Suku Cadang"
-            title="Merek industri yang biasa ditangani."
-            description="Logo menjelaskan pengalaman penanganan komponen dan tidak menyatakan hubungan distributor atau kemitraan resmi."
+            title="Merek komponen yang pernah kami tangani."
+            description="Daftar ini menunjukkan pengalaman CBL dalam menangani berbagai spesifikasi komponen. Pencantuman logo tidak menyatakan hubungan distributor atau kemitraan resmi."
             align="left"
           />
         </Reveal>
@@ -65,7 +65,7 @@ export function BrandSection() {
       <Container>
         <div className="p-4 sm:p-5 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20 text-xs text-[#475569] leading-relaxed">
           <p>
-            <strong className="text-[#0F2942] font-semibold">Pernyataan Batasan Merek Dagang &amp; Kerja Sama:</strong> {brandDisclaimer}
+            <strong className="text-[#0F2942] font-semibold">Keterangan merek dagang:</strong> {brandDisclaimer}
           </p>
         </div>
       </Container>

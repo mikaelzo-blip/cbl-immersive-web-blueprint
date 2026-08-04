@@ -17,15 +17,15 @@ export function HeroSection() {
         <div className="hero-enter lg:col-span-7">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#0E6BA8]/25 bg-white px-3.5 py-2 text-xs font-bold text-[#0E6BA8] shadow-sm">
             <span className="h-2 w-2 rounded-full bg-[#C2410C]" />
-            Pengalaman terdokumentasi 2022–2026
+            Pengalaman proyek terdokumentasi • 2022–2026
           </div>
 
           <h1 className="mt-7 max-w-4xl text-4xl font-black leading-[1.05] tracking-[-0.035em] text-[#0F2942] sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-            Penanganan teknis fasilitas, dari kebutuhan lapangan hingga serah terima.
+            Kebutuhan teknis fasilitas ditangani dari pemeriksaan awal hingga serah terima.
           </h1>
 
           <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-[#475569] sm:text-lg">
-            CBL mendukung pekerjaan kelistrikan, panel kontrol, otomasi, mekanikal, HVAC, pompa, dan pencahayaan melalui tenaga profesional berbasis kebutuhan proyek.
+            CBL membantu pengelola fasilitas merencanakan dan melaksanakan pekerjaan kelistrikan, otomasi, mekanikal, HVAC, sistem pompa, serta pencahayaan sesuai kebutuhan setiap proyek.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -37,10 +37,10 @@ export function HeroSection() {
               className="w-full sm:w-auto"
             >
               <DynamicIcon name="MessageSquareText" size={20} />
-              Minta konsultasi awal
+              Konsultasikan kebutuhan Anda
             </Button>
             <Button href="/proyek" variant="outline" size="lg" className="w-full bg-white sm:w-auto">
-              Lihat pengalaman proyek
+              Lihat portofolio pekerjaan
               <DynamicIcon name="ArrowRight" size={19} />
             </Button>
           </div>
@@ -71,7 +71,7 @@ export function HeroSection() {
               </div>
               <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#67E8F9]">Berdasarkan dokumentasi pekerjaan</p>
               <p className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">
-                Ruang lingkup pekerjaan, tahapan pelaksanaan, dan hasil disajikan tanpa mengungkap data transaksi sensitif.
+                Setiap studi kasus menjelaskan kebutuhan, tahapan pekerjaan, dan hasil tanpa mengungkap data transaksi yang bersifat sensitif.
               </p>
             </div>
           </div>

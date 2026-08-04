@@ -24,16 +24,16 @@ export default function PortfolioIndexPage() {
         <div className="absolute inset-0 engineering-grid-dark opacity-50" aria-hidden="true" />
         <Container className="relative">
           <SectionHeading
-            badge="Portofolio Terverifikasi"
-            title="Pekerjaan teknis dalam konteks yang mudah dipahami."
-            description="Jelajahi studi kasus pengadaan, instalasi, penggantian, dan perbaikan yang didukung arsip internal tanpa membuka data transaksi sensitif."
+            badge="Portofolio Pekerjaan"
+            title="Rekam pekerjaan teknis yang disajikan secara jelas dan bertanggung jawab."
+            description="Jelajahi studi kasus pengadaan, pemasangan, penggantian, dan perbaikan. Setiap proyek dirangkum berdasarkan arsip internal tanpa menampilkan identitas klien atau data transaksi yang bersifat sensitif."
             as="h1"
             align="left"
             light
           />
           <div className="flex flex-wrap gap-3 text-sm">
-            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">{projects.length} studi kasus publik</span>
-            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">6 kategori layanan</span>
+            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">{projects.length} studi kasus tersedia</span>
+            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">6 bidang pekerjaan</span>
           </div>
         </Container>
       </section>
@@ -67,7 +67,7 @@ export default function PortfolioIndexPage() {
         {/* Announced Result Count (Live Region for Screen Readers) */}
         <div className="mb-6 flex items-center justify-between text-xs sm:text-sm text-[#475569]" aria-live="polite">
           <span>
-            Menampilkan <strong className="text-[#0F2942]">{filteredProjects.length}</strong> studi kasus untuk kategori:{' '}
+            Menampilkan <strong className="text-[#0F2942]">{filteredProjects.length}</strong> studi kasus dalam kategori{' '}
             <strong className="text-[#0E6BA8]">
               {projectCategories.find((c) => c.id === selectedCategory)?.label}
             </strong>
@@ -80,7 +80,7 @@ export default function PortfolioIndexPage() {
               className="text-[#0E6BA8] hover:underline font-semibold flex items-center gap-1"
             >
               <DynamicIcon name="X" size={14} />
-              <span>Reset Filter</span>
+              <span>Hapus filter</span>
             </button>
           )}
         </div>
@@ -97,7 +97,7 @@ export default function PortfolioIndexPage() {
         ) : (
           <div className="py-16 text-center bg-white rounded-2xl border border-[#E2E8F0] p-8 mb-12">
             <DynamicIcon name="Filter" size={48} className="text-[#475569]/40 mx-auto mb-4" />
-            <h3 className="text-lg font-bold text-[#0F2942] mb-2">Tidak Ada Studi Kasus Ditemukan</h3>
+            <h3 className="text-lg font-bold text-[#0F2942] mb-2">Belum ada studi kasus pada kategori ini</h3>
             <p className="text-sm text-[#475569] max-w-md mx-auto mb-4">
               Belum ada entri studi kasus yang dipublikasikan untuk kategori ini.
             </p>
@@ -106,7 +106,7 @@ export default function PortfolioIndexPage() {
               onClick={() => setSelectedCategory('all')}
               className="px-4 py-2 text-xs font-semibold bg-[#0E6BA8] text-white rounded-lg hover:bg-[#15426B]"
             >
-              Tampilkan Semua Proyek
+              Tampilkan semua proyek
             </button>
           </div>
         )}
@@ -114,7 +114,7 @@ export default function PortfolioIndexPage() {
         {/* Confidentiality Notice */}
         <div className="p-5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#475569] leading-relaxed max-w-4xl mx-auto shadow-2xs">
           <p>
-            <strong className="text-[#0F2942]">Catatan Kerahasiaan Klien:</strong> {portfolioConfidentialityNotice}
+            <strong className="text-[#0F2942]">Catatan kerahasiaan:</strong> {portfolioConfidentialityNotice}
           </p>
         </div>
       </Container>

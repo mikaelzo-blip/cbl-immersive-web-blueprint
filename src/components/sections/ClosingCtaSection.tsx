@@ -14,15 +14,15 @@ export function ClosingCtaSection() {
         <Reveal>
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A8CC]/20 text-[#67E8F9] text-xs font-semibold mb-6">
           <DynamicIcon name="Zap" size={14} />
-          <span>Mulai dari kebutuhan yang Anda hadapi</span>
+          <span>Mulai dari kondisi yang Anda hadapi</span>
         </div>
 
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-white">
-          Mari susun langkah teknis yang sesuai untuk fasilitas Anda.
+          Mari tentukan langkah penanganan yang sesuai untuk fasilitas Anda.
         </h2>
 
         <p className="text-base sm:text-lg text-[#E2E8F0] leading-relaxed max-w-2xl mx-auto mb-8">
-          Sampaikan kondisi awal, lokasi, dan kebutuhan pekerjaan. Tim CBL akan membantu mengklarifikasi ruang lingkup dan opsi tindak lanjut.
+          Ceritakan kondisi awal, lokasi, serta target pekerjaan. Tim CBL akan membantu memperjelas kebutuhan dan menyusun pilihan tindak lanjut yang relevan.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -36,7 +36,7 @@ export function ClosingCtaSection() {
             className="w-full sm:w-auto"
           >
             <DynamicIcon name="MessageSquare" size={20} />
-            <span>Diskusikan melalui WhatsApp</span>
+            <span>Konsultasi melalui WhatsApp</span>
           </Button>
 
           <Button

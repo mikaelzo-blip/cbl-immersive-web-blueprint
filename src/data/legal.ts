@@ -16,7 +16,7 @@
 import { LegalDocumentItem, K3ProcedureStep, VendorDocDownload } from '@/types/legal';
 
 export const legalNotice = 
-  'Demi menjaga keamanan data legalitas badan usaha dari penyalahgunaan di publik, nomor fisik dokumen perusahaan (NPWP, NIB, SIUP) tidak tercantum di halaman ini. Ketersediaan dan bentuk salinan berkas untuk registrasi vendor akan dikonfirmasi setelah permintaan resmi diterima.';
+  'Untuk mengurangi risiko penyalahgunaan data, nomor dokumen perusahaan seperti NPWP, NIB, dan perizinan lain tidak ditampilkan pada halaman publik. Ketersediaan salinan dokumen untuk registrasi vendor akan dikonfirmasi setelah permintaan resmi diterima.';
 
 export const legalDocuments: LegalDocumentItem[] = [
   {
@@ -30,7 +30,7 @@ export const legalDocuments: LegalDocumentItem[] = [
     id: 'nib',
     title: 'Nomor Induk Berusaha (NIB)',
     category: 'Perizinan Berusaha',
-    description: 'Nomor Induk Berusaha perusahaan tersedia. Kesesuaian kegiatan dan persyaratan sektoral tetap diperiksa untuk setiap tender atau lingkup pekerjaan.',
+    description: 'Nomor Induk Berusaha perusahaan tersedia. Kesesuaian kegiatan usaha dan persyaratan sektoral tetap diperiksa untuk setiap tender atau cakupan pekerjaan.',
     availableOnRequest: true,
   },
   {
@@ -45,32 +45,32 @@ export const legalDocuments: LegalDocumentItem[] = [
 export const k3Procedures: K3ProcedureStep[] = [
   {
     id: 'work-permit',
-    title: 'Izin Kerja (Work Permit / PTW)',
+    title: 'Izin Kerja (Permit to Work / PTW)',
     description: 'Penerbitan dokumen izin kerja aman sebelum memasuki area kerja berisiko tinggi di fasilitas mitra.',
     iconName: 'FileCheck',
   },
   {
     id: 'safety-induction',
-    title: 'Safety Induction & Briefing',
-    description: 'Pengarahan keselamatan awal bagi tim teknis mengenai potensi bahaya lokasi dan rute evakuasi darurat.',
+    title: 'Induksi & Pengarahan Keselamatan',
+    description: 'Pengarahan awal kepada tim teknis mengenai potensi bahaya, ketentuan lokasi, dan rute evakuasi darurat.',
     iconName: 'ShieldAlert',
   },
   {
     id: 'apd-standard',
-    title: 'Penggunaan APD Lengkap (PPE)',
+    title: 'Penggunaan Alat Pelindung Diri (APD)',
     description: 'Penggunaan APD ditentukan oleh bahaya pekerjaan dan persyaratan lokasi, termasuk pelindung kepala, kaki, tangan, dan mata bila relevan.',
     iconName: 'UserCheck',
   },
   {
     id: 'loto-procedure',
-    title: 'Prosedur LOTO (Lockout / Tagout)',
+    title: 'Prosedur Penguncian dan Penandaan (LOTO)',
     description: 'Penguncian dan penandaan sakelar kelistrikan / katup tekanan sebelum pengerjaan perawatan untuk mencegah penyalaan tak disengaja.',
     iconName: 'Lock',
   },
   {
     id: 'facility-coordination',
     title: 'Koordinasi Tim Fasilitas Setempat',
-    description: 'Komunikasi berkelanjutan dengan Chief Engineering / HSE gedung mengenai jadwal pemadaman bergilir atau pengujian beban.',
+    description: 'Koordinasi dengan tim engineering atau HSE setempat mengenai akses kerja, jadwal penghentian sistem, dan rencana pengujian.',
     iconName: 'Users',
   },
 ];
@@ -78,17 +78,17 @@ export const k3Procedures: K3ProcedureStep[] = [
 export const handoverDocs = [
   'Surat Pesanan / Order Pekerjaan (PO / SPK)',
   'Berita Acara Serah Terima Pekerjaan (BAST)',
-  'Laporan pengujian atau commissioning bila dipersyaratkan',
-  'Gambar wiring / as-built bila termasuk ruang lingkup',
+  'Laporan pemeriksaan atau uji fungsi bila dipersyaratkan',
+  'Gambar pengawatan atau as-built bila termasuk dalam cakupan pekerjaan',
   'Rekomendasi tindak lanjut bila disepakati',
 ];
 
 export const vendorRegistrationStatement = 
-  'Arsip pekerjaan CBL memuat PO/SPK, surat jalan, BAST/BA, dan dokumen pendukung lain. Kelengkapan untuk registrasi vendor akan ditinjau terhadap persyaratan calon klien; dokumen sensitif disampaikan melalui kanal resmi, bukan halaman publik.';
+  'Arsip pekerjaan CBL memuat PO atau SPK, surat jalan, berita acara serah terima, dan dokumen pendukung lainnya. Kelengkapan registrasi vendor akan ditinjau berdasarkan persyaratan calon klien. Dokumen yang memuat data sensitif hanya disampaikan melalui saluran komunikasi resmi.';
 
 export const companyProfileDoc: VendorDocDownload = {
-  title: 'Company Profile & Dokumen Pengenalan CBL (PDF)',
+  title: 'Profil Perusahaan CBL (PDF)',
   fileName: 'company-profile.pdf',
   available: false, // Belum ada di repo -> render tombol disabled "menyusul"
-  note: 'Master company profile tersedia untuk verifikasi internal. Versi publik yang telah disanitasi dan disetujui belum tersedia untuk diunduh.',
+  note: 'Dokumen induk tersedia untuk pemeriksaan internal. Versi publik yang telah ditinjau belum tersedia untuk diunduh.',
 };

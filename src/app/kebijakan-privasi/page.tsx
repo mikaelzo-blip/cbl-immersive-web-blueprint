@@ -8,7 +8,7 @@ import { DynamicIcon } from '@/components/ui/DynamicIcon';
 
 export const metadata: Metadata = {
   title: 'Kebijakan Privasi',
-  description: 'Kebijakan privasi perlindungan data pengguna CV Cakrawala Buana Lestari (CBL). Data form hanya diteruskan ke WhatsApp/Email tanpa disimpan di server.',
+  description: 'Kebijakan privasi CV Cakrawala Buana Lestari mengenai penggunaan informasi yang dikirimkan melalui formulir konsultasi.',
   alternates: {
     canonical: `${companyInfo.seo.siteUrl}/kebijakan-privasi`,
   },
@@ -31,8 +31,8 @@ export default function KebijakanPrivasiPage() {
 
         <SectionHeading
           badge="Perlindungan Data"
-          title="Kebijakan Privasi Pengguna"
-          description="Komitmen CV Cakrawala Buana Lestari (CBL) dalam menjaga kerahasiaan dan privasi data komunikasi teknis Anda."
+          title="Kebijakan privasi"
+          description="Penjelasan mengenai informasi yang dikumpulkan melalui formulir konsultasi dan cara CBL menggunakannya untuk komunikasi proyek."
           align="left"
           as="h1"
         />
@@ -42,18 +42,18 @@ export default function KebijakanPrivasiPage() {
           <div>
             <h2 className="text-lg font-bold text-[#0F2942] mb-3 flex items-center gap-2">
               <DynamicIcon name="ShieldCheck" size={20} className="text-[#0E6BA8]" />
-              <span>1. Pengumpulan Data Informasi Teknis</span>
+              <span>1. Informasi yang dikumpulkan</span>
             </h2>
             <p className="mb-2">
               Saat Anda mengisi formulir konsultasi di situs web kami, data yang dikumpulkan meliputi:
             </p>
             <ul className="list-disc list-inside space-y-1 pl-2 font-medium text-[#0F2942]">
-              <li>Nama Lengkap</li>
-              <li>Nama Perusahaan / Fasilitas Operasional</li>
-              <li>Jabatan / Divisi (Opsional)</li>
-              <li>Nomor WhatsApp &amp; Alamat Email</li>
-              <li>Lokasi Pekerjaan / Kota</li>
-              <li>Rincian Pesan &amp; Spesifikasi Kebutuhan Teknis</li>
+              <li>Nama lengkap</li>
+              <li>Nama perusahaan atau fasilitas</li>
+              <li>Jabatan atau divisi (opsional)</li>
+              <li>Nomor WhatsApp dan alamat email</li>
+              <li>Lokasi pekerjaan atau kota</li>
+              <li>Kondisi dan kebutuhan teknis yang disampaikan</li>
             </ul>
           </div>
 
@@ -61,13 +61,13 @@ export default function KebijakanPrivasiPage() {
           <div className="pt-6 border-t border-[#E2E8F0]">
             <h2 className="text-lg font-bold text-[#0F2942] mb-3 flex items-center gap-2">
               <DynamicIcon name="Database" size={20} className="text-[#0E6BA8]" />
-              <span>2. Penggunaan Data &amp; Bebas Penampungan Server</span>
+              <span>2. Penggunaan dan penyimpanan informasi</span>
             </h2>
             <p className="mb-3">
-              <strong className="text-[#0F2942]">Situs ini tidak menyimpan data Anda pada database server, cookie pelacak, atau localStorage browser.</strong>
+              <strong className="text-[#0F2942]">Formulir ini tidak mengirimkan informasi ke basis data aplikasi CBL.</strong>
             </p>
             <p>
-              Seluruh data yang Anda masukkan pada formulir konsultasi disusunkandalam format pesan terstruktur yang langsung diteruskan ke aplikasi **WhatsApp Resmi** atau **Email Resmi** milik tim CV Cakrawala Buana Lestari. Data tersebut hanya digunakan semata-mata untuk merespon pertanyaan teknis dan merencanakan survei peninjauan lokasi kerja.
+              Informasi yang Anda masukkan disusun menjadi pesan terstruktur, lalu diteruskan melalui WhatsApp atau aplikasi email yang Anda pilih. Informasi tersebut digunakan untuk menanggapi pertanyaan, memahami kebutuhan teknis, dan merencanakan tindak lanjut yang relevan.
             </p>
           </div>
 
@@ -75,10 +75,10 @@ export default function KebijakanPrivasiPage() {
           <div className="pt-6 border-t border-[#E2E8F0]">
             <h2 className="text-lg font-bold text-[#0F2942] mb-3 flex items-center gap-2">
               <DynamicIcon name="Lock" size={20} className="text-[#0E6BA8]" />
-              <span>3. Pembatasan Berbagi ke Pihak Ketiga</span>
+              <span>3. Pembatasan penggunaan oleh pihak lain</span>
             </h2>
             <p>
-              Kami menjamin tidak akan pernah menjual, menyewakan, atau membagikan data kontak dan identitas perusahaan Anda kepada pihak ketiga mana pun tanpa persetujuan tertulis resmi dari Anda.
+              CBL tidak menggunakan informasi yang dikirimkan untuk diperjualbelikan. Apabila pelaksanaan proyek memerlukan keterlibatan tenaga profesional atau mitra spesialis, kebutuhan penyampaian informasi akan dibahas terlebih dahulu sesuai konteks pekerjaan.
             </p>
           </div>
 
@@ -86,10 +86,10 @@ export default function KebijakanPrivasiPage() {
           <div className="pt-6 border-t border-[#E2E8F0]">
             <h2 className="text-lg font-bold text-[#0F2942] mb-3 flex items-center gap-2">
               <DynamicIcon name="Mail" size={20} className="text-[#0E6BA8]" />
-              <span>4. Pertanyaan &amp; Permintaan Penghapusan Data</span>
+              <span>4. Pertanyaan dan permintaan terkait informasi</span>
             </h2>
             <p className="mb-3">
-              Jika Anda memiliki pertanyaan mengenai kebijakan privasi ini atau ingin meminta penghapusan riwayat korespondensi yang dikirimkan via WhatsApp / Email, silakan hubungi kami di:
+              Jika Anda memiliki pertanyaan mengenai kebijakan ini atau ingin membahas riwayat korespondensi yang telah dikirimkan melalui WhatsApp atau email, silakan hubungi kami melalui:
             </p>
             <div className="p-4 rounded-2xl bg-[#F0F7FD] border border-[#0E6BA8]/20 text-xs font-semibold text-[#0F2942] space-y-1">
               <p>Email: <a href={`mailto:${companyInfo.email}`} className="text-[#0E6BA8] underline">{companyInfo.email}</a></p>

@@ -12,8 +12,8 @@ export function ServicesSection() {
         <Reveal>
           <SectionHeading
             badge="Cakupan Layanan Utama"
-            title="Satu mitra untuk kebutuhan teknis lintas fasilitas."
-            description="Cakupan layanan ditetapkan setelah survei, verifikasi kondisi, dan penyusunan lingkup kerja yang sesuai."
+            title="Kebutuhan teknis lintas fasilitas dalam satu koordinasi."
+            description="Pekerjaan direncanakan berdasarkan hasil survei, kondisi peralatan, prioritas operasional, dan batas pekerjaan yang disepakati."
             align="left"
           />
         </Reveal>

@@ -25,7 +25,7 @@ export default function OpenGraphImage() {
           Kontraktor dan penyedia solusi teknis berbasis proyek
         </div>
         <div style={{ fontSize: 22, marginTop: 54, color: '#BAE6FD' }}>
-          Elektrikal & Otomasi · Mekanikal · HVAC · Pompa · Lighting
+          Kelistrikan & Otomasi · Mekanikal · HVAC · Pompa · Pencahayaan
         </div>
       </div>
     ),

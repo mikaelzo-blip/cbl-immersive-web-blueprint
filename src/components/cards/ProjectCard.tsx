@@ -44,7 +44,7 @@ export function ProjectCard({ project, className, headingLevel = 'h3', preload =
         <p className="text-sm text-[#475569] leading-relaxed mb-5">{project.summary}</p>
 
         <div className="pt-4 border-t border-[#E2E8F0] mb-5">
-          <span className="text-xs font-bold text-[#0F2942] uppercase tracking-wider block mb-2">Lingkup utama</span>
+          <span className="text-xs font-bold text-[#0F2942] uppercase tracking-wider block mb-2">Cakupan pekerjaan utama</span>
           <ul className="space-y-1.5 text-xs text-[#475569]">
             {project.scope.slice(0, 3).map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -57,7 +57,7 @@ export function ProjectCard({ project, className, headingLevel = 'h3', preload =
 
         <div className="mt-auto pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
           <span className="text-xs font-bold text-[#0E6BA8] inline-flex items-center gap-1.5">
-            Lihat studi kasus <DynamicIcon name="ArrowUpRight" size={14} />
+            Baca studi kasus <DynamicIcon name="ArrowUpRight" size={14} />
           </span>
           <DynamicIcon name={project.icon} size={18} className="text-[#0E6BA8]" />
         </div>

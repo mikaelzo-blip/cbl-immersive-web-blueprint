@@ -5,10 +5,10 @@ import { projects } from '@/data/projects';
 import { serviceDivisions } from '@/data/company';
 
 const summaryItems = [
-  { value: '2022–2026', label: 'Periode rekam pekerjaan', icon: 'CalendarDays' },
-  { value: `${projects.length}`, label: 'Studi kasus dipublikasikan', icon: 'BriefcaseBusiness' },
-  { value: `${serviceDivisions.length}`, label: 'Divisi layanan utama', icon: 'Layers3' },
-  { value: 'Berbasis proyek', label: 'Tenaga profesional sesuai lingkup', icon: 'Users' },
+  { value: '2022–2026', label: 'Periode pekerjaan terdokumentasi', icon: 'CalendarDays' },
+  { value: `${projects.length}`, label: 'Studi kasus yang dipublikasikan', icon: 'BriefcaseBusiness' },
+  { value: `${serviceDivisions.length}`, label: 'Bidang layanan teknis', icon: 'Layers3' },
+  { value: 'Berbasis proyek', label: 'Tenaga profesional sesuai kebutuhan', icon: 'Users' },
 ];
 
 export function ExperienceSummarySection() {

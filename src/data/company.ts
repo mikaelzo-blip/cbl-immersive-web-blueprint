@@ -45,57 +45,57 @@ export const serviceDivisions: ServiceDivision[] = [
     id: 'kelistrikan-panel',
     slug: 'kelistrikan-panel',
     title: 'Kelistrikan & Panel Kontrol',
-    description: 'Pengadaan, pemasangan, penggantian, wiring, dan pemeriksaan panel serta komponen proteksi sesuai lingkup proyek.',
-    longDescription: 'Pengalaman terdokumentasi CBL mencakup panel kontrol, MCCB, kontaktor, drive, soft starter, wiring, dan komponen distribusi. Kebutuhan perancangan atau pengujian khusus ditetapkan setelah survei dan telaah dokumen teknis.',
+    description: 'Pengadaan, pemasangan, penggantian, pengawatan, dan pemeriksaan panel serta komponen proteksi sesuai kebutuhan proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup panel kontrol, MCCB, kontaktor, pengendali motor, soft starter, pengawatan, dan komponen distribusi. Kebutuhan perancangan atau pengujian khusus ditentukan setelah survei dan penelaahan dokumen teknis.',
     iconName: 'Zap',
     capabilities: [
       'Panel kontrol & distribusi utama',
       'MCCB & sistem proteksi kelistrikan',
       'Kontaktor & perakitan starter motor',
-      'Inverter motor (VFD) & speed controller',
-      'Panel view & instrumen pemantauan daya',
-      'Troubleshooting kelistrikan & perbaikan darurat',
+      'Inverter motor (VFD) & pengendali kecepatan',
+      'Panel HMI & instrumen pemantauan daya',
+      'Penelusuran gangguan kelistrikan',
     ],
     capabilityDetails: [
       {
         label: 'Panel kontrol & distribusi utama',
-        description: 'Perakitan busbar tembaga murni, pembagian beban arus antar-fase, dan integrasi penutup enclosure berstandar indeks proteksi IP.',
+        description: 'Perakitan dan penataan komponen panel, busbar, pembagian beban antar-fase, serta enclosure sesuai spesifikasi pekerjaan.',
       },
       {
         label: 'MCCB & sistem proteksi kelistrikan',
-        description: 'Penggantian breaker utama Molded Case Circuit Breaker dan kalibrasi pemutus arus hubung singkat untuk keamanan beban lebih.',
+        description: 'Pemeriksaan dan penggantian MCCB atau pemutus utama sesuai kapasitas, karakteristik proteksi, dan kebutuhan sistem.',
       },
       {
         label: 'Kontaktor & perakitan starter motor',
-        description: 'Perangkaian kontaktor magnetik, thermal overload relay, dan sistem penguncian (interlock) keselamatan penggerak.',
+        description: 'Perangkaian kontaktor, relai beban lebih termal, dan sistem interlock untuk pengendalian motor.',
       },
       {
-        label: 'Inverter motor (VFD) & speed controller',
-        description: 'Pemasangan penggerak frekuensi variabel untuk efisiensi akselerasi motor listrik dan pengaturan kecepatan putar.',
+        label: 'Inverter motor (VFD) & pengendali kecepatan',
+        description: 'Pemasangan dan penyetelan VFD untuk mengatur percepatan, perlambatan, dan kecepatan putar motor.',
       },
       {
-        label: 'Panel view & instrumen pemantauan daya',
-        description: 'Instalasi meter digital arus Volt/Ampere/Hz dan penataan lampu indikator kondisi kerja panel.',
+        label: 'Panel HMI & instrumen pemantauan daya',
+        description: 'Pemasangan panel HMI, meter digital, dan indikator untuk membantu pemantauan kondisi kerja sistem.',
       },
       {
-        label: 'Troubleshooting kelistrikan & perbaikan darurat',
-        description: 'Pelacakan cepat titik korsleting, ketidakseimbangan fase daya, dan kenaikan suhu panas abnormal pada jaringan listrik.',
+        label: 'Penelusuran gangguan kelistrikan',
+        description: 'Pemeriksaan sumber gangguan seperti hubung singkat, ketidakseimbangan fase, sambungan longgar, atau kenaikan suhu pada komponen.',
       },
     ],
     commonConditions: [
-      'Panel utama mengalami trip mendadak tanpa pola jeda waktu yang jelas pada jam operasional puncak.',
-      'Suhu panas abnormal pada komponen busbar atau terminal kabel panel distribusi utama.',
-      'Ketidakseimbangan pembagian arus beban kelistrikan antar-fase yang berisiko merusak peralatan sensitif.',
-      'Motor listrik mengalami kelebihan arus awal (inrush current) saat dijalankan menggunakan metode starter konvensional.',
-      'Kebutuhan peremajaan jalur kabel distribusi dan pembaruan komponen breaker berusia lama.',
+      'Panel utama sering trip saat beban operasional meningkat atau tanpa pola yang mudah dikenali.',
+      'Busbar, terminal, atau kabel pada panel distribusi menunjukkan kenaikan suhu yang tidak normal.',
+      'Pembagian beban antar-fase tidak seimbang dan perlu diperiksa sebelum memengaruhi peralatan lain.',
+      'Arus awal motor terlalu tinggi ketika dijalankan menggunakan starter konvensional.',
+      'Jalur distribusi dan pemutus arus lama perlu diperiksa untuk menentukan kebutuhan penggantian.',
     ],
   },
   {
     id: 'otomasi-kontrol',
     slug: 'otomasi-kontrol',
     title: 'Otomasi & Sistem Kontrol',
-    description: 'Penggantian, migrasi, setting, wiring, dan pengujian PLC/HMI serta perangkat kendali motor sesuai lingkup proyek.',
-    longDescription: 'Pengalaman terdokumentasi CBL mencakup penggantian panel view dan PLC, inverter, drive, soft starter, sensor, wiring, setting, dan commissioning. Perubahan logika atau integrasi lanjutan hanya ditawarkan setelah data sistem eksisting ditelaah.',
+    description: 'Penggantian, migrasi, konfigurasi, pengawatan, dan pengujian PLC/HMI serta perangkat kendali motor sesuai kebutuhan proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup penggantian HMI dan PLC, inverter, drive, soft starter, sensor, pengawatan, konfigurasi, dan uji fungsi. Perubahan logika atau integrasi lanjutan hanya ditawarkan setelah data sistem yang ada ditelaah.',
     iconName: 'Cpu',
     capabilities: [
       'Migrasi & pemrograman PLC',
@@ -103,90 +103,90 @@ export const serviceDivisions: ServiceDivision[] = [
       'Integrasi sensor & aktuator lapangan',
       'Pemasangan & penyetelan Soft Starter',
       'Kontrol motor terintegrasi',
-      'Commissioning & kalibrasi kendali',
+      'Uji fungsi & pemeriksaan kendali',
     ],
     capabilityDetails: [
       {
         label: 'Migrasi & pemrograman PLC',
-        description: 'Pembaruan arsitektur modul PLC tipe lama ke generasi terkini serta penulisan ulang diagram logika kontrol (Ladder Diagram).',
+        description: 'Penggantian atau migrasi PLC lama, termasuk penyesuaian program dan diagram logika bila data sistem tersedia.',
       },
       {
         label: 'Pengembangan antarmuka HMI',
-        description: 'Perancangan grafik tampilan layar sentuh yang ergonomis untuk memudahkan pemantauan parameter kerja dan penanganan kode alarm.',
+        description: 'Penataan tampilan HMI untuk membantu operator memantau parameter, status peralatan, dan informasi alarm.',
       },
       {
         label: 'Integrasi sensor & aktuator lapangan',
-        description: 'Pemasangan instrumen ukur tekanan, temperatur, posisi, dan debit arus yang terhubung langsung ke modul I/O PLC.',
+        description: 'Pemasangan serta pemeriksaan sensor dan aktuator yang terhubung ke modul masukan dan keluaran PLC.',
       },
       {
         label: 'Pemasangan & penyetelan Soft Starter',
-        description: 'Pengaturan waktu peningkatan tegangan gradual untuk memperhalus momen awal putaran motor berkapasitas besar.',
+        description: 'Pemasangan dan penyetelan parameter soft starter untuk membantu mengendalikan proses awal putaran motor.',
       },
       {
         label: 'Kontrol motor terintegrasi',
-        description: 'Sinkronisasi kendali antar-motor penggerak dalam satu alur komunikasi terpusat.',
+        description: 'Penyelarasan urutan kendali beberapa motor sesuai kebutuhan proses dan arsitektur sistem.',
       },
       {
-        label: 'Commissioning & kalibrasi kendali',
-        description: 'Pengujian uji coba jalan berurutan (sequence test) dan verifikasi respon pembacaan sensor secara presisi.',
+        label: 'Uji fungsi & pemeriksaan kendali',
+        description: 'Uji urutan kerja, pemeriksaan respons sensor, dan verifikasi fungsi kendali sebelum serah terima.',
       },
     ],
     commonConditions: [
-      'Modul PLC generasi lama mengalami kegagalan fungsi komunikasi atau kelangkaan suku cadang pengganti.',
-      'Layar sentuh HMI mengalami penurunan kepekaan responsif atau kerusakan visual grafik pemantauan.',
-      'Kebutuhan perubahan urutan kerja otomatis (sequence modification) untuk menyesuaikan kapasitas proses produksi baru.',
-      'Kesulitan dalam mendiagnosa titik penyebab kegagalan proses otomatisasi akibat ketiadaan indikasi kode alarm.',
+      'PLC lama mengalami gangguan komunikasi atau suku cadangnya semakin sulit diperoleh.',
+      'Layar HMI tidak lagi responsif atau tidak dapat menampilkan informasi pemantauan dengan baik.',
+      'Urutan kerja otomatis perlu disesuaikan dengan perubahan proses atau kebutuhan operasional.',
+      'Penyebab gangguan sulit ditelusuri karena informasi alarm dan dokumentasi sistem tidak memadai.',
     ],
   },
   {
     id: 'mekanikal-presisi',
     slug: 'mekanikal-presisi',
     title: 'Mekanikal & Komponen Presisi',
-    description: 'Instalasi, penggantian, dan alignment unit mekanikal transmisi daya dan konveyor industri.',
-    longDescription: 'Pengalaman terdokumentasi CBL mencakup pengadaan dan penggantian bearing, gearbox, shaft, roll, rantai, serta pekerjaan conveyor. Metode dan kebutuhan tenaga spesialis ditentukan setelah pemeriksaan lingkup.',
+    description: 'Pemasangan, penggantian, dan penyelarasan komponen mekanikal pada sistem transmisi daya dan conveyor.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup pengadaan dan penggantian bearing, gearbox, shaft, roll, rantai, serta pekerjaan conveyor. Metode kerja dan kebutuhan tenaga spesialis ditentukan setelah cakupan pekerjaan diperiksa.',
     iconName: 'Wrench',
     capabilities: [
       'Pemasangan & penggantian bearing presisi',
       'Perawatan & perbaikan gearbox transmisi',
-      'Coupling & shaft alignment',
+      'Penyelarasan coupling & shaft',
       'Sistem konveyor & perbaikan rantai penggerak',
-      'Penyelarasan mekanikal sesuai lingkup proyek',
+      'Penyelarasan mekanikal sesuai cakupan proyek',
     ],
     capabilityDetails: [
       {
         label: 'Pemasangan & penggantian bearing presisi',
-        description: 'Pengangkatan bantalan bola/rol aus dan pemasangan bearing baru menggunakan metode pemanasan induksi termal terukur.',
+        description: 'Pembongkaran bearing lama dan pemasangan unit pengganti dengan metode yang disesuaikan dengan jenis serta kondisi komponen.',
       },
       {
         label: 'Perawatan & perbaikan gearbox transmisi',
-        description: 'Pemeriksaan keausan gigi reducer, penggantian oli pelumas khusus transmisi, dan perbaikan seal minyak pencegah bocor.',
+        description: 'Pemeriksaan gearbox, kondisi pelumas, seal, dan komponen transmisi sesuai kebutuhan pekerjaan.',
       },
       {
-        label: 'Coupling & shaft alignment',
-        description: 'Pengukuran ketidaklurusan poros engkol dan penyetelan ulang posisi kopling untuk meminimalkan getaran.',
+        label: 'Penyelarasan coupling & shaft',
+        description: 'Pemeriksaan dan penyetelan posisi poros serta coupling untuk membantu menjaga keselarasan sistem penggerak.',
       },
       {
         label: 'Sistem konveyor & perbaikan rantai penggerak',
-        description: 'Penyetelan ketegangan sabuk/rantai konveyor dan penggantian sprocket penggerak yang tererosi.',
+        description: 'Penyetelan sabuk atau rantai conveyor serta pemeriksaan roll, sprocket, dan komponen penahan.',
       },
       {
-        label: 'Penyelarasan mekanikal sesuai lingkup proyek',
-        description: 'Pemeriksaan dan penyesuaian posisi komponen dilakukan sesuai dokumen kerja; alat dan mitra spesialis ditentukan setelah survei.',
+        label: 'Penyelarasan mekanikal sesuai cakupan proyek',
+        description: 'Posisi komponen diperiksa dan disesuaikan berdasarkan dokumen kerja. Kebutuhan alat serta tenaga spesialis ditentukan setelah survei.',
       },
     ],
     commonConditions: [
-      'Tingkat getaran (vibration level) pada unit reducer penggerak melebihi ambang batas toleransi keselamatan.',
-      'Kebocoran oli pelumas pada seal rumah gearbox akibat keausan poros transmisi.',
-      'Timbul suara bising gesekan berlebih dari rumah bearing saat motor penggerak dijalankan.',
-      'Rantai konveyor sering mengalami lompatan sprocket atau ketidaksejajaran pergerakan sabuk pengangkut.',
+      'Unit reducer atau penggerak menunjukkan getaran yang meningkat saat dioperasikan.',
+      'Oli pelumas bocor dari area seal atau rumah gearbox.',
+      'Bearing menimbulkan bunyi atau gesekan yang tidak biasa ketika motor dijalankan.',
+      'Rantai, sprocket, atau belt conveyor bergerak tidak sejajar dan memerlukan penyetelan.',
     ],
   },
   {
     id: 'hvac-refrigerasi',
     slug: 'hvac-refrigerasi',
     title: 'HVAC & Refrigerasi',
-    description: 'Perbaikan AC VRF, penggantian instalasi AC split duct, kompresor, dan pekerjaan refrigerasi sesuai lingkup proyek.',
-    longDescription: 'Pengalaman terdokumentasi CBL mencakup perbaikan AC VRF, penggantian instalasi AC split duct, penggantian kompresor, pemeriksaan tekanan, vacuum, dan pekerjaan refrigerasi sesuai lingkup proyek.',
+    description: 'Perbaikan AC VRF, penggantian instalasi AC split duct, kompresor, dan pekerjaan refrigerasi sesuai kebutuhan proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup perbaikan AC VRF, penggantian instalasi AC split duct, penggantian kompresor, pemeriksaan tekanan, proses vakum, dan pekerjaan refrigerasi sesuai cakupan proyek.',
     iconName: 'Wind',
     capabilities: [
       'Perbaikan sistem AC VRF',
@@ -198,11 +198,11 @@ export const serviceDivisions: ServiceDivision[] = [
     capabilityDetails: [
       {
         label: 'Perbaikan sistem AC VRF',
-        description: 'Pemeriksaan dan perbaikan unit VRF berdasarkan kondisi, ruang lingkup kerja, dan prosedur lokasi klien.',
+        description: 'Pemeriksaan dan perbaikan unit VRF berdasarkan kondisi, cakupan pekerjaan, dan prosedur di lokasi klien.',
       },
       {
         label: 'Instalasi & perbaikan AC split duct / ceiling',
-        description: 'Pemasangan unit pendingin tersembunyi ceiling cassette dan perbaikan motor blower penarik udara.',
+        description: 'Pemasangan dan perbaikan unit AC split duct atau ceiling sesuai kondisi unit serta instalasi yang tersedia.',
       },
       {
         label: 'Penggantian instalasi AC split duct',
@@ -210,26 +210,26 @@ export const serviceDivisions: ServiceDivision[] = [
       },
       {
         label: 'Overhaul & perbaikan kompresor refrigerasi',
-        description: 'Bongkar pasang kompresor semi-hermetic, pengujian uji vakum micron, dan pergantian filter drier.',
+        description: 'Pembongkaran, pemasangan, dan pemeriksaan kompresor serta komponen refrigerasi sesuai kebutuhan pekerjaan.',
       },
       {
         label: 'Pemeriksaan tekanan & sistem refrigerasi',
-        description: 'Pemeriksaan tekanan, vacuum, sambungan, dan komponen refrigerasi dilaksanakan bila termasuk ruang lingkup proyek.',
+        description: 'Pemeriksaan tekanan, proses vakum, sambungan, dan komponen refrigerasi dilakukan bila termasuk dalam cakupan proyek.',
       },
     ],
     commonConditions: [
-      'Penurunan efisiensi pendinginan ruangan (suhu ruangan tidak mencapai target setpoint meskipun unit menyala penuh).',
-      'Kenaikan tekanan freon tinggi abnormal pada unit kondensor outdoor saat cuaca terik.',
-      'Kebisingan atau getaran kasar dari unit kompresor outdoor saat beban siklus pendinginan meningkat.',
-      'Adanya indikasi kebocoran saluran ducting sirkulasi yang mengganggu keseimbangan aliran udara ruangan.',
+      'Suhu ruangan tidak mencapai target meskipun unit pendingin telah beroperasi.',
+      'Tekanan refrigeran menunjukkan nilai yang tidak normal pada kondisi operasi tertentu.',
+      'Unit kompresor luar ruangan menimbulkan bunyi atau getaran yang tidak biasa.',
+      'Saluran udara diduga bocor sehingga distribusi udara di dalam ruangan tidak merata.',
     ],
   },
   {
     id: 'pompa-perairan',
     slug: 'pompa-perairan',
     title: 'Pompa & Sistem Perairan',
-    description: 'Pengadaan pompa submersible, booster, sentrifugal, filtrasi, dan komponen sistem air sesuai spesifikasi proyek.',
-    longDescription: 'Pengalaman terdokumentasi CBL mencakup pengadaan pompa submersible, booster, sentrifugal, pool pump, chlorinator, material plumbing, dan filtrasi. Pemasangan atau otomatisasi ditawarkan setelah survei dan verifikasi kondisi eksisting.',
+    description: 'Pengadaan pompa submersible, booster, sentrifugal, sistem filtrasi, dan komponen perpipaan sesuai spesifikasi proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup pengadaan pompa submersible, booster, sentrifugal, pompa kolam, chlorinator, material perpipaan, dan sistem filtrasi. Pemasangan atau otomatisasi ditawarkan setelah survei dan pemeriksaan kondisi yang ada.',
     iconName: 'Droplets',
     capabilities: [
       'Pompa air transfer & submersible',
@@ -241,62 +241,62 @@ export const serviceDivisions: ServiceDivision[] = [
     capabilityDetails: [
       {
         label: 'Pompa air transfer & submersible',
-        description: 'Pemasangan unit pompa celup/transfer dan perbaikan mechanical seal pendorong air.',
+        description: 'Pengadaan, pemasangan, dan pemeriksaan pompa celup atau pompa transfer beserta komponen pendukungnya.',
       },
       {
         label: 'Sistem booster & peningkat tekanan',
-        description: 'Rangkaian paralel pompa booster terintegrasi VFD dan pressure transducer untuk tekanan stabil.',
+        description: 'Penanganan sistem pompa booster dan perangkat kendalinya untuk mendukung kebutuhan tekanan air fasilitas.',
       },
       {
         label: 'Sistem sirkulasi pendingin & wahana',
-        description: 'Penanganan laju debit air sirkulasi wahana rekreasi dan pendingin cooling tower.',
+        description: 'Penanganan pompa dan komponen sirkulasi air pada fasilitas rekreasi atau sistem pendingin.',
       },
       {
         label: 'Filtrasi kolam & pengolahan air bersih',
-        description: 'Penggantian pasir kuarsa filter vessel dan pembuatan sistem pencucian balik (backwash) otomatis.',
+        description: 'Pemeriksaan media filtrasi, filter vessel, serta proses pencucian balik sesuai kebutuhan sistem.',
       },
       {
         label: 'Panel kontrol otomatisasi pompa',
-        description: 'Perakitan panel giliran otomatis (duty-standby alternating) serta proteksi jalan kering (dry-run).',
+        description: 'Perakitan atau penyesuaian panel kontrol pompa, termasuk urutan operasi dan proteksi sesuai spesifikasi.',
       },
     ],
     commonConditions: [
-      'Fluktuasi tekanan air pada jaringan distribusi gedung saat terjadi penggunaan air bersamaan di beberapa titik.',
-      'Terjadinya gejala kavitasi atau getaran kencang pada rumah pompa akibat gangguan aliran pasokan masukan.',
-      'Pompa booster mengalami pengoperasian nyala-mati terlalu sering (cycling trip) yang merusak kontaktor.',
-      'Penurunan kejernihan air filtrasi kolam fasilitas rekreasi akibat kejenuhan media pasir penyaring.',
+      'Tekanan air berfluktuasi ketika beberapa titik pemakaian digunakan secara bersamaan.',
+      'Pompa menunjukkan gejala kavitasi, bunyi, atau getaran yang tidak biasa.',
+      'Pompa booster terlalu sering menyala dan berhenti dalam waktu singkat.',
+      'Kualitas hasil filtrasi menurun dan media penyaring perlu diperiksa.',
     ],
   },
   {
     id: 'pencahayaan-show',
     slug: 'pencahayaan-show',
-    title: 'Pencahayaan & Sistem Show',
-    description: 'Instalasi penerangan teknis area luas, pencahayaan panggung rekreasi, dan underwater lighting.',
-    longDescription: 'Divisi Pencahayaan & Sistem Show CBL melayani instalasi armatur lampu bawah air kedap air IP68, penerangan floodlight area luas gedung, dan integrasi konsol pengendali pencahayaan panggung rekreasi (DMX512).',
+    title: 'Pencahayaan Teknis & Pertunjukan',
+    description: 'Pemasangan penerangan area, pencahayaan panggung, dan sistem lampu bawah air sesuai kebutuhan proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup pemasangan lampu bawah air, penerangan area, lampu panggung, jalur daya, serta sistem kendali pencahayaan DMX. Spesifikasi akhir ditentukan berdasarkan kondisi lokasi dan kebutuhan proyek.',
     iconName: 'Lightbulb',
     capabilities: [
-      'Area lighting & floodlight gedung',
-      'Stage lighting & sistem lampu pertunjukan',
-      'Underwater lighting untuk wahana air',
-      'Control lighting & integrasi dimmer',
+      'Penerangan area & floodlight gedung',
+      'Pencahayaan panggung & pertunjukan',
+      'Pencahayaan bawah air',
+      'Kendali pencahayaan & integrasi dimmer',
       'Pencahayaan arsitektural lanskap',
     ],
     capabilityDetails: [
       {
-        label: 'Area lighting & floodlight gedung',
-        description: 'Pemasangan lampu sorot LED daya besar outdoor dengan penataan jarak pancar cahaya optimal.',
+        label: 'Penerangan area & floodlight gedung',
+        description: 'Pemasangan lampu sorot dan penerangan area berdasarkan titik pemasangan, kebutuhan cahaya, dan kondisi lingkungan.',
       },
       {
-        label: 'Stage lighting & sistem lampu pertunjukan',
-        description: 'Penataan lampu moving head, spot light, dan pencahayaan latar panggung pertunjukan.',
+        label: 'Pencahayaan panggung & pertunjukan',
+        description: 'Pemasangan serta penataan lampu moving head, spotlight, dan pencahayaan latar sesuai kebutuhan acara atau fasilitas.',
       },
       {
-        label: 'Underwater lighting untuk wahana air',
-        description: 'Instalasi armatur lampu stainless steel kedap air IP68 dengan penutup resin penyekat khusus.',
+        label: 'Pencahayaan bawah air',
+        description: 'Pemasangan armatur, kabel, konektor, dan dudukan lampu bawah air sesuai spesifikasi lingkungan pemasangan.',
       },
       {
-        label: 'Control lighting & integrasi dimmer',
-        description: 'Pengkabelan sinyal kendali DMX512 dan pemrograman modul pengatur intensitas cahaya (dimmer).',
+        label: 'Kendali pencahayaan & integrasi dimmer',
+        description: 'Pengawatan sinyal DMX dan konfigurasi perangkat pengendali intensitas cahaya sesuai kebutuhan sistem.',
       },
       {
         label: 'Pencahayaan arsitektural lanskap',
@@ -304,10 +304,10 @@ export const serviceDivisions: ServiceDivision[] = [
       },
     ],
     commonConditions: [
-      'Pemutus arus ELCB sering trip akibat kebocoran arus listrik pada armatur lampu bawah air eksisting.',
-      'Kegagalan sinyal komunikasi kendali DMX antara konsol utama dengan armatur panggung pertunjukan.',
-      'Penurunan intensitas pencahayaan lampu sorot area luas atau kerusakan titik modul driver LED outdoor.',
-      'Kebutuhan peremajaan instalasi kabel bawah air menggunakan material berstandar IP68 tahan kimiawi kolam.',
+      'ELCB sering trip dan perlu diperiksa kemungkinan kebocoran arus pada lampu bawah air.',
+      'Sinyal DMX antara konsol dan perangkat pencahayaan tidak bekerja secara konsisten.',
+      'Intensitas lampu sorot menurun atau sebagian modul LED luar ruang tidak berfungsi.',
+      'Kabel, konektor, atau armatur bawah air lama perlu diperiksa untuk menentukan kebutuhan penggantian.',
     ],
   },
 ];
@@ -316,37 +316,37 @@ export const expertiseItems: ExpertiseItem[] = [
   {
     id: 'distribusi-daya',
     title: 'Distribusi & Proteksi Daya',
-    description: 'Pengalaman pada panel, MCCB, kontaktor, wiring, drive, dan komponen proteksi yang tercatat dalam dokumen proyek.',
+    description: 'Pengalaman pada panel, MCCB, kontaktor, pengawatan, pengendali motor, dan komponen proteksi yang tercatat dalam dokumen proyek.',
     iconName: 'ShieldCheck',
   },
   {
     id: 'pemrograman-plc',
-    title: 'Program PLC & Logika Industri',
-    description: 'Penggantian dan migrasi PLC/HMI, wiring, setting, dan pemeriksaan fungsi sesuai kebutuhan sistem eksisting.',
+    title: 'Pemrograman PLC & Logika Kontrol',
+    description: 'Penggantian dan migrasi PLC/HMI, pengawatan, konfigurasi, serta pemeriksaan fungsi sesuai kebutuhan sistem yang ada.',
     iconName: 'Code',
   },
   {
     id: 'penyelarasan-mekanikal',
     title: 'Penyelarasan Shaft & Bearing',
-    description: 'Pengadaan, penggantian, dan penyelarasan bearing, shaft, roll, gearbox, serta komponen conveyor sesuai lingkup proyek.',
+    description: 'Pengadaan, penggantian, dan penyelarasan bearing, shaft, roll, gearbox, serta komponen conveyor sesuai cakupan proyek.',
     iconName: 'Activity',
   },
   {
     id: 'termodinamika-hvac',
     title: 'Sirkulasi Termal & HVAC',
-    description: 'Perbaikan AC VRF, penggantian AC split duct, pemeriksaan tekanan, vacuum, dan komponen refrigerasi.',
+    description: 'Perbaikan AC VRF, penggantian AC split duct, pemeriksaan tekanan, proses vakum, dan komponen refrigerasi.',
     iconName: 'Thermometer',
   },
   {
     id: 'dinamika-fluida-pompa',
-    title: 'Otomatisasi Aliran Fluida',
-    description: 'Pengadaan dan penanganan pompa submersible, booster, sentrifugal, filtrasi, serta material plumbing.',
+    title: 'Sistem Pompa & Aliran Fluida',
+    description: 'Pengadaan dan penanganan pompa submersible, booster, sentrifugal, sistem filtrasi, serta material perpipaan.',
     iconName: 'Gauge',
   },
   {
     id: 'pencahayaan-khusus',
-    title: 'Pencahayaan Khusus & Outdoor',
-    description: 'Pengadaan dan instalasi lampu show, underwater lighting, jalur daya, kontrol DMX, serta pengujian fungsi.',
+    title: 'Pencahayaan Khusus & Luar Ruang',
+    description: 'Pengadaan dan pemasangan lampu pertunjukan, lampu bawah air, jalur daya, kendali DMX, serta pengujian fungsi.',
     iconName: 'Sparkles',
   },
 ];
@@ -354,41 +354,41 @@ export const expertiseItems: ExpertiseItem[] = [
 export const workProcessSteps: WorkProcessStep[] = [
   {
     stepNumber: 1,
-    title: 'Konsultasi & Survei Lapangan',
-    description: 'Pemeriksaan teknis langsung di lokasi fasilitas untuk mengidentifikasi gejala kerusakan, mengukur spesifikasi eksisting, dan merumuskan lingkup penanganan.',
+    title: 'Konsultasi & Pemeriksaan Lapangan',
+    description: 'Kondisi fasilitas diperiksa untuk memahami kebutuhan, mencatat spesifikasi yang ada, dan menyusun cakupan penanganan awal.',
     details: [
       'Inspeksi fisik dan pengukuran parameter operasional',
       'Diskusi teknis dengan tim engineering / fasilitas',
-      'Penyusunan laporan temuan dan opsi solutif',
+      'Perumusan temuan awal dan pilihan tindak lanjut',
     ],
   },
   {
     stepNumber: 2,
-    title: 'Pengadaan & Pemasangan',
-    description: 'Pemilihan suku cadang sesuai spesifikasi teknis dan pelaksanaan pekerjaan teknis dengan standar keselamatan kerja ketat.',
+    title: 'Perencanaan & Pelaksanaan',
+    description: 'Material, metode, jadwal, dan kebutuhan tenaga disiapkan sebelum pekerjaan dilaksanakan sesuai kesepakatan proyek.',
     details: [
-      'Penyediaan komponen bermerek dan terverifikasi',
-      'Pemasangan komponen presisi dan perakitan kabel/perpipaan',
-      'Penerapan APD dan prosedur isolasi energi aman',
+      'Verifikasi spesifikasi material dan komponen',
+      'Pemasangan komponen serta penataan kabel atau perpipaan',
+      'Penerapan APD dan prosedur pengamanan energi',
     ],
   },
   {
     stepNumber: 3,
-    title: 'Commissioning & Pelatihan',
-    description: 'Pengujian beban sistem secara bertahap untuk memastikan kesesuaian parameter teknis sebelum pengoperasian penuh.',
+    title: 'Pemeriksaan & Uji Fungsi',
+    description: 'Hasil pekerjaan diperiksa dan diuji secara bertahap sesuai fungsi serta kriteria penerimaan yang disepakati.',
     details: [
-      'Test run dan kalibrasi sensor / proteksi',
+      'Uji jalan dan pemeriksaan sensor atau proteksi',
       'Pengujian fungsi sesuai kriteria penerimaan proyek',
-      'Instruksi penggunaan bila termasuk ruang lingkup',
+      'Instruksi penggunaan bila termasuk dalam cakupan pekerjaan',
     ],
   },
   {
     stepNumber: 4,
     title: 'Dokumentasi & Serah Terima',
-    description: 'Penyusunan berkas hasil pekerjaan secara transparan sebagai referensi perawatan fasilitas di masa mendatang.',
+    description: 'Dokumen hasil pekerjaan disusun sesuai persyaratan proyek sebagai bukti penyelesaian dan referensi tindak lanjut.',
     details: [
       'BAST atau dokumen penerimaan sesuai persyaratan',
-      'Gambar wiring / as-built bila termasuk ruang lingkup',
+      'Gambar pengawatan atau as-built bila termasuk dalam cakupan pekerjaan',
       'Rekomendasi tindak lanjut bila disepakati',
     ],
   },
@@ -515,22 +515,22 @@ export const brandItems: BrandItem[] = [
 ];
 
 export const brandDisclaimer = 
-  'Merek dan logo yang tercantum adalah milik dari masing-masing pemegang hak merek. Ditampilkan semata-mata untuk menjelaskan cakupan spesifikasi suku cadang dan komponen teknis yang biasa ditangani oleh tim CBL. CV Cakrawala Buana Lestari bukan merupakan distributor resmi atau authorized partner dari merek-merek tersebut.';
+  'Seluruh merek dan logo merupakan milik pemegang hak masing-masing. Pencantumannya hanya untuk menjelaskan pengalaman CBL dalam menangani spesifikasi suku cadang dan komponen terkait. CV Cakrawala Buana Lestari bukan distributor resmi atau mitra resmi dari merek-merek tersebut.';
 
 export const portfolioConfidentialityNotice = 
-  'Demi menjaga kerahasiaan dan privasi operasional mitra, nama spesifik perusahaan dan lokasi rinci tidak dipublikasikan. Studi kasus di atas menyajikan gambaran teknis objektif dari proyek penanganan yang telah direalisasikan oleh CBL.';
+  'Untuk menjaga kerahasiaan operasional mitra, nama perusahaan, lokasi terperinci, nilai transaksi, dan nomor dokumen tidak dipublikasikan. Studi kasus hanya menampilkan informasi teknis yang relevan dan dapat didukung oleh arsip pekerjaan CBL.';
 
 export const whyUsPoints: WhyUsPoint[] = [
   {
     id: 'multi-disiplin',
     title: 'Layanan Teknik Terpadu',
-    description: 'Satu pintu penanganan untuk masalah kelistrikan, mekanikal, otomatisasi, dan HVAC tanpa perlu koordinasi banyak sub-kontraktor.',
+    description: 'Kebutuhan kelistrikan, mekanikal, otomasi, HVAC, pompa, dan pencahayaan dapat dibahas melalui satu jalur koordinasi.',
     iconName: 'Layers',
   },
   {
     id: 'reaksi-cepat',
     title: 'Respons Berbasis Kebutuhan Proyek',
-    description: 'Permintaan ditelaah untuk menentukan lingkup, jadwal, akses lokasi, material, dan tenaga yang sesuai sebelum pekerjaan dimulai.',
+    description: 'Setiap permintaan ditelaah untuk menentukan cakupan pekerjaan, jadwal, akses lokasi, material, dan tenaga yang diperlukan.',
     iconName: 'Clock',
   },
   {
@@ -541,8 +541,8 @@ export const whyUsPoints: WhyUsPoint[] = [
   },
   {
     id: 'transparansi-kerja',
-    title: 'Dokumentasi & Berita Acara Rinci',
-    description: 'Dokumen pengiriman, pemeriksaan, pengujian, dan serah terima disiapkan sesuai persyaratan setiap proyek.',
+    title: 'Dokumentasi & Serah Terima',
+    description: 'Dokumen pengiriman, pemeriksaan, pengujian, dan serah terima disiapkan sesuai persyaratan proyek.',
     iconName: 'FileText',
   },
 ];

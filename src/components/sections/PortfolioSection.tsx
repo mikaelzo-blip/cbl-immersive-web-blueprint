@@ -16,9 +16,9 @@ export function PortfolioSection() {
       <Container>
         <Reveal>
           <SectionHeading
-            badge="Dokumentasi Proyek"
-            title="Pengalaman lapangan yang dapat ditelusuri."
-            description="Proyek pilihan disusun dari arsip pekerjaan, dokumen penyelesaian, dan dokumentasi lapangan yang tersedia."
+            badge="Portofolio Pekerjaan"
+            title="Lihat cara kami menangani kebutuhan teknis di lapangan."
+            description="Setiap studi kasus merangkum kebutuhan awal, cakupan pekerjaan, tahapan pelaksanaan, dan hasil yang dapat ditelusuri melalui arsip proyek."
             align="left"
           />
         </Reveal>
@@ -34,14 +34,14 @@ export function PortfolioSection() {
         {/* Confidentiality Notice */}
         <div className="p-4 sm:p-5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-xs text-[#475569] leading-relaxed mb-10 text-center max-w-4xl mx-auto">
           <p>
-            <strong className="text-[#0F2942]">Catatan Kerahasiaan Mitra:</strong> {portfolioConfidentialityNotice}
+            <strong className="text-[#0F2942]">Catatan kerahasiaan:</strong> {portfolioConfidentialityNotice}
           </p>
         </div>
 
         {/* CTA to Full Portfolio Index */}
         <div className="text-center">
           <Button href="/proyek" variant="secondary" size="lg">
-            <span>Lihat Seluruh Portofolio &amp; Filter Kategori ({projects.length} Proyek)</span>
+            <span>Jelajahi {projects.length} studi kasus berdasarkan kategori</span>
             <DynamicIcon name="ArrowRight" size={18} />
           </Button>
         </div>

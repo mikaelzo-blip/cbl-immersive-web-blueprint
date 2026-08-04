@@ -153,7 +153,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                     <DynamicIcon name="Activity" size={20} />
                   </div>
                   <h2 className="text-xl font-bold tracking-tight">
-                    1. Kondisi Awal &amp; Tantangan Lapangan
+                    1. Kebutuhan dan Kondisi Awal
                   </h2>
                 </div>
                 <p className="text-sm sm:text-base text-[#475569] leading-relaxed bg-[#F8FAFC] p-4 sm:p-5 rounded-xl border border-[#E2E8F0]">
@@ -167,7 +167,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                   <div className="w-10 h-10 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center font-bold">
                     <DynamicIcon name="Layers3" size={20} />
                   </div>
-                  <h2 className="text-xl font-bold tracking-tight">2. Lingkup Pekerjaan</h2>
+                  <h2 className="text-xl font-bold tracking-tight">2. Cakupan Pekerjaan</h2>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {project.scope.map((item) => (
@@ -216,7 +216,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               <section className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm" aria-labelledby="galeri-proyek">
                 <div className="mb-6">
                   <h2 id="galeri-proyek" className="text-xl font-bold text-[#0F2942]">4. Galeri Dokumentasi</h2>
-                  <p className="text-sm text-[#475569] mt-2">Foto lapangan dipilih dari arsip pekerjaan tanpa menampilkan data transaksi atau identitas pihak terkait.</p>
+                  <p className="text-sm text-[#475569] mt-2">Dokumentasi lapangan dipilih dari arsip proyek tanpa menampilkan identitas klien atau data transaksi yang bersifat sensitif.</p>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {project.gallery.map((image) => (
@@ -261,7 +261,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               {matchedService && (
                 <div className="bg-[#F0F7FD] rounded-2xl p-5 border border-[#0E6BA8]/20 shadow-2xs">
                   <span className="text-xs font-bold text-[#0E6BA8] uppercase tracking-wider block mb-1">
-                    Divisi Layanan Terkait:
+                    Layanan terkait
                   </span>
                   <h2 className="font-bold text-[#0F2942] text-base mb-2">
                     {matchedService.title}
@@ -273,7 +273,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                     href={`/layanan/${matchedService.slug}`}
                     className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0E6BA8] hover:underline"
                   >
-                    <span>Lihat Selengkapnya Halaman Layanan {matchedService.title}</span>
+                    <span>Pelajari layanan {matchedService.title}</span>
                     <DynamicIcon name="ArrowRight" size={14} />
                   </Link>
                 </div>
@@ -283,7 +283,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm">
                 <h3 className="text-base font-bold text-[#0F2942] mb-4 pb-2 border-b border-[#E2E8F0] flex items-center gap-2">
                   <DynamicIcon name="Cpu" size={18} className="text-[#0E6BA8]" />
-                  <span>Komponen Spesifikasi</span>
+                  <span>Komponen utama</span>
                 </h3>
                 <ul className="space-y-2 text-xs text-[#475569]">
                   {project.components.map((comp, idx) => (
@@ -298,10 +298,10 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               {/* CTA WhatsApp Spesifik Studi Kasus */}
               <div className="bg-[#0F2942] text-white rounded-2xl p-6 shadow-md relative overflow-hidden space-y-4">
                 <h3 className="text-lg font-bold text-white tracking-tight">
-                  Punya Kebutuhan Serupa pada Fasilitas Anda?
+                  Menghadapi kebutuhan teknis yang serupa?
                 </h3>
                 <p className="text-xs text-[#E2E8F0] leading-relaxed">
-                  Konsultasikan spesifikasi dan jadwalkan peninjauan teknis awal di lokasi kerja Anda dengan tim CBL.
+                  Sampaikan kondisi peralatan dan target pekerjaan Anda. Tim CBL akan membantu menilai kebutuhan awal sebelum peninjauan lapangan.
                 </p>
                 <Button
                   href={whatsappCtaUrl}
@@ -310,7 +310,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                   fullWidth
                 >
                   <DynamicIcon name="MessageSquare" size={18} />
-                  <span>Konsultasi via WhatsApp</span>
+                  <span>Konsultasi melalui WhatsApp</span>
                 </Button>
               </div>
             </div>
@@ -319,7 +319,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           {/* Proyek Lain yang Relevan */}
           <div className="pt-12 border-t border-[#E2E8F0]">
             <h2 className="text-2xl font-bold text-[#0F2942] tracking-tight mb-8">
-              Studi Kasus Penanganan Lainnya
+              Studi kasus lain dalam bidang yang sama
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedProjects.map((relProject) => (

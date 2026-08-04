@@ -10,18 +10,18 @@ export function VendorReadinessSection() {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
           <Reveal className="lg:col-span-5">
-            <span className="eyebrow-label">Kesiapan Administrasi Vendor</span>
+            <span className="eyebrow-label">Kelengkapan Administrasi Vendor</span>
             <h2 className="mt-5 text-3xl sm:text-4xl font-black tracking-tight text-[#0F2942] leading-tight">
-              Informasi legal disiapkan untuk proses procurement yang terkontrol.
+              Informasi legal untuk mendukung proses pengadaan dan registrasi vendor.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-[#475569]">
-              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan sensitif hanya ditinjau melalui permintaan resmi dan kebutuhan registrasi vendor.
+              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan yang memuat data sensitif hanya disampaikan melalui permintaan resmi untuk keperluan registrasi vendor.
             </p>
             <Link
               href="/legalitas"
               className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#0F2942] px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#15426B] hover:shadow-lg"
             >
-              Pelajari kesiapan legalitas
+              Lihat informasi legalitas
               <DynamicIcon name="ArrowUpRight" size={17} />
             </Link>
           </Reveal>
@@ -36,7 +36,7 @@ export function VendorReadinessSection() {
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#0E6BA8]">{document.category}</span>
                     <h3 className="mt-1 text-base font-bold text-[#0F2942]">{document.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-[#475569]">Tersedia untuk ditinjau sesuai kebutuhan registrasi resmi.</p>
+                    <p className="mt-1 text-sm leading-relaxed text-[#475569]">Dapat ditinjau sesuai kebutuhan proses registrasi resmi.</p>
                   </div>
                 </div>
               </Reveal>

@@ -100,10 +100,10 @@ export function ContactForm() {
     >
       <div>
         <h3 className="text-xl font-bold text-[#0F2942] tracking-tight">
-          Formulir Konsultasi &amp; Permintaan Survei
+          Formulir konsultasi teknis
         </h3>
         <p className="text-xs text-[#475569] mt-1">
-          Isi rincian di bawah ini. Pilih pengiriman pesan langsung via WhatsApp atau Email RFQ.
+          Lengkapi informasi berikut agar tim CBL dapat memahami kebutuhan awal Anda. Pesan dapat dikirim melalui WhatsApp atau email.
         </p>
       </div>
 
@@ -137,7 +137,7 @@ export function ContactForm() {
         {/* Perusahaan / Gedung */}
         <div>
           <label htmlFor="company" className="block text-xs font-bold text-[#0F2942] mb-1">
-            Perusahaan / Nama Fasilitas <span className="text-red-500">*</span>
+            Perusahaan atau nama fasilitas <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -165,7 +165,7 @@ export function ContactForm() {
         {/* Jabatan (Opsional) */}
         <div>
           <label htmlFor="position" className="block text-xs font-bold text-[#0F2942] mb-1">
-            Jabatan / Divisi <span className="text-[#475569] font-normal">(Opsional)</span>
+            Jabatan atau divisi <span className="text-[#475569] font-normal">(opsional)</span>
           </label>
           <input
             type="text"
@@ -181,7 +181,7 @@ export function ContactForm() {
         {/* WhatsApp */}
         <div>
           <label htmlFor="whatsapp" className="block text-xs font-bold text-[#0F2942] mb-1">
-            Nomor WhatsApp Aktif <span className="text-red-500">*</span>
+            Nomor WhatsApp aktif <span className="text-red-500">*</span>
           </label>
           <input
             type="tel"
@@ -209,7 +209,7 @@ export function ContactForm() {
         {/* Email (Opsional) */}
         <div>
           <label htmlFor="email" className="block text-xs font-bold text-[#0F2942] mb-1">
-            Email <span className="text-[#475569] font-normal">(Opsional - Untuk RFQ)</span>
+            Email <span className="text-[#475569] font-normal">(opsional, untuk permintaan penawaran)</span>
           </label>
           <input
             type="email"
@@ -234,7 +234,7 @@ export function ContactForm() {
         {/* Jenis Kebutuhan */}
         <div>
           <label htmlFor="serviceInterest" className="block text-xs font-bold text-[#0F2942] mb-1">
-            Jenis Layanan Dibutuhkan <span className="text-red-500">*</span>
+            Layanan yang dibutuhkan <span className="text-red-500">*</span>
           </label>
           <select
             id="serviceInterest"
@@ -248,7 +248,7 @@ export function ContactForm() {
                 {div.title}
               </option>
             ))}
-            <option value="Lainnya / Perbaikan Darurat">Lainnya / Penanganan Darurat</option>
+            <option value="Lainnya / Perbaikan Darurat">Layanan lain atau penanganan darurat</option>
           </select>
         </div>
       </div>
@@ -256,7 +256,7 @@ export function ContactForm() {
       {/* Lokasi Pekerjaan */}
       <div>
         <label htmlFor="location" className="block text-xs font-bold text-[#0F2942] mb-1">
-          Lokasi Pekerjaan / Kota <span className="text-red-500">*</span>
+          Lokasi pekerjaan atau kota <span className="text-red-500">*</span>
         </label>
         <input
           type="text"
@@ -282,7 +282,7 @@ export function ContactForm() {
       {/* Pesan Kebutuhan */}
       <div>
         <label htmlFor="desiredSchedule" className="block text-xs font-bold text-[#0F2942] mb-1">
-          Jadwal yang Diharapkan <span className="text-[#475569] font-normal">(Opsional)</span>
+          Jadwal yang diharapkan <span className="text-[#475569] font-normal">(opsional)</span>
         </label>
         <input
           type="text"
@@ -298,7 +298,7 @@ export function ContactForm() {
       {/* Pesan Kebutuhan */}
       <div>
         <label htmlFor="message" className="block text-xs font-bold text-[#0F2942] mb-1">
-          Rincian Pesan / Deskripsi Masalah <span className="text-red-500">*</span>
+          Kondisi dan kebutuhan pekerjaan <span className="text-red-500">*</span>
         </label>
         <textarea
           id="message"
@@ -306,7 +306,7 @@ export function ContactForm() {
           rows={3}
           value={formData.message}
           onChange={handleChange}
-          placeholder="Jelaskan spesifikasi peralatan atau kendala teknis yang sedang dialami..."
+          placeholder="Jelaskan kondisi peralatan, kendala yang terjadi, serta hasil yang Anda harapkan."
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? 'message-error' : undefined}
           className={`w-full px-3.5 py-2.5 text-sm rounded-xl border ${
@@ -335,7 +335,7 @@ export function ContactForm() {
             className="mt-1 w-4 h-4 text-[#0E6BA8] border-[#E2E8F0] rounded focus:ring-[#0E6BA8]"
           />
           <span className="text-xs text-[#475569] leading-tight">
-            Saya menyetujui bahwa data informasi teknis yang dikirimkan digunakan semata-mata untuk komunikasi konsultasi proyek dengan tim CV Cakrawala Buana Lestari (baca <Link href="/kebijakan-privasi" className="text-[#0E6BA8] underline font-semibold">Kebijakan Privasi</Link>). <span className="text-red-500">*</span>
+            Saya menyetujui penggunaan informasi yang dikirimkan untuk keperluan komunikasi dan konsultasi proyek dengan CV Cakrawala Buana Lestari. Baca <Link href="/kebijakan-privasi" className="text-[#0E6BA8] underline font-semibold">Kebijakan Privasi</Link>. <span className="text-red-500">*</span>
           </span>
         </label>
         {errors.agreedToTerms && (
@@ -355,7 +355,7 @@ export function ContactForm() {
           disabled={isSubmitting}
         >
           <DynamicIcon name="MessageSquare" size={20} />
-          <span>Kirim ke WhatsApp Tim CBL</span>
+          <span>Kirim melalui WhatsApp</span>
         </Button>
 
         <Button
@@ -367,7 +367,7 @@ export function ContactForm() {
           disabled={isSubmitting}
         >
           <DynamicIcon name="Mail" size={20} />
-          <span>Kirim via Email (RFQ)</span>
+          <span>Kirim melalui email</span>
         </Button>
       </div>
     </form>

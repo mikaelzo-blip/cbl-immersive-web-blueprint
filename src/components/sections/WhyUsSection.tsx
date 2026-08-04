@@ -12,9 +12,9 @@ export function WhyUsSection() {
       <Container>
         <Reveal className="relative">
           <SectionHeading
-            badge="Nilai Tambah Pelayanan"
-            title="Alasan CBL relevan untuk kebutuhan fasilitas Anda."
-            description="Pengerjaan dibangun di atas kejelasan ruang lingkup, koordinasi lapangan, dan dokumentasi sesuai persyaratan proyek."
+            badge="Cara Kami Memberikan Nilai"
+            title="Koordinasi teknis yang jelas untuk setiap pekerjaan."
+            description="CBL mengutamakan kejelasan kebutuhan, kesesuaian spesifikasi, koordinasi lapangan, dan dokumentasi pada setiap tahap proyek."
             align="left"
             light
           />

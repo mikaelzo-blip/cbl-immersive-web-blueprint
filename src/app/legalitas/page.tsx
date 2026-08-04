@@ -33,9 +33,9 @@ export default function LegalitasPage() {
 
         {/* Page Header */}
         <SectionHeading
-          badge="Informasi Pengadaan &amp; Kepatuhan"
+          badge="Informasi Legal dan Kepatuhan"
           title="Legalitas Perusahaan &amp; Prosedur K3"
-          description="Ringkasan dokumen yang telah diverifikasi internal, batas publikasi, dan pendekatan keselamatan berbasis risiko proyek."
+          description="Ringkasan dokumen badan usaha, batas informasi yang dipublikasikan, dan pendekatan keselamatan yang disesuaikan dengan risiko pekerjaan."
           as="h1"
         />
 
@@ -46,7 +46,7 @@ export default function LegalitasPage() {
           </div>
           <div className="text-xs sm:text-sm text-[#475569] leading-relaxed">
             <h2 className="font-bold text-[#0F2942] mb-1">
-              Pernyataan Kerahasiaan Dokumen Publik:
+              Perlindungan data dokumen perusahaan
             </h2>
             <p>{legalNotice}</p>
           </div>
@@ -56,7 +56,7 @@ export default function LegalitasPage() {
         <div className="mb-16">
           <h2 className="text-xl sm:text-2xl font-bold text-[#0F2942] tracking-tight mb-6 flex items-center gap-2">
             <DynamicIcon name="FileText" size={24} className="text-[#0E6BA8]" />
-            <span>Checklist Kelengkapan Dokumen Legalitas</span>
+            <span>Daftar dokumen legalitas perusahaan</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -72,7 +72,7 @@ export default function LegalitasPage() {
                     </span>
                     <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1">
                       <DynamicIcon name="CheckCircle2" size={14} />
-                      <span>Terverifikasi Internal</span>
+                      <span>Telah ditinjau internal</span>
                     </span>
                   </div>
 
@@ -137,7 +137,7 @@ export default function LegalitasPage() {
               <span>Berkas Dokumentasi Serah Terima</span>
             </h2>
             <p className="text-xs sm:text-sm text-[#475569] mb-4 leading-relaxed">
-              Dokumen berikut disiapkan sesuai lingkup dan persyaratan kontrak, sehingga tidak selalu berlaku pada setiap pekerjaan:
+              Dokumen berikut disiapkan sesuai cakupan dan persyaratan kontrak. Karena itu, kelengkapannya dapat berbeda pada setiap pekerjaan:
             </p>
             <ul className="space-y-3 text-xs sm:text-sm text-[#475569]">
               {handoverDocs.map((docName, idx) => (
@@ -154,13 +154,13 @@ export default function LegalitasPage() {
             {/* Box Registrasi Vendor */}
             <div className="bg-[#0F2942] text-white rounded-2xl p-6 sm:p-8 shadow-md">
               <h2 className="text-xl font-bold text-white mb-3">
-                Kesiapan Registrasi Vendor (Vendor Onboarding)
+                Kesiapan proses registrasi vendor
               </h2>
               <p className="text-xs sm:text-sm text-[#E2E8F0] leading-relaxed mb-6">
                 {vendorRegistrationStatement}
               </p>
               <div className="pt-4 border-t border-[#15426B] flex items-center justify-between text-xs text-[#00A8CC] font-semibold">
-                <span>Ditinjau sesuai persyaratan calon klien</span>
+                <span>Disesuaikan dengan persyaratan calon klien</span>
                 <DynamicIcon name="Check" size={16} />
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function LegalitasPage() {
               {companyProfileDoc.available ? (
                 <Button href={`/documents/${companyProfileDoc.fileName}`} external variant="primary" fullWidth>
                   <DynamicIcon name="Download" size={18} />
-                  <span>Unduh Company Profile PDF</span>
+                  <span>Unduh profil perusahaan</span>
                 </Button>
               ) : (
                 <button
@@ -186,7 +186,7 @@ export default function LegalitasPage() {
                   className="w-full px-4 py-3 rounded-xl bg-gray-100 text-gray-400 font-semibold text-xs flex items-center justify-center gap-2 cursor-not-allowed border border-gray-200"
                 >
                   <DynamicIcon name="Lock" size={16} />
-                  <span>Dokumen PDF Menyusul (Versi Cetak Baru)</span>
+                  <span>Versi publik sedang disiapkan</span>
                 </button>
               )}
             </div>
@@ -196,10 +196,10 @@ export default function LegalitasPage() {
         {/* CTA Permintaan Berkas Vendor */}
         <div className="bg-gradient-to-r from-[#0F2942] via-[#15426B] to-[#0E6BA8] text-white rounded-3xl p-8 text-center shadow-xl">
           <h2 className="text-2xl font-bold mb-3">
-            Membutuhkan Berkas Salinan Legalitas untuk Vendor Registration?
+            Membutuhkan salinan dokumen untuk registrasi vendor?
           </h2>
           <p className="text-xs sm:text-sm text-[#E2E8F0] max-w-xl mx-auto mb-6 leading-relaxed">
-            Hubungi bagian administrasi CBL. Kami akan mengirimkan berkas kelengkapan ber-stempel resmi via email atau WhatsApp.
+            Hubungi bagian administrasi CBL untuk mengonfirmasi dokumen yang diperlukan. Salinan akan disampaikan melalui email atau WhatsApp setelah permintaan resmi diterima.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
@@ -211,11 +211,11 @@ export default function LegalitasPage() {
               size="md"
             >
               <DynamicIcon name="MessageSquare" size={18} />
-              <span>Minta Berkas via WhatsApp</span>
+              <span>Minta dokumen melalui WhatsApp</span>
             </Button>
             <Button href={`mailto:${companyInfo.email}`} variant="outline" size="md" className="border-white text-white hover:bg-white/10">
               <DynamicIcon name="Mail" size={18} />
-              <span>Minta Berkas via Email</span>
+              <span>Minta dokumen melalui email</span>
             </Button>
           </div>
         </div>

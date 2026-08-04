@@ -24,7 +24,7 @@ export function AboutSection() {
               Pengalaman terdokumentasi mencakup fasilitas rekreasi, gedung operasional, wahana, akuarium, kolam, dan utilitas kawasan. Ketersediaan layanan di lokasi lain ditentukan melalui klarifikasi kebutuhan dan kemampuan mobilisasi.
             </p>
             <p>
-              CBL menggunakan tim inti dan tenaga profesional berbasis proyek. Metode, personel, pengujian, dan dokumen serah terima disesuaikan dengan lingkup serta persyaratan lokasi klien.
+              CBL menggunakan tim inti dan tenaga profesional berbasis proyek. Metode, personel, pengujian, dan dokumen serah terima disesuaikan dengan cakupan pekerjaan serta persyaratan lokasi klien.
             </p>
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -40,7 +40,7 @@ export function ServiceCard({ service, className, index }: ServiceCardProps) {
         {/* Daftar Kapabilitas */}
         <div className="border-t border-[#E2E8F0] pt-4 mb-6">
           <span className="text-[11px] font-bold text-[#0F2942] uppercase tracking-[0.14em] block mb-3">
-            Cakupan utama
+            Layanan yang tersedia
           </span>
           <ul className="space-y-2 text-xs text-[#475569]">
             {service.capabilities.slice(0, 4).map((capability, idx) => (
@@ -59,7 +59,7 @@ export function ServiceCard({ service, className, index }: ServiceCardProps) {
           href={`/layanan/${service.slug}`}
           className="text-xs font-bold text-[#0E6BA8] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
         >
-          <span>Lihat detail layanan</span>
+          <span>Pelajari layanan ini</span>
           <DynamicIcon name="ArrowRight" size={14} />
         </Link>
       </div>

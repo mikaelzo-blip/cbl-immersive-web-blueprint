@@ -14,8 +14,8 @@ export function ContactSection() {
         <Reveal>
           <SectionHeading
             badge="Hubungi Tim Teknis"
-            title="Sampaikan kebutuhan fasilitas Anda."
-            description="Berikan konteks singkat agar pembahasan awal lebih terarah sebelum peninjauan lokasi atau penyusunan lingkup."
+            title="Ceritakan kebutuhan teknis fasilitas Anda."
+            description="Sampaikan kondisi peralatan, lokasi, dan target pekerjaan agar pembahasan awal lebih terarah sebelum peninjauan lapangan."
             align="left"
           />
         </Reveal>
@@ -25,7 +25,7 @@ export function ContactSection() {
           <Reveal className="lg:col-span-5 space-y-6">
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-6">
               <h3 className="text-xl font-bold text-[#0F2942] tracking-tight border-b border-[#E2E8F0] pb-4">
-                Informasi Kontak Resmi
+                Informasi kontak perusahaan
               </h3>
 
               <div className="space-y-4">
@@ -34,7 +34,7 @@ export function ContactSection() {
                     <DynamicIcon name="MapPin" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Alamat Kantor Legal:</h3>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Alamat kantor:</h3>
                     <p className="text-sm text-[#475569] mt-1 leading-relaxed">{companyInfo.address}</p>
                   </div>
                 </div>
@@ -73,7 +73,7 @@ export function ContactSection() {
                     <DynamicIcon name="Mail" size={20} />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Email Korespondensi (RFQ):</h3>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Email permintaan penawaran:</h3>
                     <a href={`mailto:${companyInfo.email}`} className="text-sm font-medium text-[#0E6BA8] hover:underline mt-1 block">
                       {companyInfo.email}
                     </a>
@@ -101,7 +101,7 @@ export function ContactSection() {
                 >
                   <span className="flex items-center gap-2">
                     <DynamicIcon name="MapPin" size={16} />
-                    <span>Buka Alamat di Google Maps</span>
+                    <span>Lihat lokasi di Google Maps</span>
                   </span>
                   <DynamicIcon name="ExternalLink" size={14} />
                 </a>
@@ -112,7 +112,7 @@ export function ContactSection() {
                 >
                   <span className="flex items-center gap-2">
                     <DynamicIcon name="FileCheck" size={16} />
-                    <span>Kebutuhan Registrasi Vendor &amp; Legalitas</span>
+                    <span>Informasi legalitas dan registrasi vendor</span>
                   </span>
                   <DynamicIcon name="ArrowRight" size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>

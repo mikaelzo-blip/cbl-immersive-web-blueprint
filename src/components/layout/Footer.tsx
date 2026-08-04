@@ -34,18 +34,18 @@ export function Footer() {
               </span>
             </div>
             <p className="text-sm text-[#E2E8F0] leading-relaxed">
-              Penyedia jasa teknik terpadu spesialis kelistrikan, otomatisasi industri, mekanikal presisi, HVAC refrigerasi, sistem pompa, dan pencahayaan khusus.
+              Penyedia jasa teknik terpadu untuk pekerjaan kelistrikan, otomasi, mekanikal, HVAC dan refrigerasi, sistem pompa, serta pencahayaan khusus.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#15426B] text-[#67E8F9] text-xs font-semibold">
               <DynamicIcon name="Clock" size={14} />
-              <span>Jam Operasional: {companyInfo.serviceHours}</span>
+              <span>Jam layanan: {companyInfo.serviceHours}</span>
             </div>
           </div>
 
           {/* Kolom 2: Navigasi Cepat */}
           <div>
             <h3 className="text-base font-bold text-white mb-4 tracking-wide border-b border-[#15426B] pb-2">
-              Navigasi Cepat
+              Navigasi
             </h3>
             <ul className="space-y-2.5 text-sm">
               {mainNavItems.map((item) => {
@@ -68,7 +68,7 @@ export function Footer() {
           {/* Kolom 3: Divisi Layanan */}
           <div>
             <h3 className="text-base font-bold text-white mb-4 tracking-wide border-b border-[#15426B] pb-2">
-              Divisi Layanan
+              Bidang layanan
             </h3>
             <ul className="space-y-2.5 text-sm">
               {serviceDivisions.map((service) => (
@@ -131,11 +131,11 @@ export function Footer() {
         {/* Disclaimer Merek & Hak Cipta */}
         <div className="pt-8 space-y-4 text-xs text-[#E2E8F0]/70">
           <p className="leading-relaxed bg-[#15426B]/50 p-4 rounded-xl border border-[#15426B]">
-            <strong className="text-[#67E8F9]">Pemberitahuan Merek:</strong> {brandDisclaimer}
+            <strong className="text-[#67E8F9]">Keterangan merek:</strong> {brandDisclaimer}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#15426B]/40">
             <p>
-              &copy; {currentYear} {companyInfo.legalName}. Seluruh Hak Cipta Dilindungi Undang-Undang.
+              &copy; {currentYear} {companyInfo.legalName}. Hak cipta dilindungi undang-undang.
             </p>
             <div className="flex items-center gap-4 text-xs">
               <Link href="/legalitas" className="hover:text-[#00A8CC] underline">
