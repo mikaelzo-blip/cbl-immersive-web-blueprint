@@ -23,7 +23,7 @@ Centralized in `src/data/company.ts`:
 - **WhatsApp Fast Response**: `0851-8454-9522` / `+62 851-8454-9522` (URL: `https://wa.me/6285184549522`).
 - **Office Telephone**: `(021) 2606-3396` (URL: `tel:02126063396`).
 - **Office Address**: Jl. Papanggo II C No. 27, Papanggo, Tanjung Priok, Jakarta Utara, DKI Jakarta 14340.
-- **Service Hours**: Belum dikonfirmasi; gunakan frasa netral `Jadwal layanan dikonfirmasi saat konsultasi`.
+- **Service Hours**: Senin–Jumat, pukul 07.00–15.00 WIB.
 
 ---
 
@@ -40,7 +40,7 @@ Centralized in `src/data/company.ts`:
 3. **Running Marquee Logo Section (`src/components/sections/BrandSection.tsx`)**:
    - Renders 13 authentic industry brand logos (`public/logo/brands/`):
      - `Allen-Bradley`, `Schneider Electric`, `SEW Eurodrive`, `Rexnord`, `SKF`, `Timken`, `Fenner`, `Renold`, `Grundfos`, `Sta-Rite`, `in-Lite`, `Orphek`, `Philips`.
-   - Uses two identical tracks for a seamless loop at 36 seconds on desktop and 28 seconds on mobile, with pause-on-hover/focus. The marquee stops when the user enables reduced motion.
+   - Uses two identical tracks for a seamless loop at 28 seconds on desktop and 22 seconds on mobile. The marquee remains continuous and slows to 72 seconds when the user enables reduced motion.
 
 4. **Floating Action Controls**:
    - `FloatingWhatsapp.tsx`: Positioned at `fixed bottom-6 right-6 z-40` (`#F97316` orange).

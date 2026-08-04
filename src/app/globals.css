@@ -157,13 +157,8 @@
   display: flex;
   flex-wrap: nowrap;
   width: max-content;
-  animation: brand-marquee-scroll 36s linear infinite;
+  animation: brand-marquee-scroll 28s linear infinite;
   will-change: transform;
-}
-
-.brand-marquee:hover .brand-marquee-track,
-.brand-marquee:focus-within .brand-marquee-track {
-  animation-play-state: paused;
 }
 
 .brand-marquee {
@@ -173,7 +168,7 @@
 
 @media (max-width: 640px) {
   .brand-marquee-track {
-    animation-duration: 28s;
+    animation-duration: 22s;
   }
 }
 
@@ -192,7 +187,7 @@
   }
 
   .brand-marquee-track {
-    animation: none !important;
+    animation: brand-marquee-scroll 72s linear infinite !important;
   }
 
   .reveal-on-scroll,

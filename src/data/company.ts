@@ -20,7 +20,7 @@ export const companyInfo: CompanyInfo = {
   whatsappNumber: '6285184549522',
   whatsappFormatted: '0851-8454-9522',
   email: 'cvcakrawala.market@gmail.com',
-  serviceHours: 'Jadwal layanan dikonfirmasi saat konsultasi',
+  serviceHours: 'Senin–Jumat, pukul 07.00–15.00 WIB',
   seo: {
     siteUrl,
     defaultTitle: 'CV Cakrawala Buana Lestari (CBL) — Penyedia Jasa Teknik Terpadu',

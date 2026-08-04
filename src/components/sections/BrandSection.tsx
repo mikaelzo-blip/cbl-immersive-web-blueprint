@@ -23,7 +23,6 @@ export function BrandSection() {
         className="brand-marquee w-full overflow-hidden py-6 mb-8"
         role="region"
         aria-label="Daftar merek industri yang biasa ditangani"
-        tabIndex={0}
       >
         <div className="brand-marquee-track">
           {[0, 1].map((copyIndex) => (
