@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Icons from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface DynamicIconProps {
@@ -9,8 +10,8 @@ interface DynamicIconProps {
 }
 
 export function DynamicIcon({ name, className, size = 24 }: DynamicIconProps) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const IconComponent = (Icons as unknown as Record<string, React.ComponentType<any>>)[name] || Icons.HelpCircle;
+  const iconSet = Icons as unknown as Record<string, LucideIcon>;
+  const IconComponent = iconSet[name] || Icons.HelpCircle;
 
   return (
     <IconComponent

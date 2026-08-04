@@ -5,20 +5,24 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { companyInfo } from '@/data/company';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { ContactForm } from '@/components/forms/ContactForm';
+import { Reveal } from '@/components/ui/Reveal';
 
 export function ContactSection() {
   return (
-    <section id="kontak" className="py-16 md:py-24 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+    <section id="kontak" className="py-16 md:py-28 bg-white border-b border-[#E2E8F0]">
       <Container>
-        <SectionHeading
-          badge="Hubungi Tim Teknis"
-          title="Kontak &amp; Formulir Konsultasi"
-          description="Kirimkan rincian kebutuhan pekerjaan atau jadwalkan survei peninjauan lokasi fasilitas Anda."
-        />
+        <Reveal>
+          <SectionHeading
+            badge="Hubungi Tim Teknis"
+            title="Sampaikan kebutuhan fasilitas Anda."
+            description="Berikan konteks singkat agar pembahasan awal lebih terarah sebelum peninjauan lokasi atau penyusunan lingkup."
+            align="left"
+          />
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Kolom Kiri: Detail Informasi Kontak Legal Perusahaan */}
-          <div className="lg:col-span-5 space-y-6">
+          <Reveal className="lg:col-span-5 space-y-6">
             <div className="p-6 sm:p-8 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm space-y-6">
               <h3 className="text-xl font-bold text-[#0F2942] tracking-tight border-b border-[#E2E8F0] pb-4">
                 Informasi Kontak Resmi
@@ -114,12 +118,12 @@ export function ContactSection() {
                 </Link>
               </div>
             </div>
-          </div>
+          </Reveal>
 
           {/* Kolom Kanan: Formulir Konsultasi (WA + Mailto) */}
-          <div className="lg:col-span-7">
+          <Reveal className="lg:col-span-7" delay={100}>
             <ContactForm />
-          </div>
+          </Reveal>
         </div>
       </Container>
     </section>

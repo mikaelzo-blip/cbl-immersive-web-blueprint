@@ -31,7 +31,7 @@ export function SectionHeading({
       {badge && (
         <span
           className={cn(
-            'inline-flex items-center px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full mb-3',
+            'inline-flex items-center px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] rounded-full mb-3',
             light
               ? 'bg-[#00A8CC]/20 text-[#67E8F9]'
               : 'bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20'
@@ -43,7 +43,7 @@ export function SectionHeading({
       
       <Component
         className={cn(
-          'text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight',
+          'max-w-4xl text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.025em] leading-[1.08]',
           light ? 'text-white' : 'text-[#0F2942]'
         )}
       >

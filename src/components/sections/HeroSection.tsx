@@ -1,105 +1,84 @@
-import React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { companyInfo } from '@/data/company';
 
+const capabilityTags = ['Kelistrikan', 'Otomasi', 'Mekanikal', 'HVAC', 'Pompa', 'Pencahayaan'];
+
 export function HeroSection() {
   return (
-    <section className="relative pt-12 pb-16 md:pt-20 md:pb-28 overflow-hidden border-b border-[#E2E8F0] bg-white">
-      {/* Dokumentasi proyek sebagai latar hero; dioptimalkan oleh next/image. */}
-      <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <Image
-          src="/images/projects/penggantian-dc-drive-motor/01.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover opacity-85"
-        />
-        {/* Layer Overlay Putih Transparan (Video Jelas Terlihat & Teks Tetap Tajam) */}
-        <div className="absolute inset-0 bg-white/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FD]/30 via-white/45 to-white/90" />
-      </div>
+    <section className="relative overflow-hidden bg-[#F7FAFC] border-b border-[#E2E8F0]">
+      <div className="absolute inset-0 engineering-grid opacity-55" aria-hidden="true" />
+      <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-[#0E6BA8]/8 blur-3xl" aria-hidden="true" />
+      <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-[#C2410C]/7 blur-3xl" aria-hidden="true" />
 
-      {/* 2. Background Decorative Grid Pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 z-1">
-        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="hero-grid" width="45" height="45" patternUnits="userSpaceOnUse">
-              <path d="M 45 0 L 0 0 0 45" fill="none" stroke="#0E6BA8" strokeWidth="0.5" strokeOpacity="0.15" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#hero-grid)" />
-        </svg>
-      </div>
-
-      {/* 3. Hero Content (Jelas, Tajam, & Kontras di Atas Video Latar) */}
-      <Container className="relative z-10">
-        <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          {/* Rentang pengalaman yang didukung register proyek. */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0E6BA8]/30 text-[#0E6BA8] text-xs font-bold mb-6 shadow-sm backdrop-blur-xs">
-            <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
-            <span>Rekam pekerjaan terverifikasi 2022-2026</span>
+      <Container className="relative z-10 grid min-h-[720px] grid-cols-1 items-center gap-10 py-14 md:py-20 lg:grid-cols-12 lg:gap-14 lg:py-24">
+        <div className="hero-enter lg:col-span-7">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#0E6BA8]/25 bg-white px-3.5 py-2 text-xs font-bold text-[#0E6BA8] shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-[#C2410C]" />
+            Pengalaman terdokumentasi 2022–2026
           </div>
 
-          {/* Heading Utama */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#0F2942] tracking-tight leading-[1.15] mb-6 drop-shadow-sm">
-            Solusi Engineering, Maintenance &amp; Otomasi Fasilitas
+          <h1 className="mt-7 max-w-4xl text-4xl font-black leading-[1.05] tracking-[-0.035em] text-[#0F2942] sm:text-5xl md:text-6xl lg:text-[4.25rem]">
+            Penanganan teknis fasilitas, dari kebutuhan lapangan hingga serah terima.
           </h1>
 
-          {/* Subtitle Deskriptif */}
-          <p className="text-base sm:text-lg md:text-xl text-[#0F2942] font-semibold leading-relaxed max-w-3xl mb-8 drop-shadow-xs">
-            CBL menangani kebutuhan kelistrikan, panel kontrol, otomasi, mekanikal, HVAC, pompa, dan pencahayaan—mulai dari pengadaan, pemasangan, perbaikan, pemeriksaan, hingga serah terima.
+          <p className="mt-6 max-w-2xl text-base font-medium leading-relaxed text-[#475569] sm:text-lg">
+            CBL mendukung pekerjaan kelistrikan, panel kontrol, otomasi, mekanikal, HVAC, pompa, dan pencahayaan melalui tenaga profesional berbasis kebutuhan proyek.
           </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-12">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button
-              href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
-                'Halo CBL, saya mau konsultasi kebutuhan teknik fasilitas kami.'
-              )}`}
+              href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent('Halo CBL, saya ingin mendiskusikan kebutuhan teknis fasilitas kami.')}`}
               external
               variant="whatsapp"
               size="lg"
-              className="w-full sm:w-auto shadow-md font-bold"
+              className="w-full sm:w-auto"
             >
-              <DynamicIcon name="MessageSquare" size={20} />
-              <span>Minta Survei Lokasi</span>
+              <DynamicIcon name="MessageSquareText" size={20} />
+              Minta konsultasi awal
             </Button>
-
-            <Button
-              href="#layanan"
-              variant="outline"
-              size="lg"
-              className="w-full sm:w-auto bg-white/90 backdrop-blur-xs shadow-xs font-bold"
-            >
-              <DynamicIcon name="Wrench" size={20} />
-              <span>Lihat Layanan Kami</span>
+            <Button href="/proyek" variant="outline" size="lg" className="w-full bg-white sm:w-auto">
+              Lihat pengalaman proyek
+              <DynamicIcon name="ArrowRight" size={19} />
             </Button>
           </div>
 
-          {/* Grid Quick Highlights */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 w-full pt-8 border-t border-[#E2E8F0]/80">
-            {[
-              { label: 'Kelistrikan & Panel', icon: 'Zap' },
-              { label: 'Otomasi & PLC', icon: 'Cpu' },
-              { label: 'Mekanikal Presisi', icon: 'Wrench' },
-              { label: 'HVAC & Refrigerasi', icon: 'Wind' },
-              { label: 'Pompa & Perairan', icon: 'Droplets' },
-              { label: 'Pencahayaan Show', icon: 'Lightbulb' },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center p-3 rounded-xl bg-white/95 border border-[#E2E8F0] shadow-sm hover:border-[#0E6BA8]/50 backdrop-blur-xs transition-all hover:-translate-y-0.5"
-              >
-                <DynamicIcon name={item.icon} size={22} className="text-[#0E6BA8] mb-1.5" />
-                <span className="text-xs font-bold text-[#0F2942] text-center leading-tight">
-                  {item.label}
-                </span>
-              </div>
+          <div className="mt-9 flex flex-wrap gap-2" aria-label="Cakupan layanan">
+            {capabilityTags.map((tag) => (
+              <span key={tag} className="rounded-lg border border-[#D9E5EF] bg-white/80 px-3 py-1.5 text-xs font-semibold text-[#475569]">
+                {tag}
+              </span>
             ))}
+          </div>
+        </div>
+
+        <div className="hero-enter hero-enter-delayed relative lg:col-span-5">
+          <div className="relative mx-auto aspect-[4/5] max-h-[610px] max-w-[520px] overflow-hidden rounded-[2rem] border border-white/80 bg-[#D9E5EF] shadow-[0_32px_90px_-32px_rgba(15,41,66,0.5)]">
+            <Image
+              src="/images/projects/penggantian-dc-drive-motor/01.webp"
+              alt="Dokumentasi pekerjaan teknis CBL pada panel dan sistem penggerak"
+              fill
+              priority
+              sizes="(max-width: 1024px) 90vw, 42vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F2942]/80 via-[#0F2942]/10 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-white backdrop-blur-md">
+                <DynamicIcon name="ShieldCheck" size={22} />
+              </div>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#67E8F9]">Berbasis dokumen pekerjaan</p>
+              <p className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">Lingkup, tahapan, dan hasil ditampilkan tanpa membuka data transaksi sensitif.</p>
+            </div>
+          </div>
+
+          <div className="absolute -left-3 top-10 hidden rounded-2xl border border-white/70 bg-white/95 p-4 shadow-xl backdrop-blur-md sm:block lg:-left-10">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F0F7FD] text-[#0E6BA8]"><DynamicIcon name="ClipboardCheck" size={20} /></div>
+              <div><p className="text-xs text-[#475569]">Pendekatan kerja</p><p className="text-sm font-bold text-[#0F2942]">Survei • Lingkup • Eksekusi</p></div>
+            </div>
           </div>
         </div>
       </Container>

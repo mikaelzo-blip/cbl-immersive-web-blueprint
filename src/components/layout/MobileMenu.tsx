@@ -100,7 +100,7 @@ export function MobileMenu({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-[#0F2942]/60 backdrop-blur-sm transition-opacity"
+        className="mobile-menu-backdrop fixed inset-0 bg-[#0F2942]/60 backdrop-blur-sm transition-opacity"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -108,7 +108,7 @@ export function MobileMenu({
       {/* Drawer Content */}
       <div
         ref={modalRef}
-        className="fixed inset-y-0 right-0 w-full max-w-xs bg-white shadow-2xl flex flex-col justify-between p-6 z-10 overflow-y-auto"
+        className="mobile-menu-drawer fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl flex flex-col justify-between p-6 z-10 overflow-y-auto"
       >
         <div>
           {/* Menu Header */}

@@ -40,7 +40,7 @@ Centralized in `src/data/company.ts`:
 3. **Running Marquee Logo Section (`src/components/sections/BrandSection.tsx`)**:
    - Renders 13 authentic industry brand logos (`public/logo/brands/`):
      - `Allen-Bradley`, `Schneider Electric`, `SEW Eurodrive`, `Rexnord`, `SKF`, `Timken`, `Fenner`, `Renold`, `Grundfos`, `Sta-Rite`, `in-Lite`, `Orphek`, `Philips`.
-   - Uses two identical tracks for a seamless loop at 36 seconds on desktop and 28 seconds on mobile, with pause-on-hover/focus and a slower 64-second reduced-motion mode.
+   - Uses two identical tracks for a seamless loop at 36 seconds on desktop and 28 seconds on mobile, with pause-on-hover/focus. The marquee stops when the user enables reduced motion.
 
 4. **Floating Action Controls**:
    - `FloatingWhatsapp.tsx`: Positioned at `fixed bottom-6 right-6 z-40` (`#F97316` orange).

@@ -7,28 +7,30 @@ import { cn } from '@/lib/utils';
 interface ServiceCardProps {
   service: ServiceDivision;
   className?: string;
+  index?: number;
 }
 
-export function ServiceCard({ service, className }: ServiceCardProps) {
+export function ServiceCard({ service, className, index }: ServiceCardProps) {
   return (
     <div
       className={cn(
-        'group relative flex flex-col justify-between p-6 sm:p-8 bg-white rounded-2xl border border-[#E2E8F0] shadow-sm card-hover-lift overflow-hidden h-full',
+        'group relative flex flex-col justify-between p-6 sm:p-7 bg-white rounded-3xl border border-[#DCE6EE] shadow-[0_16px_40px_-30px_rgba(15,41,66,0.35)] card-hover-lift overflow-hidden h-full',
         className
       )}
     >
       <div>
         {/* Header Kartu: Ikon & Judul */}
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-start justify-between gap-4 mb-5">
           <div className="w-12 h-12 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center group-hover:bg-[#0E6BA8] group-hover:text-white transition-colors duration-200 shadow-xs shrink-0">
             <DynamicIcon name={service.iconName} size={26} />
           </div>
-          <h3 className="text-xl font-bold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors leading-snug">
+          {index && <span className="text-xs font-black tracking-[0.18em] text-[#0E6BA8]/35">0{index}</span>}
+        </div>
+        <h3 className="text-xl font-bold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors leading-snug">
             <Link href={`/layanan/${service.slug}`} className="focus-visible:outline-none">
               {service.title}
             </Link>
-          </h3>
-        </div>
+        </h3>
 
         {/* Deskripsi */}
         <p className="text-sm text-[#475569] leading-relaxed mb-6">
@@ -37,11 +39,11 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
 
         {/* Daftar Kapabilitas */}
         <div className="border-t border-[#E2E8F0] pt-4 mb-6">
-          <span className="text-xs font-bold text-[#0F2942] uppercase tracking-wider block mb-3">
-            Cakram Kapabilitas Teknis:
+          <span className="text-[11px] font-bold text-[#0F2942] uppercase tracking-[0.14em] block mb-3">
+            Cakupan utama
           </span>
           <ul className="space-y-2 text-xs text-[#475569]">
-            {service.capabilities.map((capability, idx) => (
+            {service.capabilities.slice(0, 4).map((capability, idx) => (
               <li key={idx} className="flex items-start gap-2">
                 <DynamicIcon name="CheckCircle2" size={15} className="text-[#0E6BA8] shrink-0 mt-0.5" />
                 <span>{capability}</span>
@@ -57,7 +59,7 @@ export function ServiceCard({ service, className }: ServiceCardProps) {
           href={`/layanan/${service.slug}`}
           className="text-xs font-bold text-[#0E6BA8] group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
         >
-          <span>Detail Layanan &amp; Penanganan</span>
+          <span>Lihat detail layanan</span>
           <DynamicIcon name="ArrowRight" size={14} />
         </Link>
       </div>

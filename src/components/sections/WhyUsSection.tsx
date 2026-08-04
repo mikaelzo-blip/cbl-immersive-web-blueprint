@@ -3,24 +3,27 @@ import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { whyUsPoints } from '@/data/company';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
+import { Reveal } from '@/components/ui/Reveal';
 
 export function WhyUsSection() {
   return (
-    <section id="mengapa-cbl" className="py-16 md:py-24 bg-[#0F2942] text-white border-b border-[#15426B]">
+    <section id="mengapa-cbl" className="relative py-16 md:py-28 bg-[#0F2942] text-white border-b border-[#15426B] overflow-hidden">
+      <div className="absolute inset-0 engineering-grid-dark opacity-40" aria-hidden="true" />
       <Container>
-        <SectionHeading
-          badge="Nilai Tambah Pelayanan"
-          title="Mengapa Memilih CV Cakrawala Buana Lestari"
-          description="Komitmen pengerjaan teknis berbasis keandalan operasional, kejelasan komunikasi, dan dokumentasi transparan."
-          light
-        />
+        <Reveal className="relative">
+          <SectionHeading
+            badge="Nilai Tambah Pelayanan"
+            title="Alasan CBL relevan untuk kebutuhan fasilitas Anda."
+            description="Pengerjaan dibangun di atas kejelasan ruang lingkup, koordinasi lapangan, dan dokumentasi sesuai persyaratan proyek."
+            align="left"
+            light
+          />
+        </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {whyUsPoints.map((point) => (
-            <div
-              key={point.id}
-              className="p-6 rounded-2xl bg-[#15426B]/60 border border-[#15426B] hover:border-[#00A8CC]/50 transition-colors flex flex-col justify-between"
-            >
+          {whyUsPoints.map((point, index) => (
+            <Reveal key={point.id} delay={index * 80} className="h-full">
+            <div className="p-6 rounded-3xl bg-white/[0.06] border border-white/10 hover:border-[#67E8F9]/35 hover:bg-white/[0.09] transition-all flex flex-col justify-between h-full">
               <div>
                 <div className="w-12 h-12 rounded-xl bg-[#0E6BA8] text-[#00A8CC] flex items-center justify-center mb-4 shadow-sm">
                   <DynamicIcon name={point.iconName} size={24} />
@@ -33,6 +36,7 @@ export function WhyUsSection() {
                 </p>
               </div>
             </div>
+            </Reveal>
           ))}
         </div>
       </Container>

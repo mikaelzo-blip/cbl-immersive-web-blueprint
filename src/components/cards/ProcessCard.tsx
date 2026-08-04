@@ -9,10 +9,10 @@ interface ProcessCardProps {
 
 export function ProcessCard({ step }: ProcessCardProps) {
   return (
-    <div className="relative flex flex-col p-6 sm:p-8 bg-white rounded-2xl border border-[#E2E8F0] shadow-sm card-hover-lift h-full">
+    <div className="relative flex flex-col p-6 sm:p-7 bg-white rounded-3xl border border-[#DCE6EE] shadow-[0_16px_40px_-30px_rgba(15,41,66,0.35)] card-hover-lift h-full overflow-hidden">
       {/* Step Number Badge */}
       <div className="flex items-center justify-between mb-4">
-        <div className="w-12 h-12 rounded-xl bg-[#0F2942] text-[#00A8CC] flex items-center justify-center font-extrabold text-xl shadow-sm">
+        <div className="w-12 h-12 rounded-2xl bg-[#0F2942] text-[#67E8F9] flex items-center justify-center font-extrabold text-lg shadow-sm">
           0{step.stepNumber}
         </div>
         <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20">

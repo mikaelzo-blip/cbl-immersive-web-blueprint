@@ -17,10 +17,10 @@ export function ProjectCard({ project, className, headingLevel = 'h3', preload =
   const Heading = headingLevel;
   return (
     <article className={cn(
-      'group relative flex flex-col bg-white rounded-2xl border border-[#E2E8F0] shadow-sm card-hover-lift overflow-hidden h-full',
+      'group relative flex flex-col bg-white rounded-3xl border border-[#DCE6EE] shadow-[0_18px_45px_-32px_rgba(15,41,66,0.4)] card-hover-lift overflow-hidden h-full',
       className
     )}>
-      <Link href={`/proyek/${project.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-[#E2E8F0]">
+      <Link href={`/proyek/${project.slug}`} className="relative block aspect-[4/3] overflow-hidden bg-[#E2E8F0]">
         <Image
           src={project.images?.cover ?? project.image}
           alt={project.imageAlt}
@@ -28,7 +28,7 @@ export function ProjectCard({ project, className, headingLevel = 'h3', preload =
           preload={preload}
           quality={65}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F2942]/45 to-transparent" />
         <div className="absolute left-4 bottom-4 flex flex-wrap gap-2">
@@ -38,7 +38,7 @@ export function ProjectCard({ project, className, headingLevel = 'h3', preload =
       </Link>
 
       <div className="flex flex-1 flex-col p-6">
-        <Heading className="text-xl font-bold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors mb-3 leading-snug">
+        <Heading className="text-xl font-extrabold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors mb-3 leading-snug">
           <Link href={`/proyek/${project.slug}`}>{project.title}</Link>
         </Heading>
         <p className="text-sm text-[#475569] leading-relaxed mb-5">{project.summary}</p>
@@ -56,8 +56,8 @@ export function ProjectCard({ project, className, headingLevel = 'h3', preload =
         </div>
 
         <div className="mt-auto pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
-          <span className="text-xs font-bold text-[#0E6BA8] inline-flex items-center gap-1">
-            Lihat detail proyek <DynamicIcon name="ArrowRight" size={14} />
+          <span className="text-xs font-bold text-[#0E6BA8] inline-flex items-center gap-1.5">
+            Lihat studi kasus <DynamicIcon name="ArrowUpRight" size={14} />
           </span>
           <DynamicIcon name={project.icon} size={18} className="text-[#0E6BA8]" />
         </div>

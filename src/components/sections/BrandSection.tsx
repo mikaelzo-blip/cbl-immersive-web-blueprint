@@ -3,16 +3,20 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { brandItems, brandDisclaimer } from '@/data/company';
+import { Reveal } from '@/components/ui/Reveal';
 
 export function BrandSection() {
   return (
-    <section className="py-16 md:py-24 bg-white border-b border-[#E2E8F0] overflow-hidden">
+    <section className="py-16 md:py-24 bg-[#F7FAFC] border-b border-[#E2E8F0] overflow-hidden">
       <Container>
-        <SectionHeading
-          badge="Cakupan Komponen &amp; Suku Cadang"
-          title="Merek Industri yang Biasa Ditangani"
-          description="Tim teknis kami terbiasa melakukan penanganan, instalasi, dan perbaikan komponen dari berbagai manufaktur komponen industri."
-        />
+        <Reveal>
+          <SectionHeading
+            badge="Cakupan Komponen &amp; Suku Cadang"
+            title="Merek industri yang biasa ditangani."
+            description="Logo menjelaskan pengalaman penanganan komponen dan tidak menyatakan hubungan distributor atau kemitraan resmi."
+            align="left"
+          />
+        </Reveal>
       </Container>
 
       <div

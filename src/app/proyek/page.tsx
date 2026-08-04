@@ -8,6 +8,7 @@ import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { projects, projectCategories } from '@/data/projects';
 import { portfolioConfidentialityNotice } from '@/data/company';
 import { ProjectCategory } from '@/types/project';
+import { Reveal } from '@/components/ui/Reveal';
 
 export default function PortfolioIndexPage() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | ProjectCategory>('all');
@@ -18,18 +19,30 @@ export default function PortfolioIndexPage() {
   });
 
   return (
-    <div className="py-12 md:py-20 bg-[#F8FAFC] min-h-screen">
-      <Container>
-        {/* Header Indeks */}
-        <SectionHeading
-          badge="Portofolio Terverifikasi"
-          title="Portofolio Pekerjaan CBL"
-          description="Jelajahi pekerjaan engineering, maintenance, instalasi, perbaikan, dan pengadaan teknis yang didukung arsip internal perusahaan."
-          as="h1"
-        />
+    <div className="bg-[#F7FAFC] min-h-screen">
+      <section className="relative overflow-hidden bg-[#0F2942] py-14 text-white md:py-20">
+        <div className="absolute inset-0 engineering-grid-dark opacity-50" aria-hidden="true" />
+        <Container className="relative">
+          <SectionHeading
+            badge="Portofolio Terverifikasi"
+            title="Pekerjaan teknis dalam konteks yang mudah dipahami."
+            description="Jelajahi studi kasus pengadaan, instalasi, penggantian, dan perbaikan yang didukung arsip internal tanpa membuka data transaksi sensitif."
+            as="h1"
+            align="left"
+            light
+          />
+          <div className="flex flex-wrap gap-3 text-sm">
+            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">{projects.length} studi kasus publik</span>
+            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">6 kategori layanan</span>
+          </div>
+        </Container>
+      </section>
+
+      <Container className="py-10 md:py-14">
 
         {/* Filter Bar Interaktif */}
-        <div className="mb-10 flex flex-wrap items-center justify-center gap-2" role="group" aria-label="Filter Kategori Portofolio">
+        <div className="mb-10 rounded-2xl border border-[#DCE6EE] bg-white p-3 shadow-sm overflow-x-auto" role="group" aria-label="Filter Kategori Portofolio">
+          <div className="flex min-w-max items-center gap-2">
           {projectCategories.map((cat) => {
             const isSelected = selectedCategory === cat.id;
             return (
@@ -48,6 +61,7 @@ export default function PortfolioIndexPage() {
               </button>
             );
           })}
+          </div>
         </div>
 
         {/* Announced Result Count (Live Region for Screen Readers) */}
@@ -75,7 +89,9 @@ export default function PortfolioIndexPage() {
         {filteredProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
             {filteredProjects.map((project, index) => (
-              <ProjectCard key={project.slug} project={project} headingLevel="h2" preload={index === 0} />
+              <Reveal key={project.slug} delay={(index % 3) * 60} className="h-full">
+                <ProjectCard project={project} headingLevel="h2" preload={index === 0} />
+              </Reveal>
             ))}
           </div>
         ) : (

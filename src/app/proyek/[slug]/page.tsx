@@ -107,33 +107,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             </span>
           </nav>
 
-          {/* Case Study Header */}
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2E8F0] shadow-sm mb-8">
-            <div className="flex flex-wrap items-center gap-2.5 mb-4">
-              {matchedService ? (
-                <Link href={`/layanan/${matchedService.slug}`}>
-                  <Badge variant="primary" className="hover:bg-[#0E6BA8] hover:text-white transition-colors cursor-pointer">
-                    {project.categoryLabel} &rarr;
-                  </Badge>
-                </Link>
-              ) : (
-                <Badge variant="primary">{project.categoryLabel}</Badge>
-              )}
-              <Badge variant="ghost" className="bg-[#F8FAFC] border border-[#E2E8F0]">
-                {project.sector}
-              </Badge>
-            </div>
-
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#0F2942] tracking-tight mb-4 leading-tight">
-              {project.title}
-            </h1>
-
-            <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-3xl">
-              {project.summary}
-            </p>
-          </div>
-
-          <div className="relative aspect-[16/8] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-sm mb-8 bg-[#E2E8F0]">
+          {/* Project hero */}
+          <div className="relative min-h-[520px] rounded-[2rem] overflow-hidden border border-[#DCE6EE] shadow-[0_28px_80px_-38px_rgba(15,41,66,0.55)] mb-10 bg-[#E2E8F0] flex items-end">
             <Image
               src={project.images?.cover ?? project.image}
               alt={project.imageAlt}
@@ -142,6 +117,29 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               sizes="(max-width: 1200px) 100vw, 1200px"
               className="object-cover"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0F2942] via-[#0F2942]/65 to-[#0F2942]/10" />
+            <div className="relative z-10 w-full p-6 sm:p-10 lg:p-12">
+              <div className="flex flex-wrap items-center gap-2.5 mb-5">
+                {matchedService ? (
+                  <Link href={`/layanan/${matchedService.slug}`}>
+                    <Badge variant="primary" className="bg-white text-[#0E6BA8] border-white hover:bg-[#F0F7FD] transition-colors cursor-pointer">
+                      {project.categoryLabel} &rarr;
+                    </Badge>
+                  </Link>
+                ) : (
+                  <Badge variant="primary">{project.categoryLabel}</Badge>
+                )}
+                <Badge variant="ghost" className="bg-white/10 text-white border-white/20 backdrop-blur-sm">
+                  {project.sector}
+                </Badge>
+              </div>
+              <h1 className="max-w-4xl text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-[-0.025em] mb-5 leading-[1.08]">
+                {project.title}
+              </h1>
+              <p className="max-w-3xl text-base sm:text-lg text-[#E2E8F0] leading-relaxed">
+                {project.summary}
+              </p>
+            </div>
           </div>
 
           {/* Main Grid: Detail Konten (Kiri) vs Sidebar (Kanan) */}
@@ -163,14 +161,32 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 </p>
               </div>
 
-              {/* 2. Langkah Penanganan Bernomor */}
+              {/* 2. Lingkup pekerjaan */}
+              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
+                <div className="flex items-center gap-3 mb-6 text-[#0F2942]">
+                  <div className="w-10 h-10 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center font-bold">
+                    <DynamicIcon name="Layers3" size={20} />
+                  </div>
+                  <h2 className="text-xl font-bold tracking-tight">2. Lingkup Pekerjaan</h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {project.scope.map((item) => (
+                    <div key={item} className="flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 text-sm text-[#475569]">
+                      <DynamicIcon name="CheckCircle2" size={17} className="text-[#0E6BA8] shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* 3. Langkah Penanganan Bernomor */}
               <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
                 <div className="flex items-center gap-3 mb-6 text-[#0F2942]">
                   <div className="w-10 h-10 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center font-bold">
                     <DynamicIcon name="Wrench" size={20} />
                   </div>
                   <h2 className="text-xl font-bold tracking-tight">
-                    2. Langkah Tahapan Penanganan Teknis
+                    3. Tahapan Pelaksanaan
                   </h2>
                 </div>
 
@@ -196,14 +212,32 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 </div>
               </div>
 
-              {/* 3. Hasil Pekerjaan */}
+              {/* 4. Galeri dokumentasi */}
+              <section className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm" aria-labelledby="galeri-proyek">
+                <div className="mb-6">
+                  <h2 id="galeri-proyek" className="text-xl font-bold text-[#0F2942]">4. Galeri Dokumentasi</h2>
+                  <p className="text-sm text-[#475569] mt-2">Foto lapangan dipilih dari arsip pekerjaan tanpa menampilkan data transaksi atau identitas pihak terkait.</p>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {project.gallery.map((image) => (
+                    <figure key={image.src} className="group overflow-hidden rounded-2xl bg-white border border-[#E2E8F0]">
+                      <div className="relative aspect-[4/3] bg-[#E2E8F0] overflow-hidden">
+                        <Image src={image.src} alt={image.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
+                      </div>
+                      <figcaption className="p-4 text-sm text-[#475569]">{image.caption}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              {/* 5. Hasil Pekerjaan */}
               <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
                 <div className="flex items-center gap-3 mb-6 text-[#0F2942]">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
                     <DynamicIcon name="CheckCircle2" size={20} />
                   </div>
                   <h2 className="text-xl font-bold tracking-tight">
-                    3. Hasil Pekerjaan &amp; Penyerahan
+                    5. Hasil yang Dapat Diverifikasi
                   </h2>
                 </div>
 
@@ -245,23 +279,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Sidebar 1: Lingkup Penanganan */}
-              <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm">
-                <h3 className="text-base font-bold text-[#0F2942] mb-4 pb-2 border-b border-[#E2E8F0] flex items-center gap-2">
-                  <DynamicIcon name="Layers" size={18} className="text-[#0E6BA8]" />
-                  <span>Lingkup Pengerjaan</span>
-                </h3>
-                <ul className="space-y-2 text-xs text-[#475569]">
-                  {project.scope.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <DynamicIcon name="ChevronRight" size={14} className="text-[#0E6BA8] shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Sidebar 2: Komponen Utama */}
+              {/* Komponen utama */}
               <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm">
                 <h3 className="text-base font-bold text-[#0F2942] mb-4 pb-2 border-b border-[#E2E8F0] flex items-center gap-2">
                   <DynamicIcon name="Cpu" size={18} className="text-[#0E6BA8]" />
@@ -277,7 +295,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 </ul>
               </div>
 
-              {/* Sidebar 3: CTA WhatsApp Spesifik Studi Kasus */}
+              {/* CTA WhatsApp Spesifik Studi Kasus */}
               <div className="bg-[#0F2942] text-white rounded-2xl p-6 shadow-md relative overflow-hidden space-y-4">
                 <h3 className="text-lg font-bold text-white tracking-tight">
                   Punya Kebutuhan Serupa pada Fasilitas Anda?
@@ -309,24 +327,6 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               ))}
             </div>
           </div>
-        
-          <section className="mb-16" aria-labelledby="galeri-proyek">
-            <div className="mb-6">
-              <h2 id="galeri-proyek" className="text-2xl font-bold text-[#0F2942]">Galeri Dokumentasi</h2>
-              <p className="text-sm text-[#475569] mt-2">Foto lapangan dipilih dari arsip dokumentasi pekerjaan. Data transaksi dan identitas pihak terkait tidak ditampilkan.</p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {project.gallery.map((image) => (
-                <figure key={image.src} className="overflow-hidden rounded-2xl bg-white border border-[#E2E8F0] shadow-sm">
-                  <div className="relative aspect-[4/3] bg-[#E2E8F0]">
-                    <Image src={image.src} alt={image.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
-                  </div>
-                  <figcaption className="p-4 text-sm text-[#475569]">{image.caption}</figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-
 </Container>
       </div>
     </>
