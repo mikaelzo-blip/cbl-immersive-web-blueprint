@@ -11,7 +11,7 @@ export function ExpertiseSection() {
         <SectionHeading
           badge="Kompetensi Teknis"
           title="Bidang Keahlian &amp; Spesialisasi Lapangan"
-          description="Keahlian spesifik yang diterapkan dalam penanganan setiap masalah teknis untuk meminimalkan risiko kegagalan sistem."
+          description="Bidang pengalaman yang tercatat dalam dokumen proyek; metode dan personel ditentukan menurut lingkup setiap pekerjaan."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

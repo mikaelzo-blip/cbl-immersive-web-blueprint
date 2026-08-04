@@ -7,7 +7,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 
 export const metadata: Metadata = {
-  title: `Kebijakan Privasi | ${companyInfo.shortName}`,
+  title: 'Kebijakan Privasi',
   description: 'Kebijakan privasi perlindungan data pengguna CV Cakrawala Buana Lestari (CBL). Data form hanya diteruskan ke WhatsApp/Email tanpa disimpan di server.',
   alternates: {
     canonical: `${companyInfo.seo.siteUrl}/kebijakan-privasi`,

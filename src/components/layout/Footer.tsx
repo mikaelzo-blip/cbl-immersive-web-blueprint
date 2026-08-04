@@ -36,7 +36,7 @@ export function Footer() {
             <p className="text-sm text-[#E2E8F0] leading-relaxed">
               Penyedia jasa teknik terpadu spesialis kelistrikan, otomatisasi industri, mekanikal presisi, HVAC refrigerasi, sistem pompa, dan pencahayaan khusus.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#15426B] text-[#00A8CC] text-xs font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#15426B] text-[#67E8F9] text-xs font-semibold">
               <DynamicIcon name="Clock" size={14} />
               <span>Jam Operasional: {companyInfo.serviceHours}</span>
             </div>
@@ -131,7 +131,7 @@ export function Footer() {
         {/* Disclaimer Merek & Hak Cipta */}
         <div className="pt-8 space-y-4 text-xs text-[#E2E8F0]/70">
           <p className="leading-relaxed bg-[#15426B]/50 p-4 rounded-xl border border-[#15426B]">
-            <strong className="text-[#00A8CC]">Pemberitahuan Merek:</strong> {brandDisclaimer}
+            <strong className="text-[#67E8F9]">Pemberitahuan Merek:</strong> {brandDisclaimer}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#15426B]/40">
             <p>

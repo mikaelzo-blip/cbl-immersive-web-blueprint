@@ -1,51 +1,23 @@
-'use client';
-
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { companyInfo } from '@/data/company';
 
 export function HeroSection() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  // Pause video when out of viewport to save battery & performance
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video || typeof IntersectionObserver === 'undefined') return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            video.play().catch(() => {});
-          } else {
-            video.pause();
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="relative pt-12 pb-16 md:pt-20 md:pb-28 overflow-hidden border-b border-[#E2E8F0] bg-white">
-      {/* 1. Background Video Layer (Pixabay Robot Machine Work Video) */}
+      {/* Dokumentasi proyek sebagai latar hero; dioptimalkan oleh next/image. */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="w-full h-full object-cover opacity-90"
-        >
-          <source src="/video/hero-bg.mp4" type="video/mp4" />
-        </video>
+        <Image
+          src="/images/projects/penggantian-dc-drive-motor/01.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-85"
+        />
         {/* Layer Overlay Putih Transparan (Video Jelas Terlihat & Teks Tetap Tajam) */}
         <div className="absolute inset-0 bg-white/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#F0F7FD]/30 via-white/45 to-white/90" />
@@ -66,10 +38,10 @@ export function HeroSection() {
       {/* 3. Hero Content (Jelas, Tajam, & Kontras di Atas Video Latar) */}
       <Container className="relative z-10">
         <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-          {/* Status Badge 24/7 */}
+          {/* Rentang pengalaman yang didukung register proyek. */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 border border-[#0E6BA8]/30 text-[#0E6BA8] text-xs font-bold mb-6 shadow-sm backdrop-blur-xs">
             <span className="w-2 h-2 rounded-full bg-[#F97316] animate-pulse" />
-            <span>Layanan Teknik &amp; Penanganan Darurat 24 Jam / 7 Hari</span>
+            <span>Rekam pekerjaan terverifikasi 2022-2026</span>
           </div>
 
           {/* Heading Utama */}

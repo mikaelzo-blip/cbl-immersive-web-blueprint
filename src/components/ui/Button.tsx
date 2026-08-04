@@ -28,7 +28,7 @@ export function Button({
     secondary: 'bg-[#0F2942] text-white hover:bg-[#15426B] shadow-md hover:shadow-lg focus-visible:outline-[#0F2942]',
     outline: 'border-2 border-[#0E6BA8] text-[#0E6BA8] hover:bg-[#F0F7FD] focus-visible:outline-[#0E6BA8]',
     ghost: 'text-[#15426B] hover:bg-[#F0F7FD] hover:text-[#0E6BA8] focus-visible:outline-[#0E6BA8]',
-    whatsapp: 'bg-[#F97316] text-white hover:bg-[#EA580C] shadow-md hover:shadow-lg focus-visible:outline-[#F97316]',
+    whatsapp: 'bg-[#C2410C] text-white hover:bg-[#9A3412] shadow-md hover:shadow-lg focus-visible:outline-[#C2410C]',
   };
 
   const sizes = {

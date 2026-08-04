@@ -11,7 +11,7 @@ export function ServicesSection() {
         <SectionHeading
           badge="Cakupan Layanan Utama"
           title="6 Divisi Layanan Teknik Terpadu"
-          description="Solusi pengerjaan teknis komprehensif yang dirancang untuk mendukung kelancaran operasional fasilitas fisik dan infrastruktur industri."
+          description="Pengalaman terdokumentasi dan cakupan layanan yang dapat ditawarkan setelah survei, verifikasi kondisi, serta penetapan tenaga yang sesuai."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">

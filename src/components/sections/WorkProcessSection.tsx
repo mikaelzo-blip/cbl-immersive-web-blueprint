@@ -11,7 +11,7 @@ export function WorkProcessSection() {
         <SectionHeading
           badge="Alur Pengerjaan Sistematis"
           title="4 Tahap Metodologi Kerja CBL"
-          description="Setiap pengerjaan teknis dilaksanakan secara terstruktur dari inspeksi awal hingga penyerahan laporan resmi."
+          description="Alur kerja disusun dari pemeriksaan awal, penetapan lingkup, pelaksanaan, hingga dokumentasi serah terima sesuai kebutuhan proyek."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -16,35 +16,28 @@
 import { LegalDocumentItem, K3ProcedureStep, VendorDocDownload } from '@/types/legal';
 
 export const legalNotice = 
-  'Demi menjaga keamanan data legalitas badan usaha dari penyalahgunaan di publik, nomor fisik dokumen perusahaan (NPWP, NIB, SIUP) tidak tercantum di halaman ini. Salinan berkas lengkap yang telah dilegalisir dapat kami kirimkan atas permintaan resmi untuk keperluan registrasi vendor (Vendor Registration / Procurement Onboarding).';
+  'Demi menjaga keamanan data legalitas badan usaha dari penyalahgunaan di publik, nomor fisik dokumen perusahaan (NPWP, NIB, SIUP) tidak tercantum di halaman ini. Ketersediaan dan bentuk salinan berkas untuk registrasi vendor akan dikonfirmasi setelah permintaan resmi diterima.';
 
 export const legalDocuments: LegalDocumentItem[] = [
   {
     id: 'akta-pendirian',
-    title: 'Akta Pendirian Perusahaan & Perubahan',
+    title: 'Akta Pendirian dan Pendaftaran Badan Usaha',
     category: 'Legalitas Badan Usaha',
-    description: 'Dokumen pendirian badan hukum CV Cakrawala Buana Lestari terdaftar resmi di Kementerian Hukum dan Hak Asasi Manusia Republik Indonesia.',
+    description: 'Akta pendirian Persekutuan Komanditer dan bukti pendaftarannya pada Sistem Administrasi Badan Usaha telah diverifikasi secara internal.',
     availableOnRequest: true,
   },
   {
     id: 'nib',
     title: 'Nomor Induk Berusaha (NIB)',
     category: 'Perizinan Berusaha',
-    description: 'NIB resmi sebagai identitas pelaku usaha di bidang jasa teknik, kelistrikan, perdagangan suku cadang, dan pemeliharaan fasilitas.',
+    description: 'Nomor Induk Berusaha perusahaan tersedia. Kesesuaian kegiatan dan persyaratan sektoral tetap diperiksa untuk setiap tender atau lingkup pekerjaan.',
     availableOnRequest: true,
   },
   {
     id: 'npwp-pkp',
     title: 'NPWP Perusahaan & Status Perpajakan',
     category: 'Kepatuhan Pajak',
-    description: 'Kartu Pokok Wajib Pajak atas nama CV Cakrawala Buana Lestari dengan kepatuhan pelaporan kewajiban perpajakan berkala.',
-    availableOnRequest: true,
-  },
-  {
-    id: 'domisili-izin',
-    title: 'Surat Keterangan Domisili & Izin Operasional',
-    category: 'Kelayakan Tempat Usaha',
-    description: 'Keterangan domisili kantor resmi di Tanjung Priok, Jakarta Utara, dilengkapi izin operasional tempat kerja.',
+    description: 'Dokumen NPWP dan pengukuhan PKP perusahaan telah diverifikasi secara internal; status pelaporan berkala tidak dinyatakan pada halaman publik.',
     availableOnRequest: true,
   },
 ];
@@ -52,7 +45,7 @@ export const legalDocuments: LegalDocumentItem[] = [
 export const k3Procedures: K3ProcedureStep[] = [
   {
     id: 'work-permit',
-    title: 'Ijin Kerja (Work Permit / PTW)',
+    title: 'Izin Kerja (Work Permit / PTW)',
     description: 'Penerbitan dokumen izin kerja aman sebelum memasuki area kerja berisiko tinggi di fasilitas mitra.',
     iconName: 'FileCheck',
   },
@@ -65,7 +58,7 @@ export const k3Procedures: K3ProcedureStep[] = [
   {
     id: 'apd-standard',
     title: 'Penggunaan APD Lengkap (PPE)',
-    description: 'Wajib mengggunakan Helm K3, Sepatu Safety Insulated (tahan listrik), Sarung Tangan Isolasi, dan Kacamata Pelindung.',
+    description: 'Penggunaan APD ditentukan oleh bahaya pekerjaan dan persyaratan lokasi, termasuk pelindung kepala, kaki, tangan, dan mata bila relevan.',
     iconName: 'UserCheck',
   },
   {
@@ -85,17 +78,17 @@ export const k3Procedures: K3ProcedureStep[] = [
 export const handoverDocs = [
   'Surat Pesanan / Order Pekerjaan (PO / SPK)',
   'Berita Acara Serah Terima Pekerjaan (BAST)',
-  'Laporan Pengujian Parameter Teknis (Test & Commissioning Report)',
-  'Skema Wiring Terbarukan / As-Built Drawing Diagram',
-  'Rekomendasi Pemeliharaan Preventif Berkala',
+  'Laporan pengujian atau commissioning bila dipersyaratkan',
+  'Gambar wiring / as-built bila termasuk ruang lingkup',
+  'Rekomendasi tindak lanjut bila disepakati',
 ];
 
 export const vendorRegistrationStatement = 
-  'CV Cakrawala Buana Lestari menyatakan siap dan berpengalaman mengikuti prosedur Registrasi Vendor (Vendor Registration / Procurement Onboarding) pada gedung komersial, pengelola area rekreasi, serta perusahaan manufaktur. Kami menyediakan seluruh berkas administrasi pendukung yang disyaratkan oleh tim pengadaan (procurement).';
+  'Arsip pekerjaan CBL memuat PO/SPK, surat jalan, BAST/BA, dan dokumen pendukung lain. Kelengkapan untuk registrasi vendor akan ditinjau terhadap persyaratan calon klien; dokumen sensitif disampaikan melalui kanal resmi, bukan halaman publik.';
 
 export const companyProfileDoc: VendorDocDownload = {
   title: 'Company Profile & Dokumen Pengenalan CBL (PDF)',
   fileName: 'company-profile.pdf',
   available: false, // Belum ada di repo -> render tombol disabled "menyusul"
-  note: 'Berkas digital Company Profile dalam bentuk dokumen PDF sedang dalam tahap penyelarasan versi cetak terbaru (Menyusul).',
+  note: 'Master company profile tersedia untuk verifikasi internal. Versi publik yang telah disanitasi dan disetujui belum tersedia untuk diunduh.',
 };

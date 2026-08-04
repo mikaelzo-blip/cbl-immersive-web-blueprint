@@ -9,8 +9,8 @@ import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 
 export const metadata: Metadata = {
-  title: `Legalitas & Prosedur K3 | ${companyInfo.shortName}`,
-  description: 'Dokumentasi kelayakan legalitas badan usaha, kepatuhan prosedur K3 lapangan, dan kesiapan registrasi vendor CV Cakrawala Buana Lestari (CBL).',
+  title: 'Legalitas & Prosedur K3',
+  description: 'Informasi badan usaha, pendekatan K3 berbasis proyek, dan proses permintaan dokumen vendor CV Cakrawala Buana Lestari.',
   alternates: {
     canonical: `${companyInfo.seo.siteUrl}/legalitas`,
   },
@@ -35,7 +35,7 @@ export default function LegalitasPage() {
         <SectionHeading
           badge="Informasi Pengadaan &amp; Kepatuhan"
           title="Legalitas Perusahaan &amp; Prosedur K3"
-          description="Transparansi kelengkapan administrasi badan usaha dan standar keselamatan kerja lapangan untuk kemudahan proses registrasi vendor."
+          description="Ringkasan dokumen yang telah diverifikasi internal, batas publikasi, dan pendekatan keselamatan berbasis risiko proyek."
           as="h1"
         />
 
@@ -70,9 +70,9 @@ export default function LegalitasPage() {
                     <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20">
                       {doc.category}
                     </span>
-                    <span className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
+                    <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1">
                       <DynamicIcon name="CheckCircle2" size={14} />
-                      <span>Tersedia Salinan</span>
+                      <span>Terverifikasi Internal</span>
                     </span>
                   </div>
 
@@ -100,7 +100,7 @@ export default function LegalitasPage() {
                   Prosedur K3 &amp; Keselamatan Lapangan
                 </h2>
                 <p className="text-xs sm:text-sm text-[#475569] mt-0.5">
-                  Penerapan protokol penanganan berisiko tinggi untuk melindungi personil dan peralatan fasilitas mitra.
+                  Prosedur operasional yang disesuaikan dengan risiko pekerjaan dan ketentuan lokasi; bukan klaim sertifikasi K3.
                 </p>
               </div>
             </div>
@@ -137,7 +137,7 @@ export default function LegalitasPage() {
               <span>Berkas Dokumentasi Serah Terima</span>
             </h2>
             <p className="text-xs sm:text-sm text-[#475569] mb-4 leading-relaxed">
-              Setiap penanganan pekerjaan teknis yang diselesaikan akan disertai berkas kelengkapan transparan:
+              Dokumen berikut disiapkan sesuai lingkup dan persyaratan kontrak, sehingga tidak selalu berlaku pada setiap pekerjaan:
             </p>
             <ul className="space-y-3 text-xs sm:text-sm text-[#475569]">
               {handoverDocs.map((docName, idx) => (
@@ -160,7 +160,7 @@ export default function LegalitasPage() {
                 {vendorRegistrationStatement}
               </p>
               <div className="pt-4 border-t border-[#15426B] flex items-center justify-between text-xs text-[#00A8CC] font-semibold">
-                <span>Siap memenuhi syarat kualifikasi teknis gedung</span>
+                <span>Ditinjau sesuai persyaratan calon klien</span>
                 <DynamicIcon name="Check" size={16} />
               </div>
             </div>

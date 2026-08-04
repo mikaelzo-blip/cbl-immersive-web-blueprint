@@ -20,6 +20,7 @@ export function ContactForm() {
     email: '',
     serviceInterest: serviceDivisions[0].title,
     location: '',
+    desiredSchedule: '',
     message: '',
     agreedToTerms: false,
   });
@@ -127,7 +128,7 @@ export function ContactForm() {
             required
           />
           {errors.name && (
-            <p id="name-error" className="text-xs text-red-500 mt-1 font-medium">
+            <p id="name-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
               {errors.name}
             </p>
           )}
@@ -153,7 +154,7 @@ export function ContactForm() {
             required
           />
           {errors.company && (
-            <p id="company-error" className="text-xs text-red-500 mt-1 font-medium">
+            <p id="company-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
               {errors.company}
             </p>
           )}
@@ -197,7 +198,7 @@ export function ContactForm() {
             required
           />
           {errors.whatsapp && (
-            <p id="whatsapp-error" className="text-xs text-red-500 mt-1 font-medium">
+            <p id="whatsapp-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
               {errors.whatsapp}
             </p>
           )}
@@ -224,7 +225,7 @@ export function ContactForm() {
             } focus:outline-none transition-colors`}
           />
           {errors.email && (
-            <p id="email-error" className="text-xs text-red-500 mt-1 font-medium">
+            <p id="email-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
               {errors.email}
             </p>
           )}
@@ -272,10 +273,26 @@ export function ContactForm() {
           required
         />
         {errors.location && (
-          <p id="location-error" className="text-xs text-red-500 mt-1 font-medium">
+          <p id="location-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
             {errors.location}
           </p>
         )}
+      </div>
+
+      {/* Pesan Kebutuhan */}
+      <div>
+        <label htmlFor="desiredSchedule" className="block text-xs font-bold text-[#0F2942] mb-1">
+          Jadwal yang Diharapkan <span className="text-[#475569] font-normal">(Opsional)</span>
+        </label>
+        <input
+          type="text"
+          id="desiredSchedule"
+          name="desiredSchedule"
+          value={formData.desiredSchedule}
+          onChange={handleChange}
+          placeholder="Contoh: Survei minggu kedua Agustus 2026"
+          className="w-full px-3.5 py-2.5 text-sm rounded-xl border border-[#E2E8F0] focus:border-[#0E6BA8] focus:outline-none transition-colors"
+        />
       </div>
 
       {/* Pesan Kebutuhan */}
@@ -298,7 +315,7 @@ export function ContactForm() {
           required
         />
         {errors.message && (
-          <p id="message-error" className="text-xs text-red-500 mt-1 font-medium">
+          <p id="message-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
             {errors.message}
           </p>
         )}
@@ -322,7 +339,7 @@ export function ContactForm() {
           </span>
         </label>
         {errors.agreedToTerms && (
-          <p id="agreedToTerms-error" className="text-xs text-red-500 mt-1 font-medium">
+          <p id="agreedToTerms-error" role="alert" className="text-xs text-red-500 mt-1 font-medium">
             {errors.agreedToTerms}
           </p>
         )}

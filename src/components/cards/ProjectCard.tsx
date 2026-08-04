@@ -9,9 +9,12 @@ import { cn } from '@/lib/utils';
 interface ProjectCardProps {
   project: Project;
   className?: string;
+  headingLevel?: 'h2' | 'h3';
+  preload?: boolean;
 }
 
-export function ProjectCard({ project, className }: ProjectCardProps) {
+export function ProjectCard({ project, className, headingLevel = 'h3', preload = false }: ProjectCardProps) {
+  const Heading = headingLevel;
   return (
     <article className={cn(
       'group relative flex flex-col bg-white rounded-2xl border border-[#E2E8F0] shadow-sm card-hover-lift overflow-hidden h-full',
@@ -22,6 +25,8 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
           src={project.images?.cover ?? project.image}
           alt={project.imageAlt}
           fill
+          preload={preload}
+          quality={65}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
@@ -33,9 +38,9 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
       </Link>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="text-xl font-bold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors mb-3 leading-snug">
+        <Heading className="text-xl font-bold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors mb-3 leading-snug">
           <Link href={`/proyek/${project.slug}`}>{project.title}</Link>
-        </h3>
+        </Heading>
         <p className="text-sm text-[#475569] leading-relaxed mb-5">{project.summary}</p>
 
         <div className="pt-4 border-t border-[#E2E8F0] mb-5">

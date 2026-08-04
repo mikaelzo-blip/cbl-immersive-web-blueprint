@@ -24,10 +24,12 @@ export function MobileMenu({
   handleNavClick,
 }: MobileMenuProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   // Focus trap & Escape key listener
   useEffect(() => {
     if (!isOpen) return;
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -69,6 +71,7 @@ export function MobileMenu({
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = '';
+      previouslyFocusedRef.current?.focus();
     };
   }, [isOpen, onClose]);
 
@@ -168,7 +171,7 @@ export function MobileMenu({
         {/* Menu Footer CTA */}
         <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
           <div className="text-xs text-[#475569] font-medium">
-            Layanan Darurat &amp; Konsultasi 24/7:
+            Konsultasi kebutuhan proyek:
           </div>
           <Button
             href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(

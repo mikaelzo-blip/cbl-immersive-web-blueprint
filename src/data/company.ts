@@ -1,22 +1,31 @@
 import { CompanyInfo, ServiceDivision, ExpertiseItem, WorkProcessStep, BrandItem, WhyUsPoint, NavigationItem } from '@/types/company';
 
-// TODO: konfirmasi domain sebelum go-live
-// TODO: ganti ke email domain sendiri (mis. marketing@<domain>) begitu domain aktif
+const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '');
+const vercelPreviewHost = process.env.NEXT_PUBLIC_VERCEL_URL;
+const siteUrl = configuredSiteUrl ?? (vercelPreviewHost ? `https://${vercelPreviewHost}` : 'http://localhost:3000');
+
 export const companyInfo: CompanyInfo = {
   legalName: 'CV Cakrawala Buana Lestari',
   shortName: 'CBL',
-  address: 'Jl Papanggo 2C No. 38, Kel. Papanggo, Kec. Tanjung Priok, Jakarta Utara 14340',
+  address: 'Jl. Papanggo II C No. 27, Papanggo, Tanjung Priok, Jakarta Utara, DKI Jakarta 14340',
+  addressParts: {
+    streetAddress: 'Jl. Papanggo II C No. 27',
+    addressLocality: 'Jakarta Utara',
+    addressRegion: 'DKI Jakarta',
+    postalCode: '14340',
+    addressCountry: 'ID',
+  },
   phone: '(021) 2606-3396',
   phoneRaw: '02126063396',
   whatsappNumber: '6285184549522',
   whatsappFormatted: '0851-8454-9522',
-  email: 'cvcakrawala.market@gmail.com', // TODO: ganti ke email domain sendiri begitu domain aktif
-  serviceHours: '24 jam / 7 hari',
+  email: 'cvcakrawala.market@gmail.com',
+  serviceHours: 'Jadwal layanan dikonfirmasi saat konsultasi',
   seo: {
-    siteUrl: 'https://cakrawala-buana-lestari.co.id', // TODO: konfirmasi domain sebelum go-live
+    siteUrl,
     defaultTitle: 'CV Cakrawala Buana Lestari (CBL) — Penyedia Jasa Teknik Terpadu',
     defaultDescription: 'Penyedia layanan teknik industri & fasilitas terpadu: kelistrikan & panel kontrol, otomasi PLC/HMI, mekanikal presisi, HVAC refrigerasi, sistem pompa, dan pencahayaan khusus.',
-    ogImage: '/images/og-cbl.jpg',
+    ogImage: '/opengraph-image',
   },
 };
 
@@ -36,8 +45,8 @@ export const serviceDivisions: ServiceDivision[] = [
     id: 'kelistrikan-panel',
     slug: 'kelistrikan-panel',
     title: 'Kelistrikan & Panel Kontrol',
-    description: 'Perakitan, perbaikan, dan perawatan panel distribusi listrik industri serta sistem proteksi arus daya.',
-    longDescription: 'Divisi Kelistrikan & Panel Kontrol CBL melayani perancangan, perakitan baru, hingga troubleshooting panel distribusi listrik utama (PUTR), panel sub-distribusi, dan panel kontrol penggerak motor untuk gedung komersial dan fasilitas industri.',
+    description: 'Pengadaan, pemasangan, penggantian, wiring, dan pemeriksaan panel serta komponen proteksi sesuai lingkup proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup panel kontrol, MCCB, kontaktor, drive, soft starter, wiring, dan komponen distribusi. Kebutuhan perancangan atau pengujian khusus ditetapkan setelah survei dan telaah dokumen teknis.',
     iconName: 'Zap',
     capabilities: [
       'Panel kontrol & distribusi utama',
@@ -85,8 +94,8 @@ export const serviceDivisions: ServiceDivision[] = [
     id: 'otomasi-kontrol',
     slug: 'otomasi-kontrol',
     title: 'Otomasi & Sistem Kontrol',
-    description: 'Modernisasi sistem kendali otomatisasi proses, migrasi PLC, dan integrasi kendali terpusat.',
-    longDescription: 'Divisi Otomasi & Sistem Kontrol CBL menangani pemrograman logika PLC, pembaruan antarmuka layar sentuh HMI, serta integrasi sensor lapangan untuk meningkatkan presisi dan efisiensi urutan operasional fasilitas industri.',
+    description: 'Penggantian, migrasi, setting, wiring, dan pengujian PLC/HMI serta perangkat kendali motor sesuai lingkup proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup penggantian panel view dan PLC, inverter, drive, soft starter, sensor, wiring, setting, dan commissioning. Perubahan logika atau integrasi lanjutan hanya ditawarkan setelah data sistem eksisting ditelaah.',
     iconName: 'Cpu',
     capabilities: [
       'Migrasi & pemrograman PLC',
@@ -134,14 +143,14 @@ export const serviceDivisions: ServiceDivision[] = [
     slug: 'mekanikal-presisi',
     title: 'Mekanikal & Komponen Presisi',
     description: 'Instalasi, penggantian, dan alignment unit mekanikal transmisi daya dan konveyor industri.',
-    longDescription: 'Divisi Mekanikal & Komponen Presisi CBL menyediakan layanan penataan penyeimbangan poros (alignment), overhaul reducer gearbox, pergantian bearing presisi, dan perawatan rantai konveyor industri.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup pengadaan dan penggantian bearing, gearbox, shaft, roll, rantai, serta pekerjaan conveyor. Metode dan kebutuhan tenaga spesialis ditentukan setelah pemeriksaan lingkup.',
     iconName: 'Wrench',
     capabilities: [
       'Pemasangan & penggantian bearing presisi',
       'Perawatan & perbaikan gearbox transmisi',
       'Coupling & shaft alignment',
       'Sistem konveyor & perbaikan rantai penggerak',
-      'Laser alignment & penyelarasan mekanikal',
+      'Penyelarasan mekanikal sesuai lingkup proyek',
     ],
     capabilityDetails: [
       {
@@ -161,8 +170,8 @@ export const serviceDivisions: ServiceDivision[] = [
         description: 'Penyetelan ketegangan sabuk/rantai konveyor dan penggantian sprocket penggerak yang tererosi.',
       },
       {
-        label: 'Laser alignment & penyelarasan mekanikal',
-        description: 'Pengukuran penyelarasan dua sumbu presisi tinggi menggunakan perangkat optik laser presisi.',
+        label: 'Penyelarasan mekanikal sesuai lingkup proyek',
+        description: 'Pemeriksaan dan penyesuaian posisi komponen dilakukan sesuai dokumen kerja; alat dan mitra spesialis ditentukan setelah survei.',
       },
     ],
     commonConditions: [
@@ -176,41 +185,36 @@ export const serviceDivisions: ServiceDivision[] = [
     id: 'hvac-refrigerasi',
     slug: 'hvac-refrigerasi',
     title: 'HVAC & Refrigerasi',
-    description: 'Penanganan sistem pengondisian udara skala besar, pendingin proses, dan perpipaan ducting.',
-    longDescription: 'Divisi HVAC & Refrigerasi CBL menangani overhaul kompresor pendingin, perawatan berkala AC VRF / Chiller, pembuatan ducting sirkulasi, dan pembersihan sistem refrigeran gedung.',
+    description: 'Perbaikan AC VRF, penggantian instalasi AC split duct, kompresor, dan pekerjaan refrigerasi sesuai lingkup proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup perbaikan AC VRF, penggantian instalasi AC split duct, penggantian kompresor, pemeriksaan tekanan, vacuum, dan pekerjaan refrigerasi sesuai lingkup proyek.',
     iconName: 'Wind',
     capabilities: [
-      'Penanganan AC VRF & sistem chiller',
+      'Perbaikan sistem AC VRF',
       'Instalasi & perbaikan AC split duct / ceiling',
-      'Perancangan & perbaikan fabrikasi ducting',
+      'Penggantian instalasi AC split duct',
       'Overhaul & perbaikan kompresor refrigerasi',
-      'Sistem pendingin proses industri',
-      'Preventive maintenance berkala',
+      'Pemeriksaan tekanan & sistem refrigerasi',
     ],
     capabilityDetails: [
       {
-        label: 'Penanganan AC VRF & sistem chiller',
-        description: 'Pemantauan tekanan freon siklus kondensasi dan kalibrasi sensor suhu ruangan terpusat.',
+        label: 'Perbaikan sistem AC VRF',
+        description: 'Pemeriksaan dan perbaikan unit VRF berdasarkan kondisi, ruang lingkup kerja, dan prosedur lokasi klien.',
       },
       {
         label: 'Instalasi & perbaikan AC split duct / ceiling',
         description: 'Pemasangan unit pendingin tersembunyi ceiling cassette dan perbaikan motor blower penarik udara.',
       },
       {
-        label: 'Perancangan & perbaikan fabrikasi ducting',
-        description: 'Pembuatan saluran udara BJLS terisolasi dan perbaikan kebocoran sambungan ducting pencabang.',
+        label: 'Penggantian instalasi AC split duct',
+        description: 'Pembongkaran dan pemasangan instalasi pengganti dilakukan sesuai gambar, spesifikasi, dan batas pekerjaan yang disepakati.',
       },
       {
         label: 'Overhaul & perbaikan kompresor refrigerasi',
         description: 'Bongkar pasang kompresor semi-hermetic, pengujian uji vakum micron, dan pergantian filter drier.',
       },
       {
-        label: 'Sistem pendingin proses industri',
-        description: 'Penanganan sirkulasi pendingin mesin produksi dan penyesuaian laju aliran refrigeran.',
-      },
-      {
-        label: 'Preventive maintenance berkala',
-        description: 'Jadwal pembersihan berkala evaporator/kondensor dan pemeriksaan ketersediaan oli kompresor.',
+        label: 'Pemeriksaan tekanan & sistem refrigerasi',
+        description: 'Pemeriksaan tekanan, vacuum, sambungan, dan komponen refrigerasi dilaksanakan bila termasuk ruang lingkup proyek.',
       },
     ],
     commonConditions: [
@@ -224,8 +228,8 @@ export const serviceDivisions: ServiceDivision[] = [
     id: 'pompa-perairan',
     slug: 'pompa-perairan',
     title: 'Pompa & Sistem Perairan',
-    description: 'Instalasi, overhaul, dan pembuatan otomatisasi sistem pemompaan air gedung serta fasilitas rekreasi.',
-    longDescription: 'Divisi Pompa & Sistem Perairan CBL menangani instalasi rangkaian pompa booster bertekanan konstan, otomatisasi pergantian pompa (alternating control), overhaul sentrifugal, dan perbaikan filtrasi air.',
+    description: 'Pengadaan pompa submersible, booster, sentrifugal, filtrasi, dan komponen sistem air sesuai spesifikasi proyek.',
+    longDescription: 'Pengalaman terdokumentasi CBL mencakup pengadaan pompa submersible, booster, sentrifugal, pool pump, chlorinator, material plumbing, dan filtrasi. Pemasangan atau otomatisasi ditawarkan setelah survei dan verifikasi kondisi eksisting.',
     iconName: 'Droplets',
     capabilities: [
       'Pompa air transfer & submersible',
@@ -312,37 +316,37 @@ export const expertiseItems: ExpertiseItem[] = [
   {
     id: 'distribusi-daya',
     title: 'Distribusi & Proteksi Daya',
-    description: 'Perancangan dan pengujian sistem pembagi arus listrik dengan tingkat proteksi isolasi sesuai standar teknis keselamatan.',
+    description: 'Pengalaman pada panel, MCCB, kontaktor, wiring, drive, dan komponen proteksi yang tercatat dalam dokumen proyek.',
     iconName: 'ShieldCheck',
   },
   {
     id: 'pemrograman-plc',
     title: 'Program PLC & Logika Industri',
-    description: 'Pengkodean logika kontrol PLC untuk efisiensi urutan kerja mesin dan pencegahan kecelakaan operasional.',
+    description: 'Penggantian dan migrasi PLC/HMI, wiring, setting, dan pemeriksaan fungsi sesuai kebutuhan sistem eksisting.',
     iconName: 'Code',
   },
   {
     id: 'penyelarasan-mekanikal',
     title: 'Penyelarasan Shaft & Bearing',
-    description: 'Toleransi pengukuran presisi tinggi pada pemasangan bearing dan poros untuk meminimalkan getaran dan aus.',
+    description: 'Pengadaan, penggantian, dan penyelarasan bearing, shaft, roll, gearbox, serta komponen conveyor sesuai lingkup proyek.',
     iconName: 'Activity',
   },
   {
     id: 'termodinamika-hvac',
     title: 'Sirkulasi Termal & HVAC',
-    description: 'Pengaturan kesetimbangan tekanan refrigeran dan aliran udara ducting untuk stabilitas suhu ruangan operasional.',
+    description: 'Perbaikan AC VRF, penggantian AC split duct, pemeriksaan tekanan, vacuum, dan komponen refrigerasi.',
     iconName: 'Thermometer',
   },
   {
     id: 'dinamika-fluida-pompa',
     title: 'Otomatisasi Aliran Fluida',
-    description: 'Penyetelan head total dan debit pompa berpasangan dengan pemantauan tekanan otomatis.',
+    description: 'Pengadaan dan penanganan pompa submersible, booster, sentrifugal, filtrasi, serta material plumbing.',
     iconName: 'Gauge',
   },
   {
     id: 'pencahayaan-khusus',
     title: 'Pencahayaan Khusus & Outdoor',
-    description: 'Pemasangan armatur lampu kedap air (IP68) dan penataan konsol pengendali ritme pencahayaan pertunjukan.',
+    description: 'Pengadaan dan instalasi lampu show, underwater lighting, jalur daya, kontrol DMX, serta pengujian fungsi.',
     iconName: 'Sparkles',
   },
 ];
@@ -374,8 +378,8 @@ export const workProcessSteps: WorkProcessStep[] = [
     description: 'Pengujian beban sistem secara bertahap untuk memastikan kesesuaian parameter teknis sebelum pengoperasian penuh.',
     details: [
       'Test run dan kalibrasi sensor / proteksi',
-      'Pengujian simulasi kondisi darurat dan kendali',
-      'Instruksi penggunaan kepada staf operasional setempat',
+      'Pengujian fungsi sesuai kriteria penerimaan proyek',
+      'Instruksi penggunaan bila termasuk ruang lingkup',
     ],
   },
   {
@@ -383,9 +387,9 @@ export const workProcessSteps: WorkProcessStep[] = [
     title: 'Dokumentasi & Serah Terima',
     description: 'Penyusunan berkas hasil pekerjaan secara transparan sebagai referensi perawatan fasilitas di masa mendatang.',
     details: [
-      'Penerbitan Berita Acara Serah Terima (BAST)',
-      'Penyerahan skema wiring / diagram sistem terbaru',
-      'Rekomendasi jadwal perawatan preventif',
+      'BAST atau dokumen penerimaan sesuai persyaratan',
+      'Gambar wiring / as-built bila termasuk ruang lingkup',
+      'Rekomendasi tindak lanjut bila disepakati',
     ],
   },
 ];
@@ -525,20 +529,20 @@ export const whyUsPoints: WhyUsPoint[] = [
   },
   {
     id: 'reaksi-cepat',
-    title: 'Dukungan Siaga 24 Jam',
-    description: 'Tim teknis siap merespon panggilan darurat kendala fasilitas operasional kapan pun terjadi downtime.',
+    title: 'Respons Berbasis Kebutuhan Proyek',
+    description: 'Permintaan ditelaah untuk menentukan lingkup, jadwal, akses lokasi, material, dan tenaga yang sesuai sebelum pekerjaan dimulai.',
     iconName: 'Clock',
   },
   {
     id: 'pendekatan-teknis',
-    title: 'Pendekatan Berbasis Komponen SAH',
-    description: 'Penggunaan suku cadang bermerek industri bereputasi untuk menjamin keandalan umur pakai sistem.',
+    title: 'Verifikasi Spesifikasi Komponen',
+    description: 'Merek, tipe, kapasitas, dimensi, dan jumlah diperiksa terhadap dokumen kebutuhan sebelum pengadaan atau pemasangan.',
     iconName: 'CheckCircle2',
   },
   {
     id: 'transparansi-kerja',
     title: 'Dokumentasi & Berita Acara Rinci',
-    description: 'Setiap tahapan penanganan disertai laporan pengujian parameter teknis dan skema sistem terbarukan.',
+    description: 'Dokumen pengiriman, pemeriksaan, pengujian, dan serah terima disiapkan sesuai persyaratan setiap proyek.',
     iconName: 'FileText',
   },
 ];

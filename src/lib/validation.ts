@@ -6,6 +6,7 @@ export interface ContactFormData {
   email?: string;
   serviceInterest: string;
   location: string;
+  desiredSchedule?: string;
   message: string;
   agreedToTerms: boolean;
 }

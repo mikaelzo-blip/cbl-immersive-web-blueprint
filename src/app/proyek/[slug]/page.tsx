@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { buildProjectWhatsappUrl } from '@/lib/whatsapp';
+import { serializeJsonLd } from '@/lib/json-ld';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -35,11 +36,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: project.title,
     description: project.summary,
+    alternates: {
+      canonical: `${companyInfo.seo.siteUrl}/proyek/${project.slug}`,
+    },
     openGraph: {
       title: `${project.title} | ${companyInfo.shortName}`,
       description: project.summary,
       type: 'article',
       url: `${companyInfo.seo.siteUrl}/proyek/${project.slug}`,
+      images: [{ url: project.images?.cover ?? project.image, alt: project.imageAlt }],
     },
   };
 }
@@ -56,7 +61,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
   const matchedService = serviceDivisions.find((s) => s.id === project.category);
 
   const relatedProjects = projects
-    .filter((p) => p.slug !== project.slug)
+    .filter((p) => p.slug !== project.slug && p.category === project.category)
     .slice(0, 3);
 
   const jsonLd = {
@@ -65,13 +70,13 @@ export default async function CaseStudyDetailPage({ params }: Props) {
     name: project.title,
     headline: project.title,
     description: project.summary,
+    url: `${companyInfo.seo.siteUrl}/proyek/${project.slug}`,
+    image: `${companyInfo.seo.siteUrl}${project.images?.cover ?? project.image}`,
     author: {
-      '@type': 'Organization',
-      name: companyInfo.legalName,
+      '@id': `${companyInfo.seo.siteUrl}/#organization`,
     },
     publisher: {
-      '@type': 'Organization',
-      name: companyInfo.legalName,
+      '@id': `${companyInfo.seo.siteUrl}/#organization`,
     },
     genre: project.categoryLabel,
   };
@@ -82,7 +87,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
 
       <div className="py-8 md:py-16 bg-[#F8FAFC] min-h-screen">
@@ -224,9 +229,9 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                   <span className="text-xs font-bold text-[#0E6BA8] uppercase tracking-wider block mb-1">
                     Divisi Layanan Terkait:
                   </span>
-                  <h4 className="font-bold text-[#0F2942] text-base mb-2">
+                  <h2 className="font-bold text-[#0F2942] text-base mb-2">
                     {matchedService.title}
-                  </h4>
+                  </h2>
                   <p className="text-xs text-[#475569] mb-4 leading-relaxed">
                     {matchedService.description}
                   </p>

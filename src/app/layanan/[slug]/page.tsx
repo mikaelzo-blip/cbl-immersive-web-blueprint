@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/Button';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { SectionHeading } from '@/components/ui/SectionHeading';
+import { serializeJsonLd } from '@/lib/json-ld';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${service.title} | ${companyInfo.shortName}`,
+    title: service.title,
     description: service.longDescription,
     alternates: {
       canonical: `${companyInfo.seo.siteUrl}/layanan/${service.slug}`,
@@ -63,15 +64,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     serviceType: service.title,
     description: service.longDescription,
     provider: {
-      '@type': 'Organization',
-      name: companyInfo.legalName,
-      url: companyInfo.seo.siteUrl,
-      telephone: companyInfo.phoneRaw,
-      email: companyInfo.email,
-    },
-    areaServed: {
-      '@type': 'AdministrativeArea',
-      name: 'Jabodetabek & Indonesia',
+      '@id': `${companyInfo.seo.siteUrl}/#organization`,
     },
   };
 
@@ -81,7 +74,7 @@ export default async function ServiceDetailPage({ params }: Props) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
 
       <div className="py-8 md:py-16 bg-[#F8FAFC] min-h-screen">
@@ -108,7 +101,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <DynamicIcon name={service.iconName} size={32} />
               </div>
               <span className="inline-flex items-center px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20">
-                Divisi Spesialisasi Teknik
+                Cakupan Layanan Teknis
               </span>
             </div>
 
@@ -118,6 +111,10 @@ export default async function ServiceDetailPage({ params }: Props) {
 
             <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-3xl mb-8">
               {service.longDescription}
+            </p>
+
+            <p className="text-sm text-[#475569] bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl p-4 mb-8 max-w-3xl">
+              Kapabilitas yang ditampilkan menggabungkan pengalaman terdokumentasi dan layanan yang dapat ditawarkan setelah survei. Pekerjaan khusus dapat melibatkan tenaga profesional atau mitra spesialis berbasis proyek.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -150,7 +147,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           {/* Section 2: Rincian Lingkup Pekerjaan */}
           <div className="mb-12">
             <SectionHeading
-              badge="Cakupan Kapabilitas Teknis"
+              badge="Ditawarkan Setelah Verifikasi Lingkup"
               title="Lingkup Penanganan &amp; Pekerjaan"
               description="Uraian rinci spesialisasi pekerjaan yang ditangani oleh tim teknisi divisi ini."
               align="left"
@@ -186,10 +183,10 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
               <div>
                 <h2 className="text-xl font-bold text-[#0F2942] tracking-tight">
-                  Kondisi &amp; Gejala Lapangan yang Biasa Kami Tangani
+                  Informasi yang Perlu Diklarifikasi Saat Survei
                 </h2>
                 <p className="text-xs text-[#475569] mt-0.5">
-                  Tanda-tanda kendala teknis umum pada fasilitas yang memerlukan evaluasi dan penanganan segera.
+                  Contoh kondisi yang membantu tim menentukan metode, risiko, kebutuhan material, dan tenaga yang sesuai.
                 </p>
               </div>
             </div>
@@ -262,7 +259,7 @@ export default async function ServiceDetailPage({ params }: Props) {
               Butuh Penanganan Teknis untuk {service.title}?
             </h2>
             <p className="text-sm sm:text-base text-[#E2E8F0] max-w-2xl mx-auto mb-8 leading-relaxed">
-              Tim engineering CBL siap membantu pemeriksaan awal lokasi kerja dan perancangan penanganan teknis fasilitas Anda.
+              Tim proyek CBL siap membantu pemeriksaan awal dan penyusunan lingkup penanganan teknis sesuai kondisi fasilitas Anda.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button

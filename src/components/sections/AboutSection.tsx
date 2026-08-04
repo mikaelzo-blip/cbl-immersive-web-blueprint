@@ -11,27 +11,27 @@ export function AboutSection() {
         <SectionHeading
           badge="Profil Perusahaan"
           title={`Tentang ${companyInfo.legalName}`}
-          description="Mitra penyedia jasa teknik terpadu yang berfokus pada keandalan sistem operasional, efisiensi energi, dan penanganan teknis presisi."
+          description="Kontraktor dan penyedia solusi teknis berbasis proyek dengan rekam pekerjaan terverifikasi periode 2022-2026."
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           {/* Sisi Kiri: Deskripsi Naratif */}
           <div className="lg:col-span-7 space-y-4 text-base text-[#475569] leading-relaxed">
             <p>
-              <strong className="text-[#0F2942]">{companyInfo.legalName} ({companyInfo.shortName})</strong> adalah penyedia jasa teknik terpadu yang bergerak di bidang perakitan panel listrik, otomatisasi proses PLC/HMI, instalasi mekanikal presisi, HVAC refrigerasi, otomatisasi pompa air, dan sistem pencahayaan teknis.
+              <strong className="text-[#0F2942]">{companyInfo.legalName} ({companyInfo.shortName})</strong> adalah badan usaha berbentuk Persekutuan Komanditer yang mengelola pengadaan, pemasangan, penggantian, perbaikan, pengujian, dan dokumentasi pekerjaan teknis berbasis proyek.
             </p>
             <p>
-              Kami melayani manajer fasilitas, engineering manager, dan bagian pengadaan di gedung komersial, fasilitas rekreasi, wahana air, serta infrastruktur operasional di wilayah Jabodetabek dan sekitarnya.
+              Pengalaman terdokumentasi mencakup fasilitas rekreasi, gedung operasional, wahana, akuarium, kolam, dan utilitas kawasan. Ketersediaan layanan di lokasi lain ditentukan melalui klarifikasi kebutuhan dan kemampuan mobilisasi.
             </p>
             <p>
-              Dengan pendekatan penanganan berbasis standar pabrikan dan pengujian uji beban (commissioning) yang ketat, tim CBL memastikan setiap sistem yang ditangani beroperasi secara stabil, efisien, serta aman dari risiko kegagalan mendadak.
+              CBL menggunakan tim inti dan tenaga profesional berbasis proyek. Metode, personel, pengujian, dan dokumen serah terima disesuaikan dengan lingkup serta persyaratan lokasi klien.
             </p>
 
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20">
                 <DynamicIcon name="ShieldCheck" size={24} className="text-[#0E6BA8] shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-[#0F2942] text-sm">Keselamatan &amp; Standar</h4>
+                  <h3 className="font-bold text-[#0F2942] text-sm">Keselamatan &amp; Standar</h3>
                   <p className="text-xs text-[#475569] mt-0.5">Penanganan mengutamakan keamanan isolasi listrik dan APD standar kerja industri.</p>
                 </div>
               </div>
@@ -39,8 +39,8 @@ export function AboutSection() {
               <div className="flex items-start gap-3 p-4 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20">
                 <DynamicIcon name="FileText" size={24} className="text-[#0E6BA8] shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-bold text-[#0F2942] text-sm">Dokumentasi BAST</h4>
-                  <p className="text-xs text-[#475569] mt-0.5">Penyerahan Berita Acara Serah Terima pekerjaan dan skema wiring terbarukan.</p>
+                  <h3 className="font-bold text-[#0F2942] text-sm">Dokumentasi BAST</h3>
+                  <p className="text-xs text-[#475569] mt-0.5">BAST, surat jalan, laporan, atau gambar as-built disiapkan bila termasuk persyaratan pekerjaan.</p>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@ export function AboutSection() {
 
               <dl className="space-y-4 text-xs sm:text-sm">
                 <div>
-                  <dt className="text-[#E2E8F0]/70">Nama Badan Hukum:</dt>
+                  <dt className="text-[#E2E8F0]/70">Nama Badan Usaha:</dt>
                   <dd className="font-semibold text-white mt-0.5">{companyInfo.legalName}</dd>
                 </div>
                 <div>

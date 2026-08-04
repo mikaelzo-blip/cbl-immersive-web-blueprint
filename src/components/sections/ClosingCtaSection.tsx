@@ -10,7 +10,7 @@ export function ClosingCtaSection() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#00A8CC]/20 via-transparent to-transparent pointer-events-none" />
 
       <Container className="relative z-10 text-center max-w-4xl mx-auto">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A8CC]/20 text-[#00A8CC] text-xs font-semibold mb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A8CC]/20 text-[#67E8F9] text-xs font-semibold mb-6">
           <DynamicIcon name="Zap" size={14} />
           <span>Respon Konsultasi Langsung Tim Engineering</span>
         </div>

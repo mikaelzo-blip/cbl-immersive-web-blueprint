@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { brandItems, brandDisclaimer } from '@/data/company';
@@ -28,7 +29,7 @@ export function BrandSection() {
                 {/* Box Logo Besar (Max 170px x 52px) dengan Warna Asli (Tanpa Grayscale) */}
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
-                    <img
+                    <Image
                       src={brand.logoPath}
                       alt={brand.name}
                       width={brand.logoWidth || 160}
@@ -59,9 +60,9 @@ export function BrandSection() {
               >
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
-                    <img
+                    <Image
                       src={brand.logoPath}
-                      alt={brand.name}
+                      alt=""
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
@@ -89,9 +90,9 @@ export function BrandSection() {
               >
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
-                    <img
+                    <Image
                       src={brand.logoPath}
-                      alt={brand.name}
+                      alt=""
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
@@ -119,9 +120,9 @@ export function BrandSection() {
               >
                 <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
                   {brand.logoPath ? (
-                    <img
+                    <Image
                       src={brand.logoPath}
-                      alt={brand.name}
+                      alt=""
                       width={brand.logoWidth || 160}
                       height={brand.logoHeight || 52}
                       className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"

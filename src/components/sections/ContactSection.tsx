@@ -30,7 +30,7 @@ export function ContactSection() {
                     <DynamicIcon name="MapPin" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Alamat Kantor Legal:</h4>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Alamat Kantor Legal:</h3>
                     <p className="text-sm text-[#475569] mt-1 leading-relaxed">{companyInfo.address}</p>
                   </div>
                 </div>
@@ -40,7 +40,7 @@ export function ContactSection() {
                     <DynamicIcon name="Phone" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Telepon Kantor:</h4>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Telepon Kantor:</h3>
                     <a href={`tel:${companyInfo.phoneRaw}`} className="text-sm font-semibold text-[#0E6BA8] hover:underline mt-1 block">
                       {companyInfo.phone}
                     </a>
@@ -48,18 +48,18 @@ export function ContactSection() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#F97316] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 text-[#C2410C] flex items-center justify-center shrink-0">
                     <DynamicIcon name="MessageSquare" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">WhatsApp Fast Response:</h4>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">WhatsApp:</h3>
                     <a
                       href={`https://wa.me/${companyInfo.whatsappNumber}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-bold text-[#F97316] hover:underline mt-1 block"
+                      className="text-sm font-bold text-[#C2410C] hover:underline mt-1 block"
                     >
-                      {companyInfo.whatsappFormatted} (Siaga 24 Jam)
+                      {companyInfo.whatsappFormatted}
                     </a>
                   </div>
                 </div>
@@ -69,7 +69,7 @@ export function ContactSection() {
                     <DynamicIcon name="Mail" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Email Korespondensi (RFQ):</h4>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Email Korespondensi (RFQ):</h3>
                     <a href={`mailto:${companyInfo.email}`} className="text-sm font-medium text-[#0E6BA8] hover:underline mt-1 block">
                       {companyInfo.email}
                     </a>
@@ -81,7 +81,7 @@ export function ContactSection() {
                     <DynamicIcon name="Clock" size={20} />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Jam Layanan:</h4>
+                    <h3 className="text-xs font-bold text-[#0F2942] uppercase tracking-wider">Jam Layanan:</h3>
                     <p className="text-sm font-semibold text-[#0F2942] mt-1">{companyInfo.serviceHours}</p>
                   </div>
                 </div>

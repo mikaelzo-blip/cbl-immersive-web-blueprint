@@ -33,7 +33,7 @@ export function SectionHeading({
           className={cn(
             'inline-flex items-center px-3 py-1 text-xs font-semibold uppercase tracking-wider rounded-full mb-3',
             light
-              ? 'bg-[#00A8CC]/20 text-[#00A8CC]'
+              ? 'bg-[#00A8CC]/20 text-[#67E8F9]'
               : 'bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20'
           )}
         >

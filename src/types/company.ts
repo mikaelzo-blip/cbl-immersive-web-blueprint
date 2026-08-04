@@ -2,6 +2,13 @@ export interface CompanyInfo {
   legalName: string;
   shortName: string;
   address: string;
+  addressParts: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode: string;
+    addressCountry: string;
+  };
   phone: string;
   phoneRaw: string;
   whatsappNumber: string;

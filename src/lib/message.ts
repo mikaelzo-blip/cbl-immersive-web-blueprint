@@ -12,6 +12,7 @@ export function buildFormattedMessage(data: ContactFormData, pathname: string = 
     data.email ? `*Email:* ${data.email.trim()}` : null,
     `*Jenis Layanan:* ${data.serviceInterest}`,
     `*Lokasi Pekerjaan:* ${data.location.trim()}`,
+    data.desiredSchedule ? `*Jadwal yang Diharapkan:* ${data.desiredSchedule.trim()}` : null,
     `--------------------------------------`,
     `*Pesan / Deskripsi Kebutuhan:*`,
     `${data.message.trim()}`,

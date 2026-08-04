@@ -74,8 +74,8 @@ export default function PortfolioIndexPage() {
         {/* Grid Kartu Proyek */}
         {filteredProjects.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
-            {filteredProjects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} headingLevel="h2" preload={index === 0} />
             ))}
           </div>
         ) : (
