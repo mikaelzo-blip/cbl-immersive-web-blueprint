@@ -57,8 +57,8 @@ export function HeroSection() {
         <div className="hero-enter hero-enter-delayed relative lg:col-span-5">
           <div className="relative mx-auto aspect-[4/5] max-h-[610px] max-w-[520px] overflow-hidden rounded-[2rem] border border-white/80 bg-[#D9E5EF] shadow-[0_32px_90px_-32px_rgba(15,41,66,0.5)]">
             <Image
-              src="/images/projects/penggantian-dc-drive-motor/01.webp"
-              alt="Dokumentasi pekerjaan teknis CBL pada panel dan sistem penggerak"
+              src="/images/hero-conveyor-maintenance.jpg"
+              alt="Dokumentasi pekerjaan teknis pada sistem conveyor"
               fill
               priority
               sizes="(max-width: 1024px) 90vw, 42vw"
@@ -69,15 +69,17 @@ export function HeroSection() {
               <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-white/15 text-white backdrop-blur-md">
                 <DynamicIcon name="ShieldCheck" size={22} />
               </div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#67E8F9]">Berbasis dokumen pekerjaan</p>
-              <p className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">Lingkup, tahapan, dan hasil ditampilkan tanpa membuka data transaksi sensitif.</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#67E8F9]">Berdasarkan dokumentasi pekerjaan</p>
+              <p className="mt-2 text-xl font-bold leading-snug text-white sm:text-2xl">
+                Ruang lingkup pekerjaan, tahapan pelaksanaan, dan hasil disajikan tanpa mengungkap data transaksi sensitif.
+              </p>
             </div>
           </div>
 
           <div className="absolute -left-3 top-10 hidden rounded-2xl border border-white/70 bg-white/95 p-4 shadow-xl backdrop-blur-md sm:block lg:-left-10">
             <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F0F7FD] text-[#0E6BA8]"><DynamicIcon name="ClipboardCheck" size={20} /></div>
-              <div><p className="text-xs text-[#475569]">Pendekatan kerja</p><p className="text-sm font-bold text-[#0F2942]">Survei • Lingkup • Eksekusi</p></div>
+              <div><p className="text-xs text-[#475569]">Pendekatan kerja</p><p className="text-sm font-bold text-[#0F2942]">Survei • Perencanaan • Pelaksanaan</p></div>
             </div>
           </div>
         </div>
