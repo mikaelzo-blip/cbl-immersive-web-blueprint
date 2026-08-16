@@ -2,8 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Project } from '@/types/project';
-import { Badge } from '@/components/ui/Badge';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
@@ -15,54 +13,52 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project, className, headingLevel = 'h3', preload = false }: ProjectCardProps) {
   const Heading = headingLevel;
+
   return (
-    <article className={cn(
-      'group relative flex flex-col bg-white rounded-3xl border border-[#DCE6EE] shadow-[0_18px_45px_-32px_rgba(15,41,66,0.4)] card-hover-lift overflow-hidden h-full',
-      className
-    )}>
-      <Link href={`/proyek/${project.slug}`} className="relative block aspect-[4/3] overflow-hidden bg-[#E2E8F0]">
+    <article className={cn('group flex h-full flex-col border-t border-[#0F2942]/20 bg-transparent pt-4', className)}>
+      <Link
+        href={`/proyek/${project.slug}`}
+        className="relative block aspect-[4/3] overflow-hidden bg-[#D8D6D0]"
+        aria-label={`Buka studi kasus ${project.title}`}
+      >
         <Image
           src={project.images?.cover ?? project.image}
           alt={project.imageAlt}
           fill
           preload={preload}
-          quality={65}
+          quality={68}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.045]"
+          className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.025]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F2942]/45 to-transparent" />
-        <div className="absolute left-4 bottom-4 flex flex-wrap gap-2">
-          <Badge variant="primary">{project.categoryLabel}</Badge>
-          <Badge variant="ghost" className="bg-white/90 border-white/70">{project.sector}</Badge>
-        </div>
       </Link>
 
-      <div className="flex flex-1 flex-col p-6">
-        <Heading className="text-xl font-extrabold text-[#0F2942] tracking-tight group-hover:text-[#0E6BA8] transition-colors mb-3 leading-snug">
-          <Link href={`/proyek/${project.slug}`}>{project.title}</Link>
+      <div className="flex flex-1 flex-col pt-5">
+        <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">
+          <span className="text-[#B34718]">{project.categoryLabel}</span>
+          <span aria-hidden="true">/</span>
+          <span>{project.sector}</span>
+        </div>
+
+        <Heading className="text-2xl font-semibold leading-[1.05] tracking-[-0.035em] text-[#0F2942] sm:text-[1.7rem]">
+          <Link href={`/proyek/${project.slug}`} className="transition-colors hover:text-[#B34718]">
+            {project.title}
+          </Link>
         </Heading>
-        <p className="text-sm text-[#475569] leading-relaxed mb-5">{project.summary}</p>
 
-        <div className="pt-4 border-t border-[#E2E8F0] mb-5">
-          <span className="text-xs font-bold text-[#0F2942] uppercase tracking-wider block mb-2">Cakupan pekerjaan utama</span>
-          <ul className="space-y-1.5 text-xs text-[#475569]">
-            {project.scope.slice(0, 3).map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <DynamicIcon name="CheckCircle2" size={14} className="text-[#0E6BA8] shrink-0 mt-0.5" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <p className="mt-4 text-sm leading-7 text-[#5F6D78]">{project.summary}</p>
+
+        <div className="mt-6 border-t border-[#0F2942]/15 pt-4">
+          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.15em] text-[#6B7780]">Cakupan utama</p>
+          <p className="mt-2 text-xs leading-6 text-[#0F2942]">{project.scope.slice(0, 3).join(' · ')}</p>
         </div>
 
-        <div className="mt-auto pt-4 border-t border-[#E2E8F0] flex items-center justify-between">
-          <span className="text-xs font-bold text-[#0E6BA8] inline-flex items-center gap-1.5">
-            Baca studi kasus <DynamicIcon name="ArrowUpRight" size={14} />
-          </span>
-          <DynamicIcon name={project.icon} size={18} className="text-[#0E6BA8]" />
-        </div>
+        <Link
+          href={`/proyek/${project.slug}`}
+          className="mt-auto pt-6 text-sm font-semibold text-[#0F2942] underline decoration-[#B34718] decoration-1 underline-offset-4 transition-colors hover:text-[#B34718]"
+        >
+          Baca studi kasus →
+        </Link>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-1 accent-line-gradient" />
     </article>
   );
 }
