@@ -1,37 +1,43 @@
 import { Container } from '@/components/ui/Container';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
-import { Reveal } from '@/components/ui/Reveal';
-import { projects } from '@/data/projects';
-import { serviceDivisions } from '@/data/company';
 
-const summaryItems = [
-  { value: '2022–2026', label: 'Periode pekerjaan terdokumentasi', icon: 'CalendarDays' },
-  { value: `${projects.length}`, label: 'Studi kasus yang dipublikasikan', icon: 'BriefcaseBusiness' },
-  { value: `${serviceDivisions.length}`, label: 'Bidang layanan teknis', icon: 'Layers3' },
-  { value: 'Berbasis proyek', label: 'Tenaga profesional sesuai kebutuhan', icon: 'Users' },
+const experienceRegister = [
+  { value: '74', label: 'pekerjaan unik dapat ditelusuri dari arsip proyek' },
+  { value: '22', label: 'pekerjaan dengan disiplin dominan elektrikal & otomasi' },
+  { value: '15', label: 'pekerjaan dengan disiplin dominan mekanikal wahana' },
+  { value: '14', label: 'pekerjaan dengan disiplin dominan pompa / plumbing / sistem air' },
+  { value: '09', label: 'pekerjaan dengan disiplin dominan HVAC & refrigerasi' },
 ];
 
 export function ExperienceSummarySection() {
   return (
-    <section aria-label="Ringkasan pengalaman CBL" className="relative z-20 -mt-8 pb-14 md:-mt-12 md:pb-20">
+    <section aria-label="Ringkasan pengalaman CBL" className="border-b border-[#D9E1E8] bg-white py-16 text-[#0F2942] md:py-24">
       <Container>
-        <Reveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 overflow-hidden rounded-3xl border border-[#D9E5EF] bg-white shadow-[0_24px_70px_-34px_rgba(15,41,66,0.4)]">
-            {summaryItems.map((item, index) => (
+        <div className="grid grid-cols-1 gap-10 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
+            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Rekam proyek terverifikasi · 2022–2026</p>
+            <h2 className="mt-5 max-w-md text-3xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl">
+              Angka dipakai sebagai bukti, bukan dekorasi.
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-7 text-[#5F6D78]">
+              Register perusahaan disusun dari PO, SPK, BAST, surat jalan, laporan, dan dokumentasi proyek. Klasifikasi berikut memakai disiplin dominan; satu pekerjaan dapat melibatkan lebih dari satu kompetensi.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7 lg:col-start-6">
+            {experienceRegister.map((item, index) => (
               <div
                 key={item.label}
-                className="relative p-5 sm:p-6 lg:p-7 border-b border-r border-[#E2E8F0] even:border-r-0 lg:border-b-0 lg:even:border-r lg:last:border-r-0 last:border-b-0"
+                className="grid grid-cols-[4.5rem_1fr] gap-5 border-t border-[#0F2942]/18 py-5 first:border-t-0 first:pt-0 sm:grid-cols-[6rem_1fr] sm:gap-7 sm:py-6"
               >
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-[#F0F7FD] text-[#0E6BA8]">
-                  <DynamicIcon name={item.icon} size={20} />
+                <span className="text-3xl font-semibold tracking-[-0.04em] text-[#0F2942] sm:text-4xl">{item.value}</span>
+                <div className="flex items-start justify-between gap-6">
+                  <p className="max-w-xl text-sm leading-6 text-[#5F6D78] sm:text-base">{item.label}</p>
+                  <span className="hidden text-[0.6rem] font-semibold tracking-[0.16em] text-[#8A949C] sm:block">0{index + 1}</span>
                 </div>
-                <div className="text-xl sm:text-2xl font-black tracking-tight text-[#0F2942]">{item.value}</div>
-                <p className="mt-1 text-xs sm:text-sm leading-relaxed text-[#475569]">{item.label}</p>
-                <span className="absolute right-4 top-4 text-[10px] font-bold text-[#0E6BA8]/35">0{index + 1}</span>
               </div>
             ))}
           </div>
-        </Reveal>
+        </div>
       </Container>
     </section>
   );
