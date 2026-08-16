@@ -7,42 +7,44 @@ export function WorkProcessSection() {
       <Container>
         <div className="grid grid-cols-1 gap-8 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-3">
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Project method</p>
-            <p className="mt-3 max-w-[17rem] text-sm leading-6 text-[#657482]">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Metode proyek</p>
+            <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-[#657482]">
               Tahapan disesuaikan dengan kondisi fasilitas, batas pekerjaan, risiko, dan persyaratan lokasi.
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.7rem,5vw,5.4rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+            <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.1rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
               Dari klarifikasi kebutuhan sampai dokumentasi dan serah terima.
             </h2>
           </div>
         </div>
 
-        <ol className="mt-14 md:mt-20">
+        <ol className="mt-14 grid grid-cols-1 md:mt-20 lg:grid-cols-2 lg:gap-x-14">
           {workProcessSteps.map((step, index) => (
             <li
               key={step.stepNumber}
-              className="grid grid-cols-1 gap-5 border-t border-[#0F2942]/25 py-7 sm:py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
+              className="border-t border-[#0F2942]/25 py-8 sm:py-10 lg:min-h-[28rem]"
             >
-              <div className="lg:col-span-2">
-                <span className="text-3xl font-semibold tracking-[-0.04em] text-[#B34718] sm:text-4xl">
+              <div className="flex items-end justify-between gap-6">
+                <span className="text-5xl font-semibold tracking-[-0.055em] text-[#B34718] sm:text-6xl">
                   {String(step.stepNumber).padStart(2, '0')}
                 </span>
-                <p className="mt-2 text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-[#8A949C]">
-                  Stage {index + 1}
-                </p>
+                <span className="pb-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#8A949C]">
+                  Tahap {index + 1}
+                </span>
               </div>
 
-              <div className="lg:col-span-4">
-                <h3 className="text-2xl font-semibold leading-[1.06] tracking-[-0.03em] sm:text-3xl">{step.title}</h3>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-[#657482]">{step.description}</p>
-              </div>
+              <h3 className="mt-8 max-w-lg text-2xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-3xl">
+                {step.title}
+              </h3>
+              <p className="mt-4 max-w-xl text-[0.95rem] leading-7 text-[#657482]">
+                {step.description}
+              </p>
 
-              <div className="lg:col-span-5 lg:col-start-8">
-                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#657482]">What happens here</p>
-                <ul className="mt-3 text-sm leading-6 text-[#0F2942]">
+              <div className="mt-8 border-t border-[#0F2942]/15 pt-4">
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#657482]">Yang dilakukan</p>
+                <ul className="mt-3 text-[0.95rem] leading-6 text-[#0F2942]">
                   {step.details.map((detail) => (
                     <li key={detail} className="border-t border-[#0F2942]/12 py-2.5 first:border-t-0 first:pt-0">
                       {detail}
