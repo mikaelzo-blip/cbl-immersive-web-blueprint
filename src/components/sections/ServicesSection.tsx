@@ -8,14 +8,14 @@ export function ServicesSection() {
       <Container>
         <div className="grid grid-cols-1 gap-8 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-3">
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Capability index</p>
-            <p className="mt-3 max-w-[17rem] text-sm leading-6 text-[#657482]">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Indeks layanan</p>
+            <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-[#657482]">
               Layanan disusun dari pekerjaan yang telah terdokumentasi, bukan daftar kemampuan generik.
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.7rem,5vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+            <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
               Satu koordinasi untuk pekerjaan teknis lintas disiplin.
             </h2>
           </div>
@@ -31,8 +31,8 @@ export function ServicesSection() {
                 className="grid grid-cols-1 gap-5 border-t border-[#0F2942]/25 py-7 sm:py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
               >
                 <div className="flex items-start justify-between lg:col-span-2 lg:block">
-                  <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">{number}</span>
-                  <span className="text-[0.62rem] uppercase tracking-[0.14em] text-[#8A949C] lg:mt-3 lg:block">Technical service</span>
+                  <span className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">{number}</span>
+                  <span className="text-[0.68rem] uppercase tracking-[0.13em] text-[#8A949C] lg:mt-3 lg:block">Layanan teknis</span>
                 </div>
 
                 <div className="lg:col-span-4">
@@ -41,12 +41,12 @@ export function ServicesSection() {
                       {service.title}
                     </Link>
                   </h3>
-                  <p className="mt-4 max-w-xl text-sm leading-7 text-[#657482]">{service.description}</p>
+                  <p className="mt-4 max-w-xl text-[0.95rem] leading-7 text-[#657482]">{service.description}</p>
                 </div>
 
                 <div className="lg:col-span-4 lg:col-start-8">
-                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#657482]">Representative scope</p>
-                  <ul className="mt-3 space-y-2 text-sm leading-6 text-[#0F2942]">
+                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#657482]">Contoh lingkup</p>
+                  <ul className="mt-3 space-y-2 text-[0.95rem] leading-6 text-[#0F2942]">
                     {service.capabilities.slice(0, 3).map((capability) => (
                       <li key={capability} className="border-t border-[#0F2942]/12 pt-2 first:border-t-0 first:pt-0">
                         {capability}
@@ -61,7 +61,7 @@ export function ServicesSection() {
                     className="inline-flex border-b border-[#0F2942]/35 pb-1 text-sm font-semibold transition-colors duration-200 hover:border-[#B34718] hover:text-[#B34718]"
                     aria-label={`Pelajari ${service.title}`}
                   >
-                    Lihat →
+                    Detail →
                   </Link>
                 </div>
               </article>
