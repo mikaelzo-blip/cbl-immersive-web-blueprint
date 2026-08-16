@@ -21,15 +21,15 @@ export function HeroSection() {
           <div className="grid gap-10 pb-10 pt-12 sm:pb-12 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-14 lg:pt-20">
             <div className="hero-enter lg:col-span-8">
               <h1 className="max-w-[18ch] text-[clamp(2.85rem,9.2vw,5.4rem)] font-semibold leading-[0.92] tracking-[-0.052em] sm:max-w-[17ch] lg:max-w-[15ch] lg:text-[clamp(4.7rem,6.15vw,6.7rem)]">
-                <span className="block">Mengelola kebutuhan.</span>
-                <span className="block">Memobilisasi keahlian.</span>
+                <span className="block">Memahami kebutuhan.</span>
+                <span className="block">Menentukan langkah kerja.</span>
                 <span className="block">Menyelesaikan pekerjaan.</span>
               </h1>
             </div>
 
             <div className="hero-enter hero-enter-delayed flex flex-col lg:col-span-4 lg:justify-center lg:pt-10">
               <p className="max-w-xl text-[0.95rem] leading-7 text-[#536474] sm:text-base sm:leading-7 lg:max-w-sm">
-                Elektrikal &amp; otomasi, mekanikal dan conveyor, HVAC, pompa &amp; sistem air, pencahayaan, serta pengadaan teknis — dikelola sesuai kebutuhan setiap proyek.
+                CBL menangani pekerjaan elektrikal &amp; otomasi, mekanikal dan conveyor, HVAC, pompa &amp; sistem air, pencahayaan, serta pengadaan teknis. Cakupan kerja disesuaikan dengan kondisi dan kebutuhan setiap proyek.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold">
