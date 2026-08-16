@@ -37,8 +37,9 @@ Untuk 3D/motion wajib juga baca:
 - `docs/06-3D-ASSET-PLAN.md`
 - `docs/07-MOTION-SYSTEM.md`
 - `docs/12-VISUAL-REFERENCES.md`
+- `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md`
 
-Jika agent dapat membuka reference video pada `docs/12-VISUAL-REFERENCES.md`, lakukan visual/interactivity breakdown sebelum mengubah sistem 3D utama. Jangan mengarang detail video yang belum benar-benar diamati.
+Reference utama sudah pernah diperiksa langsung dari MP4 upload. Jangan kembali mengasumsikan bahwa target visual harus dibuat dengan realtime Three.js/WebGL.
 
 ## 3. Non-negotiable design rules
 
@@ -112,7 +113,7 @@ Not allowed:
 - mengarang sertifikasi
 - menyebut performance outcome yang tidak didokumentasikan
 
-## 8. 3D principles
+## 8. 3D / product-storytelling principles
 
 3D harus menjawab pertanyaan teknis.
 
@@ -122,13 +123,41 @@ Contoh:
 - control panel: bagaimana control architecture tersusun
 - pump: bagaimana flow dan internal components bekerja
 
-3D hero harus menjadi **scroll-driven technical story**, bukan product configurator penuh.
+Target kualitas adalah **engineering product film controlled by vertical scroll**.
 
-Pointer drag/orbit adalah optional secondary interaction.
+### Preferred production path
 
-Approved reference standard disimpan di `docs/12-VISUAL-REFERENCES.md`. Target kualitas adalah **engineering product film controlled by vertical scroll**, bukan generic Three.js demo atau model viewer.
+Untuk hero dan major explainer, default yang disetujui adalah:
 
-## 9. Responsive
+**cinematic assembled/exploded render -> AI/rendered animation -> extracted image frame sequence -> sticky canvas scrubbed by vertical scroll.**
+
+Ini lebih dekat ke reference yang disetujui daripada generic realtime 3D demo.
+
+Realtime GLB/WebGL/Three.js/R3F hanya dipakai jika benar-benar memberi nilai tambahan seperti:
+
+- mesh-specific annotations
+- live highlighting
+- user-controlled inspection
+- dynamic configuration
+
+Pointer drag/orbit tetap optional secondary interaction, bukan requirement.
+
+## 9. Frame-sequence discipline
+
+Ketika menggunakan cinematic sequence:
+
+- gunakan zero-padded filenames (`frame_0001.webp`)
+- jangan mount ratusan `<img>` sekaligus
+- prefer sticky `<canvas>` untuk active frame
+- map normalized vertical scroll progress ke frame index
+- preload frame mendatang secara bertahap
+- lazy-load chapter berikutnya
+- buat desktop/mobile sequence terpisah bila perlu
+- sediakan stable keyframe fallback untuk reduced-motion/low-capability
+- jangan deploy raw full-resolution PNG sequence tanpa optimasi
+- uji network, decode time, dan memory pressure di mobile
+
+## 10. Responsive
 
 Desktop dapat menggunakan sticky scrollytelling yang panjang.
 
@@ -136,24 +165,31 @@ Mobile harus:
 
 - tetap vertical
 - tidak memerlukan drag untuk memahami cerita
-- mengurangi particle/post-processing
-- menggunakan geometry/texture lebih ringan bila diperlukan
+- menggunakan frame lebih sedikit/resolusi lebih rendah jika perlu
 - menjaga CTA tetap reachable
 - tidak menyebabkan scroll jank
+- tetap menyampaikan narasi walau animasi dikurangi
 
-## 10. Performance discipline
+## 11. Performance discipline
 
 Agent dilarang menambah dependency berat hanya untuk satu efek kecil.
 
 Sebelum menambah library:
 
 - jelaskan alasan
-- cek apakah native CSS/Web APIs cukup
+- cek apakah native CSS/Web APIs/canvas cukup
 - cek impact bundle
-- lazy-load 3D jika tidak critical untuk initial render
-- pause animation ketika off-screen
+- lazy-load visual system non-hero
+- pause rendering/preloading ketika off-screen
 
-## 11. Accessibility
+Untuk frame sequence:
+
+- cap DPR
+- preload progresif
+- jangan load semua chapter pada first paint
+- monitor memory selain total download size
+
+## 12. Accessibility
 
 Wajib:
 
@@ -163,9 +199,9 @@ Wajib:
 - descriptive alt/caption untuk project imagery
 - `prefers-reduced-motion` fallback
 - focus states
-- 3D canvas tidak boleh menjadi satu-satunya cara memahami content
+- visual animation tidak boleh menjadi satu-satunya cara memahami content
 
-## 12. Completion report
+## 13. Completion report
 
 Saat selesai, agent harus melaporkan:
 
