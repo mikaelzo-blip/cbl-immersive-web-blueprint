@@ -38,6 +38,18 @@ Rules:
 - keep the brand list subordinate to project evidence
 - preserve an accessible reduced-motion behavior; reduced motion may slow or simplify the movement without deleting the section
 
+### Locked visual refinements — August 2026
+
+These decisions are based on the owner-approved visual review and should not be reopened casually:
+
+- **Primary UI language is Indonesian.** English is reserved for unavoidable brand/product/technical terminology; do not use decorative English labels merely to make the site look premium.
+- **Hero scale is controlled, not poster-like.** On large screens the headline should read as three deliberate statements rather than a six-line oversized wall of text.
+- Do not use self-conscious AI/stock disclaimers such as **“Project evidence, not stock imagery”** in visitor-facing UI. Use factual archive/date/location metadata instead.
+- **Project Archive must not revert to a uniform 3-column card wall.** Keep a varied editorial rhythm: featured project, two-column entries, and periodic wide entries. Project imagery should dominate; archive cards should not repeat summary + scope + CTA in every item.
+- Repetition is itself an AI-slop risk. Do not make every section use the exact same `small label + huge heading + horizontal rows` composition. Controlled variation is required.
+- **390px is a mandatory mobile QA width.** At 390px: no horizontal page overflow, header brand + menu must fit, portfolio filter tabs may scroll horizontally, forms are one column, editorial grids collapse cleanly, and project imagery remains readable.
+- Header/navigation text must remain readable; do not shrink desktop nav or mobile controls into decorative microtype.
+
 ### Anti-AI-slop guardrails
 
 Reject by default:
@@ -100,13 +112,18 @@ Important public-claim rules:
 2. **Hero (`src/components/sections/HeroSection.tsx`)**:
    - Use authentic local project documentation through `next/image`.
    - Current hero must be editorial and photography-led, without decorative 3D or generic SaaS UI chrome.
+   - Keep the approved restrained three-statement desktop headline rhythm.
 
-3. **Brand Section (`src/components/sections/BrandSection.tsx`)**:
+3. **Project Archive (`src/app/proyek/page.tsx`)**:
+   - Preserve category tabs and accessible active state.
+   - Keep the non-uniform editorial archive composition; do not revert to identical 3-column cards.
+
+4. **Brand Section (`src/components/sections/BrandSection.tsx`)**:
    - Only show brands supported by real project/equipment data.
    - Keep the owner-approved continuous marquee animation.
    - Presentation should remain subordinate to actual project work.
 
-4. **Floating Action Controls**:
+5. **Floating Action Controls**:
    - `FloatingWhatsapp.tsx`: fixed quick contact.
    - `BackToTop.tsx`: stacked above WhatsApp to prevent overlap.
 
