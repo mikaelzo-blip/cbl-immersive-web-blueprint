@@ -1,42 +1,46 @@
-import React from 'react';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { whyUsPoints } from '@/data/company';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
-import { Reveal } from '@/components/ui/Reveal';
 
 export function WhyUsSection() {
   return (
-    <section id="mengapa-cbl" className="relative py-16 md:py-28 bg-[#0F2942] text-white border-b border-[#15426B] overflow-hidden">
-      <div className="absolute inset-0 engineering-grid-dark opacity-40" aria-hidden="true" />
+    <section id="mengapa-cbl" className="border-b border-white/10 bg-[#102A43] py-20 text-white md:py-28 lg:py-32">
       <Container>
-        <Reveal className="relative">
-          <SectionHeading
-            badge="Cara Kami Memberikan Nilai"
-            title="Koordinasi teknis yang jelas untuk setiap pekerjaan."
-            description="CBL mengutamakan kejelasan kebutuhan, kesesuaian spesifikasi, koordinasi lapangan, dan dokumentasi pada setiap tahap proyek."
-            align="left"
-            light
-          />
-        </Reveal>
+        <div className="grid grid-cols-1 gap-8 border-t border-white/25 pt-5 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-3">
+            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#F0A06B]">Operating model</p>
+            <p className="mt-3 max-w-[17rem] text-sm leading-6 text-white/60">
+              Nilai CBL datang dari cara pekerjaan dikendalikan, bukan dari slogan yang sulit dibuktikan.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="lg:col-span-8 lg:col-start-5">
+            <h2 className="max-w-4xl text-[clamp(2.7rem,5vw,5.4rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+              Satu pengendali proyek. Keahlian dimobilisasi sesuai kebutuhan.
+            </h2>
+            <p className="mt-6 max-w-2xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
+              Struktur inti tetap mengendalikan koordinasi, mutu, jadwal, dokumentasi, dan hasil akhir; tenaga profesional atau mitra spesialis dilibatkan sesuai disiplin dan kompleksitas pekerjaan.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-14 md:mt-20">
           {whyUsPoints.map((point, index) => (
-            <Reveal key={point.id} delay={index * 80} className="h-full">
-            <div className="p-6 rounded-3xl bg-white/[0.06] border border-white/10 hover:border-[#67E8F9]/35 hover:bg-white/[0.09] transition-all flex flex-col justify-between h-full">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#0E6BA8] text-[#00A8CC] flex items-center justify-center mb-4 shadow-sm">
-                  <DynamicIcon name={point.iconName} size={24} />
-                </div>
-                <h3 className="text-lg font-bold text-white mb-2 tracking-tight">
-                  {point.title}
-                </h3>
-                <p className="text-sm text-[#E2E8F0] leading-relaxed">
-                  {point.description}
-                </p>
+            <article
+              key={point.id}
+              className="grid grid-cols-1 gap-4 border-t border-white/20 py-7 md:grid-cols-12 md:gap-8 md:py-9"
+            >
+              <div className="md:col-span-2">
+                <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#F0A06B]">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
               </div>
-            </div>
-            </Reveal>
+              <h3 className="text-2xl font-semibold leading-[1.05] tracking-[-0.03em] md:col-span-4 sm:text-3xl">
+                {point.title}
+              </h3>
+              <p className="max-w-2xl text-sm leading-7 text-white/65 md:col-span-5 md:col-start-8 sm:text-base">
+                {point.description}
+              </p>
+            </article>
           ))}
         </div>
       </Container>
