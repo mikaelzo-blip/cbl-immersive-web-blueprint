@@ -2,40 +2,42 @@ import React from 'react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { expertiseItems } from '@/data/company';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
-import { Reveal } from '@/components/ui/Reveal';
 
 export function ExpertiseSection() {
   return (
-    <section id="keahlian" className="py-16 md:py-28 bg-white border-b border-[#E2E8F0]">
+    <section id="keahlian" className="border-b border-[#0F2942]/15 bg-white py-20 md:py-28 lg:py-32">
       <Container>
-        <Reveal>
-          <SectionHeading
-            badge="Kompetensi Teknis"
-            title="Kompetensi yang berkembang dari pekerjaan nyata di lapangan."
-            description="Pengalaman berikut tercatat dalam dokumen proyek. Metode kerja dan kebutuhan personel ditentukan sesuai karakter setiap pekerjaan."
-            align="left"
-          />
-        </Reveal>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-4">
+            <SectionHeading
+              badge="Kompetensi Teknis"
+              title="Detail teknis yang lahir dari pekerjaan nyata."
+              description="Kompetensi berikut dirangkum dari pengalaman proyek dan digunakan sebagai referensi awal saat kebutuhan baru diklarifikasi."
+              align="left"
+              className="lg:sticky lg:top-28"
+            />
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {expertiseItems.map((item, index) => (
-            <Reveal key={item.id} delay={(index % 3) * 70} className="h-full">
-            <div className="p-6 rounded-3xl bg-[#F7FAFC] border border-[#DCE6EE] card-hover-lift flex flex-col justify-between h-full">
-              <div>
-                <div className="w-12 h-12 rounded-xl bg-[#0F2942] text-[#00A8CC] flex items-center justify-center mb-4 shadow-2xs">
-                  <DynamicIcon name={item.iconName} size={24} />
+          <div className="lg:col-span-7 lg:col-start-6">
+            {expertiseItems.map((item, index) => (
+              <article
+                key={item.id}
+                className="grid gap-4 border-t border-[#0F2942]/20 py-6 sm:grid-cols-[4rem_1fr] sm:gap-6 md:py-8"
+              >
+                <span className="text-[0.68rem] font-semibold tracking-[0.16em] text-[#B34718]">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h3 className="text-xl font-semibold tracking-[-0.025em] text-[#0F2942] sm:text-2xl">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5F6D78]">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-lg font-bold text-[#0F2942] mb-2 tracking-tight">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-[#475569] leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-            </Reveal>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </Container>
     </section>
