@@ -14,11 +14,11 @@ export function ExperienceSummarySection() {
       <Container>
         <div className="grid grid-cols-1 gap-10 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-4">
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Rekam proyek terverifikasi · 2022–2026</p>
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Rekam proyek terverifikasi · 2022–2026</p>
             <h2 className="mt-5 max-w-md text-3xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl">
               Angka dipakai sebagai bukti, bukan dekorasi.
             </h2>
-            <p className="mt-5 max-w-md text-sm leading-7 text-[#5F6D78]">
+            <p className="mt-5 max-w-md text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base">
               Register perusahaan disusun dari PO, SPK, BAST, surat jalan, laporan, dan dokumentasi proyek. Klasifikasi berikut memakai disiplin dominan; satu pekerjaan dapat melibatkan lebih dari satu kompetensi.
             </p>
           </div>
@@ -31,8 +31,8 @@ export function ExperienceSummarySection() {
               >
                 <span className="text-3xl font-semibold tracking-[-0.04em] text-[#0F2942] sm:text-4xl">{item.value}</span>
                 <div className="flex items-start justify-between gap-6">
-                  <p className="max-w-xl text-sm leading-6 text-[#5F6D78] sm:text-base">{item.label}</p>
-                  <span className="hidden text-[0.6rem] font-semibold tracking-[0.16em] text-[#8A949C] sm:block">0{index + 1}</span>
+                  <p className="max-w-xl text-[0.95rem] leading-6 text-[#5F6D78] sm:text-base">{item.label}</p>
+                  <span className="hidden text-[0.66rem] font-semibold tracking-[0.15em] text-[#8A949C] sm:block">0{index + 1}</span>
                 </div>
               </div>
             ))}
