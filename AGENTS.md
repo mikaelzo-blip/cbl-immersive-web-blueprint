@@ -25,6 +25,19 @@ Do not introduce or depend on:
 
 Current priority is a polished photography-led corporate portfolio using authentic project documentation, strong typography, editorial composition, technical metadata, clear hierarchy, restrained motion, and intentional mobile layouts.
 
+### Approved motion that MUST remain
+
+The continuous moving rail in **`Cakupan Komponen & Suku Cadang`** is an explicit owner-approved interaction.
+
+Implementation reference: `src/components/sections/BrandSection.tsx` using `brand-marquee` and `brand-marquee-track` with duplicated tracks for a continuous loop.
+
+Rules:
+- do **not** remove the marquee animation
+- do **not** replace it with a static logo grid unless the owner explicitly changes this decision
+- styling, spacing, cell treatment, speed, and responsive tuning may be refined
+- keep the brand list subordinate to project evidence
+- preserve an accessible reduced-motion behavior; reduced motion may slow or simplify the movement without deleting the section
+
 ### Anti-AI-slop guardrails
 
 Reject by default:
@@ -82,6 +95,7 @@ Important public-claim rules:
 1. **Header & Navigation (`src/components/layout/Header.tsx` & `MobileMenu.tsx`)**:
    - Uses ScrollSpy (`activeSection`) as the user scrolls through homepage sections.
    - Uses `window.history.pushState` on hash clicks to prevent double-hash URL bugs.
+   - Nested service and project routes must keep the corresponding top-level navigation state active.
 
 2. **Hero (`src/components/sections/HeroSection.tsx`)**:
    - Use authentic local project documentation through `next/image`.
@@ -89,6 +103,7 @@ Important public-claim rules:
 
 3. **Brand Section (`src/components/sections/BrandSection.tsx`)**:
    - Only show brands supported by real project/equipment data.
+   - Keep the owner-approved continuous marquee animation.
    - Presentation should remain subordinate to actual project work.
 
 4. **Floating Action Controls**:
@@ -105,6 +120,7 @@ Before declaring any task complete or committing code:
 3. **Build**: `npm run build` must complete successfully.
 4. **Responsive review**: review at minimum 1440px, 1024px, and 390px.
 5. **Visual review**: explicitly check for repeated card patterns and generic AI/SaaS visual language.
-6. **Git**: use descriptive conventional commit messages (`feat`, `fix`, `perf`, `chore`, `style`).
+6. **Interaction review**: verify homepage scrollspy, nested-route nav states, portfolio filter tabs, mobile menu, and the `Cakupan Komponen & Suku Cadang` marquee.
+7. **Git**: use descriptive conventional commit messages (`feat`, `fix`, `perf`, `chore`, `style`).
 
 <!-- END:nextjs-agent-rules -->
