@@ -7,144 +7,85 @@ import Image from 'next/image';
 import { companyInfo, mainNavItems, serviceDivisions, brandDisclaimer } from '@/data/company';
 import { resolveSectionHref } from '@/lib/utils';
 import { Container } from '@/components/ui/Container';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
 
 export function Footer() {
   const pathname = usePathname();
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#0F2942] text-white pt-16 pb-12 border-t border-[#15426B]">
+    <footer className="border-t border-white/10 bg-[#0B2238] py-14 text-white md:py-16">
       <Container>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#15426B]">
-          {/* Kolom 1: Perusahaan */}
-          <div className="space-y-4">
+        <div className="grid gap-10 border-b border-white/15 pb-12 lg:grid-cols-12 lg:gap-8">
+          <div className="lg:col-span-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 shrink-0">
+              <div className="relative h-10 w-10 shrink-0">
                 <Image
                   src="/logo/cbl-logo.png"
                   alt="Logo CV Cakrawala Buana Lestari"
                   width={40}
                   height={40}
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
-              <span className="font-extrabold text-lg text-white tracking-tight">
-                {companyInfo.legalName}
-              </span>
+              <div>
+                <p className="text-base font-semibold tracking-[-0.02em]">{companyInfo.legalName}</p>
+                <p className="mt-1 text-[0.58rem] font-semibold uppercase tracking-[0.15em] text-[#9FB2C1]">Technical solutions · Jakarta</p>
+              </div>
             </div>
-            <p className="text-sm text-[#E2E8F0] leading-relaxed">
-              Penyedia jasa teknik terpadu untuk pekerjaan kelistrikan, otomasi, mekanikal, HVAC dan refrigerasi, sistem pompa, serta pencahayaan khusus.
+            <p className="mt-5 max-w-sm text-sm leading-7 text-[#C7D2DB]">
+              Kontraktor dan penyedia solusi teknis berbasis proyek untuk elektrikal, otomasi, mekanikal, HVAC, sistem air, lighting, dan pengadaan teknis.
             </p>
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#15426B] text-[#67E8F9] text-xs font-semibold">
-              <DynamicIcon name="Clock" size={14} />
-              <span>Jam layanan: {companyInfo.serviceHours}</span>
-            </div>
+            <p className="mt-5 text-xs leading-6 text-[#9FB2C1]">{companyInfo.serviceHours}</p>
           </div>
 
-          {/* Kolom 2: Navigasi Cepat */}
-          <div>
-            <h3 className="text-base font-bold text-white mb-4 tracking-wide border-b border-[#15426B] pb-2">
-              Navigasi
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {mainNavItems.map((item) => {
-                const href = resolveSectionHref(item.href, pathname);
-                return (
+          <div className="grid gap-8 sm:grid-cols-2 lg:col-span-4">
+            <div>
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#F0A16F]">Navigasi</p>
+              <ul className="mt-4 space-y-2.5 text-sm text-[#D7E1E8]">
+                {mainNavItems.map((item) => (
                   <li key={item.label}>
-                    <Link
-                      href={href}
-                      className="text-[#E2E8F0] hover:text-[#00A8CC] transition-colors inline-flex items-center gap-1.5"
-                    >
-                      <DynamicIcon name="ChevronRight" size={14} className="text-[#0E6BA8]" />
-                      <span>{item.label}</span>
+                    <Link href={resolveSectionHref(item.href, pathname)} className="transition-colors hover:text-white">
+                      {item.label}
                     </Link>
                   </li>
-                );
-              })}
-            </ul>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#F0A16F]">Layanan</p>
+              <ul className="mt-4 space-y-2.5 text-sm text-[#D7E1E8]">
+                {serviceDivisions.map((service) => (
+                  <li key={service.id}>
+                    <Link href={`/layanan/${service.slug}`} className="transition-colors hover:text-white">
+                      {service.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
-          {/* Kolom 3: Divisi Layanan */}
-          <div>
-            <h3 className="text-base font-bold text-white mb-4 tracking-wide border-b border-[#15426B] pb-2">
-              Bidang layanan
-            </h3>
-            <ul className="space-y-2.5 text-sm">
-              {serviceDivisions.map((service) => (
-                <li key={service.id}>
-                  <Link
-                    href={`/layanan/${service.slug}`}
-                    className="text-[#E2E8F0] hover:text-[#00A8CC] transition-colors inline-flex items-center gap-1.5"
-                  >
-                    <DynamicIcon name="ChevronRight" size={14} className="text-[#0E6BA8]" />
-                    <span>{service.title}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Kolom 4: Kontak Legal & Dokumen */}
-          <div>
-            <h3 className="text-base font-bold text-white mb-4 tracking-wide border-b border-[#15426B] pb-2">
-              Kontak &amp; Legalitas
-            </h3>
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-3 text-[#E2E8F0]">
-                <DynamicIcon name="MapPin" size={18} className="text-[#00A8CC] shrink-0 mt-0.5" />
-                <span>{companyInfo.address}</span>
-              </li>
-              <li>
-                <a
-                  href={`tel:${companyInfo.phoneRaw}`}
-                  className="flex items-center gap-3 text-[#E2E8F0] hover:text-[#00A8CC] transition-colors"
-                >
-                  <DynamicIcon name="Phone" size={18} className="text-[#00A8CC] shrink-0" />
-                  <span>{companyInfo.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`https://wa.me/${companyInfo.whatsappNumber}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-[#E2E8F0] hover:text-[#F97316] transition-colors"
-                >
-                  <DynamicIcon name="MessageSquare" size={18} className="text-[#F97316] shrink-0" />
-                  <span>WhatsApp: {companyInfo.whatsappFormatted}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${companyInfo.email}`}
-                  className="flex items-center gap-3 text-[#E2E8F0] hover:text-[#00A8CC] transition-colors"
-                >
-                  <DynamicIcon name="Mail" size={18} className="text-[#00A8CC] shrink-0" />
-                  <span>{companyInfo.email}</span>
-                </a>
-              </li>
-            </ul>
+          <div className="lg:col-span-3 lg:col-start-10">
+            <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-[#F0A16F]">Kontak</p>
+            <address className="mt-4 space-y-3 text-sm not-italic leading-6 text-[#D7E1E8]">
+              <p>{companyInfo.address}</p>
+              <p><a href={`tel:${companyInfo.phoneRaw}`} className="hover:text-white">{companyInfo.phone}</a></p>
+              <p><a href={`https://wa.me/${companyInfo.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-white">WhatsApp {companyInfo.whatsappFormatted}</a></p>
+              <p><a href={`mailto:${companyInfo.email}`} className="break-all hover:text-white">{companyInfo.email}</a></p>
+            </address>
           </div>
         </div>
 
-        {/* Disclaimer Merek & Hak Cipta */}
-        <div className="pt-8 space-y-4 text-xs text-[#E2E8F0]/70">
-          <p className="leading-relaxed bg-[#15426B]/50 p-4 rounded-xl border border-[#15426B]">
-            <strong className="text-[#67E8F9]">Keterangan merek:</strong> {brandDisclaimer}
+        <div className="grid gap-6 pt-7 text-xs leading-6 text-[#93A6B6] lg:grid-cols-12">
+          <p className="lg:col-span-7">
+            <strong className="font-semibold text-[#C7D2DB]">Keterangan merek — </strong>{brandDisclaimer}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-[#15426B]/40">
-            <p>
-              &copy; {currentYear} {companyInfo.legalName}. Hak cipta dilindungi undang-undang.
-            </p>
-            <div className="flex items-center gap-4 text-xs">
-              <Link href="/legalitas" className="hover:text-[#00A8CC] underline">
-                Legalitas &amp; Dokumen Vendor
-              </Link>
-              <span className="text-[#15426B]">•</span>
-              <Link href="/kebijakan-privasi" className="hover:text-[#00A8CC] underline">
-                Kebijakan Privasi
-              </Link>
+          <div className="lg:col-span-4 lg:col-start-9 lg:text-right">
+            <p>© {currentYear} {companyInfo.legalName}</p>
+            <div className="mt-2 flex gap-4 lg:justify-end">
+              <Link href="/legalitas" className="underline underline-offset-4 hover:text-white">Legalitas</Link>
+              <Link href="/kebijakan-privasi" className="underline underline-offset-4 hover:text-white">Kebijakan Privasi</Link>
             </div>
           </div>
         </div>
