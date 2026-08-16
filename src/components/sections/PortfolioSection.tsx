@@ -15,17 +15,17 @@ export function PortfolioSection() {
       <Container>
         <div className="grid grid-cols-1 gap-6 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-3">
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Selected work</p>
-            <p className="mt-3 max-w-[17rem] text-sm leading-6 text-[#657482]">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Pilihan pekerjaan</p>
+            <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-[#657482]">
               Dokumentasi lapangan adalah pusat portofolio, bukan elemen dekoratif.
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.7rem,5vw,5.5rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+            <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
               Pekerjaan nyata lebih kuat daripada klaim pemasaran.
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-[#657482] sm:text-lg sm:leading-8">
+            <p className="mt-6 max-w-2xl text-[0.98rem] leading-7 text-[#657482] sm:text-lg sm:leading-8">
               Setiap studi kasus merangkum kebutuhan, cakupan, tahapan pelaksanaan, dan hasil berdasarkan dokumentasi pekerjaan yang tersedia.
             </p>
           </div>
@@ -34,7 +34,7 @@ export function PortfolioSection() {
         <article className="mt-14 border-t border-[#0F2942]/25 pt-6 md:mt-20 md:pt-8">
           <div className="mb-5 flex items-end justify-between gap-6">
             <div>
-              <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">01 / Featured project</p>
+              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">01 / Proyek utama</p>
               <p className="mt-2 text-xs uppercase tracking-[0.12em] text-[#657482]">
                 {leadProject.categoryLabel} · {leadProject.sector}
               </p>
@@ -69,10 +69,10 @@ export function PortfolioSection() {
                   {leadProject.title}
                 </Link>
               </h3>
-              <p className="mt-5 text-sm leading-7 text-[#657482] sm:text-base">{leadProject.summary}</p>
+              <p className="mt-5 text-[0.95rem] leading-7 text-[#657482] sm:text-base">{leadProject.summary}</p>
 
               <div className="mt-8 border-t border-[#0F2942]/20 pt-4">
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#657482]">Cakupan utama</p>
+                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#657482]">Cakupan utama</p>
                 <p className="mt-3 text-sm leading-6">{leadProject.scope.slice(0, 3).join(' · ')}</p>
               </div>
 
@@ -96,7 +96,7 @@ export function PortfolioSection() {
                 className="grid grid-cols-1 gap-6 border-t border-[#0F2942]/25 py-8 md:grid-cols-12 md:gap-8 md:py-10"
               >
                 <div className="md:col-span-2">
-                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">{projectNumber}</p>
+                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">{projectNumber}</p>
                   <p className="mt-2 text-xs leading-5 text-[#657482]">{project.categoryLabel}</p>
                 </div>
 
@@ -121,7 +121,7 @@ export function PortfolioSection() {
                       {project.title}
                     </Link>
                   </h3>
-                  <p className="mt-4 max-w-xl text-sm leading-7 text-[#657482]">{project.summary}</p>
+                  <p className="mt-4 max-w-xl text-[0.95rem] leading-7 text-[#657482]">{project.summary}</p>
                   <Link
                     href={`/proyek/${project.slug}`}
                     className="mt-5 inline-flex border-b border-[#0F2942]/40 pb-1 text-sm font-semibold transition-colors hover:border-[#0F2942]"
