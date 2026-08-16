@@ -17,62 +17,62 @@ This file records decisions already made so future agents do not reopen them wit
 
 The website must not look like a generic AI-generated SaaS template.
 
-### Primary interaction
+## CURRENT PHASE OVERRIDE — NON-3D FIRST
 
-**Vertical immersive scrolling.**
+As of August 2026, the implementation priority is **a polished non-3D corporate portfolio first**.
 
-Do not turn the main experience into horizontal scrolling.
+This overrides the earlier requirement to lead the production homepage with 3D.
 
-### 3D usage
+For the current phase:
 
-3D is a technical storytelling tool, not decorative filler.
+- do **not** build, generate, commission, or integrate new 3D assets
+- do **not** make the hero depend on WebGL, GLB, Blender renders, frame sequences, or 3D scrollytelling
+- use authentic CBL project photography, typography, spacing, editorial composition, technical metadata, and restrained motion as the primary visual system
+- preserve the existing production website as the functional/content baseline and improve it section-by-section
+- prioritize visual authorship and credibility over novelty
+- keep performance and mobile simplicity high
 
-Priority:
+3D remains a possible **future phase**, not a current dependency. Existing 3D research may be preserved in this blueprint for later use, but agents must not reintroduce it into the current redesign unless the owner explicitly asks to resume 3D work.
 
-1. gearbox / drivetrain hero
-2. industrial control panel
-3. pump / water system
+### Primary interaction — current phase
 
-### Preferred production technique
+**Normal vertical page scrolling with restrained editorial motion.**
 
-After direct inspection of the uploaded tutorial reference, the preferred hero/explainer technique is now:
-
-**cinematic pre-rendered product animation -> extracted frame sequence -> sticky canvas controlled by vertical scroll.**
-
-This is the primary path for matching the approved visual reference.
-
-Realtime GLB/WebGL/Three.js remains optional and secondary when true mesh interaction is materially useful.
-
-Do not assume a "3D website" must use realtime 3D rendering in the browser.
+Do not use horizontal page scrolling, scroll-jacking, or long sticky sequences merely to create spectacle.
 
 ### Evidence
 
 Use real project photography to show actual field work.
 
-Formula:
+Current formula:
 
-**3D explains -> real project documentation proves.**
+**clear capability framing -> real project documentation -> technical detail -> verified company/process evidence.**
 
-### Hero behavior
+### Hero behavior — current phase
 
 Preferred production direction:
 
-- full-screen/sticky stage
-- product/system visually dominant
-- scroll down advances the pre-rendered animation sequence
-- text/annotations change at deliberate story beats
-- no need to drag horizontally
-- pointer inspection is optional and not required for comprehension
+- editorial typography-first composition
+- one strong authentic project image or a deliberately composed real-photo sequence
+- concise company positioning
+- direct project inquiry and portfolio actions
+- subtle entrance/image motion only where useful
+- no floating decorative cards
+- no badge/chip cloud
+- no fake metrics
+- no decorative 3D object
 
 ### Homepage visual rhythm
 
 Alternate:
 
-- immersive system story
-- quiet editorial/company information
+- strong editorial hero with real project evidence
+- quiet company/credibility information
 - structured capability index
-- real project imagery
-- second technical story
+- large real project imagery
+- process / technical detail
+- legal/vendor readiness
+- direct contact
 
 Do not repeat the same card grid pattern.
 
@@ -87,47 +87,60 @@ No fabricated:
 - project outcomes
 - capabilities
 
+## Future 3D direction — parked, not deleted
+
+The previous 3D research remains useful for a later phase. If 3D is explicitly resumed, treat it as technical storytelling, not decorative filler.
+
+Previous priority concepts:
+
+1. gearbox / drivetrain
+2. industrial control panel
+3. pump / water system
+
+Previous preferred technique:
+
+**cinematic pre-rendered product animation -> extracted frame sequence -> sticky canvas controlled by vertical scroll.**
+
+Realtime GLB/WebGL/Three.js remains optional and secondary when true mesh interaction is materially useful.
+
+Do not resume this work automatically.
+
 ## Implementation reference
 
-Existing experimental implementation:
+Production/reference implementation:
 
 - `mikaelzo-blip/cakrawala-web-3-refine-2`
-- branch `design/human-art-direction`
+- default branch remains the stable baseline
 
-This implementation is a prototype/reference. It is not automatically the final visual quality bar.
+Old experimental 3D/design branches are prototypes/references only and are not automatically the production visual quality bar.
 
 ## Important lesson from prototype
 
 A layout can be cleaner than the old website and still be insufficient.
 
-The desired result is not merely "less AI slop". It must also feel immersive, visually authored, and technically relevant.
+The desired result is not merely "less AI slop". It must feel visually authored, specific to CBL, technically relevant, and based on real work.
 
-A 3D canvas that technically exists but is visually weak/hidden is not success.
+Likewise, technical complexity does not equal design quality. A simpler photography-led website is preferred over an ambitious 3D experience if the simpler version communicates CBL more clearly and credibly.
 
-The earlier procedural WebGL gearbox is now considered an interaction prototype, not the production visual target.
+## Primary source hierarchy
 
-## Primary visual reference
+For current implementation decisions, use this order:
 
-The uploaded tutorial video was directly inspected.
-
-See:
-
-- `docs/12-VISUAL-REFERENCES.md`
-- `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md`
-
-The key reference lesson is that the premium 3D effect is achieved through cinematic rendered states and scroll-controlled frame sequences, not necessarily realtime browser 3D.
+1. verified CBL company/project data and supplied documents
+2. authentic CBL project photography
+3. this blueprint's design and anti-AI-slop rules
+4. current production website content/behavior that remains useful
+5. external visual references only as inspiration, never as generic template patterns
 
 ## Open questions
 
 These still require visual testing:
 
-- exact AI/render pipeline for the gearbox keyframes
-- best tool for assembled -> exploded animation
-- exact number and resolution of frames shipped per device class
-- whether some later sections benefit from realtime GLB overlays
-- exact sticky duration on mobile
 - final typeface selection
-- final motion curve/timing
-- how much of control-panel and pump stories should also be full-screen immersive
+- exact photography crops and image rhythm
+- how much motion improves the page without making it feel generated
+- best balance between warm editorial neutrals and existing CBL navy/orange identity
+- exact homepage section density on mobile
+- whether 3D should return in a later dedicated technical-story page rather than the homepage
 
-Agents may prototype these, but should preserve all locked decisions above.
+Agents may prototype these, but must preserve all current-phase constraints above.
