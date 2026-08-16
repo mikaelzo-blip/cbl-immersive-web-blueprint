@@ -9,8 +9,8 @@ import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { validateContactForm, type ContactFormData, type ContactFormErrors } from '@/lib/validation';
 import { buildWhatsappUrl, buildMailtoUrl } from '@/lib/message';
 
-const fieldClass = 'w-full border-0 border-b border-[#0F2942]/25 bg-transparent px-0 py-3 text-sm text-[#0F2942] outline-none transition-colors placeholder:text-[#8A949B] focus:border-[#B34718]';
-const errorFieldClass = 'w-full border-0 border-b border-red-500 bg-transparent px-0 py-3 text-sm text-[#0F2942] outline-none placeholder:text-[#8A949B]';
+const fieldClass = 'w-full border-0 border-b border-[#0F2942]/25 bg-transparent px-0 py-3.5 text-[0.95rem] leading-6 text-[#0F2942] outline-none transition-colors placeholder:text-[#8A949B] focus:border-[#B34718]';
+const errorFieldClass = 'w-full border-0 border-b border-red-500 bg-transparent px-0 py-3.5 text-[0.95rem] leading-6 text-[#0F2942] outline-none placeholder:text-[#8A949B]';
 
 export function ContactForm() {
   const pathname = usePathname();
@@ -83,8 +83,8 @@ export function ContactForm() {
     setIsSubmitting(false);
   };
 
-  const labelClass = 'mb-1 block text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#5F6D78]';
-  const errorClass = 'mt-1 text-xs font-medium text-red-600';
+  const labelClass = 'mb-1 block text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-[#5F6D78]';
+  const errorClass = 'mt-1.5 text-xs font-medium text-red-600';
 
   return (
     <form
@@ -93,13 +93,13 @@ export function ContactForm() {
       noValidate
       aria-label="Formulir Konsultasi Teknik"
     >
-      <div className="mb-8">
-        <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#B34718]">Project brief</p>
+      <div className="mb-8 sm:mb-9">
+        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.15em] text-[#B34718]">Ringkasan kebutuhan</p>
         <h3 className="mt-3 text-2xl font-semibold tracking-[-0.03em] text-[#0F2942] sm:text-3xl">Formulir konsultasi teknis.</h3>
-        <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5F6D78]">Isi informasi yang tersedia. Pesan dapat diteruskan melalui WhatsApp atau email tanpa disimpan ke basis data aplikasi CBL.</p>
+        <p className="mt-3 max-w-2xl text-[0.95rem] leading-7 text-[#5F6D78]">Isi informasi yang tersedia. Pesan dapat diteruskan melalui WhatsApp atau email tanpa disimpan ke basis data aplikasi CBL.</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-8 gap-y-7 sm:grid-cols-2 sm:gap-y-8">
         <div>
           <label htmlFor="name" className={labelClass}>Nama lengkap <span className="text-red-600">*</span></label>
           <input
@@ -227,7 +227,7 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="mt-7">
+      <div className="mt-8">
         <label htmlFor="message" className={labelClass}>Kondisi dan kebutuhan pekerjaan <span className="text-red-600">*</span></label>
         <textarea
           id="message"
@@ -254,9 +254,9 @@ export function ContactForm() {
             onChange={handleChange}
             aria-invalid={!!errors.agreedToTerms}
             aria-describedby={errors.agreedToTerms ? 'agreedToTerms-error' : undefined}
-            className="mt-1 h-4 w-4 rounded-sm border-[#0F2942]/30 text-[#B34718] focus:ring-[#B34718]"
+            className="mt-1 h-4 w-4 shrink-0 rounded-sm border-[#0F2942]/30 text-[#B34718] focus:ring-[#B34718]"
           />
-          <span className="text-xs leading-6 text-[#5F6D78]">
+          <span className="text-[0.82rem] leading-6 text-[#5F6D78]">
             Saya menyetujui penggunaan informasi yang dikirimkan untuk komunikasi dan konsultasi proyek dengan CV Cakrawala Buana Lestari. Baca{' '}
             <Link href="/kebijakan-privasi" className="font-semibold text-[#B34718] underline underline-offset-4">Kebijakan Privasi</Link>. <span className="text-red-600">*</span>
           </span>
