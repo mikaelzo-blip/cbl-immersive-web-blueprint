@@ -1,46 +1,53 @@
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
-import { Reveal } from '@/components/ui/Reveal';
 import { legalDocuments } from '@/data/legal';
 
 export function VendorReadinessSection() {
   return (
-    <section className="py-16 md:py-24 bg-[#F3F7FA] border-y border-[#E2E8F0]">
+    <section className="border-b border-[#0F2942]/15 bg-white py-20 md:py-28">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
-          <Reveal className="lg:col-span-5">
-            <span className="eyebrow-label">Kelengkapan Administrasi Vendor</span>
-            <h2 className="mt-5 text-3xl sm:text-4xl font-black tracking-tight text-[#0F2942] leading-tight">
-              Informasi legal untuk mendukung proses pengadaan dan registrasi vendor.
+        <div className="grid gap-10 border-t border-[#0F2942]/25 pt-6 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-5">
+            <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">
+              Kelengkapan Administrasi Vendor
+            </p>
+            <h2 className="mt-5 max-w-xl text-[clamp(2.4rem,5vw,4.8rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-[#0F2942]">
+              Legalitas disajikan sebagai informasi yang dapat ditelusuri.
             </h2>
-            <p className="mt-5 text-base leading-relaxed text-[#475569]">
-              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan yang memuat data sensitif hanya disampaikan melalui permintaan resmi untuk keperluan registrasi vendor.
+            <p className="mt-6 max-w-lg text-sm leading-7 text-[#5F6D78] sm:text-base">
+              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan yang memuat data sensitif disampaikan melalui permintaan resmi untuk kebutuhan registrasi vendor.
             </p>
             <Link
               href="/legalitas"
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-[#0F2942] px-5 py-3 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#15426B] hover:shadow-lg"
+              className="mt-7 inline-flex border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
             >
-              Lihat informasi legalitas
-              <DynamicIcon name="ArrowUpRight" size={17} />
+              Buka register legalitas →
             </Link>
-          </Reveal>
+          </div>
 
-          <div className="lg:col-span-7 grid gap-4">
-            {legalDocuments.map((document, index) => (
-              <Reveal key={document.id} delay={index * 80}>
-                <div className="group flex items-start gap-4 rounded-2xl border border-[#D9E5EF] bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#0E6BA8]/35 hover:shadow-md">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#F0F7FD] text-[#0E6BA8] transition-colors group-hover:bg-[#0E6BA8] group-hover:text-white">
-                    <DynamicIcon name="FileCheck2" size={21} />
-                  </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <div className="border-t border-[#0F2942]/20">
+              {legalDocuments.map((document, index) => (
+                <article
+                  key={document.id}
+                  className="grid gap-3 border-b border-[#0F2942]/15 py-5 sm:grid-cols-[3rem_1fr_auto] sm:items-start sm:gap-5"
+                >
+                  <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-[0.16em] text-[#0E6BA8]">{document.category}</span>
-                    <h3 className="mt-1 text-base font-bold text-[#0F2942]">{document.title}</h3>
-                    <p className="mt-1 text-sm leading-relaxed text-[#475569]">Dapat ditinjau sesuai kebutuhan proses registrasi resmi.</p>
+                    <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">
+                      {document.category}
+                    </p>
+                    <h3 className="mt-1 text-base font-semibold text-[#0F2942]">{document.title}</h3>
+                    <p className="mt-2 text-xs leading-6 text-[#5F6D78]">{document.description}</p>
                   </div>
-                </div>
-              </Reveal>
-            ))}
+                  <span className="text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-[#5F6D78] sm:text-right">
+                    Register
+                  </span>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </Container>
