@@ -58,6 +58,9 @@ export function Header() {
       if (itemHref.startsWith('#')) return activeSection === itemHref;
       return pathname === itemHref;
     }
+
+    if (itemHref === '#layanan' && pathname.startsWith('/layanan/')) return true;
+    if (itemHref === '/proyek' && pathname.startsWith('/proyek')) return true;
     return pathname === itemHref;
   };
 
@@ -131,6 +134,7 @@ export function Header() {
                   key={item.label}
                   href={href}
                   onClick={(e) => handleNavClick(e, item.href)}
+                  aria-current={isActive ? 'page' : undefined}
                   className={cn(
                     'border-b py-1 text-xs font-semibold transition-colors duration-150',
                     isActive
