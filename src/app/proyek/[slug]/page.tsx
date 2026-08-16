@@ -6,9 +6,6 @@ import { notFound } from 'next/navigation';
 import { projects } from '@/data/projects';
 import { companyInfo, serviceDivisions } from '@/data/company';
 import { Container } from '@/components/ui/Container';
-import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { ProjectCard } from '@/components/cards/ProjectCard';
 import { buildProjectWhatsappUrl } from '@/lib/whatsapp';
 import { serializeJsonLd } from '@/lib/json-ld';
@@ -18,27 +15,19 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = projects.find((item) => item.slug === slug);
 
-  if (!project) {
-    return {
-      title: 'Studi Kasus Tidak Ditemukan',
-    };
-  }
+  if (!project) return { title: 'Studi Kasus Tidak Ditemukan' };
 
   return {
     title: project.title,
     description: project.summary,
-    alternates: {
-      canonical: `${companyInfo.seo.siteUrl}/proyek/${project.slug}`,
-    },
+    alternates: { canonical: `${companyInfo.seo.siteUrl}/proyek/${project.slug}` },
     openGraph: {
       title: `${project.title} | ${companyInfo.shortName}`,
       description: project.summary,
@@ -51,17 +40,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudyDetailPage({ params }: Props) {
   const { slug } = await params;
-  const project = projects.find((p) => p.slug === slug);
+  const project = projects.find((item) => item.slug === slug);
 
-  if (!project) {
-    notFound();
-  }
+  if (!project) notFound();
 
-  // Cari divisi layanan terkait untuk tautan silang dua arah
-  const matchedService = serviceDivisions.find((s) => s.id === project.category);
-
+  const matchedService = serviceDivisions.find((service) => service.id === project.category);
   const relatedProjects = projects
-    .filter((p) => p.slug !== project.slug && p.category === project.category)
+    .filter((item) => item.slug !== project.slug && item.category === project.category)
     .slice(0, 3);
 
   const jsonLd = {
@@ -72,12 +57,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
     description: project.summary,
     url: `${companyInfo.seo.siteUrl}/proyek/${project.slug}`,
     image: `${companyInfo.seo.siteUrl}${project.images?.cover ?? project.image}`,
-    author: {
-      '@id': `${companyInfo.seo.siteUrl}/#organization`,
-    },
-    publisher: {
-      '@id': `${companyInfo.seo.siteUrl}/#organization`,
-    },
+    author: { '@id': `${companyInfo.seo.siteUrl}/#organization` },
+    publisher: { '@id': `${companyInfo.seo.siteUrl}/#organization` },
     genre: project.categoryLabel,
   };
 
@@ -85,250 +66,194 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
 
-      <div className="py-8 md:py-16 bg-[#F8FAFC] min-h-screen">
-        <Container>
-          {/* Breadcrumb Navigation */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#475569] mb-8" aria-label="Breadcrumb">
-            <Link href="/" className="hover:text-[#0E6BA8] transition-colors">
-              Beranda
-            </Link>
-            <DynamicIcon name="ChevronRight" size={14} className="text-[#475569]/50" />
-            <Link href="/proyek" className="hover:text-[#0E6BA8] transition-colors">
-              Portofolio
-            </Link>
-            <DynamicIcon name="ChevronRight" size={14} className="text-[#475569]/50" />
-            <span className="text-[#0F2942] font-semibold truncate max-w-xs sm:max-w-md">
-              {project.title}
-            </span>
+      <main className="min-h-screen bg-[#F4F1EA] text-[#0F2942]">
+        <Container className="py-8 md:py-12 lg:py-16">
+          <nav className="mb-10 flex flex-wrap items-center gap-2 text-xs text-[#6B7780]" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-[#B34718]">Beranda</Link>
+            <span aria-hidden="true">/</span>
+            <Link href="/proyek" className="hover:text-[#B34718]">Portofolio</Link>
+            <span aria-hidden="true">/</span>
+            <span className="max-w-[55vw] truncate font-semibold text-[#0F2942]">{project.title}</span>
           </nav>
 
-          {/* Project hero */}
-          <div className="relative min-h-[520px] rounded-[2rem] overflow-hidden border border-[#DCE6EE] shadow-[0_28px_80px_-38px_rgba(15,41,66,0.55)] mb-10 bg-[#E2E8F0] flex items-end">
-            <Image
-              src={project.images?.cover ?? project.image}
-              alt={project.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0F2942] via-[#0F2942]/65 to-[#0F2942]/10" />
-            <div className="relative z-10 w-full p-6 sm:p-10 lg:p-12">
-              <div className="flex flex-wrap items-center gap-2.5 mb-5">
-                {matchedService ? (
-                  <Link href={`/layanan/${matchedService.slug}`}>
-                    <Badge variant="primary" className="bg-white text-[#0E6BA8] border-white hover:bg-[#F0F7FD] transition-colors cursor-pointer">
-                      {project.categoryLabel} &rarr;
-                    </Badge>
-                  </Link>
-                ) : (
-                  <Badge variant="primary">{project.categoryLabel}</Badge>
-                )}
-                <Badge variant="ghost" className="bg-white/10 text-white border-white/20 backdrop-blur-sm">
-                  {project.sector}
-                </Badge>
+          <header className="grid gap-10 border-t border-[#0F2942]/25 pb-12 pt-6 lg:grid-cols-12 lg:gap-12 lg:pb-16">
+            <div className="lg:col-span-3">
+              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Case study</p>
+              <div className="mt-4 space-y-2 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#6B7780]">
+                <p>{project.categoryLabel}</p>
+                <p>{project.sector}</p>
+                {project.period && <p>{project.period}</p>}
               </div>
-              <h1 className="max-w-4xl text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-[-0.025em] mb-5 leading-[1.08]">
+            </div>
+
+            <div className="lg:col-span-8 lg:col-start-5">
+              <h1 className="max-w-5xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
                 {project.title}
               </h1>
-              <p className="max-w-3xl text-base sm:text-lg text-[#E2E8F0] leading-relaxed">
-                {project.summary}
-              </p>
+              <p className="mt-6 max-w-3xl text-base leading-8 text-[#5F6D78] sm:text-lg">{project.summary}</p>
+              {matchedService && (
+                <Link
+                  href={`/layanan/${matchedService.slug}`}
+                  className="mt-7 inline-flex border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718]"
+                >
+                  Lihat layanan {matchedService.title} →
+                </Link>
+              )}
             </div>
-          </div>
+          </header>
 
-          {/* Main Grid: Detail Konten (Kiri) vs Sidebar (Kanan) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-            {/* Sisi Kiri: Narasi Teknis & Langkah Penanganan */}
-            <div className="lg:col-span-8 space-y-8">
-              {/* 1. Kondisi Awal di Lapangan / Tantangan */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
-                <div className="flex items-center gap-3 mb-4 text-[#0F2942]">
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
-                    <DynamicIcon name="Activity" size={20} />
+          <figure className="border-y border-[#0F2942]/20 py-5">
+            <div className="relative min-h-[420px] overflow-hidden bg-[#D8D6D0] sm:min-h-[560px] lg:min-h-[690px]">
+              <Image
+                src={project.images?.cover ?? project.image}
+                alt={project.imageAlt}
+                fill
+                priority
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="grid gap-2 pt-4 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#6B7780] sm:grid-cols-2">
+              <span className="text-[#0F2942]">Dokumentasi proyek CBL</span>
+              <span className="sm:text-right">{project.categoryLabel} · {project.sector}</span>
+            </figcaption>
+          </figure>
+
+          <div className="grid gap-12 py-16 lg:grid-cols-12 lg:gap-14 lg:py-20">
+            <div className="lg:col-span-8">
+              <section className="grid gap-6 border-t border-[#0F2942]/20 py-8 md:grid-cols-[4rem_1fr]" aria-labelledby="project-context-title">
+                <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">01</span>
+                <div>
+                  <h2 id="project-context-title" className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Kebutuhan dan kondisi awal.</h2>
+                  <p className="mt-4 text-sm leading-7 text-[#5F6D78] sm:text-base sm:leading-8">{project.challenge}</p>
+                </div>
+              </section>
+
+              <section className="grid gap-6 border-t border-[#0F2942]/20 py-8 md:grid-cols-[4rem_1fr]" aria-labelledby="project-scope-title">
+                <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">02</span>
+                <div>
+                  <h2 id="project-scope-title" className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Cakupan pekerjaan.</h2>
+                  <ul className="mt-5 border-t border-[#0F2942]/15">
+                    {project.scope.map((item, index) => (
+                      <li key={item} className="grid gap-3 border-b border-[#0F2942]/12 py-4 sm:grid-cols-[2.5rem_1fr]">
+                        <span className="text-[0.58rem] font-semibold tracking-[0.12em] text-[#6B7780]">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="text-sm leading-7 text-[#0F2942]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+
+              <section className="grid gap-6 border-t border-[#0F2942]/20 py-8 md:grid-cols-[4rem_1fr]" aria-labelledby="project-phases-title">
+                <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">03</span>
+                <div>
+                  <h2 id="project-phases-title" className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Tahapan pelaksanaan.</h2>
+                  <div className="mt-5 border-t border-[#0F2942]/15">
+                    {project.phases.map((phase, index) => (
+                      <article key={`${phase.title}-${index}`} className="grid gap-3 border-b border-[#0F2942]/12 py-5 sm:grid-cols-[2.5rem_1fr]">
+                        <span className="text-[0.58rem] font-semibold tracking-[0.12em] text-[#B34718]">{String(index + 1).padStart(2, '0')}</span>
+                        <div>
+                          <h3 className="text-base font-semibold text-[#0F2942]">{phase.title}</h3>
+                          <p className="mt-2 text-sm leading-7 text-[#5F6D78]">{phase.description}</p>
+                        </div>
+                      </article>
+                    ))}
                   </div>
-                  <h2 className="text-xl font-bold tracking-tight">
-                    1. Kebutuhan dan Kondisi Awal
-                  </h2>
                 </div>
-                <p className="text-sm sm:text-base text-[#475569] leading-relaxed bg-[#F8FAFC] p-4 sm:p-5 rounded-xl border border-[#E2E8F0]">
-                  {project.challenge}
-                </p>
-              </div>
+              </section>
 
-              {/* 2. Lingkup pekerjaan */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
-                <div className="flex items-center gap-3 mb-6 text-[#0F2942]">
-                  <div className="w-10 h-10 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center font-bold">
-                    <DynamicIcon name="Layers3" size={20} />
+              <section className="border-t border-[#0F2942]/20 py-8" aria-labelledby="project-gallery-title">
+                <div className="grid gap-6 md:grid-cols-[4rem_1fr]">
+                  <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">04</span>
+                  <div>
+                    <h2 id="project-gallery-title" className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Galeri dokumentasi.</h2>
+                    <p className="mt-3 max-w-2xl text-sm leading-7 text-[#5F6D78]">Dokumentasi lapangan dipilih dari arsip proyek tanpa menampilkan data transaksi yang bersifat sensitif.</p>
                   </div>
-                  <h2 className="text-xl font-bold tracking-tight">2. Cakupan Pekerjaan</h2>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {project.scope.map((item) => (
-                    <div key={item} className="flex items-start gap-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-4 text-sm text-[#475569]">
-                      <DynamicIcon name="CheckCircle2" size={17} className="text-[#0E6BA8] shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 3. Langkah Penanganan Bernomor */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
-                <div className="flex items-center gap-3 mb-6 text-[#0F2942]">
-                  <div className="w-10 h-10 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center font-bold">
-                    <DynamicIcon name="Wrench" size={20} />
-                  </div>
-                  <h2 className="text-xl font-bold tracking-tight">
-                    3. Tahapan Pelaksanaan
-                  </h2>
                 </div>
 
-                <div className="space-y-4">
-                  {project.phases.map((phase, idx) => (
-                    <div
-                      key={idx}
-                      className="p-4 sm:p-5 rounded-xl bg-white border border-[#E2E8F0] flex items-start gap-4 hover:border-[#0E6BA8]/30 transition-colors"
-                    >
-                      <div className="w-8 h-8 rounded-lg bg-[#0F2942] text-[#00A8CC] flex items-center justify-center font-bold text-sm shrink-0 mt-0.5">
-                        {idx + 1}
+                <div className="mt-8 grid grid-cols-1 gap-x-5 gap-y-8 sm:grid-cols-2">
+                  {project.gallery.map((image, index) => (
+                    <figure key={`${image.src}-${index}`} className="group">
+                      <div className="relative aspect-[4/3] overflow-hidden bg-[#D8D6D0]">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          sizes="(max-width: 640px) 100vw, 50vw"
+                          className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.025]"
+                        />
                       </div>
-                      <div>
-                        <h3 className="font-bold text-[#0F2942] text-base mb-1">
-                          {phase.title}
-                        </h3>
-                        <p className="text-sm text-[#475569] leading-relaxed">
-                          {phase.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* 4. Galeri dokumentasi */}
-              <section className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm" aria-labelledby="galeri-proyek">
-                <div className="mb-6">
-                  <h2 id="galeri-proyek" className="text-xl font-bold text-[#0F2942]">4. Galeri Dokumentasi</h2>
-                  <p className="text-sm text-[#475569] mt-2">Dokumentasi lapangan dipilih dari arsip proyek tanpa menampilkan identitas klien atau data transaksi yang bersifat sensitif.</p>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {project.gallery.map((image) => (
-                    <figure key={image.src} className="group overflow-hidden rounded-2xl bg-white border border-[#E2E8F0]">
-                      <div className="relative aspect-[4/3] bg-[#E2E8F0] overflow-hidden">
-                        <Image src={image.src} alt={image.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-[1.04]" />
-                      </div>
-                      <figcaption className="p-4 text-sm text-[#475569]">{image.caption}</figcaption>
+                      <figcaption className="border-b border-[#0F2942]/15 py-3 text-xs leading-6 text-[#5F6D78]">{image.caption}</figcaption>
                     </figure>
                   ))}
                 </div>
               </section>
 
-              {/* 5. Hasil Pekerjaan */}
-              <div className="bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
-                <div className="flex items-center gap-3 mb-6 text-[#0F2942]">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                    <DynamicIcon name="CheckCircle2" size={20} />
-                  </div>
-                  <h2 className="text-xl font-bold tracking-tight">
-                    5. Hasil yang Dapat Diverifikasi
-                  </h2>
+              <section className="grid gap-6 border-t border-[#0F2942]/20 py-8 md:grid-cols-[4rem_1fr]" aria-labelledby="project-results-title">
+                <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">05</span>
+                <div>
+                  <h2 id="project-results-title" className="text-2xl font-semibold tracking-[-0.03em] sm:text-3xl">Hasil yang dapat diverifikasi.</h2>
+                  <ul className="mt-5 border-t border-[#0F2942]/15">
+                    {project.results.map((result, index) => (
+                      <li key={`${result}-${index}`} className="grid gap-3 border-b border-[#0F2942]/12 py-4 sm:grid-cols-[2.5rem_1fr]">
+                        <span className="text-[0.58rem] font-semibold tracking-[0.12em] text-[#6B7780]">{String(index + 1).padStart(2, '0')}</span>
+                        <span className="text-sm font-medium leading-7 text-[#0F2942]">{result}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <ul className="space-y-3">
-                  {project.results.map((result, idx) => (
-                    <li
-                      key={idx}
-                      className="flex items-start gap-3 p-3.5 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0] text-sm text-[#475569]"
-                    >
-                      <DynamicIcon name="CheckCircle2" size={18} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span className="font-medium text-[#0F2942]">{result}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </section>
             </div>
 
-            {/* Sisi Kanan: Sidebar Lingkup, Komponen & CTA */}
-            <div className="lg:col-span-4 space-y-6">
-              {/* Tautan Silang ke Divisi Layanan */}
-              {matchedService && (
-                <div className="bg-[#F0F7FD] rounded-2xl p-5 border border-[#0E6BA8]/20 shadow-2xs">
-                  <span className="text-xs font-bold text-[#0E6BA8] uppercase tracking-wider block mb-1">
-                    Layanan terkait
-                  </span>
-                  <h2 className="font-bold text-[#0F2942] text-base mb-2">
-                    {matchedService.title}
-                  </h2>
-                  <p className="text-xs text-[#475569] mb-4 leading-relaxed">
-                    {matchedService.description}
-                  </p>
-                  <Link
-                    href={`/layanan/${matchedService.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0E6BA8] hover:underline"
-                  >
-                    <span>Pelajari layanan {matchedService.title}</span>
-                    <DynamicIcon name="ArrowRight" size={14} />
-                  </Link>
-                </div>
-              )}
+            <aside className="lg:col-span-3 lg:col-start-10">
+              <div className="space-y-8 lg:sticky lg:top-28">
+                {matchedService && (
+                  <section className="border-t border-[#0F2942]/25 pt-5">
+                    <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#B34718]">Layanan terkait</p>
+                    <h2 className="mt-2 text-lg font-semibold">{matchedService.title}</h2>
+                    <p className="mt-3 text-xs leading-6 text-[#5F6D78]">{matchedService.description}</p>
+                    <Link href={`/layanan/${matchedService.slug}`} className="mt-4 inline-flex text-xs font-semibold text-[#B34718] underline underline-offset-4">Pelajari layanan →</Link>
+                  </section>
+                )}
 
-              {/* Komponen utama */}
-              <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm">
-                <h3 className="text-base font-bold text-[#0F2942] mb-4 pb-2 border-b border-[#E2E8F0] flex items-center gap-2">
-                  <DynamicIcon name="Cpu" size={18} className="text-[#0E6BA8]" />
-                  <span>Komponen utama</span>
-                </h3>
-                <ul className="space-y-2 text-xs text-[#475569]">
-                  {project.components.map((comp, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <DynamicIcon name="Check" size={14} className="text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{comp}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                <section className="border-t border-[#0F2942]/25 pt-5">
+                  <h2 className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Komponen utama</h2>
+                  <ul className="mt-3 space-y-2 text-xs leading-6 text-[#0F2942]">
+                    {project.components.map((component) => <li key={component}>{component}</li>)}
+                  </ul>
+                </section>
 
-              {/* CTA WhatsApp Spesifik Studi Kasus */}
-              <div className="bg-[#0F2942] text-white rounded-2xl p-6 shadow-md relative overflow-hidden space-y-4">
-                <h3 className="text-lg font-bold text-white tracking-tight">
-                  Menghadapi kebutuhan teknis yang serupa?
-                </h3>
-                <p className="text-xs text-[#E2E8F0] leading-relaxed">
-                  Sampaikan kondisi peralatan dan target pekerjaan Anda. Tim CBL akan membantu menilai kebutuhan awal sebelum peninjauan lapangan.
-                </p>
-                <Button
-                  href={whatsappCtaUrl}
-                  external
-                  variant="whatsapp"
-                  fullWidth
-                >
-                  <DynamicIcon name="MessageSquare" size={18} />
-                  <span>Konsultasi melalui WhatsApp</span>
-                </Button>
+                <section className="border-t border-[#0F2942]/25 pt-5">
+                  <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Project inquiry</p>
+                  <h2 className="mt-2 text-lg font-semibold">Menghadapi kebutuhan teknis yang serupa?</h2>
+                  <p className="mt-3 text-xs leading-6 text-[#5F6D78]">Sampaikan kondisi peralatan dan target pekerjaan untuk pembahasan awal sebelum peninjauan lapangan.</p>
+                  <a href={whatsappCtaUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex border-b border-[#B34718] pb-1 text-xs font-semibold text-[#B34718]">Diskusikan via WhatsApp ↗</a>
+                </section>
               </div>
-            </div>
+            </aside>
           </div>
 
-          {/* Proyek Lain yang Relevan */}
-          <div className="pt-12 border-t border-[#E2E8F0]">
-            <h2 className="text-2xl font-bold text-[#0F2942] tracking-tight mb-8">
-              Studi kasus lain dalam bidang yang sama
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {relatedProjects.map((relProject) => (
-                <ProjectCard key={relProject.slug} project={relProject} />
-              ))}
-            </div>
-          </div>
-</Container>
-      </div>
+          {relatedProjects.length > 0 && (
+            <section className="border-t border-[#0F2942]/20 py-16" aria-labelledby="related-projects-title">
+              <div className="mb-10 grid gap-6 lg:grid-cols-12">
+                <div className="lg:col-span-3">
+                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Related work</p>
+                </div>
+                <div className="lg:col-span-8 lg:col-start-5">
+                  <h2 id="related-projects-title" className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Studi kasus lain dalam bidang yang sama.</h2>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-x-7 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+                {relatedProjects.map((relatedProject) => (
+                  <ProjectCard key={relatedProject.slug} project={relatedProject} />
+                ))}
+              </div>
+            </section>
+          )}
+        </Container>
+      </main>
     </>
   );
 }
