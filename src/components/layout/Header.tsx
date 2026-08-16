@@ -70,7 +70,7 @@ export function Header() {
       const sectionId = itemHref.substring(1);
       const targetEl = document.getElementById(sectionId);
       if (targetEl) {
-        const headerOffset = 80;
+        const headerOffset = 88;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -95,36 +95,36 @@ export function Header() {
       <header
         className={cn(
           'sticky top-0 z-40 w-full border-b bg-[#F4F1EA]/96 transition-[padding,border-color,background-color] duration-200',
-          isScrolled ? 'border-[#0F2942]/15 py-3 backdrop-blur-md' : 'border-transparent py-4'
+          isScrolled ? 'border-[#0F2942]/15 py-2.5 backdrop-blur-md' : 'border-transparent py-3.5'
         )}
       >
-        <Container className="flex items-center justify-between gap-8">
+        <Container className="flex items-center justify-between gap-5 xl:gap-7">
           <Link
             href="/"
             onClick={(e) => handleNavClick(e, '/')}
             className="flex min-w-0 items-center gap-3 focus-visible:outline-2 focus-visible:outline-[#0E6BA8]"
           >
-            <div className="relative h-9 w-9 shrink-0 sm:h-10 sm:w-10">
+            <div className="relative h-10 w-10 shrink-0 sm:h-11 sm:w-11 xl:h-12 xl:w-12">
               <Image
                 src="/logo/cbl-logo.png"
                 alt="Logo CV Cakrawala Buana Lestari"
-                width={40}
-                height={40}
+                width={48}
+                height={48}
                 className="h-full w-full object-contain"
                 priority
               />
             </div>
             <div className="min-w-0">
-              <span className="block truncate text-sm font-semibold tracking-[-0.02em] text-[#0F2942] sm:text-base">
+              <span className="block truncate text-[0.9rem] font-semibold tracking-[-0.02em] text-[#0F2942] sm:text-base xl:text-[1.02rem]">
                 Cakrawala Buana Lestari
               </span>
-              <span className="mt-0.5 hidden text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780] sm:block">
-                Technical solutions · Jakarta
+              <span className="mt-0.5 hidden text-[0.64rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780] sm:block">
+                Solusi teknis · Jakarta
               </span>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-5 xl:flex" aria-label="Navigasi Utama">
+          <nav className="hidden items-center gap-5 xl:flex 2xl:gap-6" aria-label="Navigasi Utama">
             {mainNavItems.map((item) => {
               const href = resolveSectionHref(item.href, pathname);
               const isActive = checkIsActive(item.href);
@@ -136,7 +136,7 @@ export function Header() {
                   onClick={(e) => handleNavClick(e, item.href)}
                   aria-current={isActive ? 'page' : undefined}
                   className={cn(
-                    'border-b py-1 text-xs font-semibold transition-colors duration-150',
+                    'border-b py-1 text-[0.79rem] font-semibold transition-colors duration-150',
                     isActive
                       ? 'border-[#B34718] text-[#0F2942]'
                       : 'border-transparent text-[#5F6D78] hover:border-[#0F2942]/30 hover:text-[#0F2942]'
@@ -148,12 +148,12 @@ export function Header() {
             })}
           </nav>
 
-          <div className="hidden shrink-0 lg:flex lg:items-center lg:gap-5">
+          <div className="hidden shrink-0 xl:flex xl:items-center">
             <a
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-b border-[#B34718] pb-1 text-xs font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
+              className="border-b border-[#B34718] pb-1 text-[0.79rem] font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
             >
               Diskusikan proyek ↗
             </a>
@@ -162,12 +162,12 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-2 text-[#0F2942] xl:hidden"
+            className="-mr-1 flex h-11 w-11 items-center justify-center text-[#0F2942] xl:hidden"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label="Buka menu navigasi"
           >
-            <DynamicIcon name="Menu" size={24} />
+            <DynamicIcon name="Menu" size={25} />
           </button>
         </Container>
       </header>
