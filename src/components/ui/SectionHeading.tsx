@@ -31,7 +31,7 @@ export function SectionHeading({
       {badge && (
         <div
           className={cn(
-            'mb-5 flex items-center gap-3 text-[0.66rem] font-semibold uppercase tracking-[0.18em]',
+            'mb-5 flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.17em]',
             light ? 'text-[#9ED7E8]' : 'text-[#B34718]'
           )}
         >
@@ -42,7 +42,7 @@ export function SectionHeading({
 
       <Component
         className={cn(
-          'max-w-4xl text-[clamp(2.25rem,5.2vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]',
+          'max-w-4xl text-[clamp(2.2rem,5vw,4.75rem)] font-semibold leading-[0.99] tracking-[-0.043em]',
           light ? 'text-white' : 'text-[#0F2942]'
         )}
       >
@@ -52,7 +52,7 @@ export function SectionHeading({
       {description && (
         <p
           className={cn(
-            'mt-5 max-w-3xl text-sm leading-7 sm:text-base sm:leading-8',
+            'mt-5 max-w-3xl text-[0.95rem] leading-7 sm:text-base sm:leading-8',
             light ? 'text-[#D7E1E8]' : 'text-[#5F6D78]'
           )}
         >
