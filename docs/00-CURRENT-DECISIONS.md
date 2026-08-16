@@ -40,6 +40,27 @@ For the current phase:
 
 Do not use horizontal page scrolling, scroll-jacking, or long sticky sequences merely to create spectacle.
 
+### Approved motion — LOCKED
+
+The continuous moving marquee in **Cakupan Komponen & Suku Cadang** is explicitly approved by the owner and must remain in the current redesign.
+
+Implementation reference:
+
+- `src/components/sections/BrandSection.tsx`
+- `brand-marquee`
+- `brand-marquee-track`
+- duplicated tracks for the continuous loop
+
+Rules:
+
+- do not remove this movement while simplifying other animations
+- do not convert it to a static logo grid unless the owner explicitly requests that change
+- the visual treatment of the cells, spacing, typography, and speed may be refined
+- brand/equipment logos remain subordinate to real project evidence
+- reduced-motion accessibility must still be honored; a slower or simplified fallback is allowed
+
+This marquee is a deliberate content-specific motion pattern, not generic decorative animation.
+
 ### Evidence
 
 Use real project photography to show actual field work.
@@ -111,6 +132,7 @@ Production/reference implementation:
 
 - `mikaelzo-blip/cakrawala-web-3-refine-2`
 - default branch remains the stable baseline
+- current no-3D editorial implementation branch: `design/no-3d-editorial-v1`
 
 Old experimental 3D/design branches are prototypes/references only and are not automatically the production visual quality bar.
 
