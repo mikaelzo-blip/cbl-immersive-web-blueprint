@@ -4,222 +4,139 @@ import Link from 'next/link';
 import { companyInfo } from '@/data/company';
 import { legalDocuments, legalNotice, k3Procedures, handoverDocs, vendorRegistrationStatement, companyProfileDoc } from '@/data/legal';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { Button } from '@/components/ui/Button';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
 
 export const metadata: Metadata = {
   title: 'Legalitas & Prosedur K3',
   description: 'Informasi badan usaha, pendekatan K3 berbasis proyek, dan proses permintaan dokumen vendor CV Cakrawala Buana Lestari.',
-  alternates: {
-    canonical: `${companyInfo.seo.siteUrl}/legalitas`,
-  },
+  alternates: { canonical: `${companyInfo.seo.siteUrl}/legalitas` },
 };
 
 export default function LegalitasPage() {
+  const whatsappHref = `https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
+    'Halo tim CBL, mohon salinan berkas legalitas perusahaan untuk keperluan registrasi vendor.'
+  )}`;
+
   return (
-    <div className="py-10 md:py-20 bg-[#F8FAFC] min-h-screen">
-      <Container>
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#475569] mb-8" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-[#0E6BA8] transition-colors">
-            Beranda
-          </Link>
-          <DynamicIcon name="ChevronRight" size={14} className="text-[#475569]/50" />
-          <span className="text-[#0F2942] font-semibold">
-            Legalitas &amp; Prosedur Vendor
-          </span>
+    <main className="min-h-screen bg-[#F4F1EA] text-[#0F2942]">
+      <Container className="py-8 md:py-12 lg:py-16">
+        <nav className="mb-10 flex items-center gap-2 text-xs text-[#6B7780]" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-[#B34718]">Beranda</Link>
+          <span aria-hidden="true">/</span>
+          <span className="font-semibold text-[#0F2942]">Legalitas & Prosedur Vendor</span>
         </nav>
 
-        {/* Page Header */}
-        <SectionHeading
-          badge="Informasi Legal dan Kepatuhan"
-          title="Legalitas Perusahaan &amp; Prosedur K3"
-          description="Ringkasan dokumen badan usaha, batas informasi yang dipublikasikan, dan pendekatan keselamatan yang disesuaikan dengan risiko pekerjaan."
-          as="h1"
-        />
-
-        {/* Notice Kerahasiaan Nomor Dokumen */}
-        <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm mb-12 flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-[#F0F7FD] text-[#0E6BA8] flex items-center justify-center shrink-0 mt-0.5">
-            <DynamicIcon name="ShieldCheck" size={22} />
+        <header className="grid gap-10 border-t border-[#0F2942]/25 pb-16 pt-6 lg:grid-cols-12 lg:gap-12 lg:pb-20">
+          <div className="lg:col-span-3">
+            <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Company register</p>
+            <p className="mt-3 max-w-xs text-xs leading-6 text-[#6B7780]">Ringkasan publik. Salinan dokumen sensitif hanya diberikan sesuai kebutuhan resmi.</p>
           </div>
-          <div className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-            <h2 className="font-bold text-[#0F2942] mb-1">
-              Perlindungan data dokumen perusahaan
-            </h2>
-            <p>{legalNotice}</p>
+          <div className="lg:col-span-8 lg:col-start-5">
+            <h1 className="max-w-4xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
+              Legalitas perusahaan dan kesiapan administrasi proyek.
+            </h1>
+            <p className="mt-6 max-w-3xl text-base leading-8 text-[#5F6D78] sm:text-lg">
+              Informasi badan usaha, pendekatan keselamatan berbasis risiko, dokumentasi serah terima, dan mekanisme permintaan berkas untuk registrasi vendor.
+            </p>
           </div>
-        </div>
+        </header>
 
-        {/* Section 1: Checklist Dokumen Badan Usaha */}
-        <div className="mb-16">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#0F2942] tracking-tight mb-6 flex items-center gap-2">
-            <DynamicIcon name="FileText" size={24} className="text-[#0E6BA8]" />
-            <span>Daftar dokumen legalitas perusahaan</span>
-          </h2>
+        <aside className="mb-16 grid gap-4 border-y border-[#0F2942]/20 py-5 sm:grid-cols-[10rem_1fr]" aria-label="Catatan perlindungan data">
+          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#B34718]">Data handling</p>
+          <p className="max-w-4xl text-sm leading-7 text-[#5F6D78]">{legalNotice}</p>
+        </aside>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {legalDocuments.map((doc) => (
-              <div
-                key={doc.id}
-                className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-sm flex flex-col justify-between"
-              >
+        <section className="grid gap-10 py-8 lg:grid-cols-12 lg:gap-12" aria-labelledby="legal-register-title">
+          <div className="lg:col-span-4">
+            <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">01 / Legal register</p>
+            <h2 id="legal-register-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Dokumen badan usaha.</h2>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            {legalDocuments.map((document, index) => (
+              <article key={document.id} className="grid gap-4 border-t border-[#0F2942]/20 py-6 sm:grid-cols-[3rem_1fr]">
+                <span className="text-[0.62rem] font-semibold tracking-[0.14em] text-[#B34718]">{String(index + 1).padStart(2, '0')}</span>
                 <div>
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20">
-                      {doc.category}
-                    </span>
-                    <span className="text-xs text-emerald-800 font-semibold flex items-center gap-1">
-                      <DynamicIcon name="CheckCircle2" size={14} />
-                      <span>Telah ditinjau internal</span>
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-[#0F2942] mb-2">
-                    {doc.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-[#475569] leading-relaxed">
-                    {doc.description}
-                  </p>
+                  <p className="text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">{document.category}</p>
+                  <h3 className="mt-1 text-lg font-semibold">{document.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-[#5F6D78]">{document.description}</p>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
 
-        {/* Section 2: Prosedur Keselamatan Kerja K3 */}
-        <div className="mb-16">
-          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E2E8F0] shadow-sm">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                <DynamicIcon name="ShieldAlert" size={26} />
-              </div>
-              <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-[#0F2942] tracking-tight">
-                  Prosedur K3 &amp; Keselamatan Lapangan
-                </h2>
-                <p className="text-xs sm:text-sm text-[#475569] mt-0.5">
-                  Prosedur operasional yang disesuaikan dengan risiko pekerjaan dan ketentuan lokasi; bukan klaim sertifikasi K3.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {k3Procedures.map((proc, idx) => (
-                <div
-                  key={proc.id}
-                  className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="w-8 h-8 rounded-lg bg-[#0F2942] text-[#00A8CC] flex items-center justify-center font-bold text-xs mb-3">
-                      0{idx + 1}
-                    </div>
-                    <h3 className="font-bold text-[#0F2942] text-sm mb-2">
-                      {proc.title}
-                    </h3>
-                    <p className="text-xs text-[#475569] leading-relaxed">
-                      {proc.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <section className="grid gap-10 border-t border-[#0F2942]/20 py-16 lg:grid-cols-12 lg:gap-12" aria-labelledby="k3-title">
+          <div className="lg:col-span-4">
+            <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">02 / Field procedure</p>
+            <h2 id="k3-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">K3 dan keselamatan lapangan.</h2>
+            <p className="mt-4 max-w-sm text-sm leading-7 text-[#5F6D78]">Prosedur disesuaikan dengan risiko pekerjaan dan ketentuan lokasi. Bagian ini bukan klaim sertifikasi K3.</p>
           </div>
-        </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            {k3Procedures.map((procedure, index) => (
+              <article key={procedure.id} className="grid gap-4 border-t border-[#0F2942]/20 py-6 sm:grid-cols-[3rem_1fr]">
+                <span className="text-[0.62rem] font-semibold tracking-[0.14em] text-[#B34718]">{String(index + 1).padStart(2, '0')}</span>
+                <div>
+                  <h3 className="text-lg font-semibold">{procedure.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-[#5F6D78]">{procedure.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        {/* Section 3: Dokumen Serah Terima & Registrasi Vendor */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-          {/* Kiri: Dokumen Serah Terima Pekerjaan */}
-          <div className="lg:col-span-6 bg-white rounded-2xl p-6 sm:p-8 border border-[#E2E8F0] shadow-sm">
-            <h2 className="text-xl font-bold text-[#0F2942] mb-4 pb-3 border-b border-[#E2E8F0] flex items-center gap-2">
-              <DynamicIcon name="CheckSquare" size={20} className="text-[#0E6BA8]" />
-              <span>Berkas Dokumentasi Serah Terima</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-[#475569] mb-4 leading-relaxed">
-              Dokumen berikut disiapkan sesuai cakupan dan persyaratan kontrak. Karena itu, kelengkapannya dapat berbeda pada setiap pekerjaan:
-            </p>
-            <ul className="space-y-3 text-xs sm:text-sm text-[#475569]">
-              {handoverDocs.map((docName, idx) => (
-                <li key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-[#F8FAFC] border border-[#E2E8F0]">
-                  <DynamicIcon name="CheckCircle2" size={16} className="text-[#0E6BA8] shrink-0 mt-0.5" />
-                  <span className="font-semibold text-[#0F2942]">{docName}</span>
+        <section className="grid gap-10 border-t border-[#0F2942]/20 py-16 lg:grid-cols-12 lg:gap-12" aria-labelledby="handover-title">
+          <div className="lg:col-span-4">
+            <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">03 / Handover</p>
+            <h2 id="handover-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Dokumentasi serah terima.</h2>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <p className="mb-5 text-sm leading-7 text-[#5F6D78]">Kelengkapan dokumen mengikuti cakupan pekerjaan dan persyaratan kontrak.</p>
+            <ul className="border-t border-[#0F2942]/20">
+              {handoverDocs.map((document, index) => (
+                <li key={document} className="grid gap-3 border-b border-[#0F2942]/15 py-4 sm:grid-cols-[3rem_1fr]">
+                  <span className="text-[0.6rem] font-semibold tracking-[0.14em] text-[#6B7780]">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-sm font-semibold">{document}</span>
                 </li>
               ))}
             </ul>
           </div>
+        </section>
 
-          {/* Kanan: Registrasi Vendor & Unduh Company Profile PDF */}
-          <div className="lg:col-span-6 space-y-6">
-            {/* Box Registrasi Vendor */}
-            <div className="bg-[#0F2942] text-white rounded-2xl p-6 sm:p-8 shadow-md">
-              <h2 className="text-xl font-bold text-white mb-3">
-                Kesiapan proses registrasi vendor
-              </h2>
-              <p className="text-xs sm:text-sm text-[#E2E8F0] leading-relaxed mb-6">
-                {vendorRegistrationStatement}
-              </p>
-              <div className="pt-4 border-t border-[#15426B] flex items-center justify-between text-xs text-[#00A8CC] font-semibold">
-                <span>Disesuaikan dengan persyaratan calon klien</span>
-                <DynamicIcon name="Check" size={16} />
-              </div>
-            </div>
+        <section className="grid gap-10 border-t border-[#0F2942]/20 py-16 lg:grid-cols-12 lg:gap-12" aria-labelledby="vendor-title">
+          <div className="lg:col-span-4">
+            <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">04 / Vendor readiness</p>
+            <h2 id="vendor-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Registrasi dan profil perusahaan.</h2>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <p className="text-sm leading-7 text-[#5F6D78]">{vendorRegistrationStatement}</p>
 
-            {/* Box Download PDF Company Profile */}
-            <div className="bg-white rounded-2xl p-6 border border-[#E2E8F0] shadow-sm">
-              <h3 className="font-bold text-[#0F2942] text-base mb-2">
-                {companyProfileDoc.title}
-              </h3>
-              <p className="text-xs text-[#475569] mb-4 leading-relaxed">
-                {companyProfileDoc.note}
-              </p>
-
+            <div className="mt-8 border-y border-[#0F2942]/20 py-5">
+              <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">{companyProfileDoc.title}</p>
+              <p className="mt-2 text-sm leading-7 text-[#5F6D78]">{companyProfileDoc.note}</p>
               {companyProfileDoc.available ? (
-                <Button href={`/documents/${companyProfileDoc.fileName}`} external variant="primary" fullWidth>
-                  <DynamicIcon name="Download" size={18} />
-                  <span>Unduh profil perusahaan</span>
-                </Button>
+                <a href={`/documents/${companyProfileDoc.fileName}`} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718]">
+                  Unduh profil perusahaan ↗
+                </a>
               ) : (
-                <button
-                  type="button"
-                  disabled
-                  className="w-full px-4 py-3 rounded-xl bg-gray-100 text-gray-400 font-semibold text-xs flex items-center justify-center gap-2 cursor-not-allowed border border-gray-200"
-                >
-                  <DynamicIcon name="Lock" size={16} />
-                  <span>Versi publik sedang disiapkan</span>
-                </button>
+                <p className="mt-4 text-xs font-semibold text-[#6B7780]">Versi publik sedang disiapkan.</p>
               )}
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* CTA Permintaan Berkas Vendor */}
-        <div className="bg-gradient-to-r from-[#0F2942] via-[#15426B] to-[#0E6BA8] text-white rounded-3xl p-8 text-center shadow-xl">
-          <h2 className="text-2xl font-bold mb-3">
-            Membutuhkan salinan dokumen untuk registrasi vendor?
-          </h2>
-          <p className="text-xs sm:text-sm text-[#E2E8F0] max-w-xl mx-auto mb-6 leading-relaxed">
-            Hubungi bagian administrasi CBL untuk mengonfirmasi dokumen yang diperlukan. Salinan akan disampaikan melalui email atau WhatsApp setelah permintaan resmi diterima.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
-                'Halo tim CBL, mohon salinan berkas legalitas perusahaan untuk keperluan registrasi vendor.'
-              )}`}
-              external
-              variant="whatsapp"
-              size="md"
-            >
-              <DynamicIcon name="MessageSquare" size={18} />
-              <span>Minta dokumen melalui WhatsApp</span>
-            </Button>
-            <Button href={`mailto:${companyInfo.email}`} variant="outline" size="md" className="border-white text-white hover:bg-white/10">
-              <DynamicIcon name="Mail" size={18} />
-              <span>Minta dokumen melalui email</span>
-            </Button>
+        <section className="mt-6 bg-[#0F2942] px-6 py-12 text-white sm:px-10 md:py-16">
+          <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#F0A16F]">Document request</p>
+              <h2 className="mt-4 text-3xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-5xl">Membutuhkan berkas untuk registrasi vendor?</h2>
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-[#D7E1E8]">Konfirmasikan daftar dokumen yang diminta. Salinan disampaikan melalui jalur resmi setelah kebutuhan registrasi diverifikasi.</p>
+            </div>
+            <div className="flex flex-wrap gap-5 lg:col-span-3 lg:col-start-10 lg:flex-col lg:items-end">
+              <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="border-b border-[#F0A16F] pb-1 text-sm font-semibold text-[#F0A16F]">WhatsApp ↗</a>
+              <a href={`mailto:${companyInfo.email}`} className="border-b border-white/40 pb-1 text-sm font-semibold text-white">Email →</a>
+            </div>
           </div>
-        </div>
+        </section>
       </Container>
-    </div>
+    </main>
   );
 }
