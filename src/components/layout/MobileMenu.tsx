@@ -99,36 +99,36 @@ export function MobileMenu({
 
       <div
         ref={modalRef}
-        className="mobile-menu-drawer fixed inset-y-0 right-0 z-10 flex w-full max-w-sm flex-col justify-between overflow-y-auto border-l border-[#0F2942]/15 bg-[#F4F1EA] p-6"
+        className="mobile-menu-drawer fixed inset-y-0 right-0 z-10 flex w-full max-w-[23rem] flex-col justify-between overflow-y-auto border-l border-[#0F2942]/15 bg-[#F4F1EA] p-5 min-[390px]:p-6"
       >
         <div>
           <div className="flex items-center justify-between border-b border-[#0F2942]/15 pb-5">
             <div className="flex min-w-0 items-center gap-3">
-              <div className="relative h-8 w-8 shrink-0">
+              <div className="relative h-9 w-9 shrink-0">
                 <Image
                   src="/logo/cbl-logo.png"
                   alt="Logo CV Cakrawala Buana Lestari"
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
                   className="h-full w-full object-contain"
                 />
               </div>
               <div className="min-w-0">
-                <span className="block truncate text-sm font-semibold text-[#0F2942]">Cakrawala Buana Lestari</span>
-                <span className="mt-0.5 block text-[0.56rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Technical solutions</span>
+                <span className="block truncate text-[0.95rem] font-semibold text-[#0F2942]">Cakrawala Buana Lestari</span>
+                <span className="mt-0.5 block text-[0.64rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780]">Solusi teknis · Jakarta</span>
               </div>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="p-2 text-[#0F2942] focus-visible:outline-[#0E6BA8]"
+              className="flex h-11 w-11 items-center justify-center text-[#0F2942] focus-visible:outline-[#0E6BA8]"
               aria-label="Tutup menu"
             >
-              <DynamicIcon name="X" size={22} />
+              <DynamicIcon name="X" size={23} />
             </button>
           </div>
 
-          <nav className="py-5" aria-label="Navigasi Seluler">
+          <nav className="py-4" aria-label="Navigasi Seluler">
             {mainNavItems.map((item, index) => {
               const href = resolveSectionHref(item.href, pathname);
               const isActive = checkIsActive(item.href);
@@ -141,12 +141,13 @@ export function MobileMenu({
                     handleNavClick?.(e, item.href);
                     onClose();
                   }}
+                  aria-current={isActive ? 'page' : undefined}
                   className={cn(
-                    'grid grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#0F2942]/12 py-4 text-sm font-semibold transition-colors',
+                    'grid min-h-12 grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#0F2942]/12 py-3.5 text-[0.95rem] font-semibold transition-colors',
                     isActive ? 'text-[#B34718]' : 'text-[#0F2942] hover:text-[#B34718]'
                   )}
                 >
-                  <span className="text-[0.58rem] tracking-[0.12em] text-[#7A858D]">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-[0.64rem] tracking-[0.12em] text-[#7A858D]">{String(index + 1).padStart(2, '0')}</span>
                   <span>{item.label}</span>
                   <span aria-hidden="true">{isActive ? '—' : '→'}</span>
                 </Link>
@@ -156,20 +157,20 @@ export function MobileMenu({
         </div>
 
         <div className="border-t border-[#0F2942]/15 pt-5">
-          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Project inquiry</p>
+          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Konsultasi proyek</p>
           <a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="mt-3 inline-flex border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718]"
+            className="mt-3 inline-flex border-b border-[#B34718] pb-1 text-[0.95rem] font-semibold text-[#B34718]"
           >
             WhatsApp {companyInfo.whatsappFormatted} ↗
           </a>
           <a
             href={`tel:${companyInfo.phoneRaw}`}
             onClick={onClose}
-            className="mt-3 block text-xs font-semibold text-[#0F2942]"
+            className="mt-4 block text-sm font-semibold text-[#0F2942]"
           >
             Telepon {companyInfo.phone}
           </a>
