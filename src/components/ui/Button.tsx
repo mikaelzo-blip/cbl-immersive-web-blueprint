@@ -21,20 +21,20 @@ export function Button({
   children,
   ...props
 }: ButtonProps) {
-  const baseStyles = 'inline-flex items-center justify-center font-medium transition-all duration-200 rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:pointer-events-none active:scale-[0.98]';
+  const baseStyles = 'inline-flex items-center justify-center rounded-md font-semibold transition-[background-color,color,border-color,transform] duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50 active:translate-y-px';
 
   const variants = {
-    primary: 'bg-[#0E6BA8] text-white hover:bg-[#15426B] shadow-md hover:shadow-lg focus-visible:outline-[#0E6BA8]',
-    secondary: 'bg-[#0F2942] text-white hover:bg-[#15426B] shadow-md hover:shadow-lg focus-visible:outline-[#0F2942]',
-    outline: 'border-2 border-[#0E6BA8] text-[#0E6BA8] hover:bg-[#F0F7FD] focus-visible:outline-[#0E6BA8]',
-    ghost: 'text-[#15426B] hover:bg-[#F0F7FD] hover:text-[#0E6BA8] focus-visible:outline-[#0E6BA8]',
-    whatsapp: 'bg-[#C2410C] text-white hover:bg-[#9A3412] shadow-md hover:shadow-lg focus-visible:outline-[#C2410C]',
+    primary: 'bg-[#0F2942] text-white hover:bg-[#173B5C] focus-visible:outline-[#0F2942]',
+    secondary: 'bg-[#173B5C] text-white hover:bg-[#0F2942] focus-visible:outline-[#0F2942]',
+    outline: 'border border-[#0F2942]/35 bg-transparent text-[#0F2942] hover:border-[#0F2942] hover:bg-[#0F2942]/5 focus-visible:outline-[#0E6BA8]',
+    ghost: 'text-[#0F2942] hover:bg-[#0F2942]/5 focus-visible:outline-[#0E6BA8]',
+    whatsapp: 'bg-[#B34718] text-white hover:bg-[#8F3413] focus-visible:outline-[#B34718]',
   };
 
   const sizes = {
-    sm: 'text-xs px-3.5 py-2 gap-1.5',
-    md: 'text-sm px-5 py-2.5 gap-2',
-    lg: 'text-base px-6 py-3.5 gap-2.5 font-semibold',
+    sm: 'gap-1.5 px-3.5 py-2 text-xs',
+    md: 'gap-2 px-5 py-2.5 text-sm',
+    lg: 'gap-2.5 px-6 py-3.5 text-sm sm:text-base',
   };
 
   const combinedClasses = cn(
