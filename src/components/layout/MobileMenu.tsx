@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { companyInfo, mainNavItems } from '@/data/company';
 import { resolveSectionHref, cn } from '@/lib/utils';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
-import { Button } from '@/components/ui/Button';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -26,7 +25,6 @@ export function MobileMenu({
   const modalRef = useRef<HTMLDivElement>(null);
   const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
-  // Focus trap & Escape key listener
   useEffect(() => {
     if (!isOpen) return;
     previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
@@ -46,27 +44,19 @@ export function MobileMenu({
         const firstElement = focusables[0];
         const lastElement = focusables[focusables.length - 1];
 
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
+        if (e.shiftKey && document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        } else if (!e.shiftKey && document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
         }
       }
     };
 
     document.addEventListener('keydown', handleKeyDown);
-    // Prevent body scroll when menu is open
     document.body.style.overflow = 'hidden';
-
-    // Focus close button initially
-    const closeBtn = modalRef.current?.querySelector<HTMLElement>('button[aria-label="Tutup menu"]');
-    closeBtn?.focus();
+    modalRef.current?.querySelector<HTMLElement>('button[aria-label="Tutup menu"]')?.focus();
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
@@ -79,16 +69,19 @@ export function MobileMenu({
 
   const checkIsActive = (itemHref: string) => {
     if (pathname === '/') {
-      if (itemHref === '/') {
-        return activeSection === '/';
-      }
-      if (itemHref.startsWith('#')) {
-        return activeSection === itemHref;
-      }
+      if (itemHref === '/') return activeSection === '/';
+      if (itemHref.startsWith('#')) return activeSection === itemHref;
       return pathname === itemHref;
     }
+
+    if (itemHref === '#layanan' && pathname.startsWith('/layanan/')) return true;
+    if (itemHref === '/proyek' && pathname.startsWith('/proyek')) return true;
     return pathname === itemHref;
   };
+
+  const whatsappHref = `https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
+    'Halo CBL, saya ingin konsultasi kebutuhan teknik fasilitas kami.'
+  )}`;
 
   return (
     <div
@@ -98,48 +91,45 @@ export function MobileMenu({
       aria-label="Menu Navigasi Seluler"
       id="mobile-navigation"
     >
-      {/* Backdrop */}
       <div
-        className="mobile-menu-backdrop fixed inset-0 bg-[#0F2942]/60 backdrop-blur-sm transition-opacity"
+        className="mobile-menu-backdrop fixed inset-0 bg-[#0F2942]/55"
         onClick={onClose}
         aria-hidden="true"
       />
 
-      {/* Drawer Content */}
       <div
         ref={modalRef}
-        className="mobile-menu-drawer fixed inset-y-0 right-0 w-full max-w-sm bg-white shadow-2xl flex flex-col justify-between p-6 z-10 overflow-y-auto"
+        className="mobile-menu-drawer fixed inset-y-0 right-0 z-10 flex w-full max-w-sm flex-col justify-between overflow-y-auto border-l border-[#0F2942]/15 bg-[#F4F1EA] p-6"
       >
         <div>
-          {/* Menu Header */}
-          <div className="flex items-center justify-between pb-6 border-b border-[#E2E8F0]">
-            <div className="flex items-center gap-2">
-              <div className="relative w-8 h-8 shrink-0">
+          <div className="flex items-center justify-between border-b border-[#0F2942]/15 pb-5">
+            <div className="flex min-w-0 items-center gap-3">
+              <div className="relative h-8 w-8 shrink-0">
                 <Image
                   src="/logo/cbl-logo.png"
                   alt="Logo CV Cakrawala Buana Lestari"
                   width={32}
                   height={32}
-                  className="w-full h-full object-contain"
+                  className="h-full w-full object-contain"
                 />
               </div>
-              <span className="font-bold text-[#0F2942] text-sm">
-                CV Cakrawala Buana Lestari
-              </span>
+              <div className="min-w-0">
+                <span className="block truncate text-sm font-semibold text-[#0F2942]">Cakrawala Buana Lestari</span>
+                <span className="mt-0.5 block text-[0.56rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Technical solutions</span>
+              </div>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="p-2 text-[#475569] hover:text-[#0F2942] hover:bg-[#F8FAFC] rounded-lg focus-visible:outline-[#0E6BA8]"
+              className="p-2 text-[#0F2942] focus-visible:outline-[#0E6BA8]"
               aria-label="Tutup menu"
             >
-              <DynamicIcon name="X" size={24} />
+              <DynamicIcon name="X" size={22} />
             </button>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="py-6 flex flex-col gap-1" aria-label="Navigasi Seluler">
-            {mainNavItems.map((item) => {
+          <nav className="py-5" aria-label="Navigasi Seluler">
+            {mainNavItems.map((item, index) => {
               const href = resolveSectionHref(item.href, pathname);
               const isActive = checkIsActive(item.href);
 
@@ -148,53 +138,41 @@ export function MobileMenu({
                   key={item.label}
                   href={href}
                   onClick={(e) => {
-                    if (handleNavClick) {
-                      handleNavClick(e, item.href);
-                    }
+                    handleNavClick?.(e, item.href);
                     onClose();
                   }}
                   className={cn(
-                    'px-4 py-3 text-base font-semibold rounded-xl transition-colors flex items-center justify-between',
-                    isActive
-                      ? 'text-[#0E6BA8] bg-[#F0F7FD] font-bold'
-                      : 'text-[#0F172A] hover:bg-[#F8FAFC] hover:text-[#0E6BA8]'
+                    'grid grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#0F2942]/12 py-4 text-sm font-semibold transition-colors',
+                    isActive ? 'text-[#B34718]' : 'text-[#0F2942] hover:text-[#B34718]'
                   )}
                 >
+                  <span className="text-[0.58rem] tracking-[0.12em] text-[#7A858D]">{String(index + 1).padStart(2, '0')}</span>
                   <span>{item.label}</span>
-                  <DynamicIcon name="ChevronRight" size={18} className="text-[#475569]/60" />
+                  <span aria-hidden="true">{isActive ? '—' : '→'}</span>
                 </Link>
               );
             })}
           </nav>
         </div>
 
-        {/* Menu Footer CTA */}
-        <div className="pt-6 border-t border-[#E2E8F0] space-y-3">
-          <div className="text-xs text-[#475569] font-medium">
-            Konsultasi kebutuhan proyek:
-          </div>
-          <Button
-            href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
-              'Halo CBL, saya ingin konsultasi kebutuhan teknik fasilitas kami.'
-            )}`}
-            external
-            variant="whatsapp"
-            fullWidth
+        <div className="border-t border-[#0F2942]/15 pt-5">
+          <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Project inquiry</p>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={onClose}
+            className="mt-3 inline-flex border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718]"
           >
-            <DynamicIcon name="MessageSquare" size={18} />
-            <span>Chat WhatsApp ({companyInfo.whatsappFormatted})</span>
-          </Button>
-
-          <Button
+            WhatsApp {companyInfo.whatsappFormatted} ↗
+          </a>
+          <a
             href={`tel:${companyInfo.phoneRaw}`}
-            variant="outline"
-            fullWidth
             onClick={onClose}
+            className="mt-3 block text-xs font-semibold text-[#0F2942]"
           >
-            <DynamicIcon name="Phone" size={18} />
-            <span>Hubungi Telepon: {companyInfo.phone}</span>
-          </Button>
+            Telepon {companyInfo.phone}
+          </a>
         </div>
       </div>
     </div>
