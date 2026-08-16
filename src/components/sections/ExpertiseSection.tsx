@@ -14,10 +14,10 @@ export function ExpertiseSection() {
                 <span>Kompetensi teknis</span>
               </div>
               <h2 className="max-w-[11ch] text-[clamp(2.65rem,4.6vw,4.9rem)] font-semibold leading-[0.98] tracking-[-0.045em] text-[#0F2942]">
-                Detail teknis yang lahir dari pekerjaan nyata.
+                Keahlian teknis yang terbentuk dari pengalaman lapangan.
               </h2>
               <p className="mt-6 max-w-md text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base sm:leading-8">
-                Kompetensi berikut dirangkum dari pengalaman proyek dan digunakan sebagai referensi awal saat kebutuhan baru diklarifikasi.
+                Daftar ini merangkum bidang teknis yang pernah ditangani dalam proyek CBL dan menjadi acuan awal saat kebutuhan baru dibahas.
               </p>
             </div>
           </div>
