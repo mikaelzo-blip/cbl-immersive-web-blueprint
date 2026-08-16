@@ -7,17 +7,17 @@ export function WhyUsSection() {
       <Container>
         <div className="grid grid-cols-1 gap-8 border-t border-white/25 pt-5 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-3">
-            <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#F0A06B]">Operating model</p>
-            <p className="mt-3 max-w-[17rem] text-sm leading-6 text-white/60">
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#F0A06B]">Model kerja</p>
+            <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-white/65">
               Nilai CBL datang dari cara pekerjaan dikendalikan, bukan dari slogan yang sulit dibuktikan.
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.7rem,5vw,5.4rem)] font-semibold leading-[0.95] tracking-[-0.045em]">
+            <h2 className="max-w-4xl text-[clamp(2.5rem,5vw,5.15rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
               Satu pengendali proyek. Keahlian dimobilisasi sesuai kebutuhan.
             </h2>
-            <p className="mt-6 max-w-2xl text-base leading-7 text-white/65 sm:text-lg sm:leading-8">
+            <p className="mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/70 sm:text-lg sm:leading-8">
               Struktur inti tetap mengendalikan koordinasi, mutu, jadwal, dokumentasi, dan hasil akhir; tenaga profesional atau mitra spesialis dilibatkan sesuai disiplin dan kompleksitas pekerjaan.
             </p>
           </div>
@@ -30,14 +30,14 @@ export function WhyUsSection() {
               className="grid grid-cols-1 gap-4 border-t border-white/20 py-7 md:grid-cols-12 md:gap-8 md:py-9"
             >
               <div className="md:col-span-2">
-                <span className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#F0A06B]">
+                <span className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#F0A06B]">
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>
-              <h3 className="text-2xl font-semibold leading-[1.05] tracking-[-0.03em] md:col-span-4 sm:text-3xl">
+              <h3 className="text-2xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-3xl md:col-span-4">
                 {point.title}
               </h3>
-              <p className="max-w-2xl text-sm leading-7 text-white/65 md:col-span-5 md:col-start-8 sm:text-base">
+              <p className="max-w-2xl text-[0.95rem] leading-7 text-white/70 sm:text-base md:col-span-5 md:col-start-8">
                 {point.description}
               </p>
             </article>
