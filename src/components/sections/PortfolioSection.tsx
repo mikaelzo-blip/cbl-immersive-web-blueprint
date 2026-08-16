@@ -17,16 +17,16 @@ export function PortfolioSection() {
           <div className="lg:col-span-3">
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Pilihan pekerjaan</p>
             <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-[#657482]">
-              Dokumentasi lapangan adalah pusat portofolio, bukan elemen dekoratif.
+              Proyek yang ditampilkan dipilih dari pekerjaan yang memiliki dokumentasi lapangan dan catatan pelaksanaan.
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
             <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
-              Pekerjaan nyata lebih kuat daripada klaim pemasaran.
+              Setiap studi kasus berangkat dari pekerjaan yang terdokumentasi.
             </h2>
             <p className="mt-6 max-w-2xl text-[0.98rem] leading-7 text-[#657482] sm:text-lg sm:leading-8">
-              Setiap studi kasus merangkum kebutuhan, cakupan, tahapan pelaksanaan, dan hasil berdasarkan dokumentasi pekerjaan yang tersedia.
+              Kami merangkum kebutuhan, cakupan pekerjaan, tahapan pelaksanaan, dan hasil berdasarkan arsip proyek yang tersedia.
             </p>
           </div>
         </div>
