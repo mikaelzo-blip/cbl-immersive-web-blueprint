@@ -16,10 +16,10 @@ export function ExperienceSummarySection() {
           <div className="lg:col-span-4">
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Rekam proyek terverifikasi · 2022–2026</p>
             <h2 className="mt-5 max-w-md text-3xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl">
-              Angka dipakai sebagai bukti, bukan dekorasi.
+              Pengalaman yang tercatat dalam arsip proyek.
             </h2>
             <p className="mt-5 max-w-md text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base">
-              Register perusahaan disusun dari PO, SPK, BAST, surat jalan, laporan, dan dokumentasi proyek. Klasifikasi berikut memakai disiplin dominan; satu pekerjaan dapat melibatkan lebih dari satu kompetensi.
+              Ringkasan ini disusun dari PO, SPK, BAST, surat jalan, laporan, dan dokumentasi proyek. Kategori menunjukkan disiplin utama; satu pekerjaan dapat melibatkan beberapa bidang sekaligus.
             </p>
           </div>
 
