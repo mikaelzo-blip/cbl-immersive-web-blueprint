@@ -24,9 +24,11 @@ Jangan membalik urutan tersebut hanya karena sebuah efek lebih mudah dibuat.
 Sebelum coding, baca:
 
 - `README.md`
+- `docs/00-CURRENT-DECISIONS.md`
 - `docs/01-PROJECT-VISION.md`
 - `docs/02-DESIGN-DIRECTION.md`
 - `docs/03-ANTI-AI-SLOP.md`
+- `docs/12-VISUAL-REFERENCES.md`
 - file domain yang relevan dengan task
 
 Untuk 3D/motion wajib juga baca:
@@ -34,6 +36,9 @@ Untuk 3D/motion wajib juga baca:
 - `docs/05-IMMERSIVE-3D-SCROLL.md`
 - `docs/06-3D-ASSET-PLAN.md`
 - `docs/07-MOTION-SYSTEM.md`
+- `docs/12-VISUAL-REFERENCES.md`
+
+Jika agent dapat membuka reference video pada `docs/12-VISUAL-REFERENCES.md`, lakukan visual/interactivity breakdown sebelum mengubah sistem 3D utama. Jangan mengarang detail video yang belum benar-benar diamati.
 
 ## 3. Non-negotiable design rules
 
@@ -120,6 +125,8 @@ Contoh:
 3D hero harus menjadi **scroll-driven technical story**, bukan product configurator penuh.
 
 Pointer drag/orbit adalah optional secondary interaction.
+
+Approved reference standard disimpan di `docs/12-VISUAL-REFERENCES.md`. Target kualitas adalah **engineering product film controlled by vertical scroll**, bukan generic Three.js demo atau model viewer.
 
 ## 9. Responsive
 
