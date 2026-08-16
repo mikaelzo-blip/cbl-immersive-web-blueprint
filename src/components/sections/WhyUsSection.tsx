@@ -9,16 +9,16 @@ export function WhyUsSection() {
           <div className="lg:col-span-3">
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#F0A06B]">Model kerja</p>
             <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-white/65">
-              Nilai CBL datang dari cara pekerjaan dikendalikan, bukan dari slogan yang sulit dibuktikan.
+              Cara kerja CBL menekankan kejelasan tanggung jawab dan koordinasi pada setiap pekerjaan.
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
             <h2 className="max-w-4xl text-[clamp(2.5rem,5vw,5.15rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
-              Satu pengendali proyek. Keahlian dimobilisasi sesuai kebutuhan.
+              Satu koordinasi proyek. Tenaga ahli dilibatkan sesuai kebutuhan.
             </h2>
             <p className="mt-6 max-w-2xl text-[0.98rem] leading-7 text-white/70 sm:text-lg sm:leading-8">
-              Struktur inti tetap mengendalikan koordinasi, mutu, jadwal, dokumentasi, dan hasil akhir; tenaga profesional atau mitra spesialis dilibatkan sesuai disiplin dan kompleksitas pekerjaan.
+              Tim inti CBL mengendalikan koordinasi, mutu, jadwal, dokumentasi, dan hasil akhir. Tenaga profesional atau mitra spesialis dilibatkan bila pekerjaan memerlukan keahlian khusus.
             </p>
           </div>
         </div>
