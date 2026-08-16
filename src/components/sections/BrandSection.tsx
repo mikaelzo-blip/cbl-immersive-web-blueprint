@@ -36,9 +36,9 @@ export function BrandSection() {
               {brandItems.map((brand) => (
                 <div
                   key={`${copyIndex}-${brand.id}`}
-                  className="group flex h-[112px] w-[220px] shrink-0 flex-col items-center justify-center border-r border-[#0F2942]/15 bg-[#F8F6F1] px-6 text-center sm:w-[250px]"
+                  className="group flex h-[112px] w-[210px] shrink-0 flex-col items-center justify-center border-r border-[#0F2942]/15 bg-[#F8F6F1] px-5 text-center min-[390px]:w-[220px] sm:w-[250px] sm:px-6"
                 >
-                  <div className="flex h-[52px] w-[165px] items-center justify-center overflow-hidden">
+                  <div className="flex h-[52px] w-[160px] items-center justify-center overflow-hidden sm:w-[165px]">
                     {brand.logoPath ? (
                       <Image
                         src={brand.logoPath}
@@ -53,7 +53,7 @@ export function BrandSection() {
                       </span>
                     )}
                   </div>
-                  <span className="mt-3 max-w-full truncate text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#6B7780]">
+                  <span className="mt-3 max-w-full truncate text-[0.68rem] font-semibold uppercase tracking-[0.11em] text-[#6B7780]">
                     {brand.category}
                   </span>
                 </div>
@@ -64,7 +64,7 @@ export function BrandSection() {
       </div>
 
       <Container>
-        <p className="mt-6 max-w-4xl border-l border-[#B34718]/60 pl-4 text-xs leading-6 text-[#5F6D78]">
+        <p className="mt-6 max-w-4xl border-l border-[#B34718]/60 pl-4 text-[0.82rem] leading-6 text-[#5F6D78]">
           <strong className="font-semibold text-[#0F2942]">Keterangan merek dagang — </strong>
           {brandDisclaimer}
         </p>
