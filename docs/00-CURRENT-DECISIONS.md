@@ -97,6 +97,94 @@ Alternate:
 
 Do not repeat the same card grid pattern.
 
+## LOCKED VISUAL REFINEMENT — 17 AUGUST 2026
+
+The owner reviewed the current non-3D implementation visually and approved the overall direction. The next phase is **refinement, not another redesign from zero**.
+
+### Hero
+
+- keep the existing warm editorial hero direction
+- desktop headline should read as three deliberate statements:
+  - `Mengelola kebutuhan.`
+  - `Memobilisasi keahlian.`
+  - `Menyelesaikan pekerjaan.`
+- do not return to the previous oversized six-line poster-like treatment
+- keep the descriptive copy visually aligned with the headline rather than dropped too low
+- retain authentic project photography as the primary image
+- do not show visitor-facing defensive copy such as `Project evidence, not stock imagery`
+- use factual metadata instead, for example project archive period or technical disciplines
+
+### Language
+
+Primary interface language is **Indonesian**.
+
+Use English only where technically or commercially necessary, such as official brand names, product names, standards, or widely accepted technical terminology.
+
+Do not use decorative English micro-labels simply to make the website appear premium. Examples that should remain translated include:
+
+- `Project archive` -> `Arsip proyek`
+- `Project brief` -> `Ringkasan kebutuhan`
+- `Operating model` -> `Model kerja`
+- `Capability index` -> `Indeks layanan`
+- `Project inquiry` -> `Konsultasi proyek`
+
+### Project Archive
+
+The archive page must **not** revert to a uniform 3-column wall of identical project cards.
+
+Approved direction:
+
+1. one featured archive project with dominant photography
+2. two-column editorial project entries
+3. periodic full-width / wide project entries to break repetition
+4. lighter information density on standard archive entries
+5. detailed scope and technical narrative belong on the case-study route, not repeated on every archive item
+
+Project imagery must remain visually dominant.
+
+### Controlled variation
+
+A repeated design system is desirable; repeated section composition is not.
+
+Do not make every section use exactly:
+
+`small label -> giant heading -> horizontal numbered rows`
+
+Use controlled variation while keeping typography, spacing, color, border, and image treatment consistent.
+
+The dark navy operating-model section remains a visual anchor and should not be redesigned merely for novelty.
+
+The technical expertise register remains appropriate, but headline line breaks and body readability should be controlled.
+
+### Readability
+
+Do not shrink meaningful interface text into decorative microtype.
+
+Target visual ranges:
+
+- micro labels: approximately 11–12px
+- secondary/body-small text: approximately 13–15px
+- normal body/form text: approximately 15–16px
+- form controls must remain readable without zoom
+
+Header navigation, contact information, form labels, consent text, and footer content are included in this rule.
+
+### Mobile QA — 390px LOCKED
+
+390px is a mandatory visual QA width.
+
+At 390px verify:
+
+- no horizontal page overflow
+- logo/company name and hamburger fit without collision
+- navigation drawer remains readable and touch targets are comfortable
+- hero typography remains strong without becoming an excessive wall of text
+- project archive filters may scroll horizontally without causing page overflow
+- all archive compositions collapse to a clear one-column reading order
+- form fields are one column and buttons are usable at full width
+- footer stacks cleanly
+- the `Cakupan Komponen & Suku Cadang` marquee remains continuous and visually intentional
+
 ### Content integrity
 
 No fabricated:
