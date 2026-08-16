@@ -10,8 +10,8 @@ export function BrandSection() {
       <Container>
         <SectionHeading
           badge="Cakupan Komponen & Suku Cadang"
-          title="Merek dan komponen yang pernah muncul dalam pekerjaan CBL."
-          description="Daftar ini menunjukkan pengalaman menangani spesifikasi dan perangkat tertentu. Pencantuman merek tidak menyatakan hubungan distributor atau kemitraan resmi."
+          title="Merek dan komponen yang tercatat dalam pekerjaan CBL."
+          description="Daftar ini menunjukkan merek dan jenis perangkat yang pernah tercatat dalam pekerjaan CBL. Pencantuman merek tidak menunjukkan hubungan distributor atau kemitraan resmi."
           align="left"
         />
       </Container>
