@@ -2,9 +2,13 @@
 
 ## Strategy
 
-Do not model everything in 3D.
+Do not model everything in realtime 3D.
 
-Use a small number of high-value assets that communicate CBL's technical competence.
+Use a small number of high-value **cinematic product/system sequences** that communicate CBL's technical competence.
+
+The approved reference demonstrates that a premium "3D website" can be produced from pre-rendered assembled/exploded animation converted to scroll-controlled frame sequences.
+
+This is now the preferred production path for major hero explainers.
 
 ## Tier A — Must build well
 
@@ -12,12 +16,12 @@ Use a small number of high-value assets that communicate CBL's technical compete
 
 Primary hero asset.
 
-Preferred components:
+Visual content should communicate:
 
 - electric motor
 - coupling
 - gearbox casing
-- internal gears if exploded/cutaway is used
+- internal gears where exploded/cutaway is used
 - input shaft
 - output shaft
 - bearings
@@ -29,19 +33,29 @@ Quality target:
 - recognizable industrial form
 - believable metal/rubber/painted-steel materials
 - clean silhouette
-- optimized enough for web
-- animation-ready hierarchy
+- studio-grade lighting
+- coherent assembled and exploded states
+- technically plausible component relationships
 
-Required states:
+Required key states:
 
 1. assembled overview
 2. transmission relationship
-3. component inspection state
-4. optional exploded/cutaway state
+3. casing/open reveal
+4. shaft/bearing/gear inspection state
+5. controlled exploded state
+6. resolved transition into real field evidence
+
+Preferred deliverable:
+
+- master animation clip with coherent assembled -> exploded behavior
+- optimized frame sequence for desktop
+- lighter frame sequence for mobile
+- 2–4 stable keyframe stills for reduced-motion/fallback use
 
 ### A2. Industrial control panel
 
-Components:
+Visual content:
 
 - cabinet body + door
 - HMI
@@ -53,16 +67,24 @@ Components:
 - power supply
 - DIN rail / wiring abstraction
 
-Required states:
+Required key states:
 
 1. closed cabinet
-2. door open
-3. device highlights
-4. control/signal path
+2. door opening/reveal
+3. internal architecture
+4. device highlights
+5. control/signal path story
+
+Preferred animation style:
+
+- disciplined technical reveal
+- no impossible floating parts
+- clean camera
+- wiring simplified enough to stay readable
 
 ### A3. Pump / water system
 
-Components:
+Visual content:
 
 - motor
 - coupling/shaft
@@ -73,12 +95,13 @@ Components:
 - discharge
 - optional pipe/valve context
 
-Required states:
+Required key states:
 
 1. assembled
-2. cutaway
-3. flow visualization
-4. inspection highlight
+2. casing cutaway/reveal
+3. impeller/shaft relationship
+4. flow visualization
+5. inspection state
 
 ## Tier B — Build only after Tier A works
 
@@ -89,63 +112,151 @@ Required states:
 
 ## Source discipline
 
-Whenever possible, base shapes and storytelling on equipment categories CBL actually handles.
+Whenever possible, base visual shapes and storytelling on equipment categories CBL actually handles.
 
 Do not imply a specific manufacturer/model unless the source material supports it.
 
-The 3D object may be representative, but labels and claims must remain accurate.
+The visual may be representative, but labels and claims must remain accurate.
 
-## Modeling style
+## Visual generation style
 
 Target:
 
 - engineering product visualization
+- premium commercial studio render
 - clean realistic proportions
 - low visual noise
-- restrained bevels
+- restrained industrial detailing
 - physically plausible materials
+- consistent camera identity across states
 
 Avoid:
 
 - sci-fi detailing
 - cyberpunk emissive materials
-- exaggerated floating components
-- overcomplicated micro-detail invisible on screen
+- impossible exploded geometry
+- arbitrary floating components
+- fictional brand logos
+- material/style drift between assembled and exploded states
 
-## Web optimization targets
+## Preferred asset pipeline
 
-Use these as initial targets, then measure:
+### 1. Reference board
 
-- prefer GLB/GLTF
+Collect verified CBL/equipment imagery for shape, context, and technical plausibility.
+
+### 2. Assembled hero keyframe
+
+Create a polished master product/system render.
+
+### 3. Exploded/cutaway keyframe
+
+Create the same system in a coherent separated state while preserving:
+
+- camera identity
+- material language
+- lighting direction
+- component identity
+
+### 4. Image-to-video transition
+
+Animate between the key states.
+
+Acceptance requirements:
+
+- no geometry morphing into unrelated parts
+- no disappearing components
+- no duplicate components appearing unexpectedly
+- camera motion controlled
+- product remains readable
+
+### 5. Frame extraction
+
+Extract final animation to sequential frames.
+
+Recommended folder structure:
+
+```text
+public/sequences/gearbox-hero/
+  desktop/
+    frame_0001.webp
+    frame_0002.webp
+    ...
+  mobile/
+    frame_0001.webp
+    ...
+  fallback/
+    assembled.webp
+    exploded.webp
+```
+
+### 6. Optimization
+
+Do not ship raw production PNGs blindly.
+
+Measure and optimize:
+
+- frame dimensions
+- frame count
+- WebP/AVIF quality
+- decode performance
+- preload window
+- mobile memory use
+
+## Frame count guidance
+
+Do not optimize for a fixed number before testing.
+
+Start from a smooth source animation, then downsample until scroll still feels continuous.
+
+A shorter, well-directed 60–120-frame sequence can be better than hundreds of redundant frames.
+
+For mobile, fewer frames may be appropriate.
+
+## Realtime model assets
+
+GLB/GLTF assets are **optional secondary assets**, not mandatory for every hero.
+
+Use realtime models only where needed for:
+
+- mesh-targeted annotations
+- interactive inspection
+- configurable states
+- dynamic camera behavior not practical as pre-rendered frames
+
+If used:
+
 - Draco or Meshopt compression where compatible
-- KTX2/Basis texture compression for large textures
-- texture resolution proportional to screen importance
+- KTX2/Basis textures
 - delete unseen geometry
-- merge static meshes when it helps draw-call count
-- keep separately animated/highlighted parts separate
+- keep animated/highlightable parts separate
+- clamp complexity to measured device performance
 
-## LOD / device strategy
+## Mobile strategy
 
-Desktop high capability:
+Primary sequence can use:
 
-- full hero model
-- richer materials
-- optional cutaway/explode
-
-Mobile:
-
-- simplified geometry
-- fewer texture maps
-- lower DPR
-- reduced animation complexity
+- reduced resolution
+- reduced frame count
+- shorter scroll duration
+- tighter preloading
 
 Low capability / reduced motion fallback:
 
-- stable 3D view or pre-rendered still/image sequence
+- stable keyframe stills
+- simple crossfade between technical states
 
 ## Naming convention
 
-Recommended scene hierarchy:
+Frame sequences:
+
+```text
+frame_0001.webp
+frame_0002.webp
+frame_0003.webp
+```
+
+Optional realtime scene hierarchy:
 
 ```text
 gearbox_root
@@ -161,9 +272,20 @@ gearbox_root
   chain
 ```
 
-Use predictable names so frontend code can target parts for highlights/animation.
-
 ## Asset acceptance checklist
+
+For frame sequence:
+
+- assembled/exploded identity consistent
+- no AI morphing artifacts
+- technical relationships plausible
+- lighting consistent
+- framing works at actual website viewport
+- transitions are readable when scrubbed by scroll
+- frames compressed and preload-tested
+- mobile memory acceptable
+
+For optional realtime assets:
 
 - scale/origin consistent
 - pivots correct
@@ -171,5 +293,5 @@ Use predictable names so frontend code can target parts for highlights/animation
 - materials named clearly
 - no unnecessary 8K textures
 - animation states testable
-- readable at actual website size
-- works on representative mobile GPU
+
+See `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md` for the inspected reference workflow.
