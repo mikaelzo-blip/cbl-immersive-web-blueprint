@@ -126,7 +126,7 @@ export const projects: Project[] = [
       { src: '/images/projects/perbaikan-ac-vrf/04.webp', alt: 'Hasil pekerjaan AC VRF', caption: 'Dokumentasi hasil pekerjaan.' },
     ],
     verification: { sourceType: 'SPK', bastAvailable: true, deliveryNoteAvailable: false, bqAvailable: false, photosAvailable: true },
-    featured: true,
+    featured: false,
   },
   {
     slug: 'penggantian-instalasi-ac-split-duct',
@@ -154,7 +154,7 @@ export const projects: Project[] = [
       { src: '/images/projects/instalasi-ac-split-duct/04.webp', alt: 'Hasil instalasi AC split duct', caption: 'Dokumentasi hasil pekerjaan.' },
     ],
     verification: { sourceType: 'SPK', bastAvailable: true, deliveryNoteAvailable: true, bqAvailable: false, photosAvailable: true },
-    featured: true,
+    featured: false,
   },
   {
     slug: 'pemasangan-panel-view-hmi',

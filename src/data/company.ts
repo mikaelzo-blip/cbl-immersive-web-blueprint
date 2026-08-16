@@ -400,7 +400,7 @@ export const brandItems: BrandItem[] = [
     name: 'Allen-Bradley',
     category: 'Otomasi & PLC',
     logoText: 'Allen-Bradley',
-    logoPath: '/logo/brands/allen-bradley.png',
+    logoPath: '/logo/brands/allen-bradley.svg',
     logoWidth: 160,
     logoHeight: 48,
   },
@@ -412,6 +412,7 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/schneider.svg',
     logoWidth: 160,
     logoHeight: 48,
+    logoScale: 0.88,
   },
   {
     id: 'sew-eurodrive',
@@ -421,6 +422,7 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/sew-eurodrive.svg',
     logoWidth: 160,
     logoHeight: 48,
+    logoScale: 1.06,
   },
   {
     id: 'rexnord',
@@ -430,6 +432,7 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/rexnord.svg',
     logoWidth: 160,
     logoHeight: 48,
+    logoScale: 0.98,
   },
   {
     id: 'skf',
@@ -439,6 +442,7 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/skf.svg',
     logoWidth: 130,
     logoHeight: 48,
+    logoScale: 0.92,
   },
   {
     id: 'timken',
@@ -448,6 +452,7 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/timken.svg',
     logoWidth: 150,
     logoHeight: 48,
+    logoScale: 0.92,
   },
   {
     id: 'fenner',
@@ -457,6 +462,7 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/fenner.svg',
     logoWidth: 130,
     logoHeight: 48,
+    logoScale: 0.88,
   },
   {
     id: 'renold',
@@ -466,24 +472,27 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/renold.svg',
     logoWidth: 160,
     logoHeight: 48,
+    logoScale: 0.9,
   },
   {
     id: 'grundfos',
     name: 'Grundfos',
     category: 'Pompa & Perairan',
     logoText: 'Grundfos',
-    logoPath: '/logo/brands/grundfos.svg',
+    logoPath: '/logo/brands/grundfos-official.svg',
     logoWidth: 160,
     logoHeight: 48,
+    logoScale: 1,
   },
   {
-    id: 'sta-rite',
-    name: 'Sta-Rite',
+    id: 'pentair',
+    name: 'Pentair',
     category: 'Pompa & Filtrasi',
-    logoText: 'Sta-Rite',
+    logoText: 'Pentair',
     logoPath: '/logo/brands/sta-rite.svg',
     logoWidth: 150,
     logoHeight: 48,
+    logoScale: 1.65,
   },
   {
     id: 'in-lite',
@@ -493,6 +502,8 @@ export const brandItems: BrandItem[] = [
     logoPath: '/logo/brands/in-lite.svg',
     logoWidth: 150,
     logoHeight: 48,
+    logoScale: 0.96,
+    logoYOffset: -1,
   },
   {
     id: 'orphek',

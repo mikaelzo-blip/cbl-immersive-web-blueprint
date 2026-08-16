@@ -40,13 +40,21 @@ export function BrandSection() {
                 >
                   <div className="flex h-[52px] w-[160px] items-center justify-center overflow-hidden sm:w-[165px]">
                     {brand.logoPath ? (
-                      <Image
-                        src={brand.logoPath}
-                        alt={copyIndex === 0 ? brand.name : ''}
-                        width={brand.logoWidth || 160}
-                        height={brand.logoHeight || 52}
-                        className="max-h-full max-w-full object-contain opacity-80 transition-[opacity,transform] duration-300 group-hover:scale-[1.03] group-hover:opacity-100"
-                      />
+                      <div
+                        className="flex h-full w-full items-center justify-center"
+                        style={{
+                          transform: `translate3d(${brand.logoXOffset ?? 0}px, ${brand.logoYOffset ?? 0}px, 0) scale(${brand.logoScale ?? 1})`,
+                        }}
+                      >
+                        <Image
+                          src={brand.logoPath}
+                          alt={copyIndex === 0 ? brand.name : ''}
+                          width={brand.logoWidth || 160}
+                          height={brand.logoHeight || 52}
+                          style={{ width: 'auto', height: 'auto' }}
+                          className="h-auto w-auto max-h-full max-w-full object-contain opacity-80 transition-[opacity,transform] duration-300 group-hover:scale-[1.03] group-hover:opacity-100"
+                        />
+                      </div>
                     ) : (
                       <span className="max-w-full truncate text-xl font-semibold tracking-[-0.02em] text-[#0F2942]">
                         {brand.logoText}
