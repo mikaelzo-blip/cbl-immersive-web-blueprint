@@ -50,6 +50,20 @@ These decisions are based on the owner-approved visual review and should not be 
 - **390px is a mandatory mobile QA width.** At 390px: no horizontal page overflow, header brand + menu must fit, portfolio filter tabs may scroll horizontally, forms are one column, editorial grids collapse cleanly, and project imagery remains readable.
 - Header/navigation text must remain readable; do not shrink desktop nav or mobile controls into decorative microtype.
 
+### Copywriting — natural Indonesian, not translated corporate jargon
+
+Visitor-facing copy must sound like professional Indonesian written for a contractor/engineering company, not like literal English-to-Indonesian translation or generic AI marketing copy.
+
+Rules:
+- prefer clear verbs and concrete project language: `memahami kebutuhan`, `menentukan langkah kerja`, `memeriksa`, `mengadakan`, `memasang`, `mengganti`, `menguji`, `mendokumentasikan`, `menyerahkan`
+- avoid abstract phrases such as `memobilisasi keahlian`, `mengorkestrasi solusi`, `memberdayakan transformasi`, or similar translated corporate jargon
+- when explaining the operating model, say plainly that **tenaga profesional atau mitra spesialis dilibatkan sesuai kebutuhan pekerjaan**
+- avoid defensive/meta copy such as `pekerjaan nyata lebih kuat daripada klaim pemasaran` or `angka dipakai sebagai bukti, bukan dekorasi`; state the evidence directly instead
+- avoid decorative English labels when an Indonesian equivalent is natural
+- keep established technical terms such as PLC, HMI, HVAC, VFD, MCCB, conveyor, gearbox, bearing, soft starter, and brand/product names when technically appropriate
+- do not invent claims, outcomes, certifications, client names, or performance figures to make copy sound stronger
+- prefer short, concrete sentences over slogans
+
 ### Anti-AI-slop guardrails
 
 Reject by default:
