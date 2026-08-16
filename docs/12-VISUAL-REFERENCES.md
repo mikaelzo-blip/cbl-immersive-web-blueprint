@@ -4,46 +4,67 @@ Dokumen ini menyimpan reference visual yang secara eksplisit dipilih oleh pemili
 
 Tujuannya bukan untuk menyalin satu website atau video secara literal. Tujuannya adalah mengunci **kelas pengalaman, bahasa interaksi, dan standar kualitas** yang diinginkan.
 
-## Primary reference — YouTube
+## Primary reference — YouTube tutorial
 
 URL:
 
 https://youtu.be/DJMsXSr1jec?si=mRUueM6leMW4Hme-
 
+Uploaded MP4 was later provided directly and inspected.
+
 Status:
 
-- disetujui manusia sebagai contoh yang sangat baik untuk web 3D
-- digunakan sebagai target untuk **3D product storytelling**
-- agent yang memiliki kemampuan membuka/menonton video harus memeriksanya sebelum mengubah sistem 3D utama
-- jangan mengarang detail spesifik video jika belum benar-benar melihatnya
+- explicitly approved by the project owner as a strong 3D website reference
+- direct MP4 inspection completed
+- now treated as the primary interaction/production reference for the hero
+- detailed breakdown is stored in `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md`
 
-### What we are taking from this reference
+## What the inspected tutorial actually demonstrates
 
-Arah yang dikunci oleh keputusan manusia:
+The most important implementation lesson is:
 
-- 3D bukan sekadar dekorasi atau model yang berputar sendiri
-- objek/sistem menjadi fokus visual utama
-- 3D menjelaskan produk atau sistem secara bertahap
-- navigasi cerita menggunakan **scroll vertikal ke bawah**
-- pengalaman harus terasa immersive dan cinematic, tetapi tetap mudah dipahami
-- kamera, posisi objek, scale, assembly state, dan annotation dapat berubah mengikuti progress scroll
-- user tidak boleh dipaksa horizontal-scroll untuk mengikuti cerita
-- drag/orbit boleh tersedia hanya sebagai secondary interaction
+**the premium 3D effect is produced largely through cinematic product renders/animations converted into scroll-controlled image sequences, not only by realtime browser 3D.**
 
-### Desired storytelling pattern for CBL
+Observed workflow pattern:
 
-Contoh target untuk mechanical story:
+1. establish polished product render
+2. write detailed product/exploded visualization prompts
+3. generate assembled and exploded visual states
+4. generate controlled assembled -> exploded animation
+5. prepare many sequential frame image assets
+6. build the website around those sequences
+7. map vertical scroll progress to visual frame progression
+8. place short editorial text around specific visual states
 
-1. complete gearbox / drivetrain appears as hero object
-2. camera establishes the complete assembly
-3. scroll moves closer to the transmission area
-4. casing or outer assembly can separate/reveal
-5. shaft, bearing, gear, coupling, sprocket/chain relationships become understandable
-6. annotation/callout appears only when needed
-7. assembly returns or camera transitions naturally
-8. scene gives way to verified real project photography
+This is now the preferred CBL production pattern for major immersive explainers.
 
-Equivalent stories should later be created for:
+## What we are taking from this reference
+
+- 3D is not decorative or a model that merely auto-rotates
+- product/system becomes the dominant visual subject
+- the experience behaves like a product film controlled by scroll
+- primary navigation is **vertical scroll down**
+- cinematic realism matters more than free orbit interaction
+- assembled, revealed, cutaway, and exploded states can form narrative chapters
+- copy should appear at deliberate story beats
+- the browser rendering technique should be chosen for quality and performance, not ideology
+- user must never be forced into horizontal page scrolling
+
+## Desired storytelling pattern for CBL
+
+### Mechanical hero
+
+1. complete gearbox/drivetrain appears
+2. camera/product orientation establishes the full system
+3. scroll moves into the transmission relationship
+4. casing separates/reveals
+5. internal gear, shaft, bearing and coupling relationships become clear
+6. controlled exploded/inspection state
+7. selective technical callouts appear
+8. sequence resolves
+9. real CBL project photography takes over as evidence
+
+Equivalent stories can later be created for:
 
 - industrial control panel
 - pump / water system
@@ -64,26 +85,26 @@ Use this as supporting evidence for the same product-explainer direction.
 
 ## Reference usage rules
 
-When an agent can access the reference video, first perform a shot/interactivity breakdown before implementation:
+Before implementing a major sequence, agent should define:
 
 1. opening composition
-2. camera path
-3. object transforms
-4. explode/reveal/cutaway behavior
-5. scroll-to-timeline mapping
-6. text/annotation placement
-7. lighting/material language
-8. transitions between story beats
-9. mobile adaptation
-10. performance implications
+2. key assembled state
+3. key exploded/reveal state
+4. camera path
+5. object/component transforms represented in the animation
+6. scroll-to-frame mapping
+7. text/annotation placement
+8. lighting/material language
+9. transition into real project evidence
+10. mobile adaptation
+11. performance/loading plan
 
-Then compare the observed behavior against:
+Then compare the plan against:
 
 - `docs/05-IMMERSIVE-3D-SCROLL.md`
 - `docs/06-3D-ASSET-PLAN.md`
 - `docs/07-MOTION-SYSTEM.md`
-
-If the reference suggests a better interaction pattern, document the proposal before changing the locked project behavior.
+- `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md`
 
 ## Do not copy blindly
 
@@ -95,7 +116,7 @@ Never copy:
 - exact composition solely to imitate another company
 - product geometry unrelated to CBL
 
-Translate the quality and interaction principles into CBL's own industrial identity.
+Translate the interaction quality into CBL's own industrial identity.
 
 ## Quality bar
 
@@ -106,7 +127,9 @@ If the CBL implementation feels like:
 - a floating primitive object
 - a model with auto-rotation and no story
 - a conventional website with a 3D object pasted on the side
+- an autoplay video unrelated to scroll
+- a simple slideshow with no coherent product transformation
 
 then it has **not** met this reference standard.
 
-The target is a cohesive, vertically scroll-driven product/system explanation where the 3D scene and editorial narrative behave as one designed experience.
+The target is a cohesive, vertically scroll-driven product/system explanation where the visual sequence and editorial narrative behave as one designed experience.
