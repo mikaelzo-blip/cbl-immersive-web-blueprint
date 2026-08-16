@@ -3,56 +3,57 @@ import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { brandItems, brandDisclaimer } from '@/data/company';
-import { Reveal } from '@/components/ui/Reveal';
 
 export function BrandSection() {
   return (
-    <section className="py-16 md:py-24 bg-[#F7FAFC] border-b border-[#E2E8F0] overflow-hidden">
+    <section className="overflow-hidden border-b border-[#0F2942]/15 bg-[#F4F1EA] py-20 md:py-24">
       <Container>
-        <Reveal>
-          <SectionHeading
-            badge="Cakupan Komponen &amp; Suku Cadang"
-            title="Merek komponen yang pernah kami tangani."
-            description="Daftar ini menunjukkan pengalaman CBL dalam menangani berbagai spesifikasi komponen. Pencantuman logo tidak menyatakan hubungan distributor atau kemitraan resmi."
-            align="left"
-          />
-        </Reveal>
+        <SectionHeading
+          badge="Cakupan Komponen & Suku Cadang"
+          title="Merek dan komponen yang pernah muncul dalam pekerjaan CBL."
+          description="Daftar ini menunjukkan pengalaman menangani spesifikasi dan perangkat tertentu. Pencantuman merek tidak menyatakan hubungan distributor atau kemitraan resmi."
+          align="left"
+        />
       </Container>
 
+      {/*
+        KEEP THIS CONTINUOUS MARQUEE.
+        The moving rail is an intentional interaction requested by the owner.
+        Styling may be refined, but brand-marquee / brand-marquee-track must remain functional.
+      */}
       <div
-        className="brand-marquee w-full overflow-hidden py-6 mb-8"
+        className="brand-marquee w-full overflow-hidden border-y border-[#0F2942]/15 py-4"
         role="region"
-        aria-label="Daftar merek industri yang biasa ditangani"
+        aria-label="Daftar merek industri yang pernah ditangani"
       >
         <div className="brand-marquee-track">
           {[0, 1].map((copyIndex) => (
             <div
               key={copyIndex}
-              className="flex flex-nowrap shrink-0 gap-6 pr-6"
+              className="flex shrink-0 flex-nowrap"
               aria-hidden={copyIndex === 1 ? 'true' : undefined}
             >
               {brandItems.map((brand) => (
                 <div
                   key={`${copyIndex}-${brand.id}`}
-                  className="brand-marquee-card inline-flex flex-col items-center justify-between w-[240px] sm:w-[260px] h-[130px] sm:h-[140px] p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-xs shrink-0 text-center select-none opacity-90 hover:opacity-100 transition-all duration-300 card-hover-lift group"
+                  className="group flex h-[112px] w-[220px] shrink-0 flex-col items-center justify-center border-r border-[#0F2942]/15 bg-[#F8F6F1] px-6 text-center sm:w-[250px]"
                 >
-                  <div className="w-[170px] h-[52px] flex items-center justify-center overflow-hidden">
+                  <div className="flex h-[52px] w-[165px] items-center justify-center overflow-hidden">
                     {brand.logoPath ? (
                       <Image
                         src={brand.logoPath}
                         alt={copyIndex === 0 ? brand.name : ''}
                         width={brand.logoWidth || 160}
                         height={brand.logoHeight || 52}
-                        className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                        className="max-h-full max-w-full object-contain opacity-80 transition-[opacity,transform] duration-300 group-hover:scale-[1.03] group-hover:opacity-100"
                       />
                     ) : (
-                      <span className="font-black text-xl sm:text-2xl text-[#0F2942] tracking-tight truncate max-w-full leading-none">
+                      <span className="max-w-full truncate text-xl font-semibold tracking-[-0.02em] text-[#0F2942]">
                         {brand.logoText}
                       </span>
                     )}
                   </div>
-
-                  <span className="text-xs sm:text-sm text-[#475569] font-medium truncate max-w-full">
+                  <span className="mt-3 max-w-full truncate text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#6B7780]">
                     {brand.category}
                   </span>
                 </div>
@@ -63,11 +64,10 @@ export function BrandSection() {
       </div>
 
       <Container>
-        <div className="p-4 sm:p-5 rounded-xl bg-[#F0F7FD] border border-[#0E6BA8]/20 text-xs text-[#475569] leading-relaxed">
-          <p>
-            <strong className="text-[#0F2942] font-semibold">Keterangan merek dagang:</strong> {brandDisclaimer}
-          </p>
-        </div>
+        <p className="mt-6 max-w-4xl border-l border-[#B34718]/60 pl-4 text-xs leading-6 text-[#5F6D78]">
+          <strong className="font-semibold text-[#0F2942]">Keterangan merek dagang — </strong>
+          {brandDisclaimer}
+        </p>
       </Container>
     </section>
   );
