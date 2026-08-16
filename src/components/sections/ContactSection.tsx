@@ -28,8 +28,8 @@ export function ContactSection() {
           <div className="lg:col-span-4">
             <div className="border-t border-[#0F2942]/25">
               {contactRows.map((item) => (
-                <div key={item.label} className="border-b border-[#0F2942]/15 py-5">
-                  <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">
+                <div key={item.label} className="border-b border-[#0F2942]/15 py-5 sm:py-6">
+                  <p className="text-[0.7rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">
                     {item.label}
                   </p>
                   {item.href ? (
@@ -37,18 +37,18 @@ export function ContactSection() {
                       href={item.href}
                       target={item.external ? '_blank' : undefined}
                       rel={item.external ? 'noopener noreferrer' : undefined}
-                      className="mt-2 block text-sm font-semibold leading-6 text-[#0F2942] transition-colors hover:text-[#B34718]"
+                      className="mt-2.5 block text-[0.95rem] font-semibold leading-7 text-[#0F2942] transition-colors hover:text-[#B34718] sm:text-base"
                     >
                       {item.value}
                     </a>
                   ) : (
-                    <p className="mt-2 text-sm font-semibold leading-6 text-[#0F2942]">{item.value}</p>
+                    <p className="mt-2.5 text-[0.95rem] font-semibold leading-7 text-[#0F2942] sm:text-base">{item.value}</p>
                   )}
                 </div>
               ))}
             </div>
 
-            <p className="mt-6 text-xs leading-6 text-[#5F6D78]">
+            <p className="mt-6 max-w-sm text-[0.85rem] leading-6 text-[#5F6D78]">
               Membutuhkan informasi untuk registrasi vendor atau dokumen badan usaha?{' '}
               <Link href="/legalitas" className="font-semibold text-[#B34718] underline underline-offset-4">
                 Buka halaman legalitas
