@@ -6,69 +6,100 @@ The primary narrative gesture is **scroll down**.
 
 Do not require users to scroll horizontally or discover a sideways timeline to understand the main story.
 
-## Desktop interaction model
+## Preferred production model
 
-Recommended pattern:
+For the approved visual direction, the primary technique is:
+
+**pre-rendered cinematic animation frames controlled by vertical scroll.**
+
+The page may look like realtime 3D, but the browser does not need to reproduce the full 3D scene procedurally.
+
+Recommended structure:
 
 - section height: roughly 350–500vh depending on story length
 - viewport stage: `position: sticky; top: 0; height: 100svh`
-- 3D canvas remains visually dominant
-- text stage changes based on normalized vertical scroll progress
-- camera/object state can also respond to that progress
-- vertical progress indicator may be used sparingly
+- one dominant canvas or image stage
+- normalized scroll progress `0..1`
+- progress selects/interpolates the current frame
+- editorial copy changes at deliberate progress ranges
+- real project imagery follows the technical explainer
+
+## Frame mapping
+
+Conceptually:
+
+```ts
+const progress = clamp(scrolled / scrollableDistance, 0, 1)
+const frameIndex = Math.round(progress * (frameCount - 1))
+```
+
+Prefer drawing the current frame to a `<canvas>` rather than mounting hundreds of `<img>` elements.
 
 ## Story state model
 
-Map normalized progress `0..1` into discrete narrative phases.
+Map normalized progress into a few strong narrative phases.
 
-Example:
+Example gearbox sequence:
 
-- 0.00–0.20 — full system overview
-- 0.20–0.42 — transmission / coupling relationship
-- 0.42–0.66 — shaft, bearing, alignment
-- 0.66–0.86 — inspection / wear points
-- 0.86–1.00 — transition to field documentation
+- 0.00–0.18 — assembled hero overview
+- 0.18–0.36 — camera/product orientation establishes drivetrain
+- 0.36–0.58 — casing separates and internal transmission appears
+- 0.58–0.76 — shaft, bearing, gear, coupling relationships become readable
+- 0.76–0.90 — controlled exploded/inspection state
+- 0.90–1.00 — resolve and transition to real field evidence
 
-Transitions should interpolate smoothly instead of snapping violently.
+Do not create dozens of tiny story beats merely because many frames exist.
 
-## 3D role
+## Visual role
 
-The object should remain readable throughout the story.
+The product/system should remain readable throughout the story.
 
-Possible scroll-driven changes:
+Possible pre-rendered changes:
 
-- rotation
-- camera distance
-- camera target
+- camera movement
+- product rotation
 - component separation
-- casing transparency / reveal
-- highlighted components
-- annotation opacity
-- controlled cutaway
+- casing reveal
+- exploded assembly
+- cutaway state
+- selected component emphasis
+- lighting emphasis
 
-Avoid constant autonomous motion that competes with scroll-driven changes.
+Text and callouts should support the image rather than compete with it.
+
+## Text behavior
+
+Use 3–5 strong editorial chapters per major sequence.
+
+Good:
+
+- drivetrain relationship
+- alignment and bearing points
+- internal transmission
+- inspection logic
+- field execution
+
+Avoid generic marketing statements disconnected from the technical state on screen.
 
 ## Pointer behavior
 
-Pointer drag/orbit is secondary.
+Pointer drag/orbit is no longer required for the primary reference style.
 
-Requirements:
+If realtime overlays are added later:
 
-- story must still be understandable without dragging
-- drag must never hijack vertical page scroll on touch devices
-- cursor affordance should be subtle
-- optional reset-to-story orientation after inactivity
+- they remain secondary
+- story must still work without dragging
+- touch interaction must never hijack vertical scroll
 
 ## Mobile behavior
 
-Mobile should preserve vertical storytelling but may simplify:
+Mobile preserves the vertical story but may simplify:
 
-- fewer camera states
-- no expensive post-processing
-- lower DPR cap
-- lower-poly model / compressed textures
+- fewer frames
+- lower-resolution frame set
 - shorter sticky duration
-- optional static/model-view fallback on low-capability devices
+- more aggressive preload window
+- static keyframe fallback on low capability / reduced-motion devices
 
 Do not force two-finger or horizontal gestures.
 
@@ -76,27 +107,50 @@ Do not force two-finger or horizontal gestures.
 
 When `prefers-reduced-motion: reduce`:
 
-- disable continuous auto-rotation
-- reduce camera interpolation
-- show stable key states
+- avoid long scroll-bound animation sequences
+- show stable key states or a short set of crossfades
 - preserve all narrative text
-- allow user to scroll normally without long motion-dependent waits
+- allow normal page scrolling
 
 ## Transition into real evidence
 
-At the end of each major 3D sequence, transition to a real project image/case study.
-
-This is important to avoid the website feeling like a conceptual 3D demo.
+At the end of each major visual sequence, transition to a real project image/case study.
 
 Narrative formula:
 
 **Understand the system -> see how CBL works on real systems.**
 
+## Preloading strategy
+
+Do not load the full website's frame sequences immediately.
+
+Recommended:
+
+- hero: preload enough frames for a smooth first experience
+- load near-future frames in chunks
+- lazy-load later product chapters
+- use responsive sequence resolution where practical
+- cache decoded images conservatively on mobile
+
 ## Performance
 
-- pause rendering when section is off-screen where practical
-- clamp device pixel ratio
-- lazy-load non-hero 3D
-- avoid per-scroll synchronous heavy calculations
-- use requestAnimationFrame for scroll state updates
-- keep React state updates coarse; keep frame-by-frame transforms in render loop when possible
+- draw one active frame at a time
+- use `requestAnimationFrame` for scroll-driven rendering
+- avoid React state updates for every raw scroll event where possible
+- cap DPR
+- compress frames aggressively without visible banding/artifacts
+- test memory pressure on mobile browsers
+- pause preloading/render work when far off-screen
+
+## Realtime 3D fallback/augmentation
+
+GLB/WebGL/Three.js/R3F may still be used when it provides a real benefit such as:
+
+- mesh-specific labels
+- live highlighting
+- user-controlled inspection
+- dynamic configuration
+
+But it is not the default production path for matching the approved reference.
+
+See `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md`.
