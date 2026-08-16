@@ -12,10 +12,10 @@ export function VendorReadinessSection() {
               Kelengkapan administrasi vendor
             </p>
             <h2 className="mt-5 max-w-xl text-[clamp(2.35rem,5vw,4.7rem)] font-semibold leading-[0.98] tracking-[-0.043em] text-[#0F2942]">
-              Legalitas disajikan sebagai informasi yang dapat ditelusuri.
+              Dokumen legalitas disusun ringkas untuk kebutuhan verifikasi vendor.
             </h2>
             <p className="mt-6 max-w-lg text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base">
-              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan yang memuat data sensitif disampaikan melalui permintaan resmi untuk kebutuhan registrasi vendor.
+              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan yang memuat data sensitif diberikan melalui permintaan resmi sesuai kebutuhan registrasi vendor.
             </p>
             <Link
               href="/legalitas"
