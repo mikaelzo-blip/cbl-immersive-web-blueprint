@@ -12,22 +12,24 @@ export function HeroSection() {
     <section className="border-b border-[#0F2942]/15 bg-[#F4F1EA] text-[#0F2942]">
       <Container className="py-5 sm:py-6 lg:py-8">
         <div className="border-t border-[#0F2942]/30 pt-4 sm:pt-5">
-          <div className="grid gap-3 text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#5F6D78] sm:grid-cols-2 sm:text-[0.68rem] lg:grid-cols-12">
+          <div className="grid gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#5F6D78] sm:grid-cols-2 sm:text-[0.72rem] lg:grid-cols-12">
             <p className="text-[#B34718] lg:col-span-5">CV Cakrawala Buana Lestari</p>
             <p className="sm:text-right lg:col-span-4 lg:text-left">Kontraktor &amp; solusi teknis berbasis proyek</p>
             <p className="hidden lg:col-span-3 lg:block lg:text-right">Jakarta Utara · Indonesia</p>
           </div>
 
-          <div className="grid gap-9 pb-10 pt-14 sm:pb-12 sm:pt-16 lg:grid-cols-12 lg:gap-10 lg:pb-16 lg:pt-24">
+          <div className="grid gap-10 pb-10 pt-12 sm:pb-12 sm:pt-16 lg:grid-cols-12 lg:gap-12 lg:pb-14 lg:pt-20">
             <div className="hero-enter lg:col-span-8">
-              <h1 className="max-w-[17ch] text-[clamp(3.05rem,10.4vw,6.8rem)] font-semibold leading-[0.9] tracking-[-0.055em] lg:max-w-[14ch] lg:text-[clamp(5rem,7vw,8rem)]">
-                Mengelola kebutuhan. Memobilisasi keahlian. Menyelesaikan pekerjaan.
+              <h1 className="max-w-[18ch] text-[clamp(2.85rem,9.2vw,5.4rem)] font-semibold leading-[0.92] tracking-[-0.052em] sm:max-w-[17ch] lg:max-w-[15ch] lg:text-[clamp(4.7rem,6.15vw,6.7rem)]">
+                <span className="block">Mengelola kebutuhan.</span>
+                <span className="block">Memobilisasi keahlian.</span>
+                <span className="block">Menyelesaikan pekerjaan.</span>
               </h1>
             </div>
 
-            <div className="hero-enter hero-enter-delayed flex flex-col justify-end lg:col-span-4 lg:pb-2">
-              <p className="max-w-xl text-sm leading-6 text-[#536474] sm:text-base sm:leading-7 lg:max-w-sm">
-                Elektrikal &amp; otomasi, mekanikal dan conveyor, HVAC, pompa &amp; sistem air, lighting, serta pengadaan teknis — dikelola sesuai kebutuhan setiap proyek.
+            <div className="hero-enter hero-enter-delayed flex flex-col lg:col-span-4 lg:justify-center lg:pt-10">
+              <p className="max-w-xl text-[0.95rem] leading-7 text-[#536474] sm:text-base sm:leading-7 lg:max-w-sm">
+                Elektrikal &amp; otomasi, mekanikal dan conveyor, HVAC, pompa &amp; sistem air, pencahayaan, serta pengadaan teknis — dikelola sesuai kebutuhan setiap proyek.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold">
@@ -53,7 +55,7 @@ export function HeroSection() {
         </div>
 
         <figure className="hero-enter hero-enter-delayed">
-          <div className="relative min-h-[420px] overflow-hidden bg-[#D8D6D0] sm:min-h-[520px] lg:min-h-[640px]">
+          <div className="relative min-h-[360px] overflow-hidden bg-[#D8D6D0] min-[390px]:min-h-[400px] sm:min-h-[500px] lg:min-h-[610px]">
             <Image
               src="/images/hero-conveyor-maintenance.jpg"
               alt="Dokumentasi pekerjaan teknis CBL pada sistem conveyor"
@@ -64,10 +66,10 @@ export function HeroSection() {
             />
           </div>
 
-          <figcaption className="grid gap-3 border-b border-[#0F2942]/20 py-4 text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780] sm:grid-cols-2 sm:text-[0.66rem] lg:grid-cols-12">
+          <figcaption className="grid gap-2 border-b border-[#0F2942]/20 py-4 text-[0.66rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780] sm:grid-cols-2 sm:text-[0.7rem] lg:grid-cols-12">
             <span className="text-[#0F2942] lg:col-span-5">Dokumentasi proyek CBL</span>
-            <span className="lg:col-span-4">Electrical / Automation / Mechanical / HVAC</span>
-            <span className="sm:text-right lg:col-span-3">Project evidence, not stock imagery</span>
+            <span className="lg:col-span-4">Elektrikal / Otomasi / Mekanikal / HVAC</span>
+            <span className="sm:text-right lg:col-span-3">Arsip proyek · 2022–2026</span>
           </figcaption>
         </figure>
       </Container>
