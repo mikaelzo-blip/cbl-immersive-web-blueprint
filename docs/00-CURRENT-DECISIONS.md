@@ -33,6 +33,18 @@ Priority:
 2. industrial control panel
 3. pump / water system
 
+### Preferred production technique
+
+After direct inspection of the uploaded tutorial reference, the preferred hero/explainer technique is now:
+
+**cinematic pre-rendered product animation -> extracted frame sequence -> sticky canvas controlled by vertical scroll.**
+
+This is the primary path for matching the approved visual reference.
+
+Realtime GLB/WebGL/Three.js remains optional and secondary when true mesh interaction is materially useful.
+
+Do not assume a "3D website" must use realtime 3D rendering in the browser.
+
 ### Evidence
 
 Use real project photography to show actual field work.
@@ -46,10 +58,11 @@ Formula:
 Preferred production direction:
 
 - full-screen/sticky stage
-- 3D object visually dominant
-- scroll down changes text + object/camera state
-- pointer inspection optional
+- product/system visually dominant
+- scroll down advances the pre-rendered animation sequence
+- text/annotations change at deliberate story beats
 - no need to drag horizontally
+- pointer inspection is optional and not required for comprehension
 
 ### Homepage visual rhythm
 
@@ -76,7 +89,7 @@ No fabricated:
 
 ## Implementation reference
 
-Existing experimental implementation at the time this file was written:
+Existing experimental implementation:
 
 - `mikaelzo-blip/cakrawala-web-3-refine-2`
 - branch `design/human-art-direction`
@@ -91,13 +104,27 @@ The desired result is not merely "less AI slop". It must also feel immersive, vi
 
 A 3D canvas that technically exists but is visually weak/hidden is not success.
 
+The earlier procedural WebGL gearbox is now considered an interaction prototype, not the production visual target.
+
+## Primary visual reference
+
+The uploaded tutorial video was directly inspected.
+
+See:
+
+- `docs/12-VISUAL-REFERENCES.md`
+- `docs/13-UPLOADED-TUTORIAL-BREAKDOWN.md`
+
+The key reference lesson is that the premium 3D effect is achieved through cinematic rendered states and scroll-controlled frame sequences, not necessarily realtime browser 3D.
+
 ## Open questions
 
-These require future visual testing rather than assumptions:
+These still require visual testing:
 
-- final production 3D renderer: native WebGL vs Three.js/R3F
-- exact gearbox model source/creation pipeline
-- whether hero uses cutaway or exploded view
+- exact AI/render pipeline for the gearbox keyframes
+- best tool for assembled -> exploded animation
+- exact number and resolution of frames shipped per device class
+- whether some later sections benefit from realtime GLB overlays
 - exact sticky duration on mobile
 - final typeface selection
 - final motion curve/timing
