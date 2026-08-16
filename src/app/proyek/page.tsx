@@ -4,11 +4,9 @@ import React, { useState } from 'react';
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { ProjectCard } from '@/components/cards/ProjectCard';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { projects, projectCategories } from '@/data/projects';
 import { portfolioConfidentialityNotice } from '@/data/company';
 import { ProjectCategory } from '@/types/project';
-import { Reveal } from '@/components/ui/Reveal';
 
 export default function PortfolioIndexPage() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | ProjectCategory>('all');
@@ -18,106 +16,89 @@ export default function PortfolioIndexPage() {
     return project.category === selectedCategory;
   });
 
+  const activeLabel = projectCategories.find((category) => category.id === selectedCategory)?.label ?? 'Semua';
+
   return (
-    <div className="bg-[#F7FAFC] min-h-screen">
-      <section className="relative overflow-hidden bg-[#0F2942] py-14 text-white md:py-20">
-        <div className="absolute inset-0 engineering-grid-dark opacity-50" aria-hidden="true" />
-        <Container className="relative">
-          <SectionHeading
-            badge="Portofolio Pekerjaan"
-            title="Rekam pekerjaan teknis yang disajikan secara jelas dan bertanggung jawab."
-            description="Jelajahi studi kasus pengadaan, pemasangan, penggantian, dan perbaikan. Setiap proyek dirangkum berdasarkan arsip internal tanpa menampilkan identitas klien atau data transaksi yang bersifat sensitif."
-            as="h1"
-            align="left"
-            light
-          />
-          <div className="flex flex-wrap gap-3 text-sm">
-            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">{projects.length} studi kasus tersedia</span>
-            <span className="rounded-xl border border-white/15 bg-white/10 px-4 py-2 font-semibold">6 bidang pekerjaan</span>
+    <main className="min-h-screen bg-[#F4F1EA] text-[#0F2942]">
+      <section className="border-b border-[#0F2942]/15 bg-[#0F2942] py-16 text-white md:py-24">
+        <Container>
+          <div className="grid gap-10 border-t border-white/25 pt-6 lg:grid-cols-12 lg:gap-12">
+            <div className="lg:col-span-3">
+              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#F0A16F]">Project archive</p>
+              <p className="mt-3 text-xs leading-6 text-[#B8C8D4]">{projects.length} studi kasus dipublikasikan</p>
+            </div>
+            <div className="lg:col-span-8 lg:col-start-5">
+              <SectionHeading
+                badge="Portofolio Pekerjaan"
+                title="Rekam pekerjaan teknis yang dapat ditelusuri dari dokumentasi proyek."
+                description="Jelajahi pekerjaan pengadaan, pemasangan, penggantian, dan perbaikan berdasarkan arsip internal CBL. Informasi sensitif tidak ditampilkan pada versi publik."
+                as="h1"
+                align="left"
+                light
+                className="mb-0"
+              />
+            </div>
           </div>
         </Container>
       </section>
 
-      <Container className="py-10 md:py-14">
-
-        {/* Filter Bar Interaktif */}
-        <div className="mb-10 rounded-2xl border border-[#DCE6EE] bg-white p-3 shadow-sm overflow-x-auto" role="group" aria-label="Filter Kategori Portofolio">
-          <div className="flex min-w-max items-center gap-2">
-          {projectCategories.map((cat) => {
-            const isSelected = selectedCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setSelectedCategory(cat.id as 'all' | ProjectCategory)}
-                aria-pressed={isSelected}
-                className={`px-4 py-2.5 text-xs sm:text-sm font-semibold rounded-xl transition-all ${
-                  isSelected
-                    ? 'bg-[#0F2942] text-white shadow-md scale-105'
-                    : 'bg-white text-[#475569] border border-[#E2E8F0] hover:bg-[#F0F7FD] hover:text-[#0E6BA8]'
-                } focus-visible:outline-2 focus-visible:outline-[#0E6BA8]`}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
+      <Container className="py-10 md:py-14 lg:py-16">
+        <div className="border-y border-[#0F2942]/20" role="tablist" aria-label="Filter kategori portofolio">
+          <div className="flex overflow-x-auto">
+            {projectCategories.map((category) => {
+              const isSelected = selectedCategory === category.id;
+              return (
+                <button
+                  key={category.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isSelected}
+                  onClick={() => setSelectedCategory(category.id as 'all' | ProjectCategory)}
+                  className={`relative shrink-0 px-4 py-4 text-xs font-semibold transition-colors sm:px-5 sm:text-sm ${
+                    isSelected ? 'text-[#0F2942]' : 'text-[#6B7780] hover:text-[#0F2942]'
+                  }`}
+                >
+                  {category.label}
+                  {isSelected && <span className="absolute inset-x-4 bottom-0 h-px bg-[#B34718]" aria-hidden="true" />}
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Announced Result Count (Live Region for Screen Readers) */}
-        <div className="mb-6 flex items-center justify-between text-xs sm:text-sm text-[#475569]" aria-live="polite">
-          <span>
-            Menampilkan <strong className="text-[#0F2942]">{filteredProjects.length}</strong> studi kasus dalam kategori{' '}
-            <strong className="text-[#0E6BA8]">
-              {projectCategories.find((c) => c.id === selectedCategory)?.label}
-            </strong>
-          </span>
-
+        <div className="mb-8 mt-5 flex flex-wrap items-center justify-between gap-4 text-xs text-[#5F6D78]" aria-live="polite">
+          <p>
+            <span className="font-semibold text-[#0F2942]">{filteredProjects.length}</span> studi kasus · {activeLabel}
+          </p>
           {selectedCategory !== 'all' && (
             <button
               type="button"
               onClick={() => setSelectedCategory('all')}
-              className="text-[#0E6BA8] hover:underline font-semibold flex items-center gap-1"
+              className="font-semibold text-[#B34718] underline underline-offset-4"
             >
-              <DynamicIcon name="X" size={14} />
-              <span>Hapus filter</span>
+              Tampilkan semua
             </button>
           )}
         </div>
 
-        {/* Grid Kartu Proyek */}
         {filteredProjects.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          <div className="grid grid-cols-1 gap-x-7 gap-y-14 md:grid-cols-2 lg:grid-cols-3 lg:gap-y-16">
             {filteredProjects.map((project, index) => (
-              <Reveal key={project.slug} delay={(index % 3) * 60} className="h-full">
-                <ProjectCard project={project} headingLevel="h2" preload={index === 0} />
-              </Reveal>
+              <ProjectCard key={project.slug} project={project} headingLevel="h2" preload={index === 0} />
             ))}
           </div>
         ) : (
-          <div className="py-16 text-center bg-white rounded-2xl border border-[#E2E8F0] p-8 mb-12">
-            <DynamicIcon name="Filter" size={48} className="text-[#475569]/40 mx-auto mb-4" />
-            <h3 className="text-lg font-bold text-[#0F2942] mb-2">Belum ada studi kasus pada kategori ini</h3>
-            <p className="text-sm text-[#475569] max-w-md mx-auto mb-4">
-              Belum ada entri studi kasus yang dipublikasikan untuk kategori ini.
-            </p>
-            <button
-              type="button"
-              onClick={() => setSelectedCategory('all')}
-              className="px-4 py-2 text-xs font-semibold bg-[#0E6BA8] text-white rounded-lg hover:bg-[#15426B]"
-            >
-              Tampilkan semua proyek
-            </button>
+          <div className="border-t border-[#0F2942]/20 py-16">
+            <h2 className="text-2xl font-semibold tracking-[-0.03em]">Belum ada studi kasus pada kategori ini.</h2>
+            <p className="mt-3 text-sm leading-7 text-[#5F6D78]">Pilih kategori lain atau tampilkan seluruh arsip proyek.</p>
           </div>
         )}
 
-        {/* Confidentiality Notice */}
-        <div className="p-5 rounded-xl bg-white border border-[#E2E8F0] text-xs text-[#475569] leading-relaxed max-w-4xl mx-auto shadow-2xs">
-          <p>
-            <strong className="text-[#0F2942]">Catatan kerahasiaan:</strong> {portfolioConfidentialityNotice}
-          </p>
-        </div>
+        <p className="mt-16 max-w-4xl border-t border-[#0F2942]/20 pt-5 text-xs leading-6 text-[#5F6D78]">
+          <strong className="font-semibold text-[#0F2942]">Catatan kerahasiaan — </strong>
+          {portfolioConfidentialityNotice}
+        </p>
       </Container>
-    </div>
+    </main>
   );
 }
