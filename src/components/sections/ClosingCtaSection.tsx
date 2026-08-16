@@ -1,55 +1,47 @@
-import React from 'react';
 import { Container } from '@/components/ui/Container';
-import { Button } from '@/components/ui/Button';
-import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { companyInfo } from '@/data/company';
-import { Reveal } from '@/components/ui/Reveal';
 
 export function ClosingCtaSection() {
+  const whatsappHref = `https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
+    'Halo CBL, saya ingin konsultasi teknis kebutuhan fasilitas operasional kami.'
+  )}`;
+
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-r from-[#0F2942] via-[#15426B] to-[#0E6BA8] text-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#00A8CC]/20 via-transparent to-transparent pointer-events-none" />
+    <section className="border-b border-white/10 bg-[#0F2942] py-20 text-white md:py-28">
+      <Container>
+        <div className="grid gap-10 border-t border-white/25 pt-6 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-3">
+            <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#F0A16F]">
+              Project inquiry
+            </p>
+          </div>
 
-      <Container className="relative z-10 text-center max-w-5xl mx-auto">
-        <Reveal>
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#00A8CC]/20 text-[#67E8F9] text-xs font-semibold mb-6">
-          <DynamicIcon name="Zap" size={14} />
-          <span>Mulai dari kondisi yang Anda hadapi</span>
+          <div className="lg:col-span-8 lg:col-start-5">
+            <h2 className="max-w-4xl text-[clamp(2.7rem,6vw,6rem)] font-semibold leading-[0.94] tracking-[-0.05em]">
+              Mulai dari kondisi yang ada di lapangan.
+            </h2>
+            <p className="mt-6 max-w-2xl text-sm leading-7 text-[#D7E1E8] sm:text-base sm:leading-8">
+              Ceritakan kondisi awal, lokasi, spesifikasi yang tersedia, dan target pekerjaan. CBL akan membantu memperjelas kebutuhan sebelum menentukan langkah berikutnya.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 text-sm font-semibold">
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-b border-[#F0A16F] pb-1 text-[#F0A16F] transition-colors hover:text-white"
+              >
+                Diskusikan melalui WhatsApp ↗
+              </a>
+              <a
+                href={`tel:${companyInfo.phoneRaw}`}
+                className="border-b border-white/40 pb-1 text-white transition-colors hover:border-white"
+              >
+                Hubungi {companyInfo.phone}
+              </a>
+            </div>
+          </div>
         </div>
-
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight mb-4 text-white">
-          Mari tentukan langkah penanganan yang sesuai untuk fasilitas Anda.
-        </h2>
-
-        <p className="text-base sm:text-lg text-[#E2E8F0] leading-relaxed max-w-2xl mx-auto mb-8">
-          Ceritakan kondisi awal, lokasi, serta target pekerjaan. Tim CBL akan membantu memperjelas kebutuhan dan menyusun pilihan tindak lanjut yang relevan.
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button
-            href={`https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
-              'Halo CBL, saya ingin konsultasi teknis kebutuhan fasilitas operasional kami.'
-            )}`}
-            external
-            variant="whatsapp"
-            size="lg"
-            className="w-full sm:w-auto"
-          >
-            <DynamicIcon name="MessageSquare" size={20} />
-            <span>Konsultasi melalui WhatsApp</span>
-          </Button>
-
-          <Button
-            href={`tel:${companyInfo.phoneRaw}`}
-            variant="outline"
-            size="lg"
-            className="w-full sm:w-auto border-white text-white hover:bg-white/10"
-          >
-            <DynamicIcon name="Phone" size={20} />
-            <span>Hubungi {companyInfo.phone}</span>
-          </Button>
-        </div>
-        </Reveal>
       </Container>
     </section>
   );
