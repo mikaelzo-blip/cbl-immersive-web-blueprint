@@ -23,46 +23,37 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        'flex flex-col mb-10 md:mb-14',
+        'mb-10 flex flex-col md:mb-14',
         align === 'center' ? 'items-center text-center' : 'items-start text-left',
         className
       )}
     >
       {badge && (
-        <span
+        <div
           className={cn(
-            'inline-flex items-center px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.16em] rounded-full mb-3',
-            light
-              ? 'bg-[#00A8CC]/20 text-[#67E8F9]'
-              : 'bg-[#F0F7FD] text-[#0E6BA8] border border-[#0E6BA8]/20'
+            'mb-5 flex items-center gap-3 text-[0.66rem] font-semibold uppercase tracking-[0.18em]',
+            light ? 'text-[#9ED7E8]' : 'text-[#B34718]'
           )}
         >
-          {badge}
-        </span>
+          <span className={cn('h-px w-8', light ? 'bg-white/35' : 'bg-[#B34718]/45')} aria-hidden="true" />
+          <span>{badge}</span>
+        </div>
       )}
-      
+
       <Component
         className={cn(
-          'max-w-4xl text-3xl sm:text-4xl md:text-5xl font-black tracking-[-0.025em] leading-[1.08]',
+          'max-w-4xl text-[clamp(2.25rem,5.2vw,5rem)] font-semibold leading-[0.98] tracking-[-0.045em]',
           light ? 'text-white' : 'text-[#0F2942]'
         )}
       >
         {title}
       </Component>
 
-      {/* Visual Accent Line */}
-      <div
-        className={cn(
-          'h-1 w-16 rounded-full accent-line-gradient mt-4 mb-4',
-          align === 'center' && 'mx-auto'
-        )}
-      />
-
       {description && (
         <p
           className={cn(
-            'max-w-2xl text-base sm:text-lg leading-relaxed mt-1',
-            light ? 'text-[#E2E8F0]' : 'text-[#475569]'
+            'mt-5 max-w-3xl text-sm leading-7 sm:text-base sm:leading-8',
+            light ? 'text-[#D7E1E8]' : 'text-[#5F6D78]'
           )}
         >
           {description}
