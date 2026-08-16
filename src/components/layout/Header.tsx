@@ -162,7 +162,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
-            className="p-2 text-[#0F2942] lg:hidden"
+            className="p-2 text-[#0F2942] xl:hidden"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label="Buka menu navigasi"
