@@ -11,16 +11,16 @@ export function ClosingCtaSection() {
       <Container>
         <div className="grid gap-10 border-t border-white/25 pt-6 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-3">
-            <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#F0A16F]">
-              Project inquiry
+            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#F0A16F]">
+              Konsultasi proyek
             </p>
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.7rem,6vw,6rem)] font-semibold leading-[0.94] tracking-[-0.05em]">
+            <h2 className="max-w-4xl text-[clamp(2.45rem,6vw,5.6rem)] font-semibold leading-[0.95] tracking-[-0.048em]">
               Mulai dari kondisi yang ada di lapangan.
             </h2>
-            <p className="mt-6 max-w-2xl text-sm leading-7 text-[#D7E1E8] sm:text-base sm:leading-8">
+            <p className="mt-6 max-w-2xl text-[0.98rem] leading-7 text-[#D7E1E8] sm:text-base sm:leading-8">
               Ceritakan kondisi awal, lokasi, spesifikasi yang tersedia, dan target pekerjaan. CBL akan membantu memperjelas kebutuhan sebelum menentukan langkah berikutnya.
             </p>
 
