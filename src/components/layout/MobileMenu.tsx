@@ -137,10 +137,7 @@ export function MobileMenu({
                 <Link
                   key={item.label}
                   href={href}
-                  onClick={(e) => {
-                    handleNavClick?.(e, item.href);
-                    onClose();
-                  }}
+                  onClick={(e) => handleNavClick?.(e, item.href)}
                   aria-current={isActive ? 'page' : undefined}
                   className={cn(
                     'grid min-h-12 grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#0F2942]/12 py-3.5 text-[0.95rem] font-semibold transition-colors',
