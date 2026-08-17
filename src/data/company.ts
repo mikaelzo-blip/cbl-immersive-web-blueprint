@@ -23,7 +23,7 @@ export const companyInfo: CompanyInfo = {
   serviceHours: 'Senin–Jumat, pukul 07.00–15.00 WIB',
   seo: {
     siteUrl,
-    defaultTitle: 'CV Cakrawala Buana Lestari (CBL) — Penyedia Jasa Teknik Terpadu',
+    defaultTitle: 'CV Cakrawala Buana Lestari — Solusi Teknik Terpadu',
     defaultDescription: 'Penyedia layanan teknik industri & fasilitas terpadu: kelistrikan & panel kontrol, otomasi PLC/HMI, mekanikal presisi, HVAC refrigerasi, sistem pompa, dan pencahayaan khusus.',
     ogImage: '/opengraph-image',
   },
