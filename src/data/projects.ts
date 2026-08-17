@@ -242,6 +242,11 @@ export const projects: Project[] = [
     icon: 'Waves',
     image: '/images/projects/pengadaan-pompa-submersible-fasilitas/01.webp',
     imageAlt: 'Dokumentasi pengadaan pompa submersible untuk sistem fasilitas',
+    archivePresentation: {
+      image: '/images/projects/pengadaan-pompa-submersible-fasilitas/02.webp',
+      aspect: 'landscape',
+      objectPosition: 'center',
+    },
     gallery: [
       { src: '/images/projects/pengadaan-pompa-submersible-fasilitas/01.webp', alt: 'Pengadaan Pompa Submersible untuk Sistem Fasilitas - dokumentasi 1', caption: 'Dokumentasi perangkat atau kondisi awal.' },
       { src: '/images/projects/pengadaan-pompa-submersible-fasilitas/02.webp', alt: 'Pengadaan Pompa Submersible untuk Sistem Fasilitas - dokumentasi 2', caption: 'Dokumentasi proses dan komponen pekerjaan.' },
@@ -269,6 +274,11 @@ export const projects: Project[] = [
     icon: 'Cog',
     image: '/images/projects/pengadaan-kompresor-udara/01.webp',
     imageAlt: 'Dokumentasi pengadaan kompresor udara untuk peralatan operasional',
+    archivePresentation: {
+      image: '/images/projects/pengadaan-kompresor-udara/02.webp',
+      aspect: 'portrait',
+      objectPosition: 'center',
+    },
     gallery: [
       { src: '/images/projects/pengadaan-kompresor-udara/01.webp', alt: 'Pengadaan Kompresor Udara untuk Peralatan Operasional - dokumentasi 1', caption: 'Dokumentasi perangkat atau kondisi awal.' },
       { src: '/images/projects/pengadaan-kompresor-udara/02.webp', alt: 'Pengadaan Kompresor Udara untuk Peralatan Operasional - dokumentasi 2', caption: 'Dokumentasi proses dan komponen pekerjaan.' },
@@ -324,6 +334,11 @@ export const projects: Project[] = [
     icon: 'Gauge',
     image: '/images/projects/pengadaan-inverter-sistem-kereta/01.webp',
     imageAlt: 'Dokumentasi pengadaan inverter untuk sistem penggerak kereta',
+    archivePresentation: {
+      image: '/images/projects/pengadaan-inverter-sistem-kereta/02.webp',
+      aspect: 'portrait',
+      objectPosition: 'center',
+    },
     gallery: [
       { src: '/images/projects/pengadaan-inverter-sistem-kereta/01.webp', alt: 'Pengadaan Inverter untuk Sistem Penggerak Kereta - dokumentasi 1', caption: 'Dokumentasi perangkat atau kondisi awal.' },
       { src: '/images/projects/pengadaan-inverter-sistem-kereta/02.webp', alt: 'Pengadaan Inverter untuk Sistem Penggerak Kereta - dokumentasi 2', caption: 'Dokumentasi proses dan komponen pekerjaan.' },

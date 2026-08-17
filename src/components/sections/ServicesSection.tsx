@@ -15,7 +15,7 @@ export function ServicesSection() {
           </div>
 
           <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
+            <h2 className="max-w-3xl text-[clamp(2.45rem,4.2vw,4rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
               Satu koordinasi untuk pekerjaan teknis lintas disiplin.
             </h2>
           </div>

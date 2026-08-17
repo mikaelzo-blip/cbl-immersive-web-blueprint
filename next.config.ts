@@ -5,7 +5,7 @@ const developmentScriptPolicy = process.env.NODE_ENV === 'development' ? " 'unsa
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
-    qualities: [65, 75],
+    qualities: [65, 68, 72, 75],
   },
   async headers() {
     return [

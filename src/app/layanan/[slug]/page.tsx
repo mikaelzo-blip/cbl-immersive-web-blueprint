@@ -70,11 +70,11 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           <header className="grid gap-10 border-t border-[#0F2942]/25 pb-16 pt-6 lg:grid-cols-12 lg:gap-12 lg:pb-20">
             <div className="lg:col-span-3">
-              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Service discipline</p>
+              <p className="text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-[#B34718]">Bidang layanan</p>
               <p className="mt-3 text-xs leading-6 text-[#6B7780]">Cakupan ditentukan kembali setelah pemeriksaan kondisi dan kebutuhan proyek.</p>
             </div>
             <div className="lg:col-span-8 lg:col-start-5">
-              <h1 className="max-w-4xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
+              <h1 className="max-w-4xl text-[clamp(2.65rem,6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.05em]">
                 {service.title}
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-[#5F6D78] sm:text-lg">{service.longDescription}</p>
@@ -89,7 +89,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           <section className="grid gap-10 border-t border-[#0F2942]/20 py-16 lg:grid-cols-12 lg:gap-12" aria-labelledby="scope-title">
             <div className="lg:col-span-4">
-              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Scope register</p>
+              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Cakupan pekerjaan</p>
               <h2 id="scope-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Cakupan layanan dan pekerjaan.</h2>
               <p className="mt-4 max-w-sm text-sm leading-7 text-[#5F6D78]">Rincian berikut adalah representasi pengalaman yang tersedia dan tetap disesuaikan dengan kondisi aktual di lapangan.</p>
             </div>
@@ -109,7 +109,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
           <section className="grid gap-10 border-t border-[#0F2942]/20 py-16 lg:grid-cols-12 lg:gap-12" aria-labelledby="survey-title">
             <div className="lg:col-span-4">
-              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Survey input</p>
+              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Informasi pemeriksaan</p>
               <h2 id="survey-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Informasi yang perlu diklarifikasi.</h2>
             </div>
             <ul className="lg:col-span-7 lg:col-start-6">
@@ -125,7 +125,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <section className="border-t border-[#0F2942]/20 py-16" aria-labelledby="process-title">
             <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
               <div className="lg:col-span-4">
-                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Work sequence</p>
+                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Tahapan kerja</p>
                 <h2 id="process-title" className="mt-4 text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Alur penanganan proyek.</h2>
               </div>
               <div className="lg:col-span-7 lg:col-start-6">
@@ -146,7 +146,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             <section className="border-t border-[#0F2942]/20 py-16" aria-labelledby="related-projects-title">
               <div className="mb-10 grid gap-6 lg:grid-cols-12">
                 <div className="lg:col-span-3">
-                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Field evidence</p>
+                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Dokumentasi proyek</p>
                 </div>
                 <div className="lg:col-span-8 lg:col-start-5">
                   <h2 id="related-projects-title" className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Studi kasus {service.title}.</h2>
@@ -161,7 +161,7 @@ export default async function ServiceDetailPage({ params }: Props) {
           <section className="mt-6 bg-[#0F2942] px-6 py-12 text-white sm:px-10 md:py-16">
             <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-8">
-                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#F0A16F]">Next step</p>
+                <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#F0A16F]">Konsultasi layanan</p>
                 <h2 className="mt-4 text-3xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-5xl">Bahas kondisi awal untuk {service.title}.</h2>
                 <p className="mt-4 max-w-2xl text-sm leading-7 text-[#D7E1E8]">Kirim informasi yang tersedia agar kebutuhan, batas pekerjaan, dan langkah pemeriksaan awal dapat dibahas lebih terarah.</p>
               </div>

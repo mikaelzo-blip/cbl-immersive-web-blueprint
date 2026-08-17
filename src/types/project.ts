@@ -30,6 +30,12 @@ export interface ProjectVerification {
   photosAvailable: boolean;
 }
 
+export interface ProjectArchivePresentation {
+  image?: string;
+  aspect?: 'landscape' | 'portrait';
+  objectPosition?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -45,6 +51,7 @@ export interface Project {
   icon: string;
   image: string;
   imageAlt: string;
+  archivePresentation?: ProjectArchivePresentation;
   images?: {
     cover: string;
     gallery: ProjectImage[];

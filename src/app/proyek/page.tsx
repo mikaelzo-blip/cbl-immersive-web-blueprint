@@ -8,6 +8,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading';
 import { projects, projectCategories } from '@/data/projects';
 import { portfolioConfidentialityNotice } from '@/data/company';
 import { ProjectCategory } from '@/types/project';
+import { cn } from '@/lib/utils';
 
 export default function PortfolioIndexPage() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | ProjectCategory>('all');
@@ -108,13 +109,17 @@ export default function PortfolioIndexPage() {
                   aria-label={`Buka studi kasus ${featuredProject.title}`}
                 >
                   <Image
-                    src={featuredProject.images?.cover ?? featuredProject.image}
+                    src={featuredProject.archivePresentation?.image ?? featuredProject.images?.cover ?? featuredProject.image}
                     alt={featuredProject.imageAlt}
                     fill
                     priority
                     quality={72}
                     sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
+                    className={cn(
+                      'transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]',
+                      featuredProject.archivePresentation?.aspect === 'portrait' ? 'object-contain' : 'object-cover',
+                    )}
+                    style={{ objectPosition: featuredProject.archivePresentation?.objectPosition ?? 'center' }}
                   />
                 </Link>
 
@@ -158,12 +163,16 @@ export default function PortfolioIndexPage() {
                           aria-label={`Buka studi kasus ${project.title}`}
                         >
                           <Image
-                            src={project.images?.cover ?? project.image}
+                            src={project.archivePresentation?.image ?? project.images?.cover ?? project.image}
                             alt={project.imageAlt}
                             fill
                             quality={68}
                             sizes="(max-width: 768px) 100vw, 58vw"
-                            className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
+                            className={cn(
+                              'transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]',
+                              project.archivePresentation?.aspect === 'portrait' ? 'object-contain' : 'object-cover',
+                            )}
+                            style={{ objectPosition: project.archivePresentation?.objectPosition ?? 'center' }}
                           />
                         </Link>
                         <div className="md:col-span-4 md:col-start-9 md:self-center">
@@ -194,16 +203,25 @@ export default function PortfolioIndexPage() {
                     </div>
                     <Link
                       href={`/proyek/${project.slug}`}
-                      className="group relative block aspect-[16/10] overflow-hidden bg-[#D8D6D0]"
+                      className={cn(
+                        'group relative block overflow-hidden bg-[#D8D6D0]',
+                        project.archivePresentation?.aspect === 'portrait'
+                          ? 'aspect-[4/3]'
+                          : 'aspect-[16/10]',
+                      )}
                       aria-label={`Buka studi kasus ${project.title}`}
                     >
                       <Image
-                        src={project.images?.cover ?? project.image}
+                        src={project.archivePresentation?.image ?? project.images?.cover ?? project.image}
                         alt={project.imageAlt}
                         fill
                         quality={68}
                         sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
+                        className={cn(
+                          'transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]',
+                          project.archivePresentation?.aspect === 'portrait' ? 'object-contain' : 'object-cover',
+                        )}
+                        style={{ objectPosition: project.archivePresentation?.objectPosition ?? 'center' }}
                       />
                     </Link>
                     <p className="mt-5 text-xs uppercase tracking-[0.12em] text-[#657482]">{project.sector}</p>

@@ -80,7 +80,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
           <header className="grid gap-10 border-t border-[#0F2942]/25 pb-12 pt-6 lg:grid-cols-12 lg:gap-12 lg:pb-16">
             <div className="lg:col-span-3">
-              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Case study</p>
+              <p className="text-[0.64rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Studi kasus</p>
               <div className="mt-4 space-y-2 text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[#6B7780]">
                 <p>{project.categoryLabel}</p>
                 <p>{project.sector}</p>
@@ -89,7 +89,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             </div>
 
             <div className="lg:col-span-8 lg:col-start-5">
-              <h1 className="max-w-5xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.92] tracking-[-0.055em]">
+              <h1 className="max-w-5xl text-[clamp(2.65rem,6vw,5.75rem)] font-semibold leading-[0.94] tracking-[-0.05em]">
                 {project.title}
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-[#5F6D78] sm:text-lg">{project.summary}</p>
@@ -226,7 +226,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                 </section>
 
                 <section className="border-t border-[#0F2942]/25 pt-5">
-                  <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Project inquiry</p>
+                  <p className="text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Konsultasi proyek</p>
                   <h2 className="mt-2 text-lg font-semibold">Menghadapi kebutuhan teknis yang serupa?</h2>
                   <p className="mt-3 text-xs leading-6 text-[#5F6D78]">Sampaikan kondisi peralatan dan target pekerjaan untuk pembahasan awal sebelum peninjauan lapangan.</p>
                   <a href={whatsappCtaUrl} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex border-b border-[#B34718] pb-1 text-xs font-semibold text-[#B34718]">Diskusikan via WhatsApp ↗</a>
@@ -239,7 +239,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             <section className="border-t border-[#0F2942]/20 py-16" aria-labelledby="related-projects-title">
               <div className="mb-10 grid gap-6 lg:grid-cols-12">
                 <div className="lg:col-span-3">
-                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Related work</p>
+                  <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Studi kasus terkait</p>
                 </div>
                 <div className="lg:col-span-8 lg:col-start-5">
                   <h2 id="related-projects-title" className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl">Studi kasus lain dalam bidang yang sama.</h2>
