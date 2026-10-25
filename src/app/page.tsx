@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { ExperienceSummarySection } from '@/components/sections/ExperienceSummarySection';
 import { ServicesSection } from '@/components/sections/ServicesSection';
-import { ExpertiseSection } from '@/components/sections/ExpertiseSection';
+import { DisciplineBand } from '@/components/sections/DisciplineBand';
+import { FieldGallerySection } from '@/components/sections/FieldGallerySection';
 import { WorkProcessSection } from '@/components/sections/WorkProcessSection';
 import { BrandSection } from '@/components/sections/BrandSection';
 import { PortfolioSection } from '@/components/sections/PortfolioSection';
 import { WhyUsSection } from '@/components/sections/WhyUsSection';
-import { ClosingCtaSection } from '@/components/sections/ClosingCtaSection';
-import { ContactSection } from '@/components/sections/ContactSection';
+import { ContactQuickSection } from '@/components/sections/ContactQuickSection';
 import { VendorReadinessSection } from '@/components/sections/VendorReadinessSection';
 import { companyInfo } from '@/data/company';
 
@@ -23,15 +23,15 @@ export default function HomePage() {
     <>
       <HeroSection />
       <ExperienceSummarySection />
+      <DisciplineBand />
       <ServicesSection />
       <PortfolioSection />
+      <FieldGallerySection />
       <WhyUsSection />
       <WorkProcessSection />
-      <ExpertiseSection />
       <BrandSection />
       <VendorReadinessSection />
-      <ClosingCtaSection />
-      <ContactSection />
+      <ContactQuickSection />
     </>
   );
 }

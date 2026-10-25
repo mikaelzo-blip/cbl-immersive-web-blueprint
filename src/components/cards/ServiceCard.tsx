@@ -39,7 +39,7 @@ export function ServiceCard({ service, className, index }: ServiceCardProps) {
 
         {/* Daftar Kapabilitas */}
         <div className="border-t border-[#E2E8F0] pt-4 mb-6">
-          <span className="text-[11px] font-bold text-[#0F2942] uppercase tracking-[0.14em] block mb-3">
+          <span className="text-xs font-bold text-[#0F2942] uppercase tracking-[0.14em] block mb-3">
             Layanan yang tersedia
           </span>
           <ul className="space-y-2 text-xs text-[#475569]">

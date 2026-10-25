@@ -62,9 +62,8 @@ export interface BrandItem {
   logoPath?: string;
   logoWidth?: number;
   logoHeight?: number;
-  logoScale?: number;
-  logoXOffset?: number;
-  logoYOffset?: number;
+  /** Wordmark cap height as a fraction of the logo image height; used to give every logo the same lettering size. */
+  logoCapRatio?: number;
 }
 
 export interface WhyUsPoint {

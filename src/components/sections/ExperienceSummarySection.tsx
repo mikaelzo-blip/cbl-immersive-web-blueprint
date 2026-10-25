@@ -1,43 +1,31 @@
 import { Container } from '@/components/ui/Container';
+import { CountUp } from '@/components/ui/CountUp';
 
 const experienceRegister = [
-  { value: '74', label: 'pekerjaan unik dapat ditelusuri dari arsip proyek' },
-  { value: '22', label: 'pekerjaan dengan disiplin dominan elektrikal & otomasi' },
-  { value: '15', label: 'pekerjaan dengan disiplin dominan mekanikal wahana' },
-  { value: '14', label: 'pekerjaan dengan disiplin dominan pompa / plumbing / sistem air' },
-  { value: '09', label: 'pekerjaan dengan disiplin dominan HVAC & refrigerasi' },
+  { value: '74', label: 'Pekerjaan tercatat' },
+  { value: '22', label: 'Elektrikal & otomasi' },
+  { value: '15', label: 'Mekanikal wahana' },
+  { value: '14', label: 'Pompa & sistem air' },
+  { value: '09', label: 'HVAC & refrigerasi' },
 ];
 
 export function ExperienceSummarySection() {
   return (
-    <section aria-label="Ringkasan pengalaman CBL" className="border-b border-[#D9E1E8] bg-white py-16 text-[#0F2942] md:py-24">
+    // Same navy as the bottom of the hero, so the record reads as the hero's last line rather than a new block.
+    <section aria-labelledby="experience-title" className="bg-[#081626] pb-12 pt-2 text-white md:pb-16 md:pt-4">
       <Container>
-        <div className="grid grid-cols-1 gap-10 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Rekam proyek terverifikasi · 2022–2026</p>
-            <h2 className="mt-5 max-w-md text-3xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl">
-              Pengalaman yang tercatat dalam arsip proyek.
-            </h2>
-            <p className="mt-5 max-w-md text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base">
-              Ringkasan ini disusun dari PO, SPK, BAST, surat jalan, laporan, dan dokumentasi proyek. Kategori menunjukkan disiplin utama; satu pekerjaan dapat melibatkan beberapa bidang sekaligus.
-            </p>
-          </div>
-
-          <div className="lg:col-span-7 lg:col-start-6">
-            {experienceRegister.map((item, index) => (
-              <div
-                key={item.label}
-                className="grid grid-cols-[4.5rem_1fr] gap-5 border-t border-[#0F2942]/18 py-5 first:border-t-0 first:pt-0 sm:grid-cols-[6rem_1fr] sm:gap-7 sm:py-6"
-              >
-                <span className="text-3xl font-semibold tracking-[-0.04em] text-[#0F2942] sm:text-4xl">{item.value}</span>
-                <div className="flex items-start justify-between gap-6">
-                  <p className="max-w-xl text-[0.95rem] leading-6 text-[#5F6D78] sm:text-base">{item.label}</p>
-                  <span className="hidden text-[0.66rem] font-semibold tracking-[0.15em] text-[#8A949C] sm:block">0{index + 1}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <h2 id="experience-title" className="sr-only">Rekam proyek CBL 2022–2026</h2>
+        <dl data-stagger className="grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-5">
+          {experienceRegister.map((item) => (
+            <div key={item.label} className="flex flex-col-reverse border-t border-white/20 pt-4 first:col-span-2 sm:first:col-span-1">
+              <dt className="mt-3 text-sm font-medium text-[#B9C6D1] sm:text-[0.95rem]">{item.label}</dt>
+              <dd className="text-[clamp(2.6rem,5vw,4.2rem)] font-semibold leading-none tracking-[-0.04em]">
+                <CountUp value={item.value} />
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <p className="mt-8 text-sm text-[#93A6B6]">Dihitung dari arsip PO, SPK, dan BAST 2022–2026.</p>
       </Container>
     </section>
   );

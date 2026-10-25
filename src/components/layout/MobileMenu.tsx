@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { companyInfo, mainNavItems } from '@/data/company';
-import { resolveSectionHref, cn } from '@/lib/utils';
+import { resolveSectionHref, isNavItemActive, cn } from '@/lib/utils';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 
 interface MobileMenuProps {
@@ -67,18 +67,6 @@ export function MobileMenu({
 
   if (!isOpen) return null;
 
-  const checkIsActive = (itemHref: string) => {
-    if (pathname === '/') {
-      if (itemHref === '/') return activeSection === '/';
-      if (itemHref.startsWith('#')) return activeSection === itemHref;
-      return pathname === itemHref;
-    }
-
-    if (itemHref === '#layanan' && pathname.startsWith('/layanan/')) return true;
-    if (itemHref === '/proyek' && pathname.startsWith('/proyek')) return true;
-    return pathname === itemHref;
-  };
-
   const whatsappHref = `https://wa.me/${companyInfo.whatsappNumber}?text=${encodeURIComponent(
     'Halo CBL, saya ingin konsultasi kebutuhan teknik fasilitas kami.'
   )}`;
@@ -115,7 +103,7 @@ export function MobileMenu({
               </div>
               <div className="min-w-0">
                 <span className="block truncate text-[0.95rem] font-semibold text-[#0F2942]">Cakrawala Buana Lestari</span>
-                <span className="mt-0.5 block text-[0.64rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780]">Solusi teknis · Jakarta</span>
+                <span className="mt-0.5 block text-[0.75rem] font-semibold uppercase tracking-[0.13em] text-[#5F6D78]">Solusi teknis · Jakarta</span>
               </div>
             </div>
             <button
@@ -131,7 +119,7 @@ export function MobileMenu({
           <nav className="py-4" aria-label="Navigasi Seluler">
             {mainNavItems.map((item, index) => {
               const href = resolveSectionHref(item.href, pathname);
-              const isActive = checkIsActive(item.href);
+              const isActive = isNavItemActive(item.href, pathname, activeSection);
 
               return (
                 <Link
@@ -141,15 +129,15 @@ export function MobileMenu({
                     handleNavClick?.(e, item.href);
                     onClose();
                   }}
-                  aria-current={isActive ? 'page' : undefined}
+                  aria-current={isActive ? (pathname === '/' && item.href !== '/' ? 'location' : 'page') : undefined}
                   className={cn(
-                    'grid min-h-12 grid-cols-[2.5rem_1fr_auto] items-center border-b border-[#0F2942]/12 py-3.5 text-[0.95rem] font-semibold transition-colors',
+                    'grid min-h-12 grid-cols-[2.5rem_1fr_auto] items-baseline border-b border-[#0F2942]/12 py-4 text-[2rem] font-semibold leading-none tracking-[-0.035em] transition-colors',
                     isActive ? 'text-[#B34718]' : 'text-[#0F2942] hover:text-[#B34718]'
                   )}
                 >
-                  <span className="text-[0.64rem] tracking-[0.12em] text-[#7A858D]">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-[0.75rem] tracking-normal tabular-nums text-[#5F6D78]">{String(index + 1).padStart(2, '0')}</span>
                   <span>{item.label}</span>
-                  <span aria-hidden="true">{isActive ? '—' : '→'}</span>
+                  <span aria-hidden="true" className="text-xl">{isActive ? '—' : '→'}</span>
                 </Link>
               );
             })}
@@ -157,13 +145,13 @@ export function MobileMenu({
         </div>
 
         <div className="border-t border-[#0F2942]/15 pt-5">
-          <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Konsultasi proyek</p>
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#5F6D78]">Konsultasi proyek</p>
           <a
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="mt-3 inline-flex border-b border-[#B34718] pb-1 text-[0.95rem] font-semibold text-[#B34718]"
+            className="mt-3 inline-flex hit-area border-b border-[#B34718] pb-1 text-[0.95rem] font-semibold text-[#B34718]"
           >
             WhatsApp {companyInfo.whatsappFormatted} ↗
           </a>

@@ -1,55 +1,48 @@
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { legalDocuments } from '@/data/legal';
 
-export function VendorReadinessSection() {
-  return (
-    <section className="border-b border-[#0F2942]/15 bg-white py-20 md:py-28">
-      <Container>
-        <div className="grid gap-10 border-t border-[#0F2942]/25 pt-6 lg:grid-cols-12 lg:gap-12">
-          <div className="lg:col-span-5">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">
-              Kelengkapan administrasi vendor
-            </p>
-            <h2 className="mt-5 max-w-xl text-[clamp(2.35rem,5vw,4.7rem)] font-semibold leading-[0.98] tracking-[-0.043em] text-[#0F2942]">
-              Dokumen legalitas disusun ringkas untuk kebutuhan verifikasi vendor.
-            </h2>
-            <p className="mt-6 max-w-lg text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base">
-              Jenis dokumen perusahaan ditampilkan secara ringkas. Salinan yang memuat data sensitif diberikan melalui permintaan resmi sesuai kebutuhan registrasi vendor.
-            </p>
-            <Link
-              href="/legalitas"
-              className="mt-7 inline-flex border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
-            >
-              Buka informasi legalitas →
-            </Link>
-          </div>
+// Short register names for the four corporate documents, shown large; the full title sits underneath.
+const documentCodes: Record<string, string> = {
+  'akta-pendirian': 'Akta',
+  nib: 'NIB',
+  npwp: 'NPWP',
+  pkp: 'PKP',
+};
 
-          <div className="lg:col-span-6 lg:col-start-7">
-            <div className="border-t border-[#0F2942]/20">
-              {legalDocuments.map((document, index) => (
-                <article
-                  key={document.id}
-                  className="grid gap-3 border-b border-[#0F2942]/15 py-5 sm:grid-cols-[3.25rem_1fr_auto] sm:items-start sm:gap-5 sm:py-6"
-                >
-                  <span className="text-[0.7rem] font-semibold tracking-[0.14em] text-[#B34718]">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780]">
-                      {document.category}
-                    </p>
-                    <h3 className="mt-1.5 text-base font-semibold text-[#0F2942] sm:text-lg">{document.title}</h3>
-                    <p className="mt-2 text-[0.85rem] leading-6 text-[#5F6D78] sm:text-sm">{document.description}</p>
-                  </div>
-                  <span className="text-[0.66rem] font-semibold uppercase tracking-[0.11em] text-[#5F6D78] sm:text-right">
-                    Dokumen
-                  </span>
-                </article>
-              ))}
-            </div>
-          </div>
+export function VendorReadinessSection() {
+  const documents = legalDocuments.filter((document) => document.id in documentCodes);
+
+  return (
+    <section className="border-b border-[#0F2942]/15 bg-white py-16 md:py-20">
+      <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:items-end lg:gap-16">
+        <div>
+          <h2 className="max-w-md text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.04] tracking-[-0.035em] text-[#0F2942]">
+            Dokumen siap untuk registrasi vendor.
+          </h2>
+          <Link
+            href="/legalitas"
+            className="mt-5 inline-flex items-center gap-2 hit-area border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
+          >
+            Lihat dokumen legalitas <ArrowRight aria-hidden="true" className="size-4" />
+          </Link>
         </div>
+
+        <ul data-stagger className="grid grid-cols-2 gap-y-6 border-t border-[#0F2942]/20 sm:grid-cols-4">
+          {documents.map((document, index) => (
+            <li
+              key={document.id}
+              // 2×2 on phones (rows start at 0 and 2), one row of four from sm.
+              className={`border-l border-[#0F2942]/20 px-4 pt-5 sm:px-5 ${index === 0 ? 'border-l-0 pl-0 sm:pl-0' : index === 2 ? 'max-sm:border-l-0 max-sm:pl-0' : ''}`}
+            >
+              <span className="block text-[clamp(2rem,3.2vw,2.9rem)] font-semibold leading-none tracking-[-0.04em] text-[#0F2942]">
+                {documentCodes[document.id]}
+              </span>
+              <span className="mt-3 block text-xs leading-snug text-[#536474] sm:text-sm">{document.title}</span>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );
