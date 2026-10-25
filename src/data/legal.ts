@@ -34,10 +34,17 @@ export const legalDocuments: LegalDocumentItem[] = [
     availableOnRequest: true,
   },
   {
-    id: 'npwp-pkp',
-    title: 'NPWP Perusahaan & Status Perpajakan',
+    id: 'npwp',
+    title: 'NPWP Perusahaan',
     category: 'Kepatuhan Pajak',
-    description: 'Dokumen NPWP dan pengukuhan PKP perusahaan telah diverifikasi secara internal; status pelaporan berkala tidak dinyatakan pada halaman publik.',
+    description: 'Dokumen NPWP perusahaan telah diverifikasi secara internal; status pelaporan berkala tidak dinyatakan pada halaman publik.',
+    availableOnRequest: true,
+  },
+  {
+    id: 'pkp',
+    title: 'Pengukuhan Pengusaha Kena Pajak (PKP)',
+    category: 'Kepatuhan Pajak',
+    description: 'Surat pengukuhan PKP perusahaan telah diverifikasi secara internal; nomor dokumen tidak ditampilkan pada halaman publik.',
     availableOnRequest: true,
   },
 ];

@@ -1,72 +1,86 @@
+'use client';
+
+import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { serviceDivisions } from '@/data/company';
+import { serviceImages } from '@/data/service-images';
+import { cn } from '@/lib/utils';
 
-export function ServicesSection() {
+export function ServicesSection({ headingAs: Heading = 'h2' }: { headingAs?: 'h1' | 'h2' }) {
+  const [active, setActive] = useState(0);
+
   return (
-    <section id="layanan" className="border-b border-[#D9E1E8] bg-[#F4F1EA] py-20 text-[#0F2942] md:py-28 lg:py-32">
+    <section id="layanan" className="border-b border-[#D9E1E8] bg-[#F4F1EA] py-16 text-[#0F2942] md:py-28">
       <Container>
-        <div className="grid grid-cols-1 gap-8 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-3">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Indeks layanan</p>
-            <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-[#657482]">
-              Layanan disusun dari pekerjaan yang telah terdokumentasi, bukan daftar kemampuan generik.
-            </p>
-          </div>
+        <Heading className="max-w-3xl text-[clamp(2.4rem,5vw,4.6rem)] font-semibold leading-[0.98] tracking-[-0.04em]">
+          Enam bidang pekerjaan. Satu koordinasi.
+        </Heading>
 
-          <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.2rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
-              Satu koordinasi untuk pekerjaan teknis lintas disiplin.
-            </h2>
-          </div>
-        </div>
+        <div className="mt-12 grid gap-12 md:mt-16 lg:grid-cols-12">
+          <ul className="lg:col-span-7">
+            {serviceDivisions.map((service, index) => {
+              const image = serviceImages[service.slug];
+              const isActive = index === active;
 
-        <div className="mt-14 md:mt-20">
-          {serviceDivisions.map((service, index) => {
-            const number = String(index + 1).padStart(2, '0');
-
-            return (
-              <article
-                key={service.id}
-                className="grid grid-cols-1 gap-5 border-t border-[#0F2942]/25 py-7 sm:py-8 lg:grid-cols-12 lg:gap-8 lg:py-10"
-              >
-                <div className="flex items-start justify-between lg:col-span-2 lg:block">
-                  <span className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">{number}</span>
-                  <span className="text-[0.68rem] uppercase tracking-[0.13em] text-[#8A949C] lg:mt-3 lg:block">Layanan teknis</span>
-                </div>
-
-                <div className="lg:col-span-4">
-                  <h3 className="text-2xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-3xl">
-                    <Link href={`/layanan/${service.slug}`} className="transition-colors duration-200 hover:text-[#B34718]">
-                      {service.title}
-                    </Link>
-                  </h3>
-                  <p className="mt-4 max-w-xl text-[0.95rem] leading-7 text-[#657482]">{service.description}</p>
-                </div>
-
-                <div className="lg:col-span-4 lg:col-start-8">
-                  <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#657482]">Contoh lingkup</p>
-                  <ul className="mt-3 space-y-2 text-[0.95rem] leading-6 text-[#0F2942]">
-                    {service.capabilities.slice(0, 3).map((capability) => (
-                      <li key={capability} className="border-t border-[#0F2942]/12 pt-2 first:border-t-0 first:pt-0">
-                        {capability}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="lg:col-span-1 lg:text-right">
+              return (
+                <li key={service.id} className="border-t border-[#0F2942]/20 last:border-b">
                   <Link
                     href={`/layanan/${service.slug}`}
-                    className="inline-flex border-b border-[#0F2942]/35 pb-1 text-sm font-semibold transition-colors duration-200 hover:border-[#B34718] hover:text-[#B34718]"
-                    aria-label={`Pelajari ${service.title}`}
+                    onMouseEnter={() => setActive(index)}
+                    onFocus={() => setActive(index)}
+                    className="group flex items-center gap-4 py-4 sm:gap-5 sm:py-6"
                   >
-                    Detail →
+                    {/* Mobile has no hover: each row carries its own photo. */}
+                    {image && (
+                      <span className="relative h-[4.5rem] w-24 shrink-0 overflow-hidden rounded-sm sm:h-24 sm:w-32 lg:hidden">
+                        <Image src={image.src} alt="" fill sizes="128px" className="object-cover" />
+                      </span>
+                    )}
+                    <span
+                      className={cn(
+                        'flex-1 text-[clamp(1.35rem,3.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.035em] transition-[color,translate] duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] lg:text-[#0F2942]/55',
+                        isActive && 'lg:translate-x-3 lg:text-[#0F2942]'
+                      )}
+                    >
+                      {service.title}
+                    </span>
+                    <ArrowRight
+                      aria-hidden="true"
+                      className={cn(
+                        'size-6 shrink-0 text-[#B34718] transition-[opacity,translate] duration-500 lg:-translate-x-3 lg:opacity-0',
+                        isActive && 'lg:translate-x-0 lg:opacity-100'
+                      )}
+                    />
                   </Link>
-                </div>
-              </article>
-            );
-          })}
+                </li>
+              );
+            })}
+          </ul>
+
+          <div className="hidden lg:col-span-5 lg:block">
+            <div className="sticky top-28 aspect-[4/5] overflow-hidden rounded-md">
+              {serviceDivisions.map((service, index) => {
+                const image = serviceImages[service.slug];
+                if (!image) return null;
+                return (
+                  <Image
+                    key={service.id}
+                    src={image.src}
+                    alt={index === active ? image.alt : ''}
+                    fill
+                    sizes="40vw"
+                    className={cn(
+                      'object-cover transition-[opacity,scale] duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]',
+                      index === active ? 'scale-100 opacity-100' : 'scale-110 opacity-0'
+                    )}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </div>
       </Container>
     </section>

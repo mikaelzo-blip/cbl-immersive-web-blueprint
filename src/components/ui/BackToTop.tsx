@@ -33,7 +33,7 @@ export function BackToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Kembali ke atas halaman"
-      className="fixed bottom-20 right-6 z-40 p-3.5 rounded-full bg-[#0F2942] text-white shadow-xl hover:bg-[#15426B] hover:scale-110 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[#0E6BA8]"
+      className="fixed bottom-20 right-6 z-40 hidden p-3.5 rounded-full md:block bg-[#0F2942] text-white shadow-xl hover:bg-[#15426B] hover:scale-110 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[#0E6BA8]"
     >
       <DynamicIcon name="ChevronRight" size={20} className="-rotate-90" />
     </button>

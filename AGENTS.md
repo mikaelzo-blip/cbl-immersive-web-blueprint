@@ -38,6 +38,26 @@ Rules:
 - keep the brand list subordinate to project evidence
 - preserve an accessible reduced-motion behavior; reduced motion may slow or simplify the movement without deleting the section
 
+### Hypermotion layer — owner request, October 2026
+
+The owner asked for a richer motion layer ("hypermotion"). It replaces the earlier "restrained motion only" stance for these effects, still with no 3D/WebGL and no scroll-jacking:
+
+- hero headline lines rise out of masks on load; hero photo opens with a clip wipe
+- `src/components/ui/MotionObserver.tsx` (mounted in the root layout) reveals every `<main>` `h2` with a mask wipe, every `next/image` fill frame with a clip wipe + scale settle, and children of `[data-stagger]` lists as staggered rows
+- `src/components/ui/CountUp.tsx` counts up the experience register numbers
+- `[data-parallax]` images drift with scroll and an orange scroll-progress bar tracks the page (CSS scroll timelines; browsers without support get the static layout)
+- all of it is disabled under `prefers-reduced-motion`; styles live in the "Hypermotion" block of `src/app/globals.css`
+
+### Image-led homepage — owner request, October 2026
+
+The owner asked for far less reading and more imagery on the homepage. This overrides the earlier long-copy section layouts and the "no stock imagery" rule, within these limits:
+
+- homepage copy is headlines, short labels, and at most one short sentence per section; details live on `/layanan/*`, `/proyek/*`, and `/legalitas`
+- full-bleed photo hero; services are image tiles; a "Dari lapangan" gallery shows CBL field photos only
+- CC0 stock photos are allowed for atmosphere (see `docs/STOCK_IMAGES.md`) but must never be captioned or presented as CBL project work
+- the Keahlian section was removed from the homepage (it repeated the services); the marquee section stays
+- anti-boxy rule: services are a hover list with one swapping photo, projects a horizontal rail, field photos and the discipline band reuse the brand marquee loop (`.loop-track`); avoid grids of equal rounded cards
+
 ### Locked visual refinements — August 2026
 
 These decisions are based on the owner-approved visual review and should not be reopened casually:
@@ -119,7 +139,8 @@ Important public-claim rules:
 ## 🛠️ Key Components & Implementation Patterns
 
 1. **Header & Navigation (`src/components/layout/Header.tsx` & `MobileMenu.tsx`)**:
-   - Uses ScrollSpy (`activeSection`) as the user scrolls through homepage sections.
+   - Every nav item is a real route (`/`, `/layanan`, `/proyek`, `/legalitas`, `/kontak`); homepage-only sections (Mengapa CBL, Cara Kerja) are not in the nav.
+   - Uses ScrollSpy (`activeSection`) as the user scrolls through homepage sections, lighting the nav item whose page matches the section (`#layanan`, `#proyek`, `#kontak`).
    - Uses `window.history.pushState` on hash clicks to prevent double-hash URL bugs.
    - Nested service and project routes must keep the corresponding top-level navigation state active.
 

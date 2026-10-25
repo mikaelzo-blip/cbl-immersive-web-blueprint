@@ -31,7 +31,7 @@ export function SectionHeading({
       {badge && (
         <div
           className={cn(
-            'mb-5 flex items-center gap-3 text-[0.72rem] font-semibold uppercase tracking-[0.17em]',
+            'mb-5 flex items-center gap-3 text-[0.75rem] font-semibold uppercase tracking-[0.17em]',
             light ? 'text-[#9ED7E8]' : 'text-[#B34718]'
           )}
         >

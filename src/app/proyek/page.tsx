@@ -4,49 +4,55 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { PageHero } from '@/components/sections/PageHero';
 import { projects, projectCategories } from '@/data/projects';
 import { portfolioConfidentialityNotice } from '@/data/company';
 import { ProjectCategory } from '@/types/project';
+import { cn } from '@/lib/utils';
+
+type Project = (typeof projects)[number];
+
+// Photo with the title laid over it; used for the lead project and the periodic wide entries.
+function OverlayEntry({ project, className, sizes, priority }: { project: Project; className: string; sizes: string; priority?: boolean }) {
+  return (
+    <Link href={`/proyek/${project.slug}`} className={cn('group relative block overflow-hidden rounded-md bg-[#D8D6D0] text-white', className)}>
+      <Image
+        src={project.images?.cover ?? project.image}
+        alt={project.imageAlt}
+        fill
+        priority={priority}
+        quality={75}
+        sizes={sizes}
+        className="object-cover transition-[scale] duration-700 ease-out group-hover:scale-[1.03]"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(8,22,38,0.9)_0%,rgba(8,22,38,0.35)_45%,transparent_75%)]" />
+      <div className="absolute inset-x-0 bottom-0 p-5 sm:p-8 lg:p-10">
+        <p className="text-sm text-[#D5DEE6]">{project.categoryLabel} · {project.sector}</p>
+        <h2 className="mt-2 max-w-3xl text-2xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-4xl lg:text-5xl">{project.title}</h2>
+      </div>
+    </Link>
+  );
+}
 
 export default function PortfolioIndexPage() {
   const [selectedCategory, setSelectedCategory] = useState<'all' | ProjectCategory>('all');
 
-  const filteredProjects = projects.filter((project) => {
-    if (selectedCategory === 'all') return true;
-    return project.category === selectedCategory;
-  });
-
+  const filteredProjects = projects.filter((project) => selectedCategory === 'all' || project.category === selectedCategory);
   const activeLabel = projectCategories.find((category) => category.id === selectedCategory)?.label ?? 'Semua';
   const [featuredProject, ...archiveProjects] = filteredProjects;
 
   return (
-    <main className="min-h-screen bg-[#F4F1EA] text-[#0F2942]">
-      <section className="border-b border-[#0F2942]/15 bg-[#0F2942] py-14 text-white sm:py-16 md:py-24">
-        <Container>
-          <div className="grid gap-8 border-t border-white/25 pt-6 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-3">
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#F0A16F]">Arsip proyek</p>
-              <p className="mt-3 text-sm leading-6 text-[#B8C8D4]">{projects.length} studi kasus dipublikasikan</p>
-            </div>
-            <div className="lg:col-span-8 lg:col-start-5">
-              <SectionHeading
-                badge="Portofolio pekerjaan"
-                title="Rekam pekerjaan teknis yang dapat ditelusuri dari dokumentasi proyek."
-                description="Jelajahi pekerjaan pengadaan, pemasangan, penggantian, dan perbaikan berdasarkan arsip internal CBL. Informasi sensitif tidak ditampilkan pada versi publik."
-                as="h1"
-                align="left"
-                light
-                className="mb-0"
-              />
-            </div>
-          </div>
-        </Container>
-      </section>
+    <div className="bg-[#F4F1EA] text-[#0F2942]">
+      <PageHero
+        label="Portofolio"
+        titleLines={['Proyek yang', 'sudah kami kerjakan.']}
+        lead={`${projects.length} studi kasus dari arsip pekerjaan CBL 2022–2026.`}
+      />
 
-      <Container className="py-9 sm:py-10 md:py-14 lg:py-16">
-        <div className="border-y border-[#0F2942]/20" role="tablist" aria-label="Filter kategori portofolio">
-          <div className="flex overflow-x-auto overscroll-x-contain">
+      {/* Filter stays reachable while scrolling the archive. */}
+      <div className="sticky top-16 z-30 border-b border-[#0F2942]/15 bg-[#F4F1EA]">
+        <Container>
+          <div className="flex overflow-x-auto overscroll-x-contain pr-10 [scrollbar-width:none] [mask-image:linear-gradient(to_right,#000_80%,transparent)] md:pr-0 md:[mask-image:none]" role="tablist" aria-label="Filter kategori portofolio">
             {projectCategories.map((category) => {
               const isSelected = selectedCategory === category.id;
               return (
@@ -56,28 +62,27 @@ export default function PortfolioIndexPage() {
                   role="tab"
                   aria-selected={isSelected}
                   onClick={() => setSelectedCategory(category.id as 'all' | ProjectCategory)}
-                  className={`relative min-h-12 shrink-0 px-3 py-4 text-[0.78rem] font-semibold transition-colors sm:px-5 sm:text-sm ${
+                  className={cn(
+                    'relative min-h-12 shrink-0 px-3 py-4 text-sm font-semibold transition-colors sm:px-5',
                     isSelected ? 'text-[#0F2942]' : 'text-[#6B7780] hover:text-[#0F2942]'
-                  }`}
+                  )}
                 >
                   {category.label}
-                  {isSelected && <span className="absolute inset-x-3 bottom-0 h-px bg-[#B34718] sm:inset-x-5" aria-hidden="true" />}
+                  {isSelected && <span className="absolute inset-x-3 bottom-0 h-0.5 bg-[#B34718] sm:inset-x-5" aria-hidden="true" />}
                 </button>
               );
             })}
           </div>
-        </div>
+        </Container>
+      </div>
 
-        <div className="mb-9 mt-5 flex flex-wrap items-center justify-between gap-4 text-sm text-[#5F6D78]" aria-live="polite">
+      <Container className="py-10 md:py-16">
+        <div className="mb-8 flex flex-wrap items-center justify-between gap-4 text-sm text-[#5F6D78]" aria-live="polite">
           <p>
             <span className="font-semibold text-[#0F2942]">{filteredProjects.length}</span> studi kasus · {activeLabel}
           </p>
           {selectedCategory !== 'all' && (
-            <button
-              type="button"
-              onClick={() => setSelectedCategory('all')}
-              className="font-semibold text-[#B34718] underline underline-offset-4"
-            >
+            <button type="button" onClick={() => setSelectedCategory('all')} className="font-semibold text-[#B34718] underline underline-offset-4">
               Tampilkan semua
             </button>
           )}
@@ -85,140 +90,44 @@ export default function PortfolioIndexPage() {
 
         {featuredProject ? (
           <>
-            <article className="border-t border-[#0F2942]/25 pt-6 sm:pt-7">
-              <div className="mb-5 flex flex-wrap items-end justify-between gap-4">
-                <div>
-                  <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">01 / Sorotan arsip</p>
-                  <p className="mt-2 text-xs uppercase tracking-[0.12em] text-[#657482]">
-                    {featuredProject.categoryLabel} · {featuredProject.sector}
-                  </p>
-                </div>
-                <Link
-                  href={`/proyek/${featuredProject.slug}`}
-                  className="hidden border-b border-[#0F2942]/40 pb-1 text-sm font-semibold transition-colors hover:border-[#B34718] hover:text-[#B34718] sm:inline-flex"
-                >
-                  Buka studi kasus →
-                </Link>
-              </div>
+            <OverlayEntry
+              project={featuredProject}
+              priority
+              className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]"
+              sizes="(min-width: 1280px) 80rem, 100vw"
+            />
 
-              <div className="grid gap-7 lg:grid-cols-12 lg:gap-10">
-                <Link
-                  href={`/proyek/${featuredProject.slug}`}
-                  className="group relative block aspect-[16/10] overflow-hidden bg-[#D8D6D0] lg:col-span-8"
-                  aria-label={`Buka studi kasus ${featuredProject.title}`}
-                >
-                  <Image
-                    src={featuredProject.images?.cover ?? featuredProject.image}
-                    alt={featuredProject.imageAlt}
-                    fill
-                    priority
-                    quality={72}
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
-                  />
-                </Link>
-
-                <div className="flex flex-col lg:col-span-4 lg:py-2">
-                  <h2 className="max-w-xl text-3xl font-semibold leading-[1.02] tracking-[-0.035em] sm:text-4xl lg:text-[2.8rem]">
-                    <Link href={`/proyek/${featuredProject.slug}`} className="transition-colors hover:text-[#B34718]">
-                      {featuredProject.title}
-                    </Link>
-                  </h2>
-                  <p className="mt-5 text-[0.95rem] leading-7 text-[#5F6D78] sm:text-base">{featuredProject.summary}</p>
-                  <div className="mt-7 border-t border-[#0F2942]/15 pt-4">
-                    <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#657482]">Cakupan utama</p>
-                    <p className="mt-2 text-sm leading-6 text-[#0F2942]">{featuredProject.scope.slice(0, 3).join(' · ')}</p>
-                  </div>
-                  <Link
-                    href={`/proyek/${featuredProject.slug}`}
-                    className="mt-7 inline-flex w-fit border-b border-[#B34718] pb-1 text-sm font-semibold text-[#B34718] sm:hidden"
-                  >
-                    Buka studi kasus →
-                  </Link>
-                </div>
-              </div>
-            </article>
-
-            <div className="mt-16 grid grid-cols-1 gap-x-10 gap-y-16 md:mt-20 md:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
+            {/* Editorial rhythm: two-column masonry of portrait and landscape entries; every fifth entry runs full width (column-span: all). */}
+            <div className="mt-14 gap-8 md:mt-20 md:columns-2 lg:gap-12">
               {archiveProjects.map((project, index) => {
-                const projectNumber = String(index + 2).padStart(2, '0');
-                const isWide = index % 5 === 2;
-
-                if (isWide) {
+                if (index % 5 === 2) {
                   return (
-                    <article key={project.slug} className="border-t border-[#0F2942]/25 pt-5 md:col-span-2">
-                      <div className="mb-5 flex items-center justify-between gap-4">
-                        <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">{projectNumber}</p>
-                        <p className="text-xs uppercase tracking-[0.12em] text-[#657482]">{project.categoryLabel}</p>
-                      </div>
-                      <div className="grid gap-7 md:grid-cols-12 md:gap-9">
-                        <Link
-                          href={`/proyek/${project.slug}`}
-                          className="group relative block aspect-[16/9] overflow-hidden bg-[#D8D6D0] md:col-span-7"
-                          aria-label={`Buka studi kasus ${project.title}`}
-                        >
-                          <Image
-                            src={project.images?.cover ?? project.image}
-                            alt={project.imageAlt}
-                            fill
-                            quality={68}
-                            sizes="(max-width: 768px) 100vw, 58vw"
-                            className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
-                          />
-                        </Link>
-                        <div className="md:col-span-4 md:col-start-9 md:self-center">
-                          <p className="text-xs uppercase tracking-[0.12em] text-[#657482]">{project.sector}</p>
-                          <h2 className="mt-3 text-2xl font-semibold leading-[1.06] tracking-[-0.03em] sm:text-3xl">
-                            <Link href={`/proyek/${project.slug}`} className="transition-colors hover:text-[#B34718]">
-                              {project.title}
-                            </Link>
-                          </h2>
-                          <p className="mt-4 text-[0.95rem] leading-7 text-[#5F6D78]">{project.summary}</p>
-                          <Link
-                            href={`/proyek/${project.slug}`}
-                            className="mt-5 inline-flex border-b border-[#0F2942]/40 pb-1 text-sm font-semibold transition-colors hover:border-[#B34718] hover:text-[#B34718]"
-                          >
-                            Lihat studi kasus →
-                          </Link>
-                        </div>
-                      </div>
-                    </article>
+                    <OverlayEntry
+                      key={project.slug}
+                      project={project}
+                      className="mb-14 aspect-[4/3] [column-span:all] md:aspect-[16/7] lg:mb-20"
+                      sizes="(min-width: 1280px) 80rem, 100vw"
+                    />
                   );
                 }
 
                 return (
-                  <article key={project.slug} className="border-t border-[#0F2942]/25 pt-5">
-                    <div className="mb-4 flex items-center justify-between gap-4">
-                      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">{projectNumber}</p>
-                      <p className="text-xs uppercase tracking-[0.12em] text-[#657482]">{project.categoryLabel}</p>
-                    </div>
-                    <Link
-                      href={`/proyek/${project.slug}`}
-                      className="group relative block aspect-[16/10] overflow-hidden bg-[#D8D6D0]"
-                      aria-label={`Buka studi kasus ${project.title}`}
-                    >
+                  <Link key={project.slug} href={`/proyek/${project.slug}`} className="group mb-14 block break-inside-avoid lg:mb-20">
+                    <div className={cn('relative overflow-hidden rounded-md bg-[#D8D6D0]', index % 2 && index > 1 ? 'aspect-[4/3]' : 'aspect-[4/5]')}>
                       <Image
                         src={project.images?.cover ?? project.image}
                         alt={project.imageAlt}
                         fill
-                        quality={68}
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover transition-transform duration-700 ease-out motion-safe:group-hover:scale-[1.02]"
+                        quality={70}
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover transition-[scale] duration-700 ease-out group-hover:scale-[1.03]"
                       />
-                    </Link>
-                    <p className="mt-5 text-xs uppercase tracking-[0.12em] text-[#657482]">{project.sector}</p>
-                    <h2 className="mt-3 max-w-xl text-2xl font-semibold leading-[1.06] tracking-[-0.03em] sm:text-3xl">
-                      <Link href={`/proyek/${project.slug}`} className="transition-colors hover:text-[#B34718]">
-                        {project.title}
-                      </Link>
+                    </div>
+                    <p className="mt-4 text-sm text-[#657482]">{project.categoryLabel}</p>
+                    <h2 className="mt-1 max-w-xl text-2xl font-semibold leading-[1.08] tracking-[-0.03em] transition-colors group-hover:text-[#B34718] sm:text-3xl">
+                      {project.title}
                     </h2>
-                    <Link
-                      href={`/proyek/${project.slug}`}
-                      className="mt-5 inline-flex border-b border-[#0F2942]/40 pb-1 text-sm font-semibold transition-colors hover:border-[#B34718] hover:text-[#B34718]"
-                    >
-                      Lihat studi kasus →
-                    </Link>
-                  </article>
+                  </Link>
                 );
               })}
             </div>
@@ -230,11 +139,8 @@ export default function PortfolioIndexPage() {
           </div>
         )}
 
-        <p className="mt-16 max-w-4xl border-t border-[#0F2942]/20 pt-5 text-sm leading-7 text-[#5F6D78]">
-          <strong className="font-semibold text-[#0F2942]">Catatan kerahasiaan — </strong>
-          {portfolioConfidentialityNotice}
-        </p>
+        <p className="mt-20 max-w-3xl border-t border-[#0F2942]/20 pt-5 text-xs leading-6 text-[#657482]">{portfolioConfidentialityNotice}</p>
       </Container>
-    </main>
+    </div>
   );
 }

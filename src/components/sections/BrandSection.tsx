@@ -1,19 +1,23 @@
 import React from 'react';
 import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
-import { brandItems, brandDisclaimer } from '@/data/company';
+import { brandItems } from '@/data/company';
 
+// Every wordmark renders with the same cap height; icons and taglines grow around it. Caps keep icon-heavy and very wide logos in the row.
+const CAP_HEIGHT = 26;
+const MAX_HEIGHT = 60;
+const MAX_WIDTH = 360;
+const logoHeight = (aspectRatio: number, capRatio = 1) =>
+  Math.round(Math.min(CAP_HEIGHT / capRatio, MAX_HEIGHT, MAX_WIDTH / aspectRatio));
+
+// The trademark disclaimer lives in the footer on every page; no need to repeat it here.
 export function BrandSection() {
   return (
-    <section className="overflow-hidden border-b border-[#0F2942]/15 bg-[#F4F1EA] py-20 md:py-24">
+    <section className="overflow-hidden border-b border-[#0F2942]/15 bg-[#F4F1EA] py-14 md:py-16">
       <Container>
-        <SectionHeading
-          badge="Cakupan Komponen & Suku Cadang"
-          title="Merek dan komponen yang tercatat dalam pekerjaan CBL."
-          description="Daftar ini menunjukkan merek dan jenis perangkat yang pernah tercatat dalam pekerjaan CBL. Pencantuman merek tidak menunjukkan hubungan distributor atau kemitraan resmi."
-          align="left"
-        />
+        <h2 className="text-2xl font-semibold tracking-[-0.025em] text-[#0F2942] sm:text-3xl">
+          Cakupan komponen &amp; suku cadang.
+        </h2>
       </Container>
 
       {/*
@@ -22,7 +26,7 @@ export function BrandSection() {
         Styling may be refined, but brand-marquee / brand-marquee-track must remain functional.
       */}
       <div
-        className="brand-marquee w-full overflow-hidden border-y border-[#0F2942]/15 py-4"
+        className="brand-marquee mt-8 w-full overflow-hidden md:mt-10"
         role="region"
         aria-label="Daftar merek industri yang pernah ditangani"
       >
@@ -30,53 +34,35 @@ export function BrandSection() {
           {[0, 1].map((copyIndex) => (
             <div
               key={copyIndex}
-              className="flex shrink-0 flex-nowrap"
+              className="flex shrink-0 flex-nowrap items-center"
               aria-hidden={copyIndex === 1 ? 'true' : undefined}
             >
               {brandItems.map((brand) => (
                 <div
                   key={`${copyIndex}-${brand.id}`}
-                  className="group flex h-[112px] w-[210px] shrink-0 flex-col items-center justify-center border-r border-[#0F2942]/15 bg-[#F8F6F1] px-5 text-center min-[390px]:w-[220px] sm:w-[250px] sm:px-6"
+                  title={brand.category}
+                  className="flex h-24 shrink-0 items-center justify-center px-7 sm:px-11"
                 >
-                  <div className="flex h-[52px] w-[160px] items-center justify-center overflow-hidden sm:w-[165px]">
-                    {brand.logoPath ? (
-                      <div
-                        className="flex h-full w-full items-center justify-center"
-                        style={{
-                          transform: `translate3d(${brand.logoXOffset ?? 0}px, ${brand.logoYOffset ?? 0}px, 0) scale(${brand.logoScale ?? 1})`,
-                        }}
-                      >
-                        <Image
-                          src={brand.logoPath}
-                          alt={copyIndex === 0 ? brand.name : ''}
-                          width={brand.logoWidth || 160}
-                          height={brand.logoHeight || 52}
-                          style={{ width: 'auto', height: 'auto' }}
-                          className="h-auto w-auto max-h-full max-w-full object-contain opacity-80 transition-[opacity,transform] duration-300 group-hover:scale-[1.03] group-hover:opacity-100"
-                        />
-                      </div>
-                    ) : (
-                      <span className="max-w-full truncate text-xl font-semibold tracking-[-0.02em] text-[#0F2942]">
-                        {brand.logoText}
-                      </span>
-                    )}
-                  </div>
-                  <span className="mt-3 max-w-full truncate text-[0.68rem] font-semibold uppercase tracking-[0.11em] text-[#6B7780]">
-                    {brand.category}
-                  </span>
+                  {brand.logoPath && brand.logoWidth && brand.logoHeight ? (
+                    <Image
+                      src={brand.logoPath}
+                      alt={copyIndex === 0 ? `${brand.name} — ${brand.category}` : ''}
+                      width={brand.logoWidth}
+                      height={brand.logoHeight}
+                      style={{ '--logo-h': logoHeight(brand.logoWidth / brand.logoHeight, brand.logoCapRatio) } as React.CSSProperties}
+                      className="h-[calc(var(--logo-h)*0.78px)] w-auto sm:h-[calc(var(--logo-h)*1px)]"
+                    />
+                  ) : (
+                    <span className="max-w-full truncate text-xl font-semibold tracking-[-0.02em] text-[#0F2942]">
+                      {brand.logoText}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
           ))}
         </div>
       </div>
-
-      <Container>
-        <p className="mt-6 max-w-4xl border-l border-[#B34718]/60 pl-4 text-[0.82rem] leading-6 text-[#5F6D78]">
-          <strong className="font-semibold text-[#0F2942]">Keterangan merek dagang — </strong>
-          {brandDisclaimer}
-        </p>
-      </Container>
     </section>
   );
 }

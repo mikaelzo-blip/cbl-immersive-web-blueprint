@@ -62,7 +62,7 @@ export default function KebijakanPrivasiPage() {
 
         <header className="grid gap-8 border-t border-[#0F2942]/25 pb-14 pt-6 md:pb-16 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <p className="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Privacy notice</p>
+            <p className="text-[0.75rem] font-semibold uppercase tracking-[0.16em] text-[#B34718]">Privacy notice</p>
           </div>
           <div className="lg:col-span-8 lg:col-start-5">
             <h1 className="text-[clamp(3rem,7vw,6.5rem)] font-semibold leading-[0.94] tracking-[-0.05em]">Kebijakan privasi.</h1>
@@ -73,7 +73,7 @@ export default function KebijakanPrivasiPage() {
         <div className="border-t border-[#0F2942]/20">
           {sections.map((section, index) => (
             <section key={section.title} className="grid gap-6 border-b border-[#0F2942]/15 py-8 md:grid-cols-[4rem_1fr] md:gap-8">
-              <span className="text-[0.64rem] font-semibold tracking-[0.14em] text-[#B34718]">{String(index + 1).padStart(2, '0')}</span>
+              <span className="text-[0.75rem] font-semibold tracking-[0.14em] text-[#B34718]">{String(index + 1).padStart(2, '0')}</span>
               <div>
                 <h2 className="text-xl font-semibold tracking-[-0.025em] sm:text-2xl">{section.title}</h2>
                 <div className="mt-4 max-w-3xl text-sm leading-7 text-[#5F6D78]">{section.body}</div>
@@ -83,7 +83,7 @@ export default function KebijakanPrivasiPage() {
         </div>
 
         <section className="mt-10 grid gap-5 border-t border-[#0F2942]/20 pt-6 sm:grid-cols-[10rem_1fr]">
-          <p className="text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Kontak resmi</p>
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Kontak resmi</p>
           <address className="space-y-2 text-sm not-italic leading-6">
             <p><a href={`mailto:${companyInfo.email}`} className="font-semibold text-[#B34718] underline underline-offset-4">{companyInfo.email}</a></p>
             <p><a href={`tel:${companyInfo.phoneRaw}`} className="font-semibold">{companyInfo.phone}</a></p>

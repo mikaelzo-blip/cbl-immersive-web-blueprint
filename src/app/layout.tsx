@@ -1,11 +1,19 @@
 import type { Metadata } from 'next';
+import { Archivo } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { FloatingWhatsapp } from '@/components/ui/FloatingWhatsapp';
 import { BackToTop } from '@/components/ui/BackToTop';
+import { MotionObserver } from '@/components/ui/MotionObserver';
 import { companyInfo } from '@/data/company';
 import { serializeJsonLd } from '@/lib/json-ld';
+
+const archivo = Archivo({
+  subsets: ['latin'],
+  variable: '--font-archivo',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(companyInfo.seo.siteUrl),
@@ -69,7 +77,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="id" className="font-sans">
+    <html lang="id" data-scroll-behavior="smooth" className={`${archivo.variable} font-sans`}>
       <head>
         <script
           type="application/ld+json"
@@ -87,6 +95,7 @@ export default function RootLayout({
         <Footer />
         <FloatingWhatsapp />
         <BackToTop />
+        <MotionObserver />
       </body>
     </html>
   );

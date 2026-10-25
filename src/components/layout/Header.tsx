@@ -5,10 +5,17 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { companyInfo, mainNavItems } from '@/data/company';
-import { resolveSectionHref, cn } from '@/lib/utils';
+import { resolveSectionHref, isNavItemActive, cn } from '@/lib/utils';
 import { Container } from '@/components/ui/Container';
 import { DynamicIcon } from '@/components/ui/DynamicIcon';
 import { MobileMenu } from './MobileMenu';
+
+// Homepage section id -> nav href it lights up. Nav items link to their own pages but still track the matching homepage section.
+const homeSectionNav: Record<string, string> = {
+  layanan: '/layanan',
+  proyek: '/proyek',
+  kontak: '/kontak',
+};
 
 export function Header() {
   const pathname = usePathname();
@@ -23,25 +30,19 @@ export function Header() {
 
       if (pathname !== '/') return;
 
-      const sections = ['layanan', 'keahlian', 'cara-kerja', 'mengapa-cbl', 'kontak'];
-
       if (window.scrollY < 200) {
         setActiveSection('/');
         return;
       }
 
-      const scrollPosition = window.scrollY + 140;
-      let current = '/';
-
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            current = `#${id}`;
-            break;
-          }
+      // The section crossing a line 40% down the viewport wins; sections without a nav item leave nothing active.
+      const line = window.innerHeight * 0.4;
+      let current = '';
+      for (const [id, navHref] of Object.entries(homeSectionNav)) {
+        const rect = document.getElementById(id)?.getBoundingClientRect();
+        if (rect && rect.top <= line && rect.bottom > line) {
+          current = navHref;
+          break;
         }
       }
       setActiveSection(current);
@@ -49,20 +50,15 @@ export function Header() {
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
   }, [pathname]);
 
-  const checkIsActive = (itemHref: string) => {
-    if (pathname === '/') {
-      if (itemHref === '/') return activeSection === '/';
-      if (itemHref.startsWith('#')) return activeSection === itemHref;
-      return pathname === itemHref;
-    }
-
-    if (itemHref === '#layanan' && pathname.startsWith('/layanan/')) return true;
-    if (itemHref === '/proyek' && pathname.startsWith('/proyek')) return true;
-    return pathname === itemHref;
-  };
+  const scrollBehavior = (): ScrollBehavior =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, itemHref: string) => {
     if (pathname === '/' && itemHref.startsWith('#')) {
@@ -70,17 +66,14 @@ export function Header() {
       const sectionId = itemHref.substring(1);
       const targetEl = document.getElementById(sectionId);
       if (targetEl) {
-        const headerOffset = 88;
-        const elementPosition = targetEl.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        // Header clearance comes from `scroll-padding-top` in globals.css.
+        targetEl.scrollIntoView({ behavior: scrollBehavior() });
         window.history.pushState(null, '', `/#${sectionId}`);
         setActiveSection(itemHref);
       }
     } else if (pathname === '/' && itemHref === '/') {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: scrollBehavior() });
       window.history.pushState(null, '', '/');
       setActiveSection('/');
     }
@@ -118,7 +111,7 @@ export function Header() {
               <span className="block truncate text-[0.9rem] font-semibold tracking-[-0.02em] text-[#0F2942] sm:text-base xl:text-[1.02rem]">
                 Cakrawala Buana Lestari
               </span>
-              <span className="mt-0.5 hidden text-[0.64rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780] sm:block">
+              <span className="mt-0.5 hidden text-[0.75rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780] sm:block">
                 Solusi teknis · Jakarta
               </span>
             </div>
@@ -127,16 +120,16 @@ export function Header() {
           <nav className="hidden items-center gap-5 xl:flex 2xl:gap-6" aria-label="Navigasi Utama">
             {mainNavItems.map((item) => {
               const href = resolveSectionHref(item.href, pathname);
-              const isActive = checkIsActive(item.href);
+              const isActive = isNavItemActive(item.href, pathname, activeSection);
 
               return (
                 <Link
                   key={item.label}
                   href={href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  aria-current={isActive ? 'page' : undefined}
+                  aria-current={isActive ? (pathname === '/' && item.href !== '/' ? 'location' : 'page') : undefined}
                   className={cn(
-                    'border-b py-1 text-[0.79rem] font-semibold transition-colors duration-150',
+                    'border-b py-1 text-[0.875rem] font-semibold transition-colors duration-150',
                     isActive
                       ? 'border-[#B34718] text-[#0F2942]'
                       : 'border-transparent text-[#5F6D78] hover:border-[#0F2942]/30 hover:text-[#0F2942]'
@@ -153,7 +146,7 @@ export function Header() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="border-b border-[#B34718] pb-1 text-[0.79rem] font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
+              className="hit-area border-b border-[#B34718] pb-1 text-[0.875rem] font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
             >
               Diskusikan proyek ↗
             </a>

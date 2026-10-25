@@ -1,57 +1,42 @@
+import Image from 'next/image';
 import { Container } from '@/components/ui/Container';
 import { workProcessSteps } from '@/data/company';
 
+// Real CBL field photos, one per step, in step order.
+const stepImages = [
+  { src: '/images/projects/perbaikan-ac-vrf/02.webp', alt: 'Teknisi memeriksa unit AC outdoor di lokasi' },
+  { src: '/images/projects/penyetelan-roll-conveyor/01.webp', alt: 'Tim menyetel roll conveyor di area kolam' },
+  { src: '/images/projects/panel-view-hmi/02.webp', alt: 'Uji fungsi tombol dan layar HMI pada panel kontrol' },
+  { src: '/images/projects/panel-view-hmi/01.webp', alt: 'Teknisi mencatat hasil pekerjaan di laptop' },
+];
+
 export function WorkProcessSection() {
   return (
-    <section id="cara-kerja" className="border-b border-[#D9E1E8] bg-[#F4F1EA] py-20 text-[#0F2942] md:py-28 lg:py-32">
+    <section id="cara-kerja" className="overflow-hidden border-b border-[#D9E1E8] bg-[#F4F1EA] py-20 text-[#0F2942] md:py-28">
       <Container>
-        <div className="grid grid-cols-1 gap-8 border-t border-[#0F2942]/25 pt-5 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-3">
-            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.17em] text-[#B34718]">Metode proyek</p>
-            <p className="mt-3 max-w-[18rem] text-[0.95rem] leading-7 text-[#657482]">
-              Tahapan disesuaikan dengan kondisi fasilitas, batas pekerjaan, risiko, dan persyaratan lokasi.
-            </p>
-          </div>
+        {/* Right-aligned on desktop: the staircase below starts top-left, so the heading balances it from the other side. */}
+        <h2 className="max-w-3xl text-[clamp(2.4rem,5vw,4.6rem)] font-semibold leading-[0.98] tracking-[-0.04em] lg:ml-auto lg:text-right">
+          Dari survei sampai serah terima.
+        </h2>
 
-          <div className="lg:col-span-8 lg:col-start-5">
-            <h2 className="max-w-4xl text-[clamp(2.45rem,5vw,5.1rem)] font-semibold leading-[0.96] tracking-[-0.045em]">
-              Dari klarifikasi kebutuhan sampai dokumentasi dan serah terima.
-            </h2>
-          </div>
-        </div>
-
-        <ol className="mt-14 grid grid-cols-1 md:mt-20 lg:grid-cols-2 lg:gap-x-14">
+        {/* Steps descend like a staircase on desktop so the sequence reads left to right. */}
+        <ol className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:mt-16 lg:grid-cols-4">
           {workProcessSteps.map((step, index) => (
-            <li
-              key={step.stepNumber}
-              className="border-t border-[#0F2942]/25 py-8 sm:py-10 lg:min-h-[28rem]"
-            >
-              <div className="flex items-end justify-between gap-6">
-                <span className="text-5xl font-semibold tracking-[-0.055em] text-[#B34718] sm:text-6xl">
+            <li key={step.stepNumber} className="lg:[margin-top:calc(var(--step)*2rem)]" style={{ '--step': index } as React.CSSProperties}>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-[#D9E1E8]">
+                <Image
+                  src={stepImages[index].src}
+                  alt={stepImages[index].alt}
+                  fill
+                  sizes="(min-width: 1024px) 18rem, 45vw"
+                  className="object-cover"
+                />
+                <span className="absolute left-3 top-3 rounded-sm bg-[#F4F1EA] px-2 py-1 text-sm font-semibold tabular-nums text-[#B34718] sm:text-base">
                   {String(step.stepNumber).padStart(2, '0')}
                 </span>
-                <span className="pb-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#8A949C]">
-                  Tahap {index + 1}
-                </span>
               </div>
-
-              <h3 className="mt-8 max-w-lg text-2xl font-semibold leading-[1.05] tracking-[-0.03em] sm:text-3xl">
-                {step.title}
-              </h3>
-              <p className="mt-4 max-w-xl text-[0.95rem] leading-7 text-[#657482]">
-                {step.description}
-              </p>
-
-              <div className="mt-8 border-t border-[#0F2942]/15 pt-4">
-                <p className="text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-[#657482]">Yang dilakukan</p>
-                <ul className="mt-3 text-[0.95rem] leading-6 text-[#0F2942]">
-                  {step.details.map((detail) => (
-                    <li key={detail} className="border-t border-[#0F2942]/12 py-2.5 first:border-t-0 first:pt-0">
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <span aria-hidden="true" className="process-line mt-5 block h-0.5 bg-[#0F2942]" />
+              <h3 className="mt-4 text-base font-semibold leading-[1.15] tracking-[-0.02em] sm:text-2xl">{step.title}</h3>
             </li>
           ))}
         </ol>
