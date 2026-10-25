@@ -3,7 +3,7 @@ import { Container } from '@/components/ui/Container';
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-[72vh] items-center bg-[#F4F1EA] py-20 text-[#0F2942] md:py-28">
+    <div className="flex min-h-[72vh] items-center bg-[#F4F1EA] py-20 text-[#0F2942] md:py-28">
       <Container>
         <div className="grid gap-10 border-t border-[#0F2942]/25 pt-6 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-3">
@@ -23,6 +23,6 @@ export default function NotFound() {
           </div>
         </div>
       </Container>
-    </main>
+    </div>
   );
 }

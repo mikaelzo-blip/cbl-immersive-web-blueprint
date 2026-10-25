@@ -52,9 +52,9 @@ export default function KebijakanPrivasiPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#F4F1EA] text-[#0F2942]">
+    <div className="min-h-screen bg-[#F4F1EA] text-[#0F2942]">
       <Container className="max-w-5xl py-8 md:py-12 lg:py-16">
-        <nav className="mb-10 flex items-center gap-2 text-xs text-[#6B7780]" aria-label="Breadcrumb">
+        <nav className="mb-10 flex items-center gap-2 text-xs text-[#5F6D78]" aria-label="Breadcrumb">
           <Link href="/" className="hover:text-[#B34718]">Beranda</Link>
           <span aria-hidden="true">/</span>
           <span className="font-semibold text-[#0F2942]">Kebijakan Privasi</span>
@@ -83,7 +83,7 @@ export default function KebijakanPrivasiPage() {
         </div>
 
         <section className="mt-10 grid gap-5 border-t border-[#0F2942]/20 pt-6 sm:grid-cols-[10rem_1fr]">
-          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Kontak resmi</p>
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#5F6D78]">Kontak resmi</p>
           <address className="space-y-2 text-sm not-italic leading-6">
             <p><a href={`mailto:${companyInfo.email}`} className="font-semibold text-[#B34718] underline underline-offset-4">{companyInfo.email}</a></p>
             <p><a href={`tel:${companyInfo.phoneRaw}`} className="font-semibold">{companyInfo.phone}</a></p>
@@ -91,6 +91,6 @@ export default function KebijakanPrivasiPage() {
           </address>
         </section>
       </Container>
-    </main>
+    </div>
   );
 }

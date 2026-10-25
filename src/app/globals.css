@@ -210,6 +210,16 @@
   animation: hero-frame-in 1.5s var(--ease-expo) 0.35s both;
 }
 
+/* The hero photo settles from a slight push-in while the frame opens; it ends at scale 1 so the photo stays sharp. */
+@keyframes hero-zoom-in {
+  from { transform: scale(1.12); }
+  to { transform: scale(1); }
+}
+
+.hero-zoom {
+  animation: hero-zoom-in 2.4s var(--ease-expo) 0.35s both;
+}
+
 .motion-ready [data-motion='heading'] {
   clip-path: inset(-0.1em -0.1em -0.25em -0.1em);
   transition:
@@ -317,6 +327,7 @@
 
   .hero-line > span,
   .hero-frame,
+  .hero-zoom,
   [data-parallax],
   .scroll-progress,
   .process-line {

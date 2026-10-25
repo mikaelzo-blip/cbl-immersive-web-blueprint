@@ -128,6 +128,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             </h2>
             <ul
               data-stagger
+              tabIndex={0}
+              aria-label="Foto dokumentasi lapangan"
               className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 scroll-pl-4 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 md:mt-14 [&::-webkit-scrollbar]:hidden"
             >
               {project.gallery.map((image, index) => (

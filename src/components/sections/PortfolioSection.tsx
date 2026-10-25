@@ -79,7 +79,7 @@ export function PortfolioSection() {
                   className="object-cover transition-[scale] duration-700 ease-out group-hover:scale-[1.05]"
                 />
               </div>
-              <p className="mt-4 text-sm text-[#657482]">{project.categoryLabel}</p>
+              <p className="mt-4 text-sm text-[#5F6D78]">{project.categoryLabel}</p>
               <h3
                 className={cn(
                   'mt-1 font-semibold leading-[1.1] tracking-[-0.02em] transition-colors group-hover:text-[#B34718]',
@@ -95,7 +95,7 @@ export function PortfolioSection() {
 
       <Container>
         {/* Phones skip the notice here; /proyek carries it in full. */}
-        <p className="mt-10 hidden max-w-3xl text-xs leading-6 text-[#657482] md:block">{portfolioConfidentialityNotice}</p>
+        <p className="mt-10 hidden max-w-3xl text-xs leading-6 text-[#5F6D78] md:block">{portfolioConfidentialityNotice}</p>
       </Container>
     </section>
   );

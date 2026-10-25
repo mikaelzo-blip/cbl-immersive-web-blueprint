@@ -49,10 +49,6 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: {
-    icon: '/logo/cbl-logo.png',
-    apple: '/logo/cbl-logo.png',
-  },
 };
 
 export default function RootLayout({

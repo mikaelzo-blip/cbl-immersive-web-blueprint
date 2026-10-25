@@ -70,7 +70,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-md bg-[#E8641B] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#C9530F] sm:text-base"
+            className="inline-flex items-center gap-2 rounded-md bg-[#B34718] px-6 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#8F3413] sm:text-base"
           >
             Konsultasikan layanan ini <ArrowUpRight aria-hidden="true" className="size-4" />
           </a>

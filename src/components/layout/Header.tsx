@@ -83,11 +83,17 @@ export function Header() {
     'Halo CBL, saya ingin konsultasi kebutuhan teknik fasilitas kami.'
   )}`;
 
+  // On the homepage the header floats over the full-screen hero photo, transparent with white type, until the page scrolls.
+  const isHome = pathname === '/';
+  const overHero = isHome && !isScrolled;
+
   return (
     <>
       <header
         className={cn(
-          'sticky top-0 z-40 w-full border-b bg-[#F4F1EA]/96 transition-[padding,border-color,background-color] duration-200',
+          'top-0 z-40 w-full border-b transition-[padding,border-color,background-color] duration-300',
+          isHome ? 'fixed inset-x-0' : 'sticky',
+          overHero ? 'bg-transparent' : 'bg-[#F4F1EA]/96',
           isScrolled ? 'border-[#0F2942]/15 py-2.5 backdrop-blur-md' : 'border-transparent py-3.5'
         )}
       >
@@ -108,10 +114,10 @@ export function Header() {
               />
             </div>
             <div className="min-w-0">
-              <span className="block truncate text-[0.9rem] font-semibold tracking-[-0.02em] text-[#0F2942] sm:text-base xl:text-[1.02rem]">
+              <span className={cn('block truncate text-[0.9rem] font-semibold tracking-[-0.02em] transition-colors duration-300 sm:text-base xl:text-[1.02rem]', overHero ? 'text-white' : 'text-[#0F2942]')}>
                 Cakrawala Buana Lestari
               </span>
-              <span className="mt-0.5 hidden text-[0.75rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780] sm:block">
+              <span className={cn('mt-0.5 hidden text-[0.75rem] font-semibold uppercase tracking-[0.13em] sm:block', overHero ? 'text-white/70' : 'text-[#5F6D78]')}>
                 Solusi teknis · Jakarta
               </span>
             </div>
@@ -130,9 +136,13 @@ export function Header() {
                   aria-current={isActive ? (pathname === '/' && item.href !== '/' ? 'location' : 'page') : undefined}
                   className={cn(
                     'border-b py-1 text-[0.875rem] font-semibold transition-colors duration-150',
-                    isActive
-                      ? 'border-[#B34718] text-[#0F2942]'
-                      : 'border-transparent text-[#5F6D78] hover:border-[#0F2942]/30 hover:text-[#0F2942]'
+                    overHero
+                      ? isActive
+                        ? 'border-[#F0A16F] text-white'
+                        : 'border-transparent text-white/75 hover:border-white/40 hover:text-white'
+                      : isActive
+                        ? 'border-[#B34718] text-[#0F2942]'
+                        : 'border-transparent text-[#5F6D78] hover:border-[#0F2942]/30 hover:text-[#0F2942]'
                   )}
                 >
                   {item.label}
@@ -146,7 +156,10 @@ export function Header() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="hit-area border-b border-[#B34718] pb-1 text-[0.875rem] font-semibold text-[#B34718] transition-colors hover:text-[#8F3413]"
+              className={cn(
+                'hit-area border-b pb-1 text-[0.875rem] font-semibold transition-colors',
+                overHero ? 'border-[#F0A16F] text-[#F0A16F] hover:text-white' : 'border-[#B34718] text-[#B34718] hover:text-[#8F3413]'
+              )}
             >
               Diskusikan proyek ↗
             </a>
@@ -155,7 +168,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(true)}
-            className="-mr-1 flex h-11 w-11 items-center justify-center text-[#0F2942] xl:hidden"
+            className={cn('-mr-1 flex h-11 w-11 items-center justify-center transition-colors duration-300 xl:hidden', overHero ? 'text-white' : 'text-[#0F2942]')}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-navigation"
             aria-label="Buka menu navigasi"

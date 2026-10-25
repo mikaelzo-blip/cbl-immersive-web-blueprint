@@ -94,7 +94,7 @@ export function ContactForm() {
       aria-label="Formulir Konsultasi Teknik"
     >
       <div className="mb-8 sm:mb-9">
-        <h3 className="text-2xl font-semibold tracking-[-0.03em] text-[#0F2942] sm:text-3xl">Formulir konsultasi teknis.</h3>
+        <h2 className="text-2xl font-semibold tracking-[-0.03em] text-[#0F2942] sm:text-3xl">Formulir konsultasi teknis.</h2>
         <p className="mt-3 max-w-2xl text-[0.95rem] leading-7 text-[#5F6D78]">Isi informasi yang tersedia. Pesan dapat diteruskan melalui WhatsApp atau email tanpa disimpan ke basis data aplikasi CBL.</p>
       </div>
 
@@ -134,7 +134,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="position" className={labelClass}>Jabatan atau divisi <span className="font-normal text-[#7A858D]">(opsional)</span></label>
+          <label htmlFor="position" className={labelClass}>Jabatan atau divisi <span className="font-normal text-[#5F6D78]">(opsional)</span></label>
           <input
             type="text"
             id="position"
@@ -164,7 +164,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className={labelClass}>Email <span className="font-normal text-[#7A858D]">(opsional)</span></label>
+          <label htmlFor="email" className={labelClass}>Email <span className="font-normal text-[#5F6D78]">(opsional)</span></label>
           <input
             type="email"
             id="email"
@@ -213,7 +213,7 @@ export function ContactForm() {
         </div>
 
         <div>
-          <label htmlFor="desiredSchedule" className={labelClass}>Jadwal yang diharapkan <span className="font-normal text-[#7A858D]">(opsional)</span></label>
+          <label htmlFor="desiredSchedule" className={labelClass}>Jadwal yang diharapkan <span className="font-normal text-[#5F6D78]">(opsional)</span></label>
           <input
             type="text"
             id="desiredSchedule"

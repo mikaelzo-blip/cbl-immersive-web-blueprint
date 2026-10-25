@@ -17,7 +17,7 @@ export function PageHero({ label, parent, titleLines, lead, children }: PageHero
   return (
     <section className="border-b border-[#0F2942]/15 bg-[#F4F1EA] text-[#0F2942]">
       <Container className="pb-12 pt-12 md:pb-16 md:pt-20">
-        <nav aria-label="Breadcrumb" className="hero-enter mb-8 flex items-center gap-2 text-sm text-[#6B7780]">
+        <nav aria-label="Breadcrumb" className="hero-enter mb-8 flex items-center gap-2 text-sm text-[#5F6D78]">
           <Link href="/" className="hover:text-[#B34718]">Beranda</Link>
           <span aria-hidden="true">/</span>
           {parent && (

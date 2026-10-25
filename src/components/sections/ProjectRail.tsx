@@ -21,7 +21,7 @@ export function ProjectRail({ projects }: { projects: Project[] }) {
                 className="object-cover transition-[scale] duration-700 ease-out group-hover:scale-[1.05]"
               />
             </div>
-            <p className="mt-4 text-sm text-[#657482]">{project.categoryLabel}</p>
+            <p className="mt-4 text-sm text-[#5F6D78]">{project.categoryLabel}</p>
             <h3 className="mt-1 text-xl font-semibold leading-[1.1] tracking-[-0.02em] transition-colors group-hover:text-[#B34718]">
               {project.title}
             </h3>

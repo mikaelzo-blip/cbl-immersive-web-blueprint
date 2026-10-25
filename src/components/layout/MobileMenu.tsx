@@ -103,7 +103,7 @@ export function MobileMenu({
               </div>
               <div className="min-w-0">
                 <span className="block truncate text-[0.95rem] font-semibold text-[#0F2942]">Cakrawala Buana Lestari</span>
-                <span className="mt-0.5 block text-[0.75rem] font-semibold uppercase tracking-[0.13em] text-[#6B7780]">Solusi teknis · Jakarta</span>
+                <span className="mt-0.5 block text-[0.75rem] font-semibold uppercase tracking-[0.13em] text-[#5F6D78]">Solusi teknis · Jakarta</span>
               </div>
             </div>
             <button
@@ -135,7 +135,7 @@ export function MobileMenu({
                     isActive ? 'text-[#B34718]' : 'text-[#0F2942] hover:text-[#B34718]'
                   )}
                 >
-                  <span className="text-[0.75rem] tracking-normal tabular-nums text-[#7A858D]">{String(index + 1).padStart(2, '0')}</span>
+                  <span className="text-[0.75rem] tracking-normal tabular-nums text-[#5F6D78]">{String(index + 1).padStart(2, '0')}</span>
                   <span>{item.label}</span>
                   <span aria-hidden="true" className="text-xl">{isActive ? '—' : '→'}</span>
                 </Link>
@@ -145,7 +145,7 @@ export function MobileMenu({
         </div>
 
         <div className="border-t border-[#0F2942]/15 pt-5">
-          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">Konsultasi proyek</p>
+          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#5F6D78]">Konsultasi proyek</p>
           <a
             href={whatsappHref}
             target="_blank"

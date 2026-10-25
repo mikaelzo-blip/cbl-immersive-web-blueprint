@@ -64,7 +64,7 @@ export default function PortfolioIndexPage() {
                   onClick={() => setSelectedCategory(category.id as 'all' | ProjectCategory)}
                   className={cn(
                     'relative min-h-12 shrink-0 px-3 py-4 text-sm font-semibold transition-colors sm:px-5',
-                    isSelected ? 'text-[#0F2942]' : 'text-[#6B7780] hover:text-[#0F2942]'
+                    isSelected ? 'text-[#0F2942]' : 'text-[#5F6D78] hover:text-[#0F2942]'
                   )}
                 >
                   {category.label}
@@ -123,7 +123,7 @@ export default function PortfolioIndexPage() {
                         className="object-cover transition-[scale] duration-700 ease-out group-hover:scale-[1.03]"
                       />
                     </div>
-                    <p className="mt-4 text-sm text-[#657482]">{project.categoryLabel}</p>
+                    <p className="mt-4 text-sm text-[#5F6D78]">{project.categoryLabel}</p>
                     <h2 className="mt-1 max-w-xl text-2xl font-semibold leading-[1.08] tracking-[-0.03em] transition-colors group-hover:text-[#B34718] sm:text-3xl">
                       {project.title}
                     </h2>
@@ -139,7 +139,7 @@ export default function PortfolioIndexPage() {
           </div>
         )}
 
-        <p className="mt-20 max-w-3xl border-t border-[#0F2942]/20 pt-5 text-xs leading-6 text-[#657482]">{portfolioConfidentialityNotice}</p>
+        <p className="mt-20 max-w-3xl border-t border-[#0F2942]/20 pt-5 text-xs leading-6 text-[#5F6D78]">{portfolioConfidentialityNotice}</p>
       </Container>
     </div>
   );

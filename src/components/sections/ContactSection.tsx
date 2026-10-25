@@ -21,7 +21,7 @@ export function ContactSection() {
             <div className="grid grid-cols-2 gap-x-6 border-t border-[#0F2942]/25 lg:block">
               {contactRows.map((item) => (
                 <div key={item.label} className={`border-b border-[#0F2942]/15 py-4 sm:py-6 ${item.wide ? 'col-span-2' : ''}`}>
-                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#6B7780]">
+                  <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-[#5F6D78]">
                     {item.label}
                   </p>
                   {item.href ? (

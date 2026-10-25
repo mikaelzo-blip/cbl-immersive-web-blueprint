@@ -42,7 +42,8 @@ export function CountUp({ value, duration = 1400 }: CountUpProps) {
   }, [value, duration]);
 
   return (
-    <span ref={ref} aria-label={value} className="tabular-nums">
+    <span ref={ref} className="tabular-nums">
+      <span className="sr-only">{value}</span>
       <span aria-hidden="true">{display}</span>
     </span>
   );

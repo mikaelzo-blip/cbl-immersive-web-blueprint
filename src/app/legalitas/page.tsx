@@ -131,7 +131,7 @@ export default function LegalitasPage() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-md bg-[#E8641B] px-6 py-3.5 text-sm font-semibold transition-colors hover:bg-[#C9530F] sm:text-base"
+                className="inline-flex items-center gap-2 rounded-md bg-[#B34718] px-6 py-3.5 text-sm font-semibold transition-colors hover:bg-[#8F3413] sm:text-base"
               >
                 Minta berkas via WhatsApp <ArrowUpRight aria-hidden="true" className="size-4" />
               </a>
