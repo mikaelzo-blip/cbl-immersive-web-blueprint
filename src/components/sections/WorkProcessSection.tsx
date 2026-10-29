@@ -19,16 +19,16 @@ export function WorkProcessSection() {
           Dari survei sampai serah terima.
         </h2>
 
-        {/* Steps descend like a staircase on desktop so the sequence reads left to right. */}
-        <ol className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 md:mt-16 lg:grid-cols-4">
+        {/* Phones swipe through the steps like the project rail; steps descend like a staircase on desktop so the sequence reads left to right. */}
+        <ol className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 scroll-pl-4 [scrollbar-width:none] sm:-mx-6 sm:gap-6 sm:px-6 sm:scroll-pl-6 md:mt-16 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0 [&::-webkit-scrollbar]:hidden">
           {workProcessSteps.map((step, index) => (
-            <li key={step.stepNumber} className="lg:[margin-top:calc(var(--step)*2rem)]" style={{ '--step': index } as React.CSSProperties}>
+            <li key={step.stepNumber} className="w-[72vw] max-w-80 shrink-0 snap-start lg:w-auto lg:max-w-none lg:[margin-top:calc(var(--step)*2rem)]" style={{ '--step': index } as React.CSSProperties}>
               <div className="relative aspect-[4/5] overflow-hidden rounded-md bg-[#D9E1E8]">
                 <Image
                   src={stepImages[index].src}
                   alt={stepImages[index].alt}
                   fill
-                  sizes="(min-width: 1024px) 18rem, 45vw"
+                  sizes="(min-width: 1024px) 18rem, 72vw"
                   className="object-cover"
                 />
                 <span className="absolute left-3 top-3 rounded-sm bg-[#F4F1EA] px-2 py-1 text-sm font-semibold tabular-nums text-[#B34718] sm:text-base">
@@ -36,7 +36,7 @@ export function WorkProcessSection() {
                 </span>
               </div>
               <span aria-hidden="true" className="process-line mt-5 block h-0.5 bg-[#0F2942]" />
-              <h3 className="mt-4 text-base font-semibold leading-[1.15] tracking-[-0.02em] sm:text-2xl">{step.title}</h3>
+              <h3 className="mt-4 text-xl font-semibold leading-[1.15] tracking-[-0.02em] sm:text-2xl">{step.title}</h3>
             </li>
           ))}
         </ol>

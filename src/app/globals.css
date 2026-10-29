@@ -145,8 +145,13 @@
   display: flex;
   flex-wrap: nowrap;
   width: max-content;
-  animation: brand-marquee-scroll 28s linear infinite;
+  animation: brand-marquee-scroll var(--marquee-duration, 28s) linear infinite;
   will-change: transform;
+}
+
+/* !important so it survives the reduced-motion `animation` shorthand override below. */
+.brand-marquee-track.is-reverse {
+  animation-direction: reverse !important;
 }
 
 /* Same continuous loop as the brand rail, reused for the photo strip and the discipline band. */
@@ -177,7 +182,7 @@
 
 @media (max-width: 640px) {
   .brand-marquee-track {
-    animation-duration: 22s;
+    animation-duration: calc(var(--marquee-duration, 28s) * 0.79);
   }
 }
 
@@ -301,6 +306,14 @@
     animation-range: entry 20% cover 45%;
     transform: scaleX(0);
   }
+
+  /* Below lg the steps sit in a horizontal rail, whose scroller would give view() an inactive timeline and hide the rule. */
+  @media (max-width: 1023px) {
+    .process-line {
+      animation: none;
+      transform: none;
+    }
+  }
 }
 
 /* Touch screens: grow small text links to a ~44px hit area without moving the layout. */
@@ -352,7 +365,7 @@
   }
 
   .brand-marquee-track {
-    animation: brand-marquee-scroll 72s linear infinite !important;
+    animation: brand-marquee-scroll calc(var(--marquee-duration, 28s) * 2.57) linear infinite !important;
   }
 
   .reveal-on-scroll,

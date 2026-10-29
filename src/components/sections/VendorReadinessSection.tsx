@@ -18,7 +18,7 @@ export function VendorReadinessSection() {
     <section className="border-b border-[#0F2942]/15 bg-white py-16 md:py-20">
       <Container className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:items-end lg:gap-16">
         <div>
-          <h2 className="max-w-md text-[clamp(1.9rem,3vw,2.6rem)] font-semibold leading-[1.04] tracking-[-0.035em] text-[#0F2942]">
+          <h2 className="max-w-md text-[clamp(2.4rem,3vw,2.6rem)] font-semibold leading-[0.98] tracking-[-0.04em] text-[#0F2942]">
             Dokumen siap untuk registrasi vendor.
           </h2>
           <Link

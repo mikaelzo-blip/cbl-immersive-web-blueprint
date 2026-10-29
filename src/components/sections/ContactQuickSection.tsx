@@ -56,7 +56,7 @@ export function ContactQuickSection({ whatsappHref }: { whatsappHref?: string })
               >
                 <Icon aria-hidden="true" className="size-6 shrink-0 text-[#F0A16F]" />
                 <span className="w-28 shrink-0 text-sm text-[#9FB2C1] max-sm:hidden">{label}</span>
-                <span className="min-w-0 flex-1 [overflow-wrap:anywhere] text-[clamp(1.35rem,3.2vw,2.6rem)] font-semibold tracking-[-0.03em] transition-[color,translate] duration-500 group-hover:translate-x-2 group-hover:text-[#F0A16F]">
+                <span className="min-w-0 flex-1 [overflow-wrap:anywhere] text-[clamp(1.05rem,4.3vw,2.6rem)] font-semibold tracking-[-0.03em] transition-[color,translate] duration-500 group-hover:translate-x-2 group-hover:text-[#F0A16F]">
                   {/* Let the email wrap after "@" instead of mid-domain. */}
                   {value.includes('@') ? value.split('@').map((part, i) => (i ? <span key={i}>@<wbr />{part}</span> : part)) : value}
                 </span>

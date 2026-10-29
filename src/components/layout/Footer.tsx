@@ -41,7 +41,7 @@ export function Footer() {
           <div className="md:grid md:grid-cols-2 md:gap-x-6 lg:col-span-4">
             <div>
               <p className="text-[0.75rem] font-semibold uppercase tracking-[0.15em] text-[#F0A16F]">Navigasi</p>
-              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-3 text-[0.92rem] text-[#D7E1E8] md:block md:space-y-3">
+              <ul className="mt-4 grid grid-cols-3 gap-x-4 gap-y-4 text-[0.92rem] text-[#D7E1E8] md:block md:space-y-3">
                 {mainNavItems.map((item) => (
                   <li key={item.label}>
                     <Link href={resolveSectionHref(item.href, pathname)} className="transition-colors hover:text-white">
