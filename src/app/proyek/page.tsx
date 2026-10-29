@@ -46,7 +46,7 @@ export default function PortfolioIndexPage() {
       <PageHero
         label="Portofolio"
         titleLines={['Proyek yang', 'sudah kami kerjakan.']}
-        lead={`${projects.length} studi kasus dari arsip pekerjaan CBL 2022–2026.`}
+        lead="Arsip pekerjaan CBL 2022–2026."
       />
 
       {/* Filter stays reachable while scrolling the archive. */}

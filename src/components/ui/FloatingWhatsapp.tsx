@@ -9,10 +9,15 @@ import { DynamicIcon } from '@/components/ui/DynamicIcon';
 export function FloatingWhatsapp() {
   const pathname = usePathname();
   // Phones: stay out of the first screen so the button never covers the hero CTAs (they already offer WhatsApp).
-  const [isPastFold, setIsPastFold] = useState(false);
+  const [showOnPhone, setShowOnPhone] = useState(false);
 
   useEffect(() => {
-    const update = () => setIsPastFold(window.scrollY > window.innerHeight * 0.6);
+    // Also step aside once the closing contact block (or footer) is on screen: it has its own WhatsApp link and the button would cover its rows.
+    const update = () => {
+      const end = document.querySelector('#kontak') ?? document.querySelector('footer');
+      const atEnd = !!end && end.getBoundingClientRect().top < window.innerHeight;
+      setShowOnPhone(window.scrollY > window.innerHeight * 0.6 && !atEnd);
+    };
     update();
     window.addEventListener('scroll', update, { passive: true });
     return () => window.removeEventListener('scroll', update);
@@ -32,7 +37,7 @@ export function FloatingWhatsapp() {
       aria-label={`Chat WhatsApp CBL (${companyInfo.whatsappFormatted})`}
       className={cn(
         'fixed bottom-4 right-4 z-40 flex size-12 items-center justify-center gap-2.5 bg-[#C2410C] sm:bottom-6 sm:right-6 sm:size-auto sm:px-4 sm:py-3 text-white font-bold text-sm rounded-full shadow-2xl hover:bg-[#9A3412] hover:scale-105 active:scale-95 transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[#C2410C] group',
-        !isPastFold && 'max-md:invisible max-md:translate-y-24 max-md:opacity-0'
+        !showOnPhone && 'max-md:invisible max-md:translate-y-24 max-md:opacity-0'
       )}
     >
       <span className="relative hidden h-3 w-3 sm:flex">
